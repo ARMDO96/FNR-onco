@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F4F5F4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121514" media="(prefers-color-scheme: dark)">
+<meta name="description" content="Checklist de requisitos de las normativas FNR para cobertura de tratamiento sistémico en mama, colorrecto, próstata, pulmón y cuello uterino.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>Checklist FNR Oncología</title>
+<style>
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/ibm-plex-sans-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/ibm-plex-sans-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/ibm-plex-sans-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Sans Condensed";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/ibm-plex-sans-condensed-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Sans Condensed";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/ibm-plex-sans-condensed-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/ibm-plex-mono-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/ibm-plex-mono-latin-500-normal.woff2) format("woff2")}
+html{-webkit-text-size-adjust:100%}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+[hidden]{display:none!important}
+:root{
+  --bg:#F4F5F4; --surface:#FFFFFF; --sunk:#EAEDEB; --ink:#1A1F1D; --ink-2:#4B5551; --ink-3:#77817D;
+  --line:#D8DDDA; --on-t:#FFFFFF;
+  --exc:#A8341F; --exc-soft:#F7E2DC; --ind:#8A5F0E; --ind-soft:#F5EAD2; --ok-soft:#E3EEE8; --ok:#2E6A55;
+  --c-mama:#B3305F; --c-mama-s:#F8E3EA;
+  --c-ccr:#3B7A2A;  --c-ccr-s:#E3EFDD;
+  --c-pros:#5A48A8; --c-pros-s:#E8E4F6;
+  --c-pulm:#2A5FA5; --c-pulm-s:#E0E9F6;
+  --c-ccu:#0B7A88;  --c-ccu-s:#DDF0F2;
+  --t:var(--c-mama); --t-s:var(--c-mama-s);
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --cond:"IBM Plex Sans Condensed","IBM Plex Sans","Arial Narrow",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#121514; --surface:#1A1E1C; --sunk:#222826; --ink:#E6EAE8; --ink-2:#AFB8B4; --ink-3:#808A86;
+    --line:#2F3633; --on-t:#121514;
+    --exc:#F08C77; --exc-soft:#3A221D; --ind:#E2B563; --ind-soft:#3A2F17; --ok-soft:#1F332B; --ok:#86C9AE;
+    --c-mama:#F08AAE; --c-mama-s:#3D2230; --c-ccr:#93CF7E; --c-ccr-s:#22331D; --c-pros:#B3A6F0; --c-pros-s:#2C2742;
+    --c-pulm:#8DB5EE; --c-pulm-s:#1E2A3D; --c-ccu:#6FD0DC; --c-ccu-s:#173236;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#121514; --surface:#1A1E1C; --sunk:#222826; --ink:#E6EAE8; --ink-2:#AFB8B4; --ink-3:#808A86;
+  --line:#2F3633; --on-t:#121514;
+  --exc:#F08C77; --exc-soft:#3A221D; --ind:#E2B563; --ind-soft:#3A2F17; --ok-soft:#1F332B; --ok:#86C9AE;
+  --c-mama:#F08AAE; --c-mama-s:#3D2230; --c-ccr:#93CF7E; --c-ccr-s:#22331D; --c-pros:#B3A6F0; --c-pros-s:#2C2742;
+  --c-pulm:#8DB5EE; --c-pulm-s:#1E2A3D; --c-ccu:#6FD0DC; --c-ccu-s:#173236;
+}
+.app[data-tumor="mama"]{--t:var(--c-mama);--t-s:var(--c-mama-s)}
+.app[data-tumor="ccr"]{--t:var(--c-ccr);--t-s:var(--c-ccr-s)}
+.app[data-tumor="pros"]{--t:var(--c-pros);--t-s:var(--c-pros-s)}
+.app[data-tumor="pulm"]{--t:var(--c-pulm);--t-s:var(--c-pulm-s)}
+.app[data-tumor="ccu"]{--t:var(--c-ccu);--t-s:var(--c-ccu-s)}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;padding-inline:16px;padding-block:18px 48px}
+.app{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+header.top h1{font-family:var(--cond);font-weight:600;font-size:1.55rem;letter-spacing:-.01em;margin:0;text-wrap:balance}
+header.top p{margin:2px 0 0;font-size:.82rem;color:var(--ink-3)}
+
+/* tumor tabs */
+.tumors{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+@media(max-width:640px){.tumors{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.tt{appearance:none;cursor:pointer;text-align:left;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:9px 10px 8px;display:flex;flex-direction:column;gap:2px;position:relative;overflow:hidden;font:inherit;min-width:0}
+.tt::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--tc)}
+.tt b{font-family:var(--cond);font-weight:600;font-size:.98rem;line-height:1.15}
+.tt small{font-size:.72rem;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tt[aria-pressed="true"]{background:var(--tc);border-color:var(--tc);color:var(--on-t)}
+.tt[aria-pressed="true"] small{color:var(--on-t);opacity:.85}
+.tt:hover{border-color:var(--tc)}
+.tt[data-t="mama"]{--tc:var(--c-mama)} .tt[data-t="ccr"]{--tc:var(--c-ccr)} .tt[data-t="pros"]{--tc:var(--c-pros)} .tt[data-t="pulm"]{--tc:var(--c-pulm)} .tt[data-t="ccu"]{--tc:var(--c-ccu)}
+
+/* tumor band */
+.band{border-left:5px solid var(--t);background:var(--t-s);border-radius:0 8px 8px 0;padding:10px 14px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;align-items:baseline}
+.band h2{margin:0;font-family:var(--cond);font-weight:600;font-size:1.2rem;color:var(--t)}
+.band span{font-size:.8rem;color:var(--ink-2)}
+
+.picker{display:grid;grid-template-columns:1fr;gap:8px}
+@media(min-width:760px){.picker{grid-template-columns:auto 1fr;align-items:start;column-gap:14px}}
+.grp-label{font-family:var(--cond);font-size:.74rem;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-3);padding-top:7px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:500 .88rem/1.2 var(--sans);padding:7px 11px;border-radius:6px;cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;gap:1px;text-align:left}
+.chip small{font-weight:400;font-size:.72rem;color:var(--ink-3)}
+.chip:hover{border-color:var(--t)}
+.chip[aria-pressed="true"]{background:var(--t);border-color:var(--t);color:var(--on-t)}
+.chip[aria-pressed="true"] small{color:var(--on-t);opacity:.85}
+.chip .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:currentColor;margin-left:6px;vertical-align:1px}
+button:focus-visible,input:focus-visible+.box{outline:2px solid var(--t);outline-offset:2px}
+
+.ihead{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--t);border-radius:8px;padding:14px 18px;display:grid;gap:12px}
+.ihead-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:flex-start}
+.ihead h3{margin:0;font-family:var(--cond);font-weight:600;font-size:1.3rem;text-wrap:balance}
+.setting{font-size:.85rem;color:var(--ink-2);margin-top:2px}
+.proto{font-family:var(--mono);font-size:.82rem;background:var(--sunk);border-radius:6px;padding:10px 12px;display:grid;gap:4px}
+.proto .k{color:var(--ink-3)}
+.actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;flex:1 1 260px;justify-content:flex-end}
+.meter{display:flex;align-items:center;gap:10px;min-width:200px;flex:1 1 200px}
+.bar{flex:1;height:6px;background:var(--sunk);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--t);width:0;transition:width .2s}
+.meter span{font-family:var(--mono);font-size:.8rem;color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.btn{appearance:none;border:1px solid var(--line);background:transparent;color:var(--ink-2);font:500 .8rem var(--sans);padding:6px 10px;border-radius:6px;cursor:pointer}
+.btn:hover{color:var(--ink);border-color:var(--ink-3)}
+
+.cols{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:860px){.cols{grid-template-columns:1fr 1fr}}
+section.blk{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px 10px;display:flex;flex-direction:column;gap:6px;min-width:0}
+section.blk.wide{grid-column:1/-1}
+.blk-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:2px}
+.blk-h h4{margin:0;font-family:var(--cond);font-weight:600;font-size:.95rem;text-transform:uppercase;letter-spacing:.06em}
+.blk-h .hint{font-size:.76rem;color:var(--ink-3);margin-left:auto}
+.blk-h .count{font-family:var(--mono);font-size:.78rem;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.blk.inc h4{color:var(--t)} .blk.exc h4{color:var(--exc)} .blk.indv h4{color:var(--ind)}
+.sub{font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3);margin:8px 0 0;font-family:var(--cond)}
+ul.items{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+ul.items li{border-bottom:1px dashed var(--line)}
+ul.items li:last-child{border-bottom:0}
+label.it{display:grid;grid-template-columns:20px 1fr;gap:10px;padding:8px 0;cursor:pointer;align-items:start;position:relative}
+label.it input{position:absolute;opacity:0;width:1px;height:1px}
+.box{width:18px;height:18px;border:1.5px solid var(--ink-3);border-radius:4px;margin-top:2px;display:grid;place-items:center;background:var(--surface)}
+.box svg{width:12px;height:12px;opacity:0}
+.box svg path{stroke:var(--on-t)}
+label.it input:checked+.box{background:var(--t);border-color:var(--t)}
+.exc label.it input:checked+.box{background:var(--exc);border-color:var(--exc)}
+.exc .box svg path{stroke:var(--surface)}
+label.it input:checked+.box svg{opacity:1}
+label.it input:checked ~ .tx{color:var(--ink-3)}
+.tx{font-size:.92rem}
+.tx em{font-style:normal;color:var(--ink-3);font-size:.82rem}
+.tag{display:inline-block;font:500 .68rem/1 var(--sans);padding:3px 6px;border-radius:4px;margin-left:6px;vertical-align:1px;white-space:nowrap;background:var(--t-s);color:var(--t)}
+.orgroup{border-left:2px solid var(--t-s);padding-left:10px;margin:4px 0}
+.plain li{padding:6px 0;font-size:.92rem;display:grid;grid-template-columns:16px 1fr}
+.plain li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ind);margin-top:.55em}
+.plain.sug li::before{background:var(--ink-3)}
+.notes{display:flex;flex-direction:column}
+.note{font-size:.9rem;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px dashed var(--line)}
+.note:last-child{border-bottom:0}
+.lvl{font:500 .68rem/1 var(--sans);padding:4px 6px;border-radius:4px;white-space:nowrap}
+.lvl.c{background:var(--ok-soft);color:var(--ok)} .lvl.i{background:var(--ind-soft);color:var(--ind)} .lvl.e{background:var(--exc-soft);color:var(--exc)}
+details.fu{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 16px}
+details.fu summary{cursor:pointer;font-family:var(--cond);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:.9rem;color:var(--t)}
+details.fu ul{margin:10px 0 2px;padding-left:18px;display:flex;flex-direction:column;gap:4px;font-size:.9rem}
+footer{font-size:.78rem;color:var(--ink-3)}
+@media (prefers-reduced-motion: reduce){.bar i{transition:none}}
+</style>
+
+</head>
+<body>
+<div class="app" id="app" data-tumor="mama">
+  <header class="top">
+    <h1>Checklist de autorización FNR</h1>
+    <p>Requisitos de cobertura de tratamiento sistémico por normativa del Fondo Nacional de Recursos</p>
+  </header>
+  <nav class="tumors" id="tumors" aria-label="Tumor"></nav>
+  <div class="band" id="band"></div>
+  <nav class="picker" id="picker" aria-label="Indicación"></nav>
+  <div class="ihead">
+    <div class="ihead-top">
+      <div><h3 id="i-title"></h3><div class="setting" id="i-setting"></div></div>
+      <div class="actions">
+        <div class="meter" aria-live="polite"><div class="bar"><i id="bar"></i></div><span id="meter-txt"></span></div>
+        <button class="btn" id="reset" type="button">Desmarcar</button>
+      </div>
+    </div>
+    <div class="proto" id="i-proto"></div>
+  </div>
+  <div class="cols" id="cols"></div>
+  <details class="fu" id="fu"><summary>Después de autorizado: seguimiento</summary><ul id="fu-list"></ul></details>
+  <footer id="foot"></footer>
+</div>
+
+<script>
+(function(){
+const CHECK='<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.2l2.6 2.6L10 3.4" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const TRAMITE=[
+  'Formulario de Solicitud de Tratamiento (online) completado por el oncólogo tratante',
+  'Resumen de historia clínica completo y legible, con evolución y motivos de la indicación (indispensable)',
+  'Valoración integral documentada: edad, comorbilidades, calidad de vida y pronóstico → expectativa de vida razonable',
+  'Fotocopia de la cédula de identidad del paciente'
+];
+/* ---------- textos comunes ---------- */
+const X={
+  qol:'Mala calidad de vida y/o pobre expectativa de vida por comorbilidades',
+  card:'HTA no controlada, cardiopatía que contraindique, o FEVI < 50 %',
+  psy:'Enfermedad psiquiátrica severa / drogodependencia con evaluación psicológica negativa sobre adherencia',
+  psy2:'Patología psiquiátrica o abuso de sustancias que interfiera con controles y adherencia',
+  hep:'Hepatopatía con bilirrubina aumentada y transaminasas > 1,5 × LSN',
+  cit:'Citopenias severas previas al inicio',
+  preg:'Embarazo o lactancia',
+  snc:'Metástasis del SNC no controladas con tratamientos previos',
+  imm:'Inmunodeficiencia o enfermedad autoinmune activa severa',
+  vir:'Infección activa por VHB, VHC y/o VIH',
+  neo:'Otra neoplasia maligna no controlada',
+  cyp:'Inductores potentes de CYP3A4 en las 3 semanas previas',
+  qt:'Prolongación del intervalo QT en el ECG',
+  org:'Afección renal, hepática o hematológica significativa',
+  epid:'Enfermedad pulmonar intersticial difusa activa o con corticoides recientes'
+};
+const STD=[X.qol,X.card,X.psy,X.hep,X.cit,X.preg];
+const HER2='HER2 positivo: IHQ 3+ o ISH positivo (método validado)';
+const RETRAT='Completó 35 ciclos de pembrolizumab sin progresión y progresa ≥ 6 meses después (retratamiento)';
+
+/* ---------- TUMORES ---------- */
+const TUMORS=[
+/* ======================= MAMA ======================= */
+{id:'mama',name:'Mama',sub:'8 indicaciones',src:'Normativa FNR · actualización agosto 2024',
+ drugs:'Trastuzumab, pertuzumab, T-DM1, lapatinib, fulvestrant, ribociclib, pembrolizumab',
+ groups:[['op','Operable'],['av','Avanzado']],
+ para:[
+  {t:'Anatomía patológica que confirme carcinoma mamario'},
+  {t:'Receptores de estrógeno y progesterona'},
+  {t:'HER2/neu en el componente invasor'},
+  {t:'PD-L1 con CPS (≥ 10)',only:['m-pembro']},
+  {t:'AP de enfermedad residual invasiva con resección completa (R0)',only:['m-adj-tdm1']},
+  {t:'Biopsia de metástasis, con RH/HER2',stage:'av',cond:'cuando esté indicada (obligatoria si es lesión única)'},
+  {t:'Rx de tórax + ecografía de abdomen, y/o TC de tórax, abdomen y pelvis'},
+  {t:'ECG + ecocardiograma con FEVI que descarte cardiopatía estructural',not:['m-fulv']},
+  {t:'Centellograma óseo',stage:'op',cond:'si ≥ 4 ganglios axilares + o sospecha de MTS ósea'},
+  {t:'Centellograma óseo',stage:'av',cond:'si sospecha de MTS ósea'},
+  {t:'Biopsia de médula ósea',cond:'si sospecha de infiltración medular (anemia normo-normo sin otra causa)'},
+  {t:'TC de cráneo y/o RNM',cond:'si síntomas neurológicos'},
+  {t:'Hemograma completo + funcional y enzimograma hepático completo'},
+  {t:'Ionograma y creatininemia'},
+  {t:'Calcemia',cond:'sólo si secundarismo óseo'},
+  {t:'CA 15-3',stage:'av'},
+  {t:'Serologías VIH, VHB y VHC',only:['m-pembro']}
+ ],
+ fu:['Solicitud de dosis del mes siguiente en formulario online, <b>Sistema María</b>, declarando complicaciones y eventos adversos que lleven a discontinuar.','Evaluación de respuesta <b>trimestral por RECIST</b>.','Suspensión: progresión lesional o intolerancia.','Al finalizar/suspender: informar dosis y fecha de la última serie y, si suspende, causa y fecha.','Hepatograma, hemograma, ECG y ecocardiograma seriados a cargo de la institución; reportar cardiotoxicidad que obligue a ajustar o suspender.'],
+ inds:[
+ {id:'m-neo-t',g:'op',chip:'Trastuzumab',sub:'Neoadyuvancia',title:'Trastuzumab neoadyuvante',setting:'Operable · HER2+',
+  proto:[['IV','carga 8 mg/kg → 6 mg/kg c/3 sem, o carga 4 mg/kg → 2 mg/kg semanal'],['SC','600 mg dosis fija c/3 sem'],['Total','neo + adyuvancia: 18 ciclos']],
+  inc:['Diagnóstico AP de carcinoma invasor de mama',HER2,'ECOG 0–1','Sin quimioterapia previa','cT ≥ 2 (≥ 2 cm) o cN ≥ 1'],
+  exc:['Cáncer de mama metastásico',...STD],
+  notes:[['i','La tabla no fija duración propia de la fase neoadyuvante con trastuzumab solo; el tope práctico es el total neo + adyuvancia de 18 ciclos.']]},
+ {id:'m-neo-tp',g:'op',chip:'Trastuzumab + Pertuzumab',sub:'Neoadyuvancia',title:'Trastuzumab + Pertuzumab neoadyuvante',setting:'Operable · HER2+',
+  proto:[['SC','combinado a dosis fijas: carga T 600 / P 1200 mg → T 600 / P 600 mg c/3 sem'],['Duración','3 a 6 ciclos']],
+  inc:['Diagnóstico AP de carcinoma invasor de mama',HER2,'ECOG 0–1','Sin quimioterapia previa',{or:['N ≥ 1','cT ≥ 2 (≥ 2 cm) con cualquier N','Cáncer de mama inflamatorio']}],
+  exc:['Cáncer de mama metastásico',...STD],
+  notes:[['c','La tabla sólo lista la formulación SC combinada a dosis fijas (no pertuzumab IV).'],['c','Pertuzumab no tiene cobertura en adyuvancia: adyuvancia cubierta = trastuzumab o T-DM1.']]},
+ {id:'m-adj-t',g:'op',chip:'Trastuzumab',sub:'Adyuvancia',title:'Trastuzumab adyuvante',setting:'Operable · HER2+',
+  proto:[['IV','carga 8 mg/kg → 6 mg/kg c/3 sem'],['SC','600 mg dosis fija c/3 sem'],['Total','neo + adyuvancia: 18 ciclos']],
+  inc:['Diagnóstico AP de carcinoma de mama','Axila positiva, o axila negativa con componente invasor ≥ 1 cm',HER2,'ECOG 0–1','< 3 meses desde el fin de la QT adyuvante','Estadificación realizada antes de comenzar la QT'],
+  exc:['Cáncer irresecable o con metástasis a distancia',X.qol,'HTA no controlada, cardiopatía que contraindique, o FEVI < 50 % luego de QT adyuvante con antraciclinas',X.psy,X.hep,X.cit,X.preg],
+  indv:['Tumores < 10 mm pero con estadios avanzados'],
+  notes:[['i','El plazo de < 3 meses se cuenta desde la última dosis de QT: consignar la fecha exacta en el resumen.']]},
+ {id:'m-adj-tdm1',g:'op',chip:'T-DM1',sub:'Adyuvancia post-neo',title:'T-DM1 adyuvante (enfermedad residual)',setting:'Operable · HER2+ · residual invasivo post-neoadyuvancia',
+  proto:[['IV','3,6 mg/kg c/3 sem'],['Total','neo + adyuvancia: 18 ciclos']],
+  inc:['Diagnóstico AP de carcinoma invasor de mama','Axila positiva, o axila negativa con componente invasor ≥ 1 cm',HER2,'ECOG 0–1','Neoadyuvancia previa con ≥ 4 ciclos de trastuzumab (± pertuzumab) + taxanos','Carcinoma invasivo residual en mama o axila tras neoadyuvancia y cirugía','Cirugía completa R0 de la enfermedad residual','≤ 12 semanas entre la cirugía y la solicitud'],
+  exc:['Cáncer localmente avanzado y/o con metástasis a distancia',...STD],
+  notes:[['i','“Loco-regionalmente avanzado” no aclara si es al diagnóstico o post-cirugía. KATHERINE incluyó cT4 y N2–3; leído literalmente, un cT4 quedaría afuera. Aclararlo en el resumen o consultar al FNR.'],['i','“18 ciclos neo + adyuvancia” no coincide con los 14 ciclos de T-DM1 de KATHERINE; leerlo como tope total anti-HER2.'],['c','Las 12 semanas corren desde la cirugía hasta la solicitud, no hasta el inicio.']]},
+ {id:'m-av-tp',g:'av',chip:'Trastuzumab ± Pertuzumab',sub:'HER2+ · 1ª línea',title:'Trastuzumab ± Pertuzumab avanzado',setting:'Avanzado · HER2+',
+  proto:[['IV','trastuzumab carga 8 → 6 mg/kg c/3 sem'],['SC','trastuzumab 600 mg c/3 sem; o T + P combinado 600/1200 → 600/600 mg c/3 sem'],['Duración','hasta progresión, intolerancia o indicación médica'],['Asociado','a plan de QT validado']],
+  inc:['Diagnóstico AP de carcinoma de mama HER2+ (IHQ 3+ o ISH+), en primario y en metástasis si fue biopsiada','Enfermedad a distancia, confirmada por biopsia si es lesión única','ECOG 0–1','Previsión de que tolerará dosis y frecuencia del protocolo','Sin QT previa por enfermedad metastásica'],
+  exc:[X.qol,'Recaída < 12 meses de finalizado trastuzumab',X.snc,X.card,X.psy,X.hep,X.cit,X.preg],
+  notes:[['c','Si recayó < 12 meses post-trastuzumab, la vía de cobertura es T-DM1.'],['c','Trastuzumab deruxtecán y tucatinib no están en esta normativa.']]},
+ {id:'m-av-tdm1',g:'av',chip:'T-DM1',sub:'HER2+ · 2ª línea',title:'T-DM1 avanzado',setting:'Avanzado · HER2+',
+  proto:[['IV','3,6 mg/kg c/3 sem'],['Duración','hasta progresión, intolerancia o indicación médica']],
+  inc:['Diagnóstico AP de carcinoma de mama','Enfermedad a distancia, confirmada por biopsia si es lesión única',HER2+'; en primario y en metástasis si fue biopsiada',{or:['Progresión tras 1ª o 2ª línea anti-HER2 (trastuzumab, T + P, o lapatinib + QT)','Recaída o progresión durante la adyuvancia o ≤ 12 meses de finalizada','Contraindicación o intolerancia a los anti-HER2 anteriores']},'ECOG 0–1','Previsión de que tolerará dosis y frecuencia del protocolo'],
+  exc:[X.qol,'Secundarismo encefálico no controlado',X.card,X.psy,X.hep,X.cit,X.preg],
+  notes:[['i','Los tres escenarios figuran como viñetas separadas; por lógica clínica son alternativas, no acumulativos.']]},
+ {id:'m-lap',g:'av',chip:'Lapatinib',sub:'HER2+',title:'Lapatinib avanzado',setting:'Avanzado · HER2+',
+  proto:[['VO','1250 mg/día'],['Duración','hasta progresión, intolerancia o indicación médica'],['Asociado','a plan de QT validado']],
+  inc:['Diagnóstico AP de carcinoma de mama HER2+ (IHQ 3+ o ISH+), en primario y en metástasis si fue biopsiada',{or:['Contraindicación o intolerancia a los otros anti-HER2','Progresión encefálica con los tratamientos previos (independiente de otras localizaciones)']},'ECOG 0–1','Previsión de que tolerará dosis y frecuencia del protocolo'],
+  exc:STD,
+  notes:[['i','Las dos condiciones de entrada se leen como alternativas; si el caso cumple sólo una, explicitarlo.'],['c','1250 mg/día es la dosis de la combinación con capecitabina.']]},
+ {id:'m-fulv',g:'av',chip:'Fulvestrant',sub:'RH+',title:'Fulvestrant avanzado',setting:'Avanzado · RH+ · postmenopáusica',
+  proto:[['IM','500 mg días 0, 14 y 28, luego 500 mg mensual'],['Duración','hasta progresión, intolerancia o indicación médica']],
+  inc:['Diagnóstico AP de carcinoma de mama RH+ en paciente postmenopáusica','Enfermedad a distancia, confirmada por biopsia si es lesión única','Resistencia a tamoxifeno y/o IA','ECOG 0–1'],
+  exc:[X.qol,X.snc,X.psy],
+  notes:[['c','ECG y ecocardiograma no son necesarios para fulvestrant.'],['c','La tabla también lista 250 mg mensual, dosis superada desde CONFIRM.'],['i','La nota al pie “asociados a planes de QT validados” no aplica a fulvestrant ni a ribociclib: error de redacción.']]},
+ {id:'m-ribo1',g:'av',chip:'Ribociclib',sub:'RH+/HER2− · 1ª línea',title:'Ribociclib 1ª línea',setting:'Avanzado · RH+ · HER2−',
+  proto:[['VO','ribociclib 600 mg/día + IA o tamoxifeno'],['HT adyuv. < 12 m','ribociclib 600 mg/día + fulvestrant 500 mg d0, 14, 28 → mensual'],['Duración','hasta progresión, intolerancia o indicación médica']],
+  inc:['Diagnóstico AP de carcinoma de mama RH+','HER2 negativo','Enfermedad a distancia, confirmada por biopsia si es lesión única','Sin QT ni HT previa por enfermedad avanzada (adyuvante permitida)','En combinación con HT (tamoxifeno o IA)','Si recibe o recibió HT adyuvante en los últimos 12 meses y progresa → combinar con fulvestrant','ECOG 0–1'],
+  exc:[X.qol,X.snc,'QT previa (salvo neo/adyuvancia), fulvestrant o iCDK4/6 previo','Cáncer de mama inflamatorio al diagnóstico',X.card,X.psy,X.preg],
+  indv:['ECOG 2'],
+  notes:[['i','Las exclusiones y el ECOG 2 aparecen después de la 2ª línea; se leen como comunes a ambas.'],['i','No menciona supresión ovárica en premenopáusicas ni el esquema 21/7: consignar ambos en la solicitud.'],['c','ECG basal exigido: relevante por prolongación del QT.']]},
+ {id:'m-ribo2',g:'av',chip:'Ribociclib + Fulvestrant',sub:'RH+/HER2− · 2ª línea',title:'Ribociclib + Fulvestrant 2ª línea',setting:'Avanzado · RH+ · HER2−',
+  proto:[['VO/IM','ribociclib 600 mg/día + fulvestrant 500 mg d0, 14, 28 → mensual'],['Duración','hasta progresión, intolerancia o indicación médica']],
+  inc:['Diagnóstico AP de carcinoma de mama RH+','HER2 negativo','Enfermedad a distancia, confirmada por biopsia si es lesión única','Resistencia a tamoxifeno y/o IA','Sin QT previa por enfermedad avanzada','En combinación con fulvestrant','ECOG 0–1'],
+  exc:[X.qol,X.snc,'QT previa (salvo neo/adyuvancia), fulvestrant o iCDK4/6 previo','Cáncer de mama inflamatorio al diagnóstico',X.card,X.psy,X.preg],
+  indv:['ECOG 2'],
+  notes:[['c','Fulvestrant previo excluye.']]},
+ {id:'m-pembro',g:'av',chip:'Pembrolizumab',sub:'Triple negativo · 1ª línea',title:'Pembrolizumab triple negativo avanzado',setting:'Avanzado · RE−, RP−, HER2− · PD-L1 CPS ≥ 10',
+  proto:[['IV','200 mg c/3 sem'],['Duración','35 ciclos'],['Asociado','nab-paclitaxel, paclitaxel o gemcitabina/carboplatino u otro plan validado']],
+  inc:['Diagnóstico AP de carcinoma de mama con RE y RP negativos','HER2 negativo','Enfermedad locorregional irresecable o a distancia, biopsia si es lesión única','PD-L1 positivo con CPS ≥ 10 por método validado','Sin QT previa por enfermedad avanzada; si recibió neo/adyuvancia, intervalo libre > 6 meses','En combinación con plan de QT validado'],
+  exc:[X.imm,X.snc,X.vir,X.neo,X.preg,X.psy2,'Pembrolizumab previo con progresión'],
+  indv:['Enfermedad autoinmune activa que requiera tratamiento sistémico','Trasplante de MO y/o de órgano sólido','ECOG 2',RETRAT,'Recaída precoz (< 6 meses) tras tratamiento neo/adyuvante'],
+  notes:[['c','Sólo enfermedad avanzada: el esquema KEYNOTE-522 (temprano) no está cubierto.'],['i','La recaída < 6 meses no excluye automáticamente: es caso individualizado.'],['i','El umbral CPS ≥ 10 proviene de 22C3 en KEYNOTE-355: conviene que el informe especifique el clon.']]}
+ ]},
+
+/* ======================= COLORRECTO ======================= */
+{id:'ccr',name:'Colorrecto',sub:'3 indicaciones',src:'Normativa FNR · octubre 2024',
+ drugs:'Bevacizumab, cetuximab, pembrolizumab',
+ groups:[['met','Metastásico']],
+ para:[
+  {t:'AP que demuestre adenocarcinoma colorrectal'},
+  {t:'Biopsia de la metástasis',cond:'si metástasis única'},
+  {t:'CEA y CA 19-9'},
+  {t:'Imagenología de tórax, abdomen y pelvis'},
+  {t:'ECG + ecocardiograma con FEVI'},
+  {t:'Centellograma óseo',cond:'si sospecha de MTS ósea'},
+  {t:'TC de cráneo con contraste y/o RNM',cond:'si sospecha de secundarismo o MTS encefálicas tratadas'},
+  {t:'Hemograma completo y crasis'},
+  {t:'Funcional y enzimograma hepático'},
+  {t:'Creatininemia'},
+  {t:'Examen de orina; si proteinuria: orina de 24 h o índice proteinuria/creatininuria'},
+  {t:'KRAS, NRAS y BRAF',only:['c-cetux']},
+  {t:'Ionograma con magnesio',only:['c-cetux']},
+  {t:'MSI / dMMR por método validado',only:['c-pembro']},
+  {t:'Serologías VIH, VHB y VHC',only:['c-pembro']},
+  {t:'TSH y despistaje de tuberculosis',only:['c-pembro'],sug:true},
+  {t:'Vacunación según pautas MSP para grupos de riesgo',sug:true}
+ ],
+ fu:['Solicitud de dosis del mes siguiente online, <b>Sistema María</b>. Efectos adversos se reportan con la solicitud; ajustes de dosis en el formulario DPP con motivo.','Evaluación <b>trimestral por RECIST</b>; en estables prolongados puede espaciarse la imagen y seguir con marcadores.','Bevacizumab: ante la 1ª progresión puede rotarse la QT manteniéndolo; se suspende si progresa con la QT ya rotada o por intolerancia.','Cetuximab y pembrolizumab: suspender por progresión o intolerancia; pembrolizumab hasta 35 ciclos.'],
+ inds:[
+ {id:'c-bev',g:'met',chip:'Bevacizumab',sub:'1ª o 2ª línea + QT',title:'Bevacizumab en CCR metastásico',setting:'Metastásico · 1ª o 2ª línea, asociado a QT',
+  proto:[['IV','5 mg/kg en planes c/15 días'],['IV','7,5 mg/kg en planes c/21 días'],['Asociado','a esquemas de QT válidos'],['Progresión','1ª progresión: puede rotarse QT y mantener bevacizumab']],
+  inc:['Diagnóstico AP de cáncer colorrectal','Enfermedad a distancia, confirmada por biopsia si es lesión única','ECOG 0–1','Enfermedad medible por RECIST 1.1','Función hepática, renal, hematológica y crasis aceptables','1ª o 2ª línea, en combinación con QT','En 2ª línea: sin progresión previa a cetuximab ni a inmunoterapia'],
+  exc:[X.snc,X.psy,X.preg,X.neo,'HTA o enfermedad cardiovascular significativa no controladas','Síndrome nefrótico, proteinuria ≥ 500 mg/24 h y/o deterioro renal significativo'],
+  indv:['ECOG 2','Síndrome hemorragíparo, anticoagulación o antiagregación'],
+  notes:[['c','No se cubre en 2ª línea luego de progresión a cetuximab ni a inmunoterapia.'],['c','Continuidad tras 1ª progresión cubierta rotando la QT (suspensión recién con progresión bajo la QT rotada).'],['c','Panitumumab, aflibercept y encorafenib no están en esta normativa.']]},
+ {id:'c-cetux',g:'met',chip:'Cetuximab',sub:'1ª línea · izquierdo RAS/BRAF wt',title:'Cetuximab en CCR metastásico',setting:'Metastásico · colon izquierdo o recto · RAS y BRAF no mutados · 1ª línea',
+  proto:[['IV','400 mg/m² → 250 mg/m² semanal'],['IV','400 → 250 mg/m² semanal, ciclos de 28 días con 21 de tratamiento'],['IV','500 mg/m² c/2 sem'],['Asociado','únicamente a plan con irinotecán']],
+  inc:['Diagnóstico AP de cáncer de colon izquierdo o recto','Enfermedad a distancia, confirmada por biopsia si es lesión única','ECOG 0–1','Enfermedad medible por RECIST 1.1','Función hepática, renal, hematológica y crasis aceptables','KRAS, NRAS y BRAF no mutados','Sin tratamiento sistémico previo para la enfermedad metastásica','Asociado a plan con irinotecán'],
+  exc:[X.snc,X.psy,X.preg,X.neo],
+  indv:['ECOG 2'],
+  notes:[['c','Sólo con irinotecán: FOLFOX + cetuximab no está cubierto.'],['i','“Colon izquierdo” no está definido; usar la convención ángulo esplénico hacia distal y consignarlo.'],['i','La introducción menciona sobreexpresión de EGFR, pero no es criterio de inclusión ni se pide en paraclínica.']]},
+ {id:'c-pembro',g:'met',chip:'Pembrolizumab',sub:'1ª línea · dMMR / MSI-H',title:'Pembrolizumab en CCR dMMR/MSI-H',setting:'Metastásico · dMMR o MSI-H · 1ª línea',
+  proto:[['IV','200 mg c/3 sem'],['Duración','35 ciclos']],
+  inc:['Diagnóstico AP de cáncer colorrectal','Enfermedad a distancia, confirmada por biopsia si es lesión única','ECOG 0–1','Enfermedad medible por RECIST 1.1','Función hepática, renal, hematológica y crasis aceptables','dMMR o MSI-H','Sin tratamiento sistémico previo para la enfermedad metastásica'],
+  exc:[X.snc,X.psy,X.preg,X.neo,X.imm,X.vir],
+  indv:['ECOG 2','Enfermedad autoinmune con inmunosupresión sistémica',RETRAT],
+  notes:[['i','No indica asociación con QT: corresponde a monoterapia (KEYNOTE-177).'],['c','Sólo 1ª línea: un dMMR ya tratado con QT por enfermedad metastásica no entra.']]}
+ ]},
+
+/* ======================= PRÓSTATA ======================= */
+{id:'pros',name:'Próstata',sub:'3 indicaciones',src:'Normativa FNR · octubre 2024',
+ drugs:'Abiraterona, olaparib',
+ groups:[['hs','Sensible a castración'],['cr','Resistente a castración']],
+ para:[
+  {t:'AP completa que confirme adenocarcinoma prostático'},
+  {t:'Testosterona que documente castración (≤ 50 ng/dl)',not:['p-hspc']},
+  {t:'Testosterona',only:['p-hspc'],cond:'la normativa la pide sin distinguir; en CPSCm documenta la TDA'},
+  {t:'Curva de PSA con valor actual'},
+  {t:'BRCA1, BRCA2 y/o ATM',only:['p-ola']},
+  {t:'Imagenología de tórax, abdomen y pelvis'},
+  {t:'Centellograma óseo'},
+  {t:'Imagen de cráneo',cond:'si sospecha clínica de secundarismo encefálico'},
+  {t:'Ionograma con calcemia',cond:'requerido si MTS óseas'},
+  {t:'Funcional hepático'},
+  {t:'Hemograma'},
+  {t:'Azoemia y creatininemia'},
+  {t:'ECG + ecocardiograma'}
+ ],
+ fu:['Solicitud de dosis del mes siguiente online a través del <b>Portal</b>, declarando complicaciones y eventos adversos.','Evaluación <b>cada 3 meses</b>: curva de PSA actualizada, imagen e informe del oncólogo.','Suspensión: progresión (RECIST, clínica o PSA según PCWG3) o intolerancia.','Mantener análogo de LHRH en no orquiectomizados.'],
+ inds:[
+ {id:'p-hspc',g:'hs',chip:'Abiraterona',sub:'CPSCm',title:'Abiraterona en CPSC metastásico',setting:'Metastásico sensible a castración',
+  proto:[['VO','1000 mg/día en una toma, alejado de comidas'],['Prednisona','5 mg/día'],['TDA','mantener análogo LHRH si no hay castración quirúrgica'],['Duración','hasta progresión o intolerancia']],
+  inc:['Adenocarcinoma prostático metastásico','ECOG ≤ 2',{or:['Debut metastásico (visceral u óseo)','Metacrónico con ≥ 2 de: Gleason ≥ 8 · ≥ 3 lesiones óseas · MTS visceral']}],
+  exc:[X.qol,'Metástasis encefálicas no controladas','Afectación renal, hepática y/o hematológica significativa','HTA no controlada u otra enfermedad cardiovascular significativa','Insuficiencia pituitaria o suprarrenal conocida','Tratamiento previo con ketoconazol','Abiraterona u otro inhibidor CYP17 previo','Infección severa en curso'],
+  indv:['Ausencia de confirmación anatomopatológica','Hasta 3 ciclos de QT previos para la enfermedad avanzada'],
+  notes:[['i','El encabezado habla de “alto riesgo”, pero el criterio de debut metastásico no exige factores de riesgo (LATITUDE sí). En un de novo de bajo volumen, explicitarlo en el resumen.'],['i','Triplete con docetaxel completo: sólo contempla hasta 3 ciclos de QT previa y como caso individualizado.'],['c','Enzalutamida, apalutamida y darolutamida no están en esta normativa.']]},
+ {id:'p-crpc',g:'cr',chip:'Abiraterona',sub:'CPRCm',title:'Abiraterona en CPRC metastásico',setting:'Metastásico resistente a castración',
+  proto:[['VO','1000 mg/día en una toma, alejado de comidas'],['Prednisona','5 mg c/12 h'],['TDA','mantener análogo LHRH si no hay castración quirúrgica'],['Duración','hasta progresión o intolerancia']],
+  inc:['Adenocarcinoma prostático metastásico','ECOG ≤ 2','Testosterona en rango de castración (≤ 50 ng/dl o 2 nmol/l)','Progresión: 2 aumentos consecutivos de PSA desde un valor de referencia y/o progresión radiológica ósea o de partes blandas'],
+  exc:[X.qol,'Metástasis encefálicas no controladas','Afectación renal, hepática y/o hematológica significativa','HTA no controlada u otra enfermedad cardiovascular significativa','Insuficiencia pituitaria o suprarrenal conocida','Tratamiento previo con ketoconazol','Abiraterona u otro inhibidor CYP17 previo','Infección severa en curso'],
+  indv:['Ausencia de confirmación anatomopatológica'],
+  notes:[['c','Si recibió abiraterona en CPSCm, no hay nueva cobertura en CPRCm (inhibidor CYP17 previo).']]},
+ {id:'p-ola',g:'cr',chip:'Olaparib',sub:'CPRCm · BRCA/ATM',title:'Olaparib en CPRC metastásico',setting:'Metastásico resistente a castración · BRCA1/2 y/o ATM',
+  proto:[['VO','monoterapia 300 mg c/12 h continuo'],['Combinado','olaparib 300 mg c/12 h + abiraterona 1000 mg/día + prednisona 5 mg c/12 h'],['TDA','mantener análogo LHRH'],['Duración','hasta progresión o intolerancia']],
+  inc:['Adenocarcinoma prostático metastásico','Testosterona en rango de castración (≤ 50 ng/dl o 2 nmol/l)','Progresión bioquímica y/o radiográfica a hormonoterapia','Mutación BRCA1, BRCA2 y/o ATM','ECOG ≤ 2'],
+  exc:['Inhibidor de PARP previo, incluido olaparib',X.qol,'Metástasis encefálicas no controladas','Afectación renal, hepática y/o hematológica significativa','HTA no controlada u otra enfermedad cardiovascular significativa','QT prolongado en el ECG','Infección activa por VIH, VHB o VHC','Infección severa en curso'],
+  indv:['Ausencia de confirmación anatomopatológica','Trasplante alogénico de médula ósea'],
+  notes:[['c','Excluye infección activa por VIH/VHB/VHC, pero las serologías no están en la lista de paraclínica: enviarlas evita objeciones.'],['i','Para la combinación con abiraterona valen razonablemente también las exclusiones de abiraterona (CYP17 previo).'],['i','“Progresión a hormonoterapia” no exige un nuevo agente hormonal (PROfound sí): consignar la secuencia previa.']]}
+ ]},
+
+/* ======================= PULMÓN ======================= */
+{id:'pulm',name:'Pulmón',sub:'6 indicaciones',src:'Normativa FNR · setiembre 2025',
+ drugs:'Osimertinib, erlotinib, gefitinib, alectinib, pembrolizumab, atezolizumab, bevacizumab',
+ groups:[['res','Resecado'],['av','Avanzado']],
+ para:[
+  {t:'AP completa de carcinoma broncopulmonar a células no pequeñas'},
+  {t:'EGFR (método validado): mutación sensibilizante y ausencia de mutaciones de resistencia',only:['u-1g']},
+  {t:'EGFR con Ex19del o L858R',only:['u-adj','u-osi']},
+  {t:'ALK positivo',only:['u-alec'],cond:'criterio de inclusión; no figura en la lista de paraclínica'},
+  {t:'EGFR y ALK sin alteraciones (método validado)',only:['u-io','u-abcp']},
+  {t:'PD-L1 (método validado): ≥ 50 % atezolizumab · ≥ 1 % pembrolizumab',only:['u-io']},
+  {t:'PD-L1 positivo < 50 % (método validado)',only:['u-abcp']},
+  {t:'TC y/o RNM de tórax y abdomen'},
+  {t:'ECG + ecocardiograma con FEVI que excluya cardiopatía estructural'},
+  {t:'Centellograma óseo',cond:'si sospecha de MTS ósea'},
+  {t:'RNM / TC de cráneo',cond:'si síntomas: descartar secundarismo no controlado'},
+  {t:'Hemograma completo y crasis'},
+  {t:'Funcional y enzimograma hepático completo'},
+  {t:'Serologías VIH, VHB y VHC'},
+  {t:'Medio interno y función renal: creatininemia, ionograma con calcemia'},
+  {t:'Examen de orina; si proteinuria: orina de 24 h o índice proteinuria/creatininuria',only:['u-abcp']}
+ ],
+ fu:['Solicitud de dosis del mes siguiente online, declarando complicaciones y eventos adversos.','Evaluación RECIST: <b>adyuvancia cada 6 meses</b>, <b>irresecable trimestral</b>.','Suspensión: progresión, intolerancia o eventos adversos grado III–IV.','No se acepta cambio de fármaco por progresión (salvo las excepciones de ITK de 1ª generación).'],
+ inds:[
+ {id:'u-adj',g:'res',chip:'Osimertinib',sub:'Adyuvancia · EGFR+',title:'Osimertinib adyuvante',setting:'CPCNP resecado · estadio IIIA · EGFR Ex19del / L858R',
+  proto:[['VO','80 mg/día'],['Duración','máximo 3 años o hasta progresión / toxicidad inaceptable'],['Evaluación','cada 6 meses']],
+  inc:['Diagnóstico AP de CPCNP','Estadio IIIA','EGFR Ex19del o L858R (± otras mutaciones, incluida T790M)','Resección completa del primario con márgenes libres','Entre 4 y 10 semanas post-cirugía, con recuperación adecuada','ECOG 0–1'],
+  exc:['QT neoadyuvante previa',X.cyp,X.snc,X.imm,X.vir,X.neo,X.qt,X.epid,X.org,X.preg,X.psy2,'Osimertinib previo con progresión'],
+  indv:['Más de 10 semanas desde la cirugía','ECOG 2'],
+  notes:[['c','Sólo estadio IIIA: IB–II (incluidos en ADAURA) no están cubiertos.'],['i','Las exclusiones figuran bajo 1ª línea, pero incluyen “neoadyuvancia con QT en resecable”: se leen como comunes.'],['i','Si hace QT adyuvante primero, la ventana de 10 semanas se vence: queda como caso individualizado.']]},
+ {id:'u-1g',g:'av',chip:'Erlotinib / Gefitinib',sub:'EGFR+ · 1ª línea',title:'Erlotinib o gefitinib 1ª línea',setting:'CPCNP IIIB no operable o IV · EGFR mutación activadora',
+  proto:[['VO','erlotinib 150 mg/día'],['VO','gefitinib 250 mg/día'],['Duración','hasta progresión o toxicidad inaceptable']],
+  inc:['Diagnóstico AP de CPCNP','Estadio IIIB no operable o IV','Mutación activadora de EGFR asociada a buena respuesta','Sin tratamiento sistémico previo por enfermedad avanzada','ECOG 0–1'],
+  exc:[X.snc,X.cyp,'Mutación de resistencia (p. ej. T790M)',X.neo,'Patología intestinal u oftalmológica significativa','Enfermedad autoinmune activa severa','Cardiopatía significativa o arritmias ventriculares con medicación',X.epid,X.psy2,X.org,X.preg,'Alguno de estos fármacos previo con progresión'],
+  indv:['ECOG 2'],
+  notes:[['c','Osimertinib 1ª línea exige Ex19del o L858R; las mutaciones infrecuentes sensibilizantes sólo entran por esta vía.'],['c','Progresión con T790M bajo erlotinib/gefitinib → osimertinib como caso individualizado.']]},
+ {id:'u-osi',g:'av',chip:'Osimertinib',sub:'EGFR+ · 1ª línea',title:'Osimertinib 1ª línea',setting:'CPCNP irresecable · EGFR Ex19del / L858R',
+  proto:[['VO','80 mg/día'],['Duración','hasta progresión o toxicidad inaceptable']],
+  inc:['Diagnóstico AP de CPCNP','Irresecable (localmente avanzado o metastásico)','EGFR Ex19del o L858R (± otras, incluida T790M)','Sin tratamiento sistémico previo para la enfermedad avanzada','Tumor medible por RECIST','ECOG 0–1'],
+  exc:[X.cyp,X.snc,X.imm,X.vir,X.neo,X.qt,X.epid,X.org,X.preg,X.psy2,'Osimertinib previo con progresión'],
+  indv:['ECOG 2','En curso con gefitinib/erlotinib y estabilidad lesional (cambio permitido hasta 6 meses de iniciada esta cobertura)','Progresión bajo gefitinib/erlotinib con T790M'],
+  notes:[['i','La ventana de cambio desde gefitinib/erlotinib (6 meses desde el inicio de la cobertura, normativa setiembre 2025) probablemente ya venció: confirmar con el FNR.'],['c','Osimertinib + QT (FLAURA2) no figura en el protocolo.']]},
+ {id:'u-alec',g:'av',chip:'Alectinib',sub:'ALK+ · 1ª línea',title:'Alectinib 1ª línea',setting:'CPCNP irresecable · ALK positivo',
+  proto:[['VO','600 mg c/12 h'],['Duración','hasta progresión o toxicidad inaceptable']],
+  inc:['Diagnóstico AP de CPCNP','Irresecable (localmente avanzado o metastásico)','ALK positivo','Tumor medible por RECIST','Sin tratamiento sistémico previo para la enfermedad avanzada','ECOG 0–2'],
+  exc:[X.cyp,X.snc,X.imm,X.vir,X.neo,X.qt,X.org,X.preg,X.psy2,'Alectinib previo con progresión'],
+  indv:['Trasplante de órgano sólido previo'],
+  notes:[['c','ECOG 2 entra directo (no individualizado), a diferencia del resto.'],['c','El estudio de ALK no está en la lista de paraclínica, pero es criterio de inclusión: enviarlo.'],['c','Crizotinib, lorlatinib, brigatinib y otros drivers (ROS1, KRAS G12C…) no están en esta normativa.']]},
+ {id:'u-io',g:'av',chip:'Pembrolizumab / Atezolizumab',sub:'Sin driver · 1ª línea',title:'Pembrolizumab o atezolizumab 1ª línea',setting:'CPCNP IIIB no operable o IV · EGFR y ALK negativos',
+  proto:[['IV','pembrolizumab 200 mg c/3 sem, hasta 35 ciclos'],['IV','atezolizumab 1200 mg c/3 sem'],['SC','atezolizumab 1875 mg c/3 sem'],['Duración','atezolizumab hasta progresión o toxicidad']],
+  inc:['Diagnóstico AP de CPCNP','Primera línea (sin tratamiento sistémico previo)','Estadio IIIB no operable o IV','EGFR y ALK negativos',{or:['Pembrolizumab: PD-L1 positivo (≥ 1 %)','Atezolizumab: PD-L1 ≥ 50 %'],label:'Según el fármaco'},'ECOG 0–1'],
+  exc:[X.imm,X.snc,X.vir,X.neo,X.preg,X.psy2,'El mismo fármaco previo con progresión'],
+  indv:['Enfermedad autoinmune activa que requiera tratamiento sistémico','Trasplante de MO y/o de órgano sólido','ECOG 2',RETRAT],
+  notes:[['i','El protocolo lista pembrolizumab sin QT y exige PD-L1 positivo: pembrolizumab + QT en PD-L1 < 1 % (KEYNOTE-189/407) no queda cubierto. Si piensa asociarlo a QT, confirmar con el FNR.'],['c','Escamoso con PD-L1 < 1 %: sin opción de inmunoterapia en esta normativa (ABCP es sólo no escamoso).']]},
+ {id:'u-abcp',g:'av',chip:'ABCP',sub:'No escamoso · PD-L1 1–49 %',title:'Atezolizumab + Bevacizumab + QT (ABCP)',setting:'CPCNP no escamoso estadio IV · EGFR y ALK negativos · PD-L1 positivo < 50 %',
+  proto:[['IV/SC','atezolizumab 1200 mg IV o 1875 mg SC c/3 sem'],['IV','bevacizumab 15 mg/kg c/3 sem'],['Asociado','carboplatino + paclitaxel'],['Duración','hasta progresión o toxicidad inaceptable']],
+  inc:['Diagnóstico AP de CPCNP de histología no escamosa','Primera línea de tratamiento sistémico','Estadio IV','EGFR y ALK negativos','PD-L1 positivo, menor a 50 %','ECOG 0–1'],
+  exc:[X.imm,X.snc,X.vir,X.neo,X.preg,X.psy2,'El mismo fármaco previo con progresión','HTA o enfermedad cardiovascular significativa no controlada','Enfermedad renal significativa no controlada'],
+  indv:['Enfermedad autoinmune activa que requiera tratamiento sistémico','Trasplante de MO y/o de órgano sólido','ECOG 2',RETRAT,'Síndrome hemorragíparo, anticoagulación o antiagregación'],
+  notes:[['i','La introducción dice “independientemente de PD-L1”, pero la inclusión exige PD-L1 positivo < 50 %: PD-L1 negativo queda afuera por texto.'],['c','Sólo estadio IV (no IIIB).']]}
+ ]},
+
+/* ======================= CUELLO UTERINO ======================= */
+{id:'ccu',name:'Cuello uterino',sub:'1 indicación',src:'Normativa FNR · octubre 2024',
+ drugs:'Pembrolizumab',
+ groups:[['av','Avanzado']],
+ para:[
+  {t:'AP completa que confirme cáncer de cuello uterino'},
+  {t:'PD-L1 con CPS ≥ 1 (método validado)'},
+  {t:'Imagenología de tórax, abdomen y pelvis'},
+  {t:'Informe del especialista que certifique la irresecabilidad'},
+  {t:'Ionograma con calcemia'},
+  {t:'Funcional hepático'},
+  {t:'Hemograma'},
+  {t:'Azoemia y creatininemia'},
+  {t:'Serologías VIH, VHB y VHC (si positiva: informe de infectólogo que avale el tratamiento)'},
+  {t:'Ecocardiograma'},
+  {t:'Funcional respiratorio',sug:true},
+  {t:'Perfil tiroideo',sug:true}
+ ],
+ fu:['Solicitud de dosis del mes siguiente online a través del <b>Portal</b>, declarando complicaciones y eventos adversos.','Evaluación <b>trimestral</b>: TC o RNM + informe del oncólogo con la respuesta clínica.','Suspensión: progresión o intolerancia.','Las instituciones que no envíen la información requerida pueden quedar excluidas de nuevos tratamientos.'],
+ inds:[
+ {id:'u-ccu',g:'av',chip:'Pembrolizumab',sub:'1ª línea · CPS ≥ 1',title:'Pembrolizumab en cuello uterino avanzado',setting:'Persistente, recurrente o metastásico · irresecable · 1ª línea sistémica',
+  proto:[['IV','200 mg c/21 días'],['Duración','hasta progresión o toxicidad, máximo 35 ciclos'],['Asociado','protocolo validado con sales de platino + taxano']],
+  inc:['Cáncer de cuello uterino persistente, recurrente o metastásico','Primera línea de tratamiento sistémico','PD-L1 con CPS ≥ 1','Enfermedad medible por RECIST','ECOG 0–1'],
+  exc:[X.snc,X.imm,X.vir,X.neo,X.preg,X.psy2],
+  indv:['ECOG 2'],
+  notes:[['c','El protocolo cubre platino + taxano; bevacizumab (opcional en KEYNOTE-826) no figura en la cobertura.'],['c','Pide ecocardiograma pero no ECG.'],['c','Localmente avanzado con quimiorradioterapia (KEYNOTE-A18) no está cubierto.'],['c','El informe de irresecabilidad del especialista es requisito de paraclínica: fácil de olvidar.']]}
+ ]}
+];
+
+/* ---------- estado ---------- */
+const KEY='fnr-onco-v1';
+let S={tumor:'mama',sel:{},checks:{}};
+try{const s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s&&s.checks) S=Object.assign(S,s);}catch(e){}
+const allInds=[];TUMORS.forEach(t=>t.inds.forEach(i=>{i.tumor=t;allInds.push(i);}));
+const h=(location.hash||'').slice(1);
+if(TUMORS.some(t=>t.id===h)) S.tumor=h;
+const hi=allInds.find(i=>i.id===h); if(hi){S.tumor=hi.tumor.id;S.sel[hi.tumor.id]=hi.id;}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+const tumor=()=>TUMORS.find(t=>t.id===S.tumor);
+const cur=()=>{const t=tumor();const id=S.sel[t.id];return t.inds.find(i=>i.id===id)||t.inds[0];};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function paraFor(ind){
+  const t=ind.tumor,req=[],cond=[],sug=[];
+  t.para.forEach((p,n)=>{
+    if(p.only&&!p.only.includes(ind.id))return;
+    if(p.not&&p.not.includes(ind.id))return;
+    if(p.stage&&p.stage!==ind.g)return;
+    const o=Object.assign({k:'p'+n},p);
+    (p.sug?sug:p.cond?cond:req).push(o);
+  });
+  return {req,cond,sug};
+}
+function keys(ind){
+  const k=[];
+  ind.inc.forEach((x,n)=>k.push(typeof x==='object'?'inc'+n+'or':'inc'+n));
+  ind.exc.forEach((x,n)=>k.push('exc'+n));
+  TRAMITE.forEach((x,n)=>k.push('tr'+n));
+  paraFor(ind).req.forEach(p=>k.push(p.k));
+  return k;
+}
+function done(ind,k){
+  const c=S.checks[ind.id]||{};const m=k.match(/^inc(\d+)or$/);
+  if(m)return ind.inc[+m[1]].or.some((_,j)=>c['inc'+m[1]+'o'+j]);
+  return !!c[k];
+}
+function prog(ind,pref){const ks=keys(ind).filter(k=>!pref||k.startsWith(pref));return [ks.filter(k=>done(ind,k)).length,ks.length];}
+function item(ind,key,text,extra){
+  const id=ind.id+'__'+key,on=!!(S.checks[ind.id]||{})[key];
+  return `<li><label class="it" for="${id}"><input type="checkbox" id="${id}" data-k="${key}" ${on?'checked':''}><span class="box">${CHECK}</span><span class="tx">${text}${extra||''}</span></label></li>`;
+}
+
+function render(){
+  const t=tumor(),ind=cur();
+  document.getElementById('app').dataset.tumor=t.id;
+  document.getElementById('tumors').innerHTML=TUMORS.map(x=>{
+    const n=x.inds.filter(i=>{const[d,a]=prog(i);return d===a;}).length;
+    return `<button type="button" class="tt" data-t="${x.id}" aria-pressed="${x.id===t.id}"><b>${esc(x.name)}</b><small>${x.inds.length} indicaci${x.inds.length>1?'ones':'ón'}${n?` · ${n} ✓`:''}</small></button>`;}).join('');
+  document.getElementById('band').innerHTML=`<h2>${esc(t.name)}</h2><span>${esc(t.drugs)} · <b>${esc(t.src)}</b></span>`;
+  document.getElementById('picker').innerHTML=t.groups.map(([g,l])=>{
+    const cs=t.inds.filter(i=>i.g===g).map(i=>{const[d,a]=prog(i);
+      return `<button type="button" class="chip" data-id="${i.id}" aria-pressed="${i.id===ind.id}"><span>${esc(i.chip)}${d===a?'<span class="dot" title="Completo"></span>':''}</span><small>${esc(i.sub)}</small></button>`;}).join('');
+    return `<div class="grp-label">${esc(l)}</div><div class="chips">${cs}</div>`;}).join('');
+  document.getElementById('i-title').textContent=ind.title;
+  document.getElementById('i-setting').textContent=ind.setting;
+  document.getElementById('i-proto').innerHTML=ind.proto.map(([k,v])=>`<div><span class="k">${esc(k)} ·</span> ${esc(v)}</div>`).join('');
+
+  const inc=ind.inc.map((x,n)=>typeof x==='object'
+    ?`<li><div class="orgroup"><div class="sub">${esc(x.label||'Al menos uno de')}<span class="tag">cualquiera</span></div><ul class="items">${x.or.map((o,j)=>item(ind,'inc'+n+'o'+j,esc(o))).join('')}</ul></div></li>`
+    :item(ind,'inc'+n,esc(x))).join('');
+  const exc=ind.exc.map((x,n)=>item(ind,'exc'+n,esc(x))).join('');
+  const tr=TRAMITE.map((x,n)=>item(ind,'tr'+n,esc(x))).join('');
+  const P=paraFor(ind);
+  const cnt=p=>{const[d,a]=prog(ind,p);return d+'/'+a;};
+  let html=`
+  <section class="blk inc"><div class="blk-h"><h4>Inclusión</h4><span class="hint">marcar lo que cumple</span><span class="count">${cnt('inc')}</span></div><ul class="items">${inc}</ul></section>
+  <section class="blk exc"><div class="blk-h"><h4>Exclusión</h4><span class="hint">marcar lo descartado</span><span class="count">${cnt('exc')}</span></div><ul class="items">${exc}</ul></section>
+  <section class="blk"><div class="blk-h"><h4>Paraclínica a enviar</h4><span class="count">${cnt('p')}</span></div><ul class="items">${P.req.map(p=>item(ind,p.k,esc(p.t))).join('')}</ul>
+   ${P.cond.length?`<div class="sub">Si corresponde</div><ul class="items">${P.cond.map(p=>item(ind,p.k,esc(p.t),`<br><em>${esc(p.cond)}</em>`)).join('')}</ul>`:''}
+   ${P.sug.length?`<div class="sub">Sugeridos, no indispensables</div><ul class="items plain sug">${P.sug.map(p=>`<li><span>${esc(p.t)}</span></li>`).join('')}</ul>`:''}
+  </section>
+  <section class="blk"><div class="blk-h"><h4>Trámite</h4><span class="count">${cnt('tr')}</span></div><ul class="items">${tr}</ul></section>`;
+  if(ind.indv)html+=`<section class="blk indv"><div class="blk-h"><h4>Se discute individualizado</h4></div><ul class="items plain">${ind.indv.map(x=>`<li><span>${esc(x)}</span></li>`).join('')}</ul></section>`;
+  if(ind.notes&&ind.notes.length){const L={c:'Dato confirmado',i:'Inferencia razonable',e:'Extrapolación'};
+    html+=`<section class="blk ${ind.indv?'':'wide'}"><div class="blk-h"><h4>Ojo con</h4></div><div class="notes">${ind.notes.map(([l,x])=>`<div class="note"><span class="lvl ${l}">${L[l]}</span><span>${esc(x)}</span></div>`).join('')}</div></section>`;}
+  document.getElementById('cols').innerHTML=html;
+  const[d,a]=prog(ind);
+  document.getElementById('bar').style.width=(a?d/a*100:0)+'%';
+  document.getElementById('meter-txt').textContent=d+' / '+a+' obligatorios';
+  document.getElementById('fu-list').innerHTML=t.fu.map(x=>`<li>${x}</li>`).join('');
+  document.getElementById('foot').textContent='Las marcas se guardan sólo en este dispositivo. Ayuda de lectura: ante duda, rige el texto vigente en fnr.gub.uy. Fuente de esta sección: '+t.src+'.';
+}
+document.addEventListener('click',e=>{
+  const tb=e.target.closest('.tt');
+  if(tb){S.tumor=tb.dataset.t;save();render();try{history.replaceState(null,'','#'+S.tumor);}catch(_){}return;}
+  const b=e.target.closest('.chip');
+  if(b){S.sel[S.tumor]=b.dataset.id;save();render();try{history.replaceState(null,'','#'+b.dataset.id);}catch(_){}}
+});
+document.getElementById('cols').addEventListener('change',e=>{
+  const k=e.target.dataset.k;if(!k)return;const ind=cur();
+  (S.checks[ind.id]=S.checks[ind.id]||{})[k]=e.target.checked;save();
+  const y=window.scrollY;render();window.scrollTo(0,y);
+  const el=document.getElementById(ind.id+'__'+k);if(el)el.focus({preventScroll:true});
+});
+document.getElementById('reset').addEventListener('click',()=>{S.checks[cur().id]={};save();render();});
+render();
+})();
+</script>
+
+<script>
+if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
+</script>
+</body>
+</html>
