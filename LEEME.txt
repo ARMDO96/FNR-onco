@@ -1,19 +1,27 @@
-Checklist FNR Oncología: app instalable (PWA)
-=============================================
+Checklist FNR Oncología: app instalable (PWA), versión 3
+========================================================
 Incluye: mama, colorrecto, próstata, pulmón y cuello uterino.
+Novedades: ficha por paciente (cédula sin puntos ni guiones), lista de
+pacientes en curso, paraclínica separada por estudio, diseño nuevo y el
+botón "atrás" del celular vuelve al inicio en vez de cerrar la app.
 
-Si ya tenés el repositorio en GitHub (App-oncologia-):
+Cómo actualizar el repositorio que ya tenés (FNR-onco):
 1. Descomprimí este zip (clic derecho > Extraer todo).
-2. En el repositorio: "Add file" > "Upload files".
-3. Arrastrá TODO el contenido de la carpeta (index.html, manifest.webmanifest,
-   sw.js, LEEME.txt y las carpetas fonts/ e icons/). Si ya existían, se reemplazan.
-4. "Commit changes".
-5. Si Pages no estaba activado: Settings > Pages > Branch: main / (root) > Save.
-6. En 1–2 minutos: https://armdo96.github.io/App-oncologia-/
-   En el celular: Chrome > ⋮ > "Instalar app".
+2. Entrá a github.com/ARMDO96/FNR-onco
+3. "Add file" > "Upload files".
+4. Arrastrá TODO el contenido de la carpeta descomprimida: index.html,
+   manifest.webmanifest, sw.js, LEEME.txt y las carpetas fonts/ e icons/.
+   Los archivos con el mismo nombre se reemplazan solos.
+5. "Commit changes".
+6. Esperá 1 o 2 minutos (pestaña "Actions": tilde verde = listo).
 
-Si ya tenías instalada la versión de mama: abrí la app con conexión una vez,
-cerrala y volvé a abrirla; se actualiza sola.
+En el celular:
+- Abrí la app con internet, cerrala del todo y volvé a abrirla.
+  La segunda vez ya aparece la versión nueva.
+- Dirección, si necesitás reinstalar: https://armdo96.github.io/FNR-onco/
 
-Para actualizar contenido en el futuro: reemplazá index.html y cambiá en sw.js
-"fnr-onco-v2" por "fnr-onco-v3" (y así sucesivamente).
+Nota: la carpeta fonts/ trae tipografías nuevas. Las viejas (ibm-plex-sans...)
+quedan en GitHub sin usarse; no molestan, pero podés borrarlas si querés.
+
+Para la próxima actualización: en sw.js se cambia "fnr-onco-v3" por
+"fnr-onco-v4". Si te lo armo yo, ya viene cambiado.

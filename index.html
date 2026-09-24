@@ -3,165 +3,261 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#F4F5F4" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#121514" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F3F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#13161B" media="(prefers-color-scheme: dark)">
 <meta name="description" content="Checklist de requisitos de las normativas FNR para cobertura de tratamiento sistémico en mama, colorrecto, próstata, pulmón y cuello uterino.">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Checklist FNR">
 <title>Checklist FNR Oncología</title>
 <style>
-@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/ibm-plex-sans-latin-400-normal.woff2) format("woff2")}
-@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/ibm-plex-sans-latin-500-normal.woff2) format("woff2")}
-@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/ibm-plex-sans-latin-600-normal.woff2) format("woff2")}
-@font-face{font-family:"IBM Plex Sans Condensed";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/ibm-plex-sans-condensed-latin-500-normal.woff2) format("woff2")}
-@font-face{font-family:"IBM Plex Sans Condensed";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/ibm-plex-sans-condensed-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"Lexend";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/lexend-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Lexend";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/lexend-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Lexend";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/lexend-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/figtree-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/figtree-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/figtree-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"Figtree";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/figtree-latin-700-normal.woff2) format("woff2")}
 @font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/ibm-plex-mono-latin-400-normal.woff2) format("woff2")}
 @font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/ibm-plex-mono-latin-500-normal.woff2) format("woff2")}
-html{-webkit-text-size-adjust:100%}
 :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-body{margin:0}
-[hidden]{display:none!important}
+html,body{margin:0}
+img{max-width:100%}
+</style>
+</head>
+<body>
+<style>
 :root{
-  --bg:#F4F5F4; --surface:#FFFFFF; --sunk:#EAEDEB; --ink:#1A1F1D; --ink-2:#4B5551; --ink-3:#77817D;
-  --line:#D8DDDA; --on-t:#FFFFFF;
-  --exc:#A8341F; --exc-soft:#F7E2DC; --ind:#8A5F0E; --ind-soft:#F5EAD2; --ok-soft:#E3EEE8; --ok:#2E6A55;
-  --c-mama:#B3305F; --c-mama-s:#F8E3EA;
-  --c-ccr:#3B7A2A;  --c-ccr-s:#E3EFDD;
-  --c-pros:#5A48A8; --c-pros-s:#E8E4F6;
-  --c-pulm:#2A5FA5; --c-pulm-s:#E0E9F6;
-  --c-ccu:#0B7A88;  --c-ccu-s:#DDF0F2;
+  --bg:#F3F5F7; --surface:#FFFFFF; --sunk:#EEF1F4; --hover:#F5F7F9;
+  --ink:#1E2430; --ink-2:#4E5766; --ink-3:#8A929E;
+  --line:#E5E8ED; --line-2:#CBD1D9;
+  --brand:#35546E; --brand-s:#E4ECF2; --on-brand:#FFFFFF; --on-t:#FFFFFF;
+  --shadow:0 1px 2px rgba(24,36,56,.04),0 8px 24px rgba(24,36,56,.05);
+  --exc:#B4533D; --exc-soft:#FBEDE8; --ind:#95691C; --ind-soft:#F8F0DF; --ok:#3B7861; --ok-soft:#E5F1EB;
+  --c-mama:#C2527D; --c-mama-s:#FBEAF1;
+  --c-ccr:#4E8A3E;  --c-ccr-s:#EAF3E6;
+  --c-pros:#6B5BB8; --c-pros-s:#EEEBF8;
+  --c-pulm:#3A6FB0; --c-pulm-s:#E7EEF8;
+  --c-ccu:#1E8A94;  --c-ccu-s:#E1F2F3;
   --t:var(--c-mama); --t-s:var(--c-mama-s);
-  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  --cond:"IBM Plex Sans Condensed","IBM Plex Sans","Arial Narrow",system-ui,sans-serif;
+  --display:"Lexend","Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --sans:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --r:16px; --r-sm:11px;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     color-scheme:dark;
-    --bg:#121514; --surface:#1A1E1C; --sunk:#222826; --ink:#E6EAE8; --ink-2:#AFB8B4; --ink-3:#808A86;
-    --line:#2F3633; --on-t:#121514;
-    --exc:#F08C77; --exc-soft:#3A221D; --ind:#E2B563; --ind-soft:#3A2F17; --ok-soft:#1F332B; --ok:#86C9AE;
-    --c-mama:#F08AAE; --c-mama-s:#3D2230; --c-ccr:#93CF7E; --c-ccr-s:#22331D; --c-pros:#B3A6F0; --c-pros-s:#2C2742;
-    --c-pulm:#8DB5EE; --c-pulm-s:#1E2A3D; --c-ccu:#6FD0DC; --c-ccu-s:#173236;
+    --bg:#13161B; --surface:#1A1E25; --sunk:#222731; --hover:#20252D;
+    --ink:#E7EAEF; --ink-2:#B1B8C3; --ink-3:#838B97;
+    --line:#2A303A; --line-2:#3C4350;
+    --brand:#A3BBD2; --brand-s:#1F2A36; --on-brand:#13161B; --on-t:#13161B;
+    --shadow:none;
+    --exc:#EE9580; --exc-soft:#3A2520; --ind:#E0B872; --ind-soft:#352C19; --ok:#8CCBB1; --ok-soft:#1C3029;
+    --c-mama:#EE98B8; --c-mama-s:#37222D; --c-ccr:#9FD18C; --c-ccr-s:#1E2F1E; --c-pros:#BAAEF2; --c-pros-s:#28243D;
+    --c-pulm:#96BAEC; --c-pulm-s:#1B2839; --c-ccu:#80D2DA; --c-ccu-s:#153034;
   }
 }
 :root[data-theme="dark"]{
   color-scheme:dark;
-  --bg:#121514; --surface:#1A1E1C; --sunk:#222826; --ink:#E6EAE8; --ink-2:#AFB8B4; --ink-3:#808A86;
-  --line:#2F3633; --on-t:#121514;
-  --exc:#F08C77; --exc-soft:#3A221D; --ind:#E2B563; --ind-soft:#3A2F17; --ok-soft:#1F332B; --ok:#86C9AE;
-  --c-mama:#F08AAE; --c-mama-s:#3D2230; --c-ccr:#93CF7E; --c-ccr-s:#22331D; --c-pros:#B3A6F0; --c-pros-s:#2C2742;
-  --c-pulm:#8DB5EE; --c-pulm-s:#1E2A3D; --c-ccu:#6FD0DC; --c-ccu-s:#173236;
+  --bg:#13161B; --surface:#1A1E25; --sunk:#222731; --hover:#20252D;
+  --ink:#E7EAEF; --ink-2:#B1B8C3; --ink-3:#838B97;
+  --line:#2A303A; --line-2:#3C4350;
+  --brand:#A3BBD2; --brand-s:#1F2A36; --on-brand:#13161B; --on-t:#13161B;
+  --shadow:none;
+  --exc:#EE9580; --exc-soft:#3A2520; --ind:#E0B872; --ind-soft:#352C19; --ok:#8CCBB1; --ok-soft:#1C3029;
+  --c-mama:#EE98B8; --c-mama-s:#37222D; --c-ccr:#9FD18C; --c-ccr-s:#1E2F1E; --c-pros:#BAAEF2; --c-pros-s:#28243D;
+  --c-pulm:#96BAEC; --c-pulm-s:#1B2839; --c-ccu:#80D2DA; --c-ccu-s:#153034;
 }
 .app[data-tumor="mama"]{--t:var(--c-mama);--t-s:var(--c-mama-s)}
 .app[data-tumor="ccr"]{--t:var(--c-ccr);--t-s:var(--c-ccr-s)}
 .app[data-tumor="pros"]{--t:var(--c-pros);--t-s:var(--c-pros-s)}
 .app[data-tumor="pulm"]{--t:var(--c-pulm);--t-s:var(--c-pulm-s)}
 .app[data-tumor="ccu"]{--t:var(--c-ccu);--t-s:var(--c-ccu-s)}
+[data-c="mama"]{--tc:var(--c-mama);--tcs:var(--c-mama-s)}
+[data-c="ccr"]{--tc:var(--c-ccr);--tcs:var(--c-ccr-s)}
+[data-c="pros"]{--tc:var(--c-pros);--tcs:var(--c-pros-s)}
+[data-c="pulm"]{--tc:var(--c-pulm);--tcs:var(--c-pulm-s)}
+[data-c="ccu"]{--tc:var(--c-ccu);--tcs:var(--c-ccu-s)}
 
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;padding-inline:16px;padding-block:18px 48px}
-.app{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
-header.top h1{font-family:var(--cond);font-weight:600;font-size:1.55rem;letter-spacing:-.01em;margin:0;text-wrap:balance}
-header.top p{margin:2px 0 0;font-size:.82rem;color:var(--ink-3)}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;padding-inline:16px;padding-block:22px 56px;-webkit-font-smoothing:antialiased}
+button{font-family:inherit}
+button:focus-visible,input:focus-visible+.box,.prow:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
 
-/* tumor tabs */
-.tumors{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
-@media(max-width:640px){.tumors{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.tt{appearance:none;cursor:pointer;text-align:left;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:9px 10px 8px;display:flex;flex-direction:column;gap:2px;position:relative;overflow:hidden;font:inherit;min-width:0}
-.tt::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--tc)}
-.tt b{font-family:var(--cond);font-weight:600;font-size:.98rem;line-height:1.15}
-.tt small{font-size:.72rem;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tt[aria-pressed="true"]{background:var(--tc);border-color:var(--tc);color:var(--on-t)}
-.tt[aria-pressed="true"] small{color:var(--on-t);opacity:.85}
+/* marca: un punto por tumor */
+.mark{display:inline-flex;gap:5px;margin-bottom:10px}
+.mark i{width:8px;height:8px;border-radius:50%;background:var(--tc)}
+header.top h1{font-family:var(--display);font-weight:500;font-size:1.55rem;letter-spacing:-.015em;line-height:1.2;margin:0;text-wrap:balance}
+header.top p{margin:4px 0 0;font-size:.88rem;color:var(--ink-3);max-width:60ch}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+
+/* ---------- selección de paciente ---------- */
+.gate{max-width:540px;margin:5vh auto 0;display:flex;flex-direction:column;gap:22px}
+.gate-card{padding:22px}
+.gate-card label{display:block;font-size:.8rem;font-weight:600;color:var(--ink-2);margin-bottom:10px}
+.gate-row{display:flex;gap:10px}
+.gate-row input{flex:1;min-width:0;border:1px solid var(--line);background:var(--sunk);color:var(--ink);border-radius:12px;padding:12px 14px;font:500 1.05rem var(--mono);letter-spacing:.02em;transition:border-color .15s,box-shadow .15s,background .15s}
+.gate-row input::placeholder{color:var(--ink-3)}
+.gate-row input:focus{outline:none;border-color:var(--brand);background:var(--surface);box-shadow:0 0 0 4px var(--brand-s)}
+.gate-row button{appearance:none;border:none;background:var(--brand);color:var(--on-brand);font-weight:600;font-size:.95rem;padding:0 20px;border-radius:12px;cursor:pointer;white-space:nowrap;transition:filter .15s}
+.gate-row button:hover{filter:brightness(1.08)}
+.gate-hint{font-size:.8rem;color:var(--ink-3);margin:12px 0 0}
+.plist{display:flex;flex-direction:column;gap:10px}
+.plist h2{font-family:var(--display);font-weight:500;font-size:.95rem;color:var(--ink-2);margin:0 4px}
+.prows{overflow:hidden}
+.prow{display:grid;grid-template-columns:10px minmax(0,1fr) auto;gap:4px 14px;align-items:center;padding:14px 18px;cursor:pointer;transition:background .15s}
+.prow:hover{background:var(--hover)}
+.prow + .prow{border-top:1px solid var(--line)}
+.pdot{width:10px;height:10px;border-radius:50%;background:var(--tc)}
+.pinfo{display:flex;flex-direction:column;gap:3px;min-width:0}
+.pid{font:500 .98rem var(--mono);color:var(--ink)}
+.pmeta{font-size:.82rem;color:var(--ink-3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pmini{height:4px;background:var(--sunk);border-radius:99px;overflow:hidden;max-width:180px;margin-top:3px}
+.pmini i{display:block;height:100%;background:var(--tc);border-radius:99px}
+.pside{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.pdate{font-size:.75rem;color:var(--ink-3);white-space:nowrap;font-variant-numeric:tabular-nums}
+.pdel{appearance:none;border:1px solid transparent;background:transparent;color:var(--ink-3);font-size:.76rem;font-weight:500;padding:4px 10px;border-radius:99px;cursor:pointer;transition:all .15s}
+.pdel:hover{color:var(--exc);background:var(--exc-soft)}
+.pdel.arm{color:var(--exc);background:var(--exc-soft);border-color:var(--exc);font-weight:600}
+.gate-empty{font-size:.88rem;color:var(--ink-3);margin:0 4px}
+
+/* ---------- ficha ---------- */
+.app{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.pbar{display:flex;align-items:center;gap:12px;padding:10px 12px 10px 16px;border-radius:14px}
+.pbar .plabel{font-size:.78rem;color:var(--ink-3)}
+.pbar b{font:500 .98rem var(--mono);color:var(--ink);background:var(--sunk);padding:3px 10px;border-radius:8px}
+.pbar button{margin-left:auto;appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);font-size:.82rem;font-weight:500;padding:7px 14px;border-radius:99px;cursor:pointer;white-space:nowrap;transition:all .15s}
+.pbar button:hover{color:var(--ink);border-color:var(--line-2);background:var(--hover)}
+
+/* tumores */
+.tumors{display:flex;flex-wrap:wrap;gap:8px}
+.tt{appearance:none;cursor:pointer;display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:8px 16px 8px 12px;font:inherit;transition:background .15s,border-color .15s,color .15s}
+.tt .dot{width:10px;height:10px;border-radius:50%;background:var(--tc);flex-shrink:0}
+.tt b{font-weight:600;font-size:.92rem}
+.tt small{font-size:.76rem;color:var(--ink-3);font-variant-numeric:tabular-nums}
 .tt:hover{border-color:var(--tc)}
-.tt[data-t="mama"]{--tc:var(--c-mama)} .tt[data-t="ccr"]{--tc:var(--c-ccr)} .tt[data-t="pros"]{--tc:var(--c-pros)} .tt[data-t="pulm"]{--tc:var(--c-pulm)} .tt[data-t="ccu"]{--tc:var(--c-ccu)}
+.tt[aria-pressed="true"]{background:var(--tcs);border-color:var(--tcs);color:var(--tc)}
+.tt[aria-pressed="true"] small{color:var(--tc);opacity:.8}
 
-/* tumor band */
-.band{border-left:5px solid var(--t);background:var(--t-s);border-radius:0 8px 8px 0;padding:10px 14px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;align-items:baseline}
-.band h2{margin:0;font-family:var(--cond);font-weight:600;font-size:1.2rem;color:var(--t)}
-.band span{font-size:.8rem;color:var(--ink-2)}
+.band{background:var(--t-s);border-radius:var(--r);padding:14px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 20px;align-items:baseline}
+.band h2{margin:0;font-family:var(--display);font-weight:500;font-size:1.25rem;color:var(--t)}
+.band span{font-size:.82rem;color:var(--ink-2)}
+.band span b{font-weight:600;color:var(--ink-2)}
 
 .picker{display:grid;grid-template-columns:1fr;gap:8px}
-@media(min-width:760px){.picker{grid-template-columns:auto 1fr;align-items:start;column-gap:14px}}
-.grp-label{font-family:var(--cond);font-size:.74rem;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-3);padding-top:7px}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:500 .88rem/1.2 var(--sans);padding:7px 11px;border-radius:6px;cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;gap:1px;text-align:left}
-.chip small{font-weight:400;font-size:.72rem;color:var(--ink-3)}
-.chip:hover{border-color:var(--t)}
-.chip[aria-pressed="true"]{background:var(--t);border-color:var(--t);color:var(--on-t)}
-.chip[aria-pressed="true"] small{color:var(--on-t);opacity:.85}
-.chip .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:currentColor;margin-left:6px;vertical-align:1px}
-button:focus-visible,input:focus-visible+.box{outline:2px solid var(--t);outline-offset:2px}
+@media(min-width:760px){.picker{grid-template-columns:auto 1fr;align-items:start;column-gap:18px;row-gap:12px}}
+.grp-label{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-3);padding-top:9px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:.9rem;font-weight:500;line-height:1.25;padding:8px 13px;border-radius:12px;cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;transition:all .15s}
+.chip small{font-weight:400;font-size:.74rem;color:var(--ink-3)}
+.chip:hover{border-color:var(--t);background:var(--hover)}
+.chip[aria-pressed="true"]{background:var(--t-s);border-color:var(--t);box-shadow:inset 0 0 0 1px var(--t)}
+.chip[aria-pressed="true"] small{color:var(--ink-2)}
+.chip .done{display:inline-grid;place-items:center;width:15px;height:15px;border-radius:50%;background:var(--ok);margin-left:6px;vertical-align:-2px}
+.chip .done svg{width:9px;height:9px}
+.chip .done svg path{stroke:var(--surface)}
 
-.ihead{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--t);border-radius:8px;padding:14px 18px;display:grid;gap:12px}
-.ihead-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:flex-start}
-.ihead h3{margin:0;font-family:var(--cond);font-weight:600;font-size:1.3rem;text-wrap:balance}
-.setting{font-size:.85rem;color:var(--ink-2);margin-top:2px}
-.proto{font-family:var(--mono);font-size:.82rem;background:var(--sunk);border-radius:6px;padding:10px 12px;display:grid;gap:4px}
+.ihead{padding:18px 20px;display:grid;gap:14px}
+.ihead-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:flex-start}
+.ihead h3{margin:0;font-family:var(--display);font-weight:500;font-size:1.35rem;letter-spacing:-.01em;line-height:1.25;text-wrap:balance}
+.setting{font-size:.88rem;color:var(--ink-2);margin-top:4px}
+.proto{font-family:var(--mono);font-size:.8rem;background:var(--sunk);border-radius:var(--r-sm);padding:12px 14px;display:grid;gap:5px;line-height:1.5}
 .proto .k{color:var(--ink-3)}
-.actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;flex:1 1 260px;justify-content:flex-end}
-.meter{display:flex;align-items:center;gap:10px;min-width:200px;flex:1 1 200px}
-.bar{flex:1;height:6px;background:var(--sunk);border-radius:3px;overflow:hidden}
-.bar i{display:block;height:100%;background:var(--t);width:0;transition:width .2s}
-.meter span{font-family:var(--mono);font-size:.8rem;color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap}
-.btn{appearance:none;border:1px solid var(--line);background:transparent;color:var(--ink-2);font:500 .8rem var(--sans);padding:6px 10px;border-radius:6px;cursor:pointer}
-.btn:hover{color:var(--ink);border-color:var(--ink-3)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;flex:1 1 260px;justify-content:flex-end}
+.meter{display:flex;align-items:center;gap:12px;min-width:200px;flex:1 1 200px}
+.bar{flex:1;height:8px;background:var(--sunk);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--t);width:0;border-radius:99px;transition:width .3s ease}
+.meter span{font-size:.82rem;color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.meter span b{color:var(--ink);font-weight:600}
+.btn{appearance:none;border:1px solid var(--line);background:transparent;color:var(--ink-2);font-size:.8rem;font-weight:500;padding:6px 13px;border-radius:99px;cursor:pointer;transition:all .15s}
+.btn:hover{color:var(--ink);border-color:var(--line-2);background:var(--hover)}
 
-.cols{display:grid;grid-template-columns:1fr;gap:14px}
+.cols{display:grid;grid-template-columns:1fr;gap:16px}
 @media(min-width:860px){.cols{grid-template-columns:1fr 1fr}}
-section.blk{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px 10px;display:flex;flex-direction:column;gap:6px;min-width:0}
+section.blk{padding:16px 16px 8px;display:flex;flex-direction:column;gap:4px;min-width:0}
 section.blk.wide{grid-column:1/-1}
-.blk-h{display:flex;justify-content:space-between;align-items:baseline;gap:8px;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:2px}
-.blk-h h4{margin:0;font-family:var(--cond);font-weight:600;font-size:.95rem;text-transform:uppercase;letter-spacing:.06em}
-.blk-h .hint{font-size:.76rem;color:var(--ink-3);margin-left:auto}
-.blk-h .count{font-family:var(--mono);font-size:.78rem;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.blk-h{display:flex;align-items:center;gap:10px;padding:0 4px 10px}
+.blk-h h4{flex:1;margin:0;font-family:var(--display);font-weight:500;font-size:.98rem;color:var(--ink)}
+.blk-h .hint{font-size:.76rem;color:var(--ink-3)}
+.blk-h .count{font-size:.74rem;font-weight:600;color:var(--ink-2);background:var(--sunk);padding:2px 9px;border-radius:99px;font-variant-numeric:tabular-nums}
 .blk.inc h4{color:var(--t)} .blk.exc h4{color:var(--exc)} .blk.indv h4{color:var(--ind)}
-.sub{font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3);margin:8px 0 0;font-family:var(--cond)}
+.sub{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3);margin:12px 4px 2px;display:flex;align-items:center;gap:8px}
 ul.items{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
-ul.items li{border-bottom:1px dashed var(--line)}
-ul.items li:last-child{border-bottom:0}
-label.it{display:grid;grid-template-columns:20px 1fr;gap:10px;padding:8px 0;cursor:pointer;align-items:start;position:relative}
+ul.items > li + li{border-top:1px solid var(--line)}
+label.it{display:grid;grid-template-columns:20px 1fr;gap:12px;padding:10px 8px;border-radius:10px;cursor:pointer;align-items:start;position:relative;transition:background .12s}
+label.it:hover{background:var(--hover)}
 label.it input{position:absolute;opacity:0;width:1px;height:1px}
-.box{width:18px;height:18px;border:1.5px solid var(--ink-3);border-radius:4px;margin-top:2px;display:grid;place-items:center;background:var(--surface)}
-.box svg{width:12px;height:12px;opacity:0}
+.box{width:20px;height:20px;border:1.5px solid var(--line-2);border-radius:6px;margin-top:1px;display:grid;place-items:center;background:var(--surface);transition:background .15s,border-color .15s}
+.box svg{width:12px;height:12px;opacity:0;transition:opacity .12s}
 .box svg path{stroke:var(--on-t)}
 label.it input:checked+.box{background:var(--t);border-color:var(--t)}
 .exc label.it input:checked+.box{background:var(--exc);border-color:var(--exc)}
-.exc .box svg path{stroke:var(--surface)}
 label.it input:checked+.box svg{opacity:1}
 label.it input:checked ~ .tx{color:var(--ink-3)}
-.tx{font-size:.92rem}
+.tx{font-size:.93rem;line-height:1.45}
 .tx em{font-style:normal;color:var(--ink-3);font-size:.82rem}
-.tag{display:inline-block;font:500 .68rem/1 var(--sans);padding:3px 6px;border-radius:4px;margin-left:6px;vertical-align:1px;white-space:nowrap;background:var(--t-s);color:var(--t)}
-.orgroup{border-left:2px solid var(--t-s);padding-left:10px;margin:4px 0}
-.plain li{padding:6px 0;font-size:.92rem;display:grid;grid-template-columns:16px 1fr}
-.plain li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ind);margin-top:.55em}
-.plain.sug li::before{background:var(--ink-3)}
-.notes{display:flex;flex-direction:column}
-.note{font-size:.9rem;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px dashed var(--line)}
-.note:last-child{border-bottom:0}
-.lvl{font:500 .68rem/1 var(--sans);padding:4px 6px;border-radius:4px;white-space:nowrap}
+.tag{display:inline-block;font-size:.66rem;font-weight:600;letter-spacing:.02em;text-transform:none;padding:2px 8px;border-radius:99px;background:var(--t-s);color:var(--t)}
+.orgroup{background:var(--hover);border-radius:12px;padding:2px 4px 2px;margin:6px 0}
+.orgroup .sub{margin-top:8px}
+.plain{padding:0 4px}
+.plain li{padding:8px 0;font-size:.92rem;display:grid;grid-template-columns:18px 1fr;line-height:1.45}
+.plain li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ind);margin-top:.5em;opacity:.8}
+.plain.sug li::before{background:var(--line-2)}
+.notes{display:flex;flex-direction:column;padding:0 4px}
+.note{font-size:.9rem;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline;padding:10px 0;line-height:1.45}
+.note + .note{border-top:1px solid var(--line)}
+.lvl{font-size:.68rem;font-weight:600;padding:3px 9px;border-radius:99px;white-space:nowrap}
 .lvl.c{background:var(--ok-soft);color:var(--ok)} .lvl.i{background:var(--ind-soft);color:var(--ind)} .lvl.e{background:var(--exc-soft);color:var(--exc)}
-details.fu{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 16px}
-details.fu summary{cursor:pointer;font-family:var(--cond);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:.9rem;color:var(--t)}
-details.fu ul{margin:10px 0 2px;padding-left:18px;display:flex;flex-direction:column;gap:4px;font-size:.9rem}
-footer{font-size:.78rem;color:var(--ink-3)}
-@media (prefers-reduced-motion: reduce){.bar i{transition:none}}
+details.fu{padding:14px 20px}
+details.fu summary{cursor:pointer;font-family:var(--display);font-weight:500;font-size:.98rem;color:var(--t);list-style-position:inside}
+details.fu ul{margin:12px 0 4px;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:.9rem;color:var(--ink-2)}
+footer{font-size:.78rem;color:var(--ink-3);padding:0 4px;max-width:80ch}
+@media(max-width:520px){
+  header.top h1{font-size:1.35rem}
+  .ihead,.gate-card{padding:16px}
+  section.blk{padding:12px 10px 6px}
+  .blk-h .hint{display:none}
+  .pmeta{white-space:normal}
+  .prow{padding:14px 14px;gap:4px 12px}
+  .actions{flex-basis:100%}
+  .meter{min-width:0}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
 </style>
 
-</head>
-<body>
-<div class="app" id="app" data-tumor="mama">
+<section class="gate" id="gate">
   <header class="top">
+    <div class="mark" aria-hidden="true"><i data-c="mama"></i><i data-c="ccr"></i><i data-c="pros"></i><i data-c="pulm"></i><i data-c="ccu"></i></div>
     <h1>Checklist de autorización FNR</h1>
-    <p>Requisitos de cobertura de tratamiento sistémico por normativa del Fondo Nacional de Recursos</p>
+    <p>Ingresá la cédula del paciente para abrir su ficha, o retomá una que ya empezaste.</p>
+  </header>
+  <div class="gate-card card">
+    <label for="pid-input">Cédula u otro identificador</label>
+    <div class="gate-row">
+      <input id="pid-input" type="text" inputmode="numeric" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="41234567" maxlength="40">
+      <button type="button" id="pid-go">Abrir ficha</button>
+    </div>
+    <p class="gate-hint">Sin puntos ni guiones; si los escribís se quitan solos. Las fichas se guardan sólo en este dispositivo.</p>
+  </div>
+  <div class="plist" id="plist"></div>
+</section>
+
+<div class="app" id="app" data-tumor="mama" hidden>
+  <div class="pbar card" id="pbar"></div>
+  <header class="top">
+    <div class="mark" aria-hidden="true"><i data-c="mama"></i><i data-c="ccr"></i><i data-c="pros"></i><i data-c="pulm"></i><i data-c="ccu"></i></div>
+    <h1>Checklist de autorización FNR</h1>
+    <p>Requisitos de cobertura de tratamiento sistémico según normativa del Fondo Nacional de Recursos</p>
   </header>
   <nav class="tumors" id="tumors" aria-label="Tumor"></nav>
   <div class="band" id="band"></div>
   <nav class="picker" id="picker" aria-label="Indicación"></nav>
-  <div class="ihead">
+  <div class="ihead card">
     <div class="ihead-top">
       <div><h3 id="i-title"></h3><div class="setting" id="i-setting"></div></div>
       <div class="actions">
@@ -172,7 +268,7 @@ footer{font-size:.78rem;color:var(--ink-3)}
     <div class="proto" id="i-proto"></div>
   </div>
   <div class="cols" id="cols"></div>
-  <details class="fu" id="fu"><summary>Después de autorizado: seguimiento</summary><ul id="fu-list"></ul></details>
+  <details class="fu card" id="fu"><summary>Después de autorizado: seguimiento</summary><ul id="fu-list"></ul></details>
   <footer id="foot"></footer>
 </div>
 
@@ -221,13 +317,16 @@ const TUMORS=[
   {t:'AP de enfermedad residual invasiva con resección completa (R0)',only:['m-adj-tdm1']},
   {t:'Biopsia de metástasis, con RH/HER2',stage:'av',cond:'cuando esté indicada (obligatoria si es lesión única)'},
   {t:'Rx de tórax + ecografía de abdomen, y/o TC de tórax, abdomen y pelvis'},
-  {t:'ECG + ecocardiograma con FEVI que descarte cardiopatía estructural',not:['m-fulv']},
+  {t:'ECG',not:['m-fulv']},
+  {t:'Ecocardiograma (ETT) con FEVI que descarte cardiopatía estructural',not:['m-fulv']},
   {t:'Centellograma óseo',stage:'op',cond:'si ≥ 4 ganglios axilares + o sospecha de MTS ósea'},
   {t:'Centellograma óseo',stage:'av',cond:'si sospecha de MTS ósea'},
   {t:'Biopsia de médula ósea',cond:'si sospecha de infiltración medular (anemia normo-normo sin otra causa)'},
   {t:'TC de cráneo y/o RNM',cond:'si síntomas neurológicos'},
-  {t:'Hemograma completo + funcional y enzimograma hepático completo'},
-  {t:'Ionograma y creatininemia'},
+  {t:'Hemograma completo'},
+  {t:'Funcional y enzimograma hepático completo'},
+  {t:'Ionograma'},
+  {t:'Creatininemia'},
   {t:'Calcemia',cond:'sólo si secundarismo óseo'},
   {t:'CA 15-3',stage:'av'},
   {t:'Serologías VIH, VHB y VHC',only:['m-pembro']}
@@ -304,10 +403,12 @@ const TUMORS=[
   {t:'Biopsia de la metástasis',cond:'si metástasis única'},
   {t:'CEA y CA 19-9'},
   {t:'Imagenología de tórax, abdomen y pelvis'},
-  {t:'ECG + ecocardiograma con FEVI'},
+  {t:'ECG'},
+  {t:'Ecocardiograma (ETT) con FEVI'},
   {t:'Centellograma óseo',cond:'si sospecha de MTS ósea'},
   {t:'TC de cráneo con contraste y/o RNM',cond:'si sospecha de secundarismo o MTS encefálicas tratadas'},
-  {t:'Hemograma completo y crasis'},
+  {t:'Hemograma completo'},
+  {t:'Crasis'},
   {t:'Funcional y enzimograma hepático'},
   {t:'Creatininemia'},
   {t:'Examen de orina; si proteinuria: orina de 24 h o índice proteinuria/creatininuria'},
@@ -356,8 +457,10 @@ const TUMORS=[
   {t:'Ionograma con calcemia',cond:'requerido si MTS óseas'},
   {t:'Funcional hepático'},
   {t:'Hemograma'},
-  {t:'Azoemia y creatininemia'},
-  {t:'ECG + ecocardiograma'}
+  {t:'Azoemia'},
+  {t:'Creatininemia'},
+  {t:'ECG'},
+  {t:'Ecocardiograma (ETT)'}
  ],
  fu:['Solicitud de dosis del mes siguiente online a través del <b>Portal</b>, declarando complicaciones y eventos adversos.','Evaluación <b>cada 3 meses</b>: curva de PSA actualizada, imagen e informe del oncólogo.','Suspensión: progresión (RECIST, clínica o PSA según PCWG3) o intolerancia.','Mantener análogo de LHRH en no orquiectomizados.'],
  inds:[
@@ -394,13 +497,16 @@ const TUMORS=[
   {t:'PD-L1 (método validado): ≥ 50 % atezolizumab · ≥ 1 % pembrolizumab',only:['u-io']},
   {t:'PD-L1 positivo < 50 % (método validado)',only:['u-abcp']},
   {t:'TC y/o RNM de tórax y abdomen'},
-  {t:'ECG + ecocardiograma con FEVI que excluya cardiopatía estructural'},
+  {t:'ECG'},
+  {t:'Ecocardiograma (ETT) con FEVI que excluya cardiopatía estructural'},
   {t:'Centellograma óseo',cond:'si sospecha de MTS ósea'},
   {t:'RNM / TC de cráneo',cond:'si síntomas: descartar secundarismo no controlado'},
-  {t:'Hemograma completo y crasis'},
+  {t:'Hemograma completo'},
+  {t:'Crasis'},
   {t:'Funcional y enzimograma hepático completo'},
   {t:'Serologías VIH, VHB y VHC'},
-  {t:'Medio interno y función renal: creatininemia, ionograma con calcemia'},
+  {t:'Creatininemia (función renal)'},
+  {t:'Ionograma con calcemia'},
   {t:'Examen de orina; si proteinuria: orina de 24 h o índice proteinuria/creatininuria',only:['u-abcp']}
  ],
  fu:['Solicitud de dosis del mes siguiente online, declarando complicaciones y eventos adversos.','Evaluación RECIST: <b>adyuvancia cada 6 meses</b>, <b>irresecable trimestral</b>.','Suspensión: progresión, intolerancia o eventos adversos grado III–IV.','No se acepta cambio de fármaco por progresión (salvo las excepciones de ITK de 1ª generación).'],
@@ -455,9 +561,10 @@ const TUMORS=[
   {t:'Ionograma con calcemia'},
   {t:'Funcional hepático'},
   {t:'Hemograma'},
-  {t:'Azoemia y creatininemia'},
+  {t:'Azoemia'},
+  {t:'Creatininemia'},
   {t:'Serologías VIH, VHB y VHC (si positiva: informe de infectólogo que avale el tratamiento)'},
-  {t:'Ecocardiograma'},
+  {t:'Ecocardiograma (ETT)'},
   {t:'Funcional respiratorio',sug:true},
   {t:'Perfil tiroideo',sug:true}
  ],
@@ -472,18 +579,19 @@ const TUMORS=[
  ]}
 ];
 
-/* ---------- estado ---------- */
-const KEY='fnr-onco-v1';
-let S={tumor:'mama',sel:{},checks:{}};
-try{const s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s&&s.checks) S=Object.assign(S,s);}catch(e){}
+/* ---------- pacientes (estado persistente por paciente) ---------- */
+const SKEY='fnr-onco-patients-v1';
+let STORE={patients:{}};
+try{const s=JSON.parse(localStorage.getItem(SKEY)||'null'); if(s&&s.patients) STORE=s;}catch(e){}
+function saveStore(){try{localStorage.setItem(SKEY,JSON.stringify(STORE));}catch(e){}}
+let CURRENT=null;
+let armDelete=null;
+
 const allInds=[];TUMORS.forEach(t=>t.inds.forEach(i=>{i.tumor=t;allInds.push(i);}));
-const h=(location.hash||'').slice(1);
-if(TUMORS.some(t=>t.id===h)) S.tumor=h;
-const hi=allInds.find(i=>i.id===h); if(hi){S.tumor=hi.tumor.id;S.sel[hi.tumor.id]=hi.id;}
-function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
-const tumor=()=>TUMORS.find(t=>t.id===S.tumor);
-const cur=()=>{const t=tumor();const id=S.sel[t.id];return t.inds.find(i=>i.id===id)||t.inds[0];};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function P(){return STORE.patients[CURRENT];}
+function normId(v){return String(v||'').trim().replace(/[.\-\s]/g,'');}
 
 function paraFor(ind){
   const t=ind.tumor,req=[],cond=[],sug=[];
@@ -496,7 +604,7 @@ function paraFor(ind){
   });
   return {req,cond,sug};
 }
-function keys(ind){
+function keysFor(ind){
   const k=[];
   ind.inc.forEach((x,n)=>k.push(typeof x==='object'?'inc'+n+'or':'inc'+n));
   ind.exc.forEach((x,n)=>k.push('exc'+n));
@@ -504,27 +612,94 @@ function keys(ind){
   paraFor(ind).req.forEach(p=>k.push(p.k));
   return k;
 }
-function done(ind,k){
-  const c=S.checks[ind.id]||{};const m=k.match(/^inc(\d+)or$/);
+function doneFor(ind,c,k){
+  const m=k.match(/^inc(\d+)or$/);
   if(m)return ind.inc[+m[1]].or.some((_,j)=>c['inc'+m[1]+'o'+j]);
   return !!c[k];
 }
-function prog(ind,pref){const ks=keys(ind).filter(k=>!pref||k.startsWith(pref));return [ks.filter(k=>done(ind,k)).length,ks.length];}
+function done(ind,key){return doneFor(ind,P().checks[ind.id]||{},key);}
+function prog(ind,pref){const ks=keysFor(ind).filter(k=>!pref||k.startsWith(pref));return [ks.filter(k=>done(ind,k)).length,ks.length];}
 function item(ind,key,text,extra){
-  const id=ind.id+'__'+key,on=!!(S.checks[ind.id]||{})[key];
+  const id=ind.id+'__'+key,on=!!(P().checks[ind.id]||{})[key];
   return `<li><label class="it" for="${id}"><input type="checkbox" id="${id}" data-k="${key}" ${on?'checked':''}><span class="box">${CHECK}</span><span class="tx">${text}${extra||''}</span></label></li>`;
 }
 
-function render(){
-  const t=tumor(),ind=cur();
+/* ---------- pantalla de pacientes ---------- */
+function patientSummary(p){
+  const t=TUMORS.find(x=>x.id===p.tumor)||TUMORS[0];
+  const indId=p.sel[t.id];
+  const ind=t.inds.find(i=>i.id===indId)||t.inds[0];
+  const c=p.checks[ind.id]||{};
+  const ks=keysFor(ind);
+  const d=ks.filter(k=>doneFor(ind,c,k)).length;
+  return {tumorId:t.id,tumorName:t.name,indChip:ind.chip,d,total:ks.length};
+}
+function renderGate(){
+  const rows=Object.entries(STORE.patients).sort((a,b)=>b[1].updatedAt-a[1].updatedAt);
+  const list=document.getElementById('plist');
+  if(!rows.length){list.innerHTML='<p class="gate-empty">Todavía no hay pacientes guardados en este dispositivo.</p>';return;}
+  list.innerHTML='<h2>Pacientes en curso</h2><div class="prows card">'+rows.map(([id,p])=>{
+    const s=patientSummary(p);
+    const d=new Date(p.updatedAt);
+    const when=d.toLocaleDateString('es-UY',{day:'2-digit',month:'2-digit'})+' · '+d.toLocaleTimeString('es-UY',{hour:'2-digit',minute:'2-digit'});
+    const pct=s.total?Math.round(s.d/s.total*100):0;
+    return `<div class="prow" data-id="${esc(id)}" data-c="${s.tumorId}" tabindex="0">
+      <span class="pdot"></span>
+      <div class="pinfo"><span class="pid">${esc(id)}</span><span class="pmeta">${esc(s.tumorName)} · ${esc(s.indChip)} · ${s.d}/${s.total}</span><span class="pmini"><i style="width:${pct}%"></i></span></div>
+      <div class="pside"><span class="pdate">${when}</span><button type="button" class="pdel ${armDelete===id?'arm':''}" data-del="${esc(id)}">${armDelete===id?'¿Eliminar?':'Eliminar'}</button></div>
+    </div>`;
+  }).join('')+'</div>';
+}
+function openPatient(raw,fromHistory){
+  const id=normId(raw); if(!id) return;
+  if(!STORE.patients[id]) STORE.patients[id]={tumor:'mama',sel:{},checks:{},updatedAt:Date.now(),createdAt:Date.now()};
+  CURRENT=id; STORE.patients[id].updatedAt=Date.now(); saveStore();
+  document.getElementById('gate').hidden=true;
+  document.getElementById('app').hidden=false;
+  document.getElementById('pid-input').value='';
+  armDelete=null;
+  renderApp();
+  window.scrollTo(0,0);
+  if(!fromHistory){try{history.pushState({fnrPatient:id},'');}catch(e){}}
+}
+/* botón "Cambiar paciente": si la ficha se abrió con una entrada en el historial, retroceder la consume */
+function leavePatient(){
+  if(history.state&&history.state.fnrPatient){history.back();}else{backToGate();}
+}
+function backToGate(){
+  if(CURRENT&&STORE.patients[CURRENT]){STORE.patients[CURRENT].updatedAt=Date.now();saveStore();}
+  CURRENT=null;
+  document.getElementById('app').hidden=true;
+  document.getElementById('gate').hidden=false;
+  renderGate();
+  window.scrollTo(0,0);
+}
+function deletePatient(id){delete STORE.patients[id];saveStore();armDelete=null;renderGate();}
+
+document.getElementById('pid-go').addEventListener('click',()=>openPatient(document.getElementById('pid-input').value));
+document.getElementById('pid-input').addEventListener('keydown',e=>{if(e.key==='Enter')openPatient(e.target.value);});
+document.getElementById('plist').addEventListener('keydown',e=>{const r=e.target.closest('.prow');if(r&&e.target===r&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openPatient(r.dataset.id);}});
+document.getElementById('plist').addEventListener('click',e=>{
+  const del=e.target.closest('[data-del]');
+  if(del){const id=del.dataset.del; if(armDelete===id){deletePatient(id);}else{armDelete=id;renderGate();} return;}
+  const row=e.target.closest('.prow'); if(row){armDelete=null;openPatient(row.dataset.id);}
+});
+
+/* ---------- app (ficha del paciente actual) ---------- */
+const tumorObj=()=>TUMORS.find(t=>t.id===P().tumor);
+const curInd=()=>{const t=tumorObj();const id=P().sel[t.id];return t.inds.find(i=>i.id===id)||t.inds[0];};
+
+function renderApp(){
+  const t=tumorObj(),ind=curInd();
   document.getElementById('app').dataset.tumor=t.id;
+  document.getElementById('pbar').innerHTML=`<span class="plabel">Paciente</span><b>${esc(CURRENT)}</b><button type="button" id="pbar-switch">Cambiar paciente</button>`;
   document.getElementById('tumors').innerHTML=TUMORS.map(x=>{
     const n=x.inds.filter(i=>{const[d,a]=prog(i);return d===a;}).length;
-    return `<button type="button" class="tt" data-t="${x.id}" aria-pressed="${x.id===t.id}"><b>${esc(x.name)}</b><small>${x.inds.length} indicaci${x.inds.length>1?'ones':'ón'}${n?` · ${n} ✓`:''}</small></button>`;}).join('');
+    return `<button type="button" class="tt" data-t="${x.id}" data-c="${x.id}" aria-pressed="${x.id===t.id}"><span class="dot"></span><b>${esc(x.name)}</b><small>${n?`${n}/${x.inds.length} ✓`:x.inds.length}</small></button>`;}).join('');
   document.getElementById('band').innerHTML=`<h2>${esc(t.name)}</h2><span>${esc(t.drugs)} · <b>${esc(t.src)}</b></span>`;
   document.getElementById('picker').innerHTML=t.groups.map(([g,l])=>{
     const cs=t.inds.filter(i=>i.g===g).map(i=>{const[d,a]=prog(i);
-      return `<button type="button" class="chip" data-id="${i.id}" aria-pressed="${i.id===ind.id}"><span>${esc(i.chip)}${d===a?'<span class="dot" title="Completo"></span>':''}</span><small>${esc(i.sub)}</small></button>`;}).join('');
+      return `<button type="button" class="chip" data-id="${i.id}" aria-pressed="${i.id===ind.id}"><span>${esc(i.chip)}${d===a?`<span class="done" title="Completo">${CHECK}</span>`:''}</span><small>${esc(i.sub)}</small></button>`;}).join('');
     return `<div class="grp-label">${esc(l)}</div><div class="chips">${cs}</div>`;}).join('');
   document.getElementById('i-title').textContent=ind.title;
   document.getElementById('i-setting').textContent=ind.setting;
@@ -535,45 +710,54 @@ function render(){
     :item(ind,'inc'+n,esc(x))).join('');
   const exc=ind.exc.map((x,n)=>item(ind,'exc'+n,esc(x))).join('');
   const tr=TRAMITE.map((x,n)=>item(ind,'tr'+n,esc(x))).join('');
-  const P=paraFor(ind);
+  const P_=paraFor(ind);
   const cnt=p=>{const[d,a]=prog(ind,p);return d+'/'+a;};
   let html=`
-  <section class="blk inc"><div class="blk-h"><h4>Inclusión</h4><span class="hint">marcar lo que cumple</span><span class="count">${cnt('inc')}</span></div><ul class="items">${inc}</ul></section>
-  <section class="blk exc"><div class="blk-h"><h4>Exclusión</h4><span class="hint">marcar lo descartado</span><span class="count">${cnt('exc')}</span></div><ul class="items">${exc}</ul></section>
-  <section class="blk"><div class="blk-h"><h4>Paraclínica a enviar</h4><span class="count">${cnt('p')}</span></div><ul class="items">${P.req.map(p=>item(ind,p.k,esc(p.t))).join('')}</ul>
-   ${P.cond.length?`<div class="sub">Si corresponde</div><ul class="items">${P.cond.map(p=>item(ind,p.k,esc(p.t),`<br><em>${esc(p.cond)}</em>`)).join('')}</ul>`:''}
-   ${P.sug.length?`<div class="sub">Sugeridos, no indispensables</div><ul class="items plain sug">${P.sug.map(p=>`<li><span>${esc(p.t)}</span></li>`).join('')}</ul>`:''}
+  <section class="card blk inc"><div class="blk-h"><h4>Inclusión</h4><span class="hint">marcar lo que cumple</span><span class="count">${cnt('inc')}</span></div><ul class="items">${inc}</ul></section>
+  <section class="card blk exc"><div class="blk-h"><h4>Exclusión</h4><span class="hint">marcar lo descartado</span><span class="count">${cnt('exc')}</span></div><ul class="items">${exc}</ul></section>
+  <section class="card blk"><div class="blk-h"><h4>Paraclínica a enviar</h4><span class="count">${cnt('p')}</span></div><ul class="items">${P_.req.map(p=>item(ind,p.k,esc(p.t))).join('')}</ul>
+   ${P_.cond.length?`<div class="sub">Si corresponde</div><ul class="items">${P_.cond.map(p=>item(ind,p.k,esc(p.t),`<br><em>${esc(p.cond)}</em>`)).join('')}</ul>`:''}
+   ${P_.sug.length?`<div class="sub">Sugeridos, no indispensables</div><ul class="items plain sug">${P_.sug.map(p=>`<li><span>${esc(p.t)}</span></li>`).join('')}</ul>`:''}
   </section>
-  <section class="blk"><div class="blk-h"><h4>Trámite</h4><span class="count">${cnt('tr')}</span></div><ul class="items">${tr}</ul></section>`;
-  if(ind.indv)html+=`<section class="blk indv"><div class="blk-h"><h4>Se discute individualizado</h4></div><ul class="items plain">${ind.indv.map(x=>`<li><span>${esc(x)}</span></li>`).join('')}</ul></section>`;
+  <section class="card blk"><div class="blk-h"><h4>Trámite</h4><span class="count">${cnt('tr')}</span></div><ul class="items">${tr}</ul></section>`;
+  if(ind.indv)html+=`<section class="card blk indv"><div class="blk-h"><h4>Se discute individualizado</h4></div><ul class="items plain">${ind.indv.map(x=>`<li><span>${esc(x)}</span></li>`).join('')}</ul></section>`;
   if(ind.notes&&ind.notes.length){const L={c:'Dato confirmado',i:'Inferencia razonable',e:'Extrapolación'};
-    html+=`<section class="blk ${ind.indv?'':'wide'}"><div class="blk-h"><h4>Ojo con</h4></div><div class="notes">${ind.notes.map(([l,x])=>`<div class="note"><span class="lvl ${l}">${L[l]}</span><span>${esc(x)}</span></div>`).join('')}</div></section>`;}
+    html+=`<section class="card blk ${ind.indv?'':'wide'}"><div class="blk-h"><h4>Ojo con</h4></div><div class="notes">${ind.notes.map(([l,x])=>`<div class="note"><span class="lvl ${l}">${L[l]}</span><span>${esc(x)}</span></div>`).join('')}</div></section>`;}
   document.getElementById('cols').innerHTML=html;
   const[d,a]=prog(ind);
   document.getElementById('bar').style.width=(a?d/a*100:0)+'%';
-  document.getElementById('meter-txt').textContent=d+' / '+a+' obligatorios';
+  document.getElementById('meter-txt').innerHTML='<b>'+d+'</b> de '+a+' obligatorios';
   document.getElementById('fu-list').innerHTML=t.fu.map(x=>`<li>${x}</li>`).join('');
   document.getElementById('foot').textContent='Las marcas se guardan sólo en este dispositivo. Ayuda de lectura: ante duda, rige el texto vigente en fnr.gub.uy. Fuente de esta sección: '+t.src+'.';
 }
+
 document.addEventListener('click',e=>{
+  if(e.target.closest('#pbar-switch')){leavePatient();return;}
+  if(!CURRENT)return;
   const tb=e.target.closest('.tt');
-  if(tb){S.tumor=tb.dataset.t;save();render();try{history.replaceState(null,'','#'+S.tumor);}catch(_){}return;}
+  if(tb){P().tumor=tb.dataset.t;P().updatedAt=Date.now();saveStore();renderApp();return;}
   const b=e.target.closest('.chip');
-  if(b){S.sel[S.tumor]=b.dataset.id;save();render();try{history.replaceState(null,'','#'+b.dataset.id);}catch(_){}}
+  if(b){P().sel[P().tumor]=b.dataset.id;P().updatedAt=Date.now();saveStore();renderApp();}
 });
 document.getElementById('cols').addEventListener('change',e=>{
-  const k=e.target.dataset.k;if(!k)return;const ind=cur();
-  (S.checks[ind.id]=S.checks[ind.id]||{})[k]=e.target.checked;save();
-  const y=window.scrollY;render();window.scrollTo(0,y);
+  const k=e.target.dataset.k;if(!k||!CURRENT)return;const ind=curInd();
+  (P().checks[ind.id]=P().checks[ind.id]||{})[k]=e.target.checked;P().updatedAt=Date.now();saveStore();
+  const y=window.scrollY;renderApp();window.scrollTo(0,y);
   const el=document.getElementById(ind.id+'__'+k);if(el)el.focus({preventScroll:true});
 });
-document.getElementById('reset').addEventListener('click',()=>{S.checks[cur().id]={};save();render();});
-render();
+document.getElementById('reset').addEventListener('click',()=>{if(!CURRENT)return;P().checks[curInd().id]={};P().updatedAt=Date.now();saveStore();renderApp();});
+
+/* botón / gesto "atrás" del celular: vuelve a la pantalla de pacientes en vez de cerrar la app */
+window.addEventListener('popstate',e=>{
+  const st=e.state;
+  if(st&&st.fnrPatient&&STORE.patients[st.fnrPatient]){openPatient(st.fnrPatient,true);}
+  else if(CURRENT){backToGate();}
+});
+try{history.replaceState({fnrGate:true},'');}catch(e){}
+renderGate();
 })();
 </script>
 
-<script>
-if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
-</script>
+<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js");}</script>
 </body>
 </html>
