@@ -33,7 +33,7 @@ img{max-width:100%}
 <style>
 :root{
   --bg:#F3F5F7; --surface:#FFFFFF; --sunk:#EEF1F4; --hover:#F5F7F9;
-  --ink:#1E2430; --ink-2:#4E5766; --ink-3:#8A929E;
+  --ink:#1E2430; --ink-2:#4E5766; --ink-3:#66707D;
   --line:#E5E8ED; --line-2:#CBD1D9;
   --brand:#35546E; --brand-s:#E4ECF2; --on-brand:#FFFFFF; --on-t:#FFFFFF;
   --shadow:0 1px 2px rgba(24,36,56,.04),0 8px 24px rgba(24,36,56,.05);
@@ -229,6 +229,53 @@ footer{font-size:.78rem;color:var(--ink-3);padding:0 4px;max-width:80ch}
   .actions{flex-basis:100%}
   .meter{min-width:0}
 }
+/* ---------- vista: requisitos / estadificación ---------- */
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:var(--sunk);border-radius:14px;padding:4px;max-width:460px}
+.seg button{appearance:none;border:none;background:transparent;color:var(--ink-2);font:600 .9rem var(--sans);min-height:40px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .15s,color .15s}
+.seg button:hover{color:var(--ink)}
+.seg button[aria-selected="true"]{background:var(--surface);color:var(--t);box-shadow:0 1px 3px rgba(24,36,56,.12)}
+.seg .sb{font:500 .74rem var(--mono);padding:1px 7px;border-radius:99px;background:var(--t-s);color:var(--t)}
+.pstage{font:500 .72rem var(--mono);padding:1px 7px;border-radius:99px;background:var(--tcs);color:var(--tc);margin-left:6px}
+
+.tnm{display:grid;grid-template-columns:1fr;gap:16px;align-items:start}
+@media(min-width:860px){.tnm{grid-template-columns:300px 1fr}.stage{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px)}}
+.stage{padding:20px;display:flex;flex-direction:column;gap:6px;border-top:4px solid var(--t)}
+.st-lbl{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-3)}
+.st-val{font:500 3.4rem/1 var(--display);letter-spacing:-.03em;color:var(--t);font-variant-numeric:tabular-nums}
+.st-val.none{font-size:1.15rem;line-height:1.35;letter-spacing:0;color:var(--ink-2)}
+.st-code{font:500 .95rem var(--mono);color:var(--ink);background:var(--sunk);border-radius:8px;padding:6px 10px;margin-top:6px;word-break:break-word}
+.st-ed{font-size:.8rem;color:var(--ink-3)}
+.st-note{font-size:.86rem;color:var(--ink-2);line-height:1.45}
+.st-act{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.st-act .btn.primary{background:var(--t);border-color:var(--t);color:var(--on-t)}
+.st-act .btn.primary:hover{filter:brightness(1.08)}
+.axes{display:flex;flex-direction:column;gap:14px;min-width:0}
+fieldset.axis{margin:0;padding:14px 14px 10px;min-width:0}
+fieldset.axis legend{float:left;width:100%;display:flex;align-items:center;gap:10px;padding:0 4px 10px;font:500 .98rem var(--display);color:var(--ink)}
+fieldset.axis legend .count{margin-left:auto;font:500 .78rem var(--mono);color:var(--t);background:var(--t-s);padding:2px 9px;border-radius:99px}
+.opts{clear:both;display:flex;flex-direction:column}
+.opt{appearance:none;border:none;background:transparent;text-align:left;color:var(--ink);display:grid;grid-template-columns:62px 1fr;gap:12px;align-items:baseline;padding:10px 8px;border-radius:10px;cursor:pointer;font:inherit;transition:background .12s}
+.opt + .opt{border-top:1px solid var(--line)}
+.opt:hover{background:var(--hover)}
+.opt code{font:500 .9rem var(--mono);color:var(--ink-2)}
+.opt span{font-size:.92rem;line-height:1.4}
+.opt[aria-pressed="true"]{background:var(--t-s)}
+.opt[aria-pressed="true"] code{color:var(--t);font-weight:600}
+.opt:focus-visible{outline:2px solid var(--brand);outline-offset:-2px}
+.tnm-notes{padding:14px 18px}
+.tnm-notes h4{margin:0 0 8px;font:500 .98rem var(--display)}
+.tnm-notes ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:.88rem;color:var(--ink-2)}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 20px);transform:translateX(-50%);background:var(--ink);color:var(--bg);font-size:.86rem;font-weight:500;padding:10px 16px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.2);z-index:10;max-width:calc(100% - 32px)}
+.btn,.pbar button{min-height:40px}
+@media(max-width:859px){
+  .stage{position:sticky;top:env(safe-area-inset-top,0px);z-index:2;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;row-gap:8px;align-items:center;padding:12px 14px;box-shadow:0 6px 18px rgba(24,36,56,.12)}
+  .st-lbl,.st-ed,.st-note{display:none}
+  .st-val{font-size:2.1rem}
+  .st-val.none{font-size:.92rem;grid-column:1/-1}
+  .st-code{margin-top:0;font-size:.8rem;justify-self:start}
+  .st-act{grid-column:1/-1;margin-top:0}
+  .st-act .btn{min-height:36px;padding:4px 12px}
+}
 @media (prefers-reduced-motion: reduce){*{transition:none!important}}
 </style>
 
@@ -258,6 +305,12 @@ footer{font-size:.78rem;color:var(--ink-3);padding:0 4px;max-width:80ch}
   </header>
   <nav class="tumors" id="tumors" aria-label="Tumor"></nav>
   <div class="band" id="band"></div>
+  <div class="seg" id="seg" role="tablist" aria-label="Sección">
+    <button type="button" role="tab" id="tab-fnr" data-view="fnr" aria-controls="v-fnr">Requisitos FNR</button>
+    <button type="button" role="tab" id="tab-tnm" data-view="tnm" aria-controls="v-tnm">Estadificación TNM</button>
+  </div>
+  <div class="tnm" id="v-tnm" role="tabpanel" aria-labelledby="tab-tnm" hidden></div>
+  <div id="v-fnr" role="tabpanel" aria-labelledby="tab-fnr" style="display:contents">
   <nav class="picker" id="picker" aria-label="Indicación"></nav>
   <div class="ihead card">
     <div class="ihead-top">
@@ -271,9 +324,12 @@ footer{font-size:.78rem;color:var(--ink-3);padding:0 4px;max-width:80ch}
   </div>
   <div class="cols" id="cols"></div>
   <details class="fu card" id="fu"><summary>Después de autorizado: seguimiento</summary><ul id="fu-list"></ul></details>
+  </div>
+  <div class="toast" id="toast" role="status" hidden></div>
   <footer id="foot"></footer>
 </div>
 
+<script src="data-tnm.js"></script>
 <script>
 (function(){
 const CHECK='<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.2l2.6 2.6L10 3.4" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -308,7 +364,7 @@ const RETRAT='Completó 35 ciclos de pembrolizumab sin progresión y progresa �
 /* ---------- TUMORES ---------- */
 const TUMORS=[
 /* ======================= MAMA ======================= */
-{id:'mama',name:'Mama',sub:'8 indicaciones',src:'Normativa FNR · actualización agosto 2024',
+{id:'mama',name:'Mama',sub:'11 indicaciones',src:'Normativa FNR · actualización agosto 2024',
  drugs:'Trastuzumab, pertuzumab, T-DM1, lapatinib, fulvestrant, ribociclib, pembrolizumab',
  groups:[['op','Operable'],['av','Avanzado']],
  para:[
@@ -585,7 +641,9 @@ const TUMORS=[
 const SKEY='fnr-onco-patients-v1';
 let STORE={patients:{}};
 try{const s=JSON.parse(localStorage.getItem(SKEY)||'null'); if(s&&s.patients) STORE=s;}catch(e){}
-function saveStore(){try{localStorage.setItem(SKEY,JSON.stringify(STORE));}catch(e){}}
+function saveStore(){try{localStorage.setItem(SKEY,JSON.stringify(STORE));}catch(e){toast('No se pudo guardar en este dispositivo: revisá el espacio libre o el modo privado.');}}
+let toastT=null;
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>{el.hidden=true;},3200);}
 let CURRENT=null;
 let armDelete=null;
 
@@ -634,7 +692,7 @@ function patientSummary(p){
   const c=p.checks[ind.id]||{};
   const ks=keysFor(ind);
   const d=ks.filter(k=>doneFor(ind,c,k)).length;
-  return {tumorId:t.id,tumorName:t.name,indChip:ind.chip,d,total:ks.length};
+  return {tumorId:t.id,tumorName:t.name,indChip:ind.chip,d,total:ks.length,stage:tnmStage(t.id,(p.tnm||{})[t.id]).stage};
 }
 function renderGate(){
   const rows=Object.entries(STORE.patients).sort((a,b)=>b[1].updatedAt-a[1].updatedAt);
@@ -647,7 +705,7 @@ function renderGate(){
     const pct=s.total?Math.round(s.d/s.total*100):0;
     return `<div class="prow" data-id="${esc(id)}" data-c="${s.tumorId}" tabindex="0">
       <span class="pdot"></span>
-      <div class="pinfo"><span class="pid">${esc(id)}</span><span class="pmeta">${esc(s.tumorName)} · ${esc(s.indChip)} · ${s.d}/${s.total}</span><span class="pmini"><i style="width:${pct}%"></i></span></div>
+      <div class="pinfo"><span class="pid">${esc(id)}${s.stage?`<span class="pstage">${esc(s.stage)}</span>`:''}</span><span class="pmeta">${esc(s.tumorName)} · ${esc(s.indChip)} · ${s.d}/${s.total}</span><span class="pmini"><i style="width:${pct}%"></i></span></div>
       <div class="pside"><span class="pdate">${when}</span><button type="button" class="pdel ${armDelete===id?'arm':''}" data-del="${esc(id)}">${armDelete===id?'¿Eliminar?':'Eliminar'}</button></div>
     </div>`;
   }).join('')+'</div>';
@@ -688,11 +746,40 @@ document.getElementById('plist').addEventListener('click',e=>{
 });
 
 /* ---------- app (ficha del paciente actual) ---------- */
-const tumorObj=()=>TUMORS.find(t=>t.id===P().tumor);
+const tumorObj=()=>TUMORS.find(t=>t.id===P().tumor)||TUMORS[0];
 const curInd=()=>{const t=tumorObj();const id=P().sel[t.id];return t.inds.find(i=>i.id===id)||t.inds[0];};
 
+/* ---------- estadificación TNM ---------- */
+const TNM=window.TNM_DATA||{};
+function tnmStage(tid,sel){const d=TNM[tid];if(!d)return {stage:null,note:'Sin tabla TNM para este tumor.'};try{return d.stage(sel||{});}catch(e){return {stage:null,note:'No se pudo calcular.'};}}
+function tnmCode(d,sel){return d.axes.filter(a=>sel[a.key]).map(a=>a.key==='PSA'?'PSA '+a.options.find(o=>o.v===sel.PSA).d.replace(/^PSA\s*/,''):a.key==='GG'?'Grupo de grado '+sel.GG.replace('GG',''):a.key==='FIGO'?'FIGO '+sel.FIGO:a.key==='N'&&d.id==='ccu'?'Ganglios: '+(sel.N==='N0'?'negativos':sel.N):sel[a.key]).join(' · ');}
+function tnmSel(){const p=P();p.tnm=p.tnm||{};return p.tnm[p.tumor]=p.tnm[p.tumor]||{};}
+function renderTnm(t){
+  const d=TNM[t.id],box=document.getElementById('v-tnm');
+  if(!d){box.innerHTML='<p class="gate-empty">No hay tabla de estadificación para este tumor.</p>';return;}
+  const sel=tnmSel(),r=tnmStage(t.id,sel),code=tnmCode(d,sel);
+  box.innerHTML=`<aside class="stage card" aria-live="polite">
+    <span class="st-lbl">Estadio</span>
+    <div class="st-val ${r.stage?'':'none'}">${r.stage?esc(r.stage):esc(r.note||'Elegí las categorías')}</div>
+    ${code?`<div class="st-code">${esc(code)}</div>`:''}
+    <div class="st-ed">${esc(d.edition)}</div>
+    ${r.stage&&r.note?`<div class="st-note">${esc(r.note)}</div>`:''}
+    <div class="st-act"><button type="button" class="btn primary" id="tnm-copy" ${r.stage?'':'disabled'}>Copiar resumen</button><button type="button" class="btn" id="tnm-clear">Limpiar</button></div>
+  </aside>
+  <div class="axes">${d.axes.map(a=>`<fieldset class="axis card"><legend>${esc(a.label)}${sel[a.key]?`<span class="count">${esc(sel[a.key]==='N0'&&d.id==='ccu'?'N0':(a.options.find(o=>o.v===sel[a.key])||{v:''}).v.replace(/^GG/,'GG ').replace(/^lt10$/,'< 10').replace(/^10a20$/,'10–20').replace(/^ge20$/,'≥ 20'))}</span>`:''}</legend>
+    <div class="opts">${a.options.map(o=>`<button type="button" class="opt" data-ax="${esc(a.key)}" data-v="${esc(o.v)}" aria-pressed="${sel[a.key]===o.v}"><code>${esc(o.v.replace(/^GG/,'GG ').replace(/^lt10$/,'< 10').replace(/^10a20$/,'10–20').replace(/^ge20$/,'≥ 20'))}</code><span>${esc(o.d)}</span></button>`).join('')}</div></fieldset>`).join('')}
+    <section class="tnm-notes card"><h4>Para tener en cuenta</h4><ul>${d.notes.map(n=>`<li>${esc(n)}</li>`).join('')}<li>Fuente: ${esc(d.source)}. Descripciones resumidas; ante duda, rige la tabla oficial.</li></ul></section>
+  </div>`;
+}
 function renderApp(){
   const t=tumorObj(),ind=curInd();
+  const view=P().view==='tnm'?'tnm':'fnr';
+  document.querySelectorAll('#seg button').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.view===view)));
+  const st=tnmStage(t.id,(P().tnm||{})[t.id]).stage;
+  document.getElementById('tab-tnm').innerHTML='Estadificación TNM'+(st?` <span class="sb">${esc(st)}</span>`:'');
+  document.getElementById('v-tnm').hidden=view!=='tnm';
+  document.getElementById('v-fnr').hidden=view!=='fnr';
+  if(view==='tnm')renderTnm(t);
   document.getElementById('app').dataset.tumor=t.id;
   document.getElementById('pbar').innerHTML=`<span class="plabel">Paciente</span><b>${esc(CURRENT)}</b><button type="button" id="pbar-switch">Cambiar paciente</button>`;
   document.getElementById('tumors').innerHTML=TUMORS.map(x=>{
@@ -702,7 +789,7 @@ function renderApp(){
   document.getElementById('picker').innerHTML=t.groups.map(([g,l])=>{
     const cs=t.inds.filter(i=>i.g===g).map(i=>{const[d,a]=prog(i);
       return `<button type="button" class="chip" data-id="${i.id}" aria-pressed="${i.id===ind.id}"><span>${esc(i.chip)}${d===a?`<span class="done" title="Completo">${CHECK}</span>`:''}</span><small>${esc(i.sub)}</small></button>`;}).join('');
-    return `<div class="grp-label">${esc(l)}</div><div class="chips">${cs}</div>`;}).join('');
+    return `<div class="grp-label" id="grp-${esc(t.id)}-${esc(g)}">${esc(l)}</div><div class="chips" role="group" aria-labelledby="grp-${esc(t.id)}-${esc(g)}">${cs}</div>`;}).join('');
   document.getElementById('i-title').textContent=ind.title;
   document.getElementById('i-setting').textContent=ind.setting;
   document.getElementById('i-proto').innerHTML=ind.proto.map(([k,v])=>`<div><span class="k">${esc(k)} ·</span> ${esc(v)}</div>`).join('');
@@ -738,6 +825,19 @@ document.addEventListener('click',e=>{
   if(!CURRENT)return;
   const tb=e.target.closest('.tt');
   if(tb){P().tumor=tb.dataset.t;P().updatedAt=Date.now();saveStore();renderApp();return;}
+  const sv=e.target.closest('#seg button');
+  if(sv){P().view=sv.dataset.view;saveStore();renderApp();return;}
+  const op=e.target.closest('.opt');
+  if(op){const sel=tnmSel();sel[op.dataset.ax]=sel[op.dataset.ax]===op.dataset.v?undefined:op.dataset.v;P().updatedAt=Date.now();saveStore();
+    const y=window.scrollY;renderApp();window.scrollTo(0,y);
+    const el=document.querySelector(`.opt[data-ax="${op.dataset.ax}"][data-v="${op.dataset.v}"]`);if(el)el.focus({preventScroll:true});return;}
+  if(e.target.closest('#tnm-clear')){P().tnm[P().tumor]={};saveStore();renderApp();return;}
+  if(e.target.closest('#tnm-copy')){
+    const t=tumorObj(),d=TNM[t.id],sel=tnmSel(),r=tnmStage(t.id,sel);
+    const txt=`${d.name} · ${tnmCode(d,sel)} · Estadio ${r.stage} (${d.edition})`;
+    const done=()=>toast('Resumen copiado');
+    try{navigator.clipboard.writeText(txt).then(done,()=>toast(txt));}catch(err){toast(txt);}
+    return;}
   const b=e.target.closest('.chip');
   if(b){P().sel[P().tumor]=b.dataset.id;P().updatedAt=Date.now();saveStore();renderApp();}
 });
