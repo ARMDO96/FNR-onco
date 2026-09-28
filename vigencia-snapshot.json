@@ -1,0 +1,842 @@
+{
+ "version": 2,
+ "checked": "2026-09-28",
+ "sources": {
+  "fnr": {
+   "url": "https://www.fnr.gub.uy/normativas-2/",
+   "docs": [
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/07/n_cardiodesfibrilador.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/07/n_cat_terapeutico.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/07/n_cateterismo_congenito.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/07/n_cateterismo_derecho.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/07/n_circard_cong.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/07/n_circardiaca.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/07/n_dialisis.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/07/n_icoclear.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/07/n_marcapasos.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/07/n_pci.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/07/n_pet_scan.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/07/n_prot_cadera_adultos.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/07/n_prot_cadera_fractura.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/07/n_prot_rodilla.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/07/n_quemados.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/07/n_tmo.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/07/n_tras_cardiaco.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/07/n_tras_hepatico.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/07/n_trat_cancolorectal.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/07/n_trat_canpulmon.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/07/n_trat_escmultiple.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/07/n_trat_fibrosis_quistica.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/07/n_trat_hipertension_pulmonar.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/08/n_trat_canrenal.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/08/n_trat_cmv.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/08/n_trat_enf_crohn.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/08/n_trat_espydist.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/08/n_trat_farma_tabaq.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/08/n_trat_hepatitisc.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/08/n_trat_iam.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/08/n_trat_leucemias.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/08/n_trat_mmultiple.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/08/n_trat_tricoleucemia.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/08/n_trat_tumores_snc.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2012/08/n_trat_vrs.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/03/n_trat_espondilo.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/03/n_trat_llc.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/05/n_aspectos_admin_am_y_disp.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/05/n_aspectos_admin_medicamentos.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/05/n_bomba_insulina.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/05/n_epilepsia_refractaria.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/05/n_prog_cirugia_fetal.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/05/n_prog_neuromodulacion.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/05/n_trat_ame.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/05/n_trat_apmedular.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/05/n_trat_asma_severo.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/05/n_trat_canhigado.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/05/n_trat_canprostata.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/05/n_trat_colitis_ulcerosa.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/05/n_trat_fabry.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/05/n_trat_gist.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/05/n_trat_hiv.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/05/n_trat_hunter.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/05/n_trat_leucemia_aguda_linfoblastica.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/05/n_trat_lnh.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/05/n_trat_neoplasias_mielodisplasicas_lam.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/05/n_trat_psoriasis_sev.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/05/n_trat_trombocitopenia_inmune_primaria.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/05/n_trat_vasculitis_anca_asoc.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/05/n_trombectomia_mecanica_acv.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2014/05/ord770_tratamiento_endovascular.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2015/04/n_reproduccion_alta.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2018/01/n_trat_aij.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2022/12/n_trat_areumatoidea.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2022/12/n_trat_canmama.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2023/03/n_tavi.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2023/06/n_trat_hemofilia_a.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2023/11/n_trenal_adultos.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2024/01/n_trat_dermatitis_atopica.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2024/04/criterios-autorizacion-diabetes.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2024/06/n_trat_uniipp.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2024/08/anexo1_cobertura_mcg_ppi.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2024/09/n_trat_cancabeza_cuello.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2024/09/n_trat_melanoma.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2024/10/n_trat_cancuello_uterino.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2024/10/n_trat_canovario.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2025/01/n_cir_transoral_laser.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2025/01/n_endovascular_mav_ac.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2026/05/n_trat_gaucher.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2026/09/n_trat_fibrosis_pulmonar.pdf",
+    "https://www.fnr.gub.uy/wp-content/uploads/2026/09/n_trat_lh.pdf"
+   ]
+  },
+  "ftm": {
+   "url": "https://www.gub.uy/ministerio-salud-publica/formulario-terapeutico-de-medicamentos-FTM",
+   "docs": []
+  },
+  "pautas": {
+   "url": "https://oncologiamedica.hc.edu.uy/publicaciones/pautas-de-oncologia-medica-para-el-diagnostico-tratamiento-sistemico-y-seguimiento/",
+   "docs": [
+    "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   ]
+  },
+  "fda": {
+   "url": "https://www.fda.gov/drugs/resources-information-approved-drugs/oncology-cancer-hematologic-malignancies-approval-notifications",
+   "items": [
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-belzutifan-combination-lenvatinib-advanced-renal-cell-carcinoma-clear-cell-component",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-lirafugratinib-previously-treated-unresectable-locally-advanced-or-metastatic",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-imlunestrant-combination-abemaciclib-er-positive-her2-negative-esr1-mutated-advanced-or",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-sevabertinib-locally-advanced-or-metastatic-non-squamous-non-small",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-camizestrant-cdk46-inhibitor-esr1-mutated-hr-positive-her2-negative",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-daraxonrasib-metastatic-pancreatic-adenocarcinoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-zanidatamab-hrii-and-tislelizumab-jsgr-her2-positive-gastric-gastroesophageal-junction",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-iberdomide-daratumumab-and-hyaluronidase-fihj-and-dexamethasone",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-vusolimogene-oderparepvec-wtpg-combination-nivolumab-melanoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-lutetium-lu-177-vipivotide-tetraxetan-androgen-receptor-pathway-inhibitor-therapy",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-zidesamtinib-ros1-positive-non-small-cell-lung-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-gedatolisib-fulvestrant-or-without-palbociclib-hr-positive-her2-negative-locally",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-traditional-approval-selpercatinib-locally-advanced-or-metastatic-ret-fusion-positive",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-pembrolizumab-or-pembrolizumab-and-berahyaluronidase-alfa-pmph-each-enfortumab-vedotin",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-isatuximab-irfc-subcutaneous-injection-multiple-myeloma-indications",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-allogeneic-regulatory-t-cell-based-immunotherapy-hspc-and-t-cells-vldq-use-matched",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-sacituzumab-govitecan-hziy-monotherapy-and-combination-pembrolizumab-first-line",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-palbociclib-trastuzumab-or-without-pertuzumab-and-endocrine-therapy-maintenance",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-capivasertib-abiraterone-and-prednisone-pten-deficient-androgen-pathway-modulation",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-belzutifan-pembrolizumab-adjuvant-treatment-renal-cell-carcinoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-durvalumab-combination-bacillus-calmette-guerin-high-risk-non-muscle-invasive-bladder",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-pivekimab-sunirine-pvzy-blastic-plasmacytoid-dendritic-cell-neoplasm-ultra-rare",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-datopotamab-deruxtecan-dlnk-unresectable-or-metastatic-triple-negative-breast-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-two-separate-indications-fam-trastuzumab-deruxtecan-nxki-her2-positive-early-stage",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-atezolizumab-adjuvant-treatment-muscle-invasive-bladder-cancer-patients-molecular",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-oral-combination-decitabine-and-cedazuridine-tablets-venetoclax-newly-diagnosed-acute",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-sonrotoclax-relapsed-or-refractory-mantle-cell-lymphoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-zenocutuzumab-zbco-advanced-unresectable-or-metastatic-cholangiocarcinoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-vepdegestrant-er-positive-her2-negative-esr1-mutated-advanced-or-metastatic-breast",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-relacorilant-nab-paclitaxel-platinum-resistant-epithelial-ovarian-fallopian-tube-or",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-nivolumab-chemotherapy-previously-untreated-hodgkin-lymphoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-teclistamab-combination-daratumumab-hyaluronidase-fihj-relapsed-or-refractory-multiple",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-zongertinib-unresectable-or-metastatic-non-squamous-non-small-cell",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-traditional-approval-encorafenib-metastatic-colorectal-cancer-braf-v600e-mutation",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-acalabrutinib-venetoclax-chronic-lymphocytic-leukemia-or-small-lymphocytic-lymphoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-pembrolizumab-paclitaxel-platinum-resistant-epithelial-ovarian-fallopian-tube-or",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-daratumumab-and-hyaluronidase-fihj-bortezomib-lenalidomide-and-dexamethasone-newly",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-amivantamab-and-hyaluronidase-lpuj-subcutaneous-injection",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-regular-approval-rucaparib-metastatic-castration-resistant-prostate-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-niraparib-and-abiraterone-acetate-plus-prednisone-brca2-mutated-metastatic-castration",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-lisocabtagene-maraleucel-relapsed-or-refractory-marginal-zone-lymphoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-traditional-approval-pirtobrutinib-chronic-lymphocytic-leukemia-and-small-lymphocytic",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-durvalumab-resectable-gastric-or-gastroesophageal-junction-adenocarcinoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-pembrolizumab-enfortumab-vedotin-ejfv-muscle-invasive-bladder-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-traditional-approval-tarlatamab-dlle-extensive-stage-small-cell-lung-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-sevabertinib-non-squamous-non-small-cell-lung-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-traditional-approval-daratumumab-and-hyaluronidase-fihj-newly-diagnosed-light-chain",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-selumetinib-adults-neurofibromatosis-type-1-symptomatic-inoperable-plexiform",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-epcoritamab-bysp-follicular-lymphoma-indications",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-new-interchangeable-biosimilar-perjeta",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-ziftomenib-relapsed-or-refractory-acute-myeloid-leukemia-npm1-mutation",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-daratumumab-and-hyaluronidase-fihj-high-risk-smoldering-multiple-myeloma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-revumenib-relapsed-or-refractory-acute-myeloid-leukemia-susceptible-npm1-mutation",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-belantamab-mafodotin-blmf-relapsed-or-refractory-multiple-myeloma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-cemiplimab-rwlc-adjuvant-treatment-cutaneous-squamous-cell-carcinoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-lurbinectedin-combination-atezolizumab-or-atezolizumab-and-hyaluronidase-tqjs-extensive",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-imlunestrant-er-positive-her2-negative-esr1-mutated-advanced-or-metastatic-breast",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-pembrolizumab-and-berahyaluronidase-alfa-pmph-subcutaneous-injection",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-selumetinib-pediatric-patients-1-year-age-and-older-neurofibromatosis-type-1",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-gemcitabine-intravesical-system-non-muscle-invasive-bladder-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-zongertinib-non-squamous-nsclc-her2-tkd-activating-mutations",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-dordaviprone-diffuse-midline-glioma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-sunvozertinib-metastatic-non-small-cell-lung-cancer-egfr-exon-20",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-linvoseltamab-gcpt-relapsed-or-refractory-multiple-myeloma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-datopotamab-deruxtecan-dlnk-egfr-mutated-non-small-cell-lung-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-tafasitamab-cxix-relapsed-or-refractory-follicular-lymphoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-neoadjuvant-and-adjuvant-pembrolizumab-resectable-locally-advanced-head-and-neck",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-mitomycin-intravesical-solution-recurrent-low-grade-intermediate-risk-non-muscle",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-taletrectinib-ros1-positive-non-small-cell-lung-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-darolutamide-metastatic-castration-sensitive-prostate-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-retifanlimab-dlwr-carboplatin-and-paclitaxel-and-single-agent-squamous-cell-carcinoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-telisotuzumab-vedotin-tllv-nsclc-high-c-met-protein-overexpression",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-belzutifan-pheochromocytoma-or-paraganglioma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-combination-avutometinib-and-defactinib-kras-mutated-recurrent-low",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-penpulimab-kcqx-non-keratinizing-nasopharyngeal-carcinoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-nivolumab-ipilimumab-unresectable-or-metastatic-hepatocellular-carcinoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-nivolumab-ipilimumab-unresectable-or-metastatic-msi-h-or-dmmr-colorectal-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-durvalumab-muscle-invasive-bladder-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-expands-pluvictos-metastatic-castration-resistant-prostate-cancer-indication",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-cabozantinib-adults-and-pediatric-patients-12-years-age-and-older-pnet-and-epnet",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-pembrolizumab-her2-positive-gastric-or-gastroesophageal-junction-adenocarcinoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-vimseltinib-symptomatic-tenosynovial-giant-cell-tumor",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-brentuximab-vedotin-lenalidomide-and-rituximab-relapsed-or-refractory-large-b-cell",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-mirdametinib-adult-and-pediatric-patients-neurofibromatosis-type-1-who-have-symptomatic",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-treosulfan-fludarabine-preparative-regimen-allohsct-adult-and-pediatric-patients-aml-or",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-fam-trastuzumab-deruxtecan-nxki-unresectable-or-metastatic-hr-positive-her2-low-or-her2",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-datopotamab-deruxtecan-dlnk-unresectable-or-metastatic-hr-positive-her2-negative-breast",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-sotorasib-panitumumab-kras-g12c-mutated-colorectal-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-acalabrutinib-bendamustine-and-rituximab-previously-untreated-mantle-cell-lymphoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-nivolumab-and-hyaluronidase-nvhy-subcutaneous-injection",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-encorafenib-cetuximab-and-mfolfox6-metastatic-colorectal-cancer-braf",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-remestemcel-l-rknd-steroid-refractory-acute-graft-versus-host-disease-pediatric",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-ensartinib-alk-positive-locally-advanced-or-metastatic-non-small-cell-lung-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-cosibelimab-ipdl-metastatic-or-locally-advanced-cutaneous-squamous-cell-carcinoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-durvalumab-limited-stage-small-cell-lung-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-zenocutuzumab-zbco-non-small-cell-lung-cancer-and-pancreatic",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-zanidatamab-hrii-previously-treated-unresectable-or-metastatic-her2",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-updated-drug-labeling-fludarabine-phosphate-under-project-renewal",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-revumenib-relapsed-or-refractory-acute-leukemia-kmt2a-translocation",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-obecabtagene-autoleucel-adults-relapsed-or-refractory-b-cell-precursor-acute",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-asciminib-newly-diagnosed-chronic-myeloid-leukemia",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-zolbetuximab-clzb-chemotherapy-gastric-or-gastroesophageal-junction-adenocarcinoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-inavolisib-palbociclib-and-fulvestrant-endocrine-resistant-pik3ca-mutated-hr-positive",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-neoadjuvantadjuvant-nivolumab-resectable-non-small-cell-lung-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-selpercatinib-medullary-thyroid-cancer-ret-mutation",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-osimertinib-locally-advanced-unresectable-stage-iii-non-small-cell-lung-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-isatuximab-irfc-bortezomib-lenalidomide-and-dexamethasone-newly-diagnosed-multiple",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-amivantamab-vmjw-carboplatin-and-pemetrexed-non-small-cell-lung-cancer-egfr-exon-19",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-pembrolizumab-chemotherapy-unresectable-advanced-or-metastatic-malignant-pleural",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-kisqali-aromatase-inhibitor-and-kisqali-femara-co-pack-early-high-risk-breast-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-atezolizumab-and-hyaluronidase-tqjs-subcutaneous-injection",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-lazertinib-amivantamab-vmjw-non-small-lung-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-neoadjuvantadjuvant-durvalumab-resectable-non-small-cell-lung-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-axatilimab-csfr-chronic-graft-versus-host-disease",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-vorasidenib-grade-2-astrocytoma-or-oligodendroglioma-susceptible-idh1-or-idh2-mutation",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-afamitresgene-autoleucel-unresectable-or-metastatic-synovial-sarcoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-expands-endometrial-cancer-indication-dostarlimab-gxly-chemotherapy",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-daratumumab-and-hyaluronidase-fihj-bortezomib-lenalidomide-and-dexamethasone-multiple",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-epcoritamab-bysp-relapsed-or-refractory-follicular-lymphoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-adagrasib-cetuximab-kras-g12c-mutated-colorectal-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-pembrolizumab-chemotherapy-primary-advanced-or-recurrent-endometrial-carcinoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-blinatumomab-consolidation-cd19-positive-philadelphia-chromosome-negative-b-cell",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-durvalumab-chemotherapy-mismatch-repair-deficient-primary-advanced-or-recurrent",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-repotrectinib-adult-and-pediatric-patients-ntrk-gene-fusion-positive",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-selpercatinib-ret-fusion-positive-thyroid-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-imetelstat-low-intermediate-1-risk-myelodysplastic-syndromes-transfusion-dependent",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-lisocabtagene-maraleucel-relapsed-or-refractory-mantle-cell-lymphoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-selpercatinib-pediatric-patients-two-years-and-older-ret-altered",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-tarlatamab-dlle-extensive-stage-small-cell-lung-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-lisocabtagene-maraleucel-follicular-lymphoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-tisotumab-vedotin-tftv-recurrent-or-metastatic-cervical-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-tovorafenib-patients-relapsed-or-refractory-braf-altered-pediatric",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-lutetium-lu-177-dotatate-pediatric-patients-12-years-and-older-gep-nets",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-nogapendekin-alfa-inbakicept-pmln-bcg-unresponsive-non-muscle-invasive-bladder-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-alectinib-adjuvant-treatment-alk-positive-non-small-cell-lung-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-fam-trastuzumab-deruxtecan-nxki-unresectable-or-metastatic-her2",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-mirvetuximab-soravtansine-gynx-fra-positive-platinum-resistant-epithelial-ovarian",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-safety-labeling-changes-regarding-dpd-deficiency-fluorouracil-injection-products",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-ponatinib-chemotherapy-newly-diagnosed-philadelphia-chromosome",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-zanubrutinib-relapsed-or-refractory-follicular-lymphoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-nivolumab-combination-cisplatin-and-gemcitabine-unresectable-or-metastatic-urothelial",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-inotuzumab-ozogamicin-pediatric-patients-acute-lymphoblastic-leukemia",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-amivantamab-vmjw-egfr-exon-20-insertion-mutated-non-small-cell-lung-cancer-indications",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-osimertinib-chemotherapy-egfr-mutated-non-small-cell-lung-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-lifileucel-unresectable-or-metastatic-melanoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-tepotinib-metastatic-non-small-cell-lung-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-irinotecan-liposome-first-line-treatment-metastatic-pancreatic-adenocarcinoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-erdafitinib-locally-advanced-or-metastatic-urothelial-carcinoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-pembrolizumab-chemoradiotherapy-figo-2014-stage-iii-iva-cervical-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-enfortumab-vedotin-ejfv-pembrolizumab-locally-advanced-or-metastatic-urothelial-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-belzutifan-advanced-renal-cell-carcinoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-eflornithine-adult-and-pediatric-patients-high-risk-neuroblastoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-pirtobrutinib-chronic-lymphocytic-leukemia-and-small-lymphocytic",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-nirogacestat-desmoid-tumors",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-enzalutamide-non-metastatic-castration-sensitive-prostate-cancer-biochemical-recurrence",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-capivasertib-fulvestrant-breast-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-pembrolizumab-chemotherapy-her2-negative-gastric-or-gastroesophageal-junction",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-repotrectinib-ros1-positive-non-small-cell-lung-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-fruquintinib-refractory-metastatic-colorectal-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-amends-pembrolizumabs-gastric-cancer-indication",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-pembrolizumab-chemotherapy-biliary-tract-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-toripalimab-tpzi-nasopharyngeal-carcinoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-ivosidenib-myelodysplastic-syndromes",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-expands-pediatric-indication-entrectinib-and-approves-new-pellet-formulation",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-neoadjuvant-adjuvant-pembrolizumab-resectable-non-small-cell-lung-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-nivolumab-adjuvant-treatment-stage-iibc-melanoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-encorafenib-binimetinib-metastatic-non-small-cell-lung-cancer-braf-v600e-mutation",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-bosutinib-pediatric-patients-chronic-myelogenous-leukemia",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-new-and-updated-indications-temozolomide-under-project-renewal",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-melphalan-liver-directed-treatment-uveal-melanoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-elranatamab-bcmm-multiple-myeloma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-niraparib-and-abiraterone-acetate-plus-prednisone-brca-mutated-metastatic-castration",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-talquetamab-tgvs-relapsed-or-refractory-multiple-myeloma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-polatuzumab-vedotin-piiq-previously-untreated-diffuse-large-b-cell-lymphoma-not",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-omidubicel-reduce-time-neutrophil-recovery-and-infection-patients-hematologic",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-enfortumab-vedotin-ejfv-pembrolizumab-locally-advanced-or-metastatic",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-retifanlimab-dlwr-metastatic-or-recurrent-locally-advanced-merkel",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-dabrafenib-trametinib-pediatric-patients-low-grade-glioma-braf-v600e-mutation",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-expands-early-breast-cancer-indication-abemaciclib-endocrine-therapy",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-regular-approval-dostarlimab-gxly-dmmr-endometrial-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-sacituzumab-govitecan-hziy-hr-positive-breast-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-elacestrant-er-positive-her2-negative-esr1-mutated-advanced-or-metastatic-breast-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-pirtobrutinib-relapsed-or-refractory-mantle-cell-lymphoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-pembrolizumab-adjuvant-treatment-non-small-cell-lung-cancer",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-zanubrutinib-chronic-lymphocytic-leukemia-or-small-lymphocytic-lymphoma",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-tucatinib-trastuzumab-colorectal-cancer"
+   ]
+  },
+  "ema": {
+   "url": "https://www.ema.europa.eu/en/news-events/whats-new",
+   "items": []
+  },
+  "esmo": {
+   "url": "https://www.esmo.org/guidelines",
+   "items": []
+  }
+ },
+ "pautas": {
+  "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf",
+  "pdfs": [
+   "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+  ],
+  "analyzed": "2026-09-28",
+  "chapters": [
+   {
+    "title": "Mama",
+    "tema": "Mama",
+    "tumor": "mama",
+    "pages": [
+     786,
+     786
+    ],
+    "hash": "c286ccd1a3500e86",
+    "drugs": [],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Páncreas",
+    "tema": "Páncreas",
+    "tumor": null,
+    "pages": [
+     312,
+     313
+    ],
+    "hash": "89b52e159d62abd4",
+    "drugs": [
+     "doxorrubicina",
+     "leucovorin",
+     "mitomicina"
+    ],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Tiroides",
+    "tema": "Tiroides",
+    "tumor": null,
+    "pages": [
+     4,
+     6
+    ],
+    "hash": "2712cc90c755d789",
+    "drugs": [],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Sistema nervioso central",
+    "tema": "Sistema nervioso central",
+    "tumor": null,
+    "pages": [
+     574,
+     615
+    ],
+    "hash": "f467330961406aa7",
+    "drugs": [
+     "bevacizumab",
+     "cabozantinib",
+     "carmustina",
+     "cisplatino",
+     "dabrafenib",
+     "doxorrubicina",
+     "erlotinib",
+     "irinotecan",
+     "lenvatinib",
+     "paclitaxel",
+     "sorafenib",
+     "trametinib",
+     "vandetanib",
+     "vorasidenib"
+    ],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Canal anal",
+    "tema": "Canal anal",
+    "tumor": null,
+    "pages": [
+     747,
+     753
+    ],
+    "hash": "9aea03472b6d30e3",
+    "drugs": [
+     "cisplatino",
+     "paclitaxel"
+    ],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Pulmón no microcítico",
+    "tema": "Pulmón no microcítico",
+    "tumor": "pulm",
+    "pages": [
+     168,
+     169
+    ],
+    "hash": "9c1dccd0f63e4510",
+    "drugs": [],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Riñón",
+    "tema": "Riñón",
+    "tumor": null,
+    "pages": [
+     706,
+     716
+    ],
+    "hash": "2544e29a3163cfdf",
+    "drugs": [
+     "zoledronico"
+    ],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Mesotelioma",
+    "tema": "Mesotelioma",
+    "tumor": null,
+    "pages": [
+     144,
+     150
+    ],
+    "hash": "a50c1fac34277c59",
+    "drugs": [
+     "bevacizumab",
+     "carboplatino",
+     "cisplatino",
+     "gemcitabine",
+     "ipilimumab",
+     "nivolumab",
+     "pemetrexed",
+     "vinorelbine"
+    ],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Cabeza y cuello",
+    "tema": "Cabeza y cuello",
+    "tumor": null,
+    "pages": [
+     638,
+     644
+    ],
+    "hash": "f1ba94d6e06672a8",
+    "drugs": [
+     "bevacizumab",
+     "imatinib",
+     "paclitaxel",
+     "rituximab"
+    ],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Esófago y estómago",
+    "tema": "Esófago y estómago",
+    "tumor": null,
+    "pages": [
+     717,
+     738
+    ],
+    "hash": "bc26250777eccc3b",
+    "drugs": [
+     "anastrozole",
+     "bevacizumab",
+     "capecitabine",
+     "carboplatino",
+     "ciclofosfamida",
+     "cisplatino",
+     "docetaxel",
+     "etoposido",
+     "everolimus",
+     "fluorouracilo",
+     "ifosfamida",
+     "lapatinib",
+     "letrozole",
+     "paclitaxel",
+     "pembrolizumab",
+     "pertuzumab",
+     "tamoxifeno",
+     "trastuzumab"
+    ],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Neuroendocrinos",
+    "tema": "Neuroendocrinos",
+    "tumor": null,
+    "pages": [
+     632,
+     637
+    ],
+    "hash": "a4896193f4c12b57",
+    "drugs": [
+     "carboplatino",
+     "cisplatino",
+     "etoposido",
+     "paclitaxel"
+    ],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Colon y recto",
+    "tema": "Colon y recto",
+    "tumor": "ccr",
+    "pages": [
+     261,
+     262
+    ],
+    "hash": "3d4cc68102a127bc",
+    "drugs": [
+     "capecitabine",
+     "cisplatino",
+     "mitomicina"
+    ],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Vías biliares",
+    "tema": "Vías biliares",
+    "tumor": null,
+    "pages": [
+     285,
+     294
+    ],
+    "hash": "6683725ea1bc08ab",
+    "drugs": [
+     "doxorrubicina",
+     "doxorubicin",
+     "doxorubicina"
+    ],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Hepatocarcinoma",
+    "tema": "Hepatocarcinoma",
+    "tumor": null,
+    "pages": [
+     616,
+     616
+    ],
+    "hash": "1fc7dbac0a68edee",
+    "drugs": [],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "GIST",
+    "tema": "GIST",
+    "tumor": null,
+    "pages": [
+     307,
+     311
+    ],
+    "hash": "5bad4a7a33485084",
+    "drugs": [
+     "imatinib",
+     "regorafenib",
+     "sunitinib"
+    ],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Endometrio",
+    "tema": "Endometrio",
+    "tumor": null,
+    "pages": [
+     314,
+     329
+    ],
+    "hash": "67b0e96f30d5d240",
+    "drugs": [
+     "atezolizumab",
+     "carboplatino",
+     "cisplatin",
+     "cisplatino",
+     "dostarlimab",
+     "doxorrubicina",
+     "doxorubicin",
+     "durvalumab",
+     "lenvatinib",
+     "megestrol",
+     "olaparib",
+     "paclitaxel",
+     "pembrolizumab",
+     "tamoxifeno"
+    ],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Cuello uterino",
+    "tema": "Cuello uterino",
+    "tumor": "ccu",
+    "pages": [
+     645,
+     660
+    ],
+    "hash": "bf66539a05c446ac",
+    "drugs": [
+     "cetuximab",
+     "erlotinib",
+     "gefitinib"
+    ],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Ovario",
+    "tema": "Ovario",
+    "tumor": null,
+    "pages": [
+     754,
+     756
+    ],
+    "hash": "2fdcb59721f45966",
+    "drugs": [],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Testículo",
+    "tema": "Testículo",
+    "tumor": null,
+    "pages": [
+     757,
+     773
+    ],
+    "hash": "57d382843579713b",
+    "drugs": [
+     "ciclofosfamida",
+     "cisplatino",
+     "docetaxel",
+     "epirrubicina",
+     "paclitaxel",
+     "rituximab",
+     "tamoxifeno",
+     "trastuzumab"
+    ],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Próstata",
+    "tema": "Próstata",
+    "tumor": "pros",
+    "pages": [
+     413,
+     450
+    ],
+    "hash": "c560544ab1adfc86",
+    "drugs": [
+     "abiraterona",
+     "apalutamida",
+     "atezolizumab",
+     "bicalutamida",
+     "cabazitaxel",
+     "ciclofosfamida",
+     "darolutamida",
+     "degarelix",
+     "denosumab",
+     "docetaxel",
+     "enzalutamida",
+     "enzalutamide",
+     "estramustina",
+     "etoposido",
+     "goserelina",
+     "leuprolide",
+     "niraparib",
+     "nirparib",
+     "olaparib",
+     "paclitaxel",
+     "pembrolizumab",
+     "radio-223",
+     "radium-223",
+     "rucaparib",
+     "talazoparib",
+     "vinorelbine",
+     "zoledronico"
+    ],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Vejiga y urotelio",
+    "tema": "Vejiga y urotelio",
+    "tumor": null,
+    "pages": [
+     777,
+     785
+    ],
+    "hash": "a6dc149862eff2d3",
+    "drugs": [
+     "capecitabina",
+     "carboplatino",
+     "ciclofosfamida",
+     "deruxtecan",
+     "doxorrubicina",
+     "epirrubicina",
+     "govitecan",
+     "idarrubicina",
+     "lapatinib",
+     "neratinib",
+     "paclitaxel",
+     "pertuzumab",
+     "sacituzumab",
+     "tamoxifeno",
+     "trastuzumab",
+     "tratuzumab"
+    ],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Pene",
+    "tema": "Pene",
+    "tumor": null,
+    "pages": [
+     627,
+     628
+    ],
+    "hash": "c606be20694d8529",
+    "drugs": [],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Vulva",
+    "tema": "Vulva",
+    "tumor": null,
+    "pages": [
+     489,
+     491
+    ],
+    "hash": "69149f76d4bb3fc2",
+    "drugs": [
+     "cetuximab",
+     "cisplatino",
+     "docetaxel",
+     "erlotinib",
+     "fluorouracilo",
+     "gefitinib",
+     "ifosfamida",
+     "irinotecan",
+     "paclitaxel"
+    ],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Melanoma",
+    "tema": "Melanoma",
+    "tumor": null,
+    "pages": [
+     624,
+     626
+    ],
+    "hash": "bfa84c3dc8405009",
+    "drugs": [],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Piel no melanoma",
+    "tema": "Piel no melanoma",
+    "tumor": null,
+    "pages": [
+     661,
+     705
+    ],
+    "hash": "f9cc601f04db9952",
+    "drugs": [
+     "axitinib",
+     "capecitabine",
+     "carboplatino",
+     "cetuximab",
+     "ciclofosfamida",
+     "cisplatino",
+     "docetaxel",
+     "erlotinib",
+     "etoposido",
+     "fluorouracilo",
+     "gefitinib",
+     "irinotecan",
+     "lapatinib",
+     "paclitaxel",
+     "pazopanib",
+     "sorafenib",
+     "sunitinib",
+     "trastuzumab",
+     "vinorelbine"
+    ],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Sarcomas",
+    "tema": "Sarcomas",
+    "tumor": null,
+    "pages": [
+     556,
+     573
+    ],
+    "hash": "563cefd8a39893c1",
+    "drugs": [
+     "ciclofosfamida",
+     "cisplatino",
+     "docetaxel",
+     "doxorrubicina",
+     "eribulina",
+     "etoposido",
+     "gemcitabine",
+     "ifosfamida",
+     "irinotecan",
+     "paclitaxel",
+     "pazopanib",
+     "topotecan",
+     "vinorelbine"
+    ],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Pulmón microcítico",
+    "tema": "Pulmón microcítico",
+    "tumor": null,
+    "pages": [
+     630,
+     631
+    ],
+    "hash": "5b32729c7d1b2bcd",
+    "drugs": [],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   },
+   {
+    "title": "Mama asociado al embarazo",
+    "tema": "Mama asociado al embarazo",
+    "tumor": null,
+    "pages": [
+     774,
+     776
+    ],
+    "hash": "06becbdd501acddc",
+    "drugs": [],
+    "pdf": "https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/02/PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf"
+   }
+  ]
+ },
+ "due": [
+  "ccr/colon-II-alto#0|d0327087|caducado",
+  "ccr/seguimiento-colon#1|c0184e6f|caducado",
+  "ccr/seguimiento-colon#2|8bbb6b2e|caducado"
+ ]
+}
