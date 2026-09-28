@@ -291,7 +291,9 @@
   },
   "ema": {
    "url": "https://www.ema.europa.eu/en/news-events/whats-new",
-   "items": []
+   "items": [
+    "https://www.ema.europa.eu/en/news/meeting-highlights-committee-medicinal-products-human-use-chmp-14-17-september-2026"
+   ]
   },
   "esmo": {
    "url": "https://www.esmo.org/guidelines",
