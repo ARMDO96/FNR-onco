@@ -1,6 +1,27 @@
 const CACHE='fnr-onco-v5';
-const FILES=['./','index.html','data-tnm.js','manifest.webmanifest','icons/icon-192.png','icons/icon-512.png','icons/maskable-512.png',
-'fonts/lexend-latin-400-normal.woff2','fonts/lexend-latin-500-normal.woff2','fonts/lexend-latin-600-normal.woff2','fonts/figtree-latin-400-normal.woff2','fonts/figtree-latin-500-normal.woff2','fonts/figtree-latin-600-normal.woff2','fonts/figtree-latin-700-normal.woff2','fonts/ibm-plex-mono-latin-400-normal.woff2','fonts/ibm-plex-mono-latin-500-normal.woff2'];
+const FILES=["./",
+"index.html",
+"manifest.webmanifest",
+"app/app.css",
+"app/app.js",
+"app/calc.js",
+"app/engine.js",
+"content/fnr.js",
+"content/staging.js",
+"content/regimens/ccu.js",
+"content/pathways/ccu.js",
+"icons/icon-192.png",
+"icons/icon-512.png",
+"icons/maskable-512.png",
+"fonts/figtree-latin-400-normal.woff2",
+"fonts/figtree-latin-500-normal.woff2",
+"fonts/figtree-latin-600-normal.woff2",
+"fonts/figtree-latin-700-normal.woff2",
+"fonts/ibm-plex-mono-latin-400-normal.woff2",
+"fonts/ibm-plex-mono-latin-500-normal.woff2",
+"fonts/lexend-latin-400-normal.woff2",
+"fonts/lexend-latin-500-normal.woff2",
+"fonts/lexend-latin-600-normal.woff2"];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
 self.addEventListener('fetch',e=>{

@@ -481,12 +481,13 @@
     notes: [
       'Desde 2018, FIGO incorpora imagenología y/o patología para asignar el estadio (ya no es solo examen clínico).',
       'El sufijo "r" indica confirmación por imagen (radiológica) y "p" por patología, aplicable sobre todo en IIIC1/IIIC2 (p.ej. IIIC1r, IIIC1p).',
-      'Correspondencia con AJCC 9ª ed.: el TNM de cérvix de AJCC 9ª ed. adopta esencialmente la misma estructura de FIGO 2018 (T equivale al estadio local I-IVA, N1 equivale a IIIC1/IIIC2 según localización, M1 equivale a IVB); ante discrepancias, priorizar la fuente FIGO/NCCN vigente. [Inferencia razonable: no se accedió al texto completo de AJCC 9ª ed. para cérvix.]',
+      'Correspondencia con AJCC 9ª ed.: el TNM de cérvix de AJCC 9ª ed. adopta esencialmente la misma estructura de FIGO 2018 (T equivale al estadio local I-IVA, N1 equivale a IIIC1/IIIC2 según localización, M1 equivale a IVB); ante discrepancias, priorizar la publicación FIGO vigente. [Inferencia razonable: no se accedió al texto completo de AJCC 9ª ed. para cérvix.]',
       'IIIC1 y IIIC2 pueden coexistir con cualquier tamaño tumoral/T; el compromiso ganglionar por sí solo define el estadio IIIC.'
     ]
   };
 
-  window.TNM_DATA = {
+  window.FNRO = window.FNRO || {};
+  window.TNM_DATA = window.FNRO.staging = {
     mama: mama,
     ccr: ccr,
     pros: pros,
