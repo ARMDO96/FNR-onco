@@ -345,11 +345,19 @@
         phase: 'adyuvancia',
         items: [
           {
-            label: 'Completar trastuzumab ± pertuzumab hasta 1 año total',
+            label: 'Completar trastuzumab hasta 1 año total',
+            regimen: 'mama-trastuzumab-adj',
+            level: 'A',
+            refs: [{ name: 'HERA', pmid: '16236737' }],
+            cov: { t: 'FNR', ind: 'm-adj-t' }
+          },
+          {
+            label: 'Agregar pertuzumab al trastuzumab adyuvante (ganglios positivos)',
+            detail: 'La normativa FNR de adyuvancia cubre trastuzumab; pertuzumab adyuvante no figura en ella. El beneficio de APHINITY se concentró en ganglios positivos.',
             regimen: 'mama-pertuzumab-trastuzumab-adj',
             level: 'A',
             refs: [{ name: 'APHINITY', pmid: '28581356' }],
-            cov: { t: 'FNR', ind: 'm-adj-t' }
+            cov: { t: '?' }
           }
         ],
         next: [
