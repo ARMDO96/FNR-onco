@@ -8,9 +8,12 @@
     "validate": "node tools/validate.mjs",
     "test": "node --test tests/*.test.mjs",
     "e2e": "node tests/e2e.mjs",
-    "check": "node tools/gen.mjs && node tools/validate.mjs && node --test tests/*.test.mjs"
+    "check": "node tools/gen.mjs && node tools/validate.mjs && node --test tests/*.test.mjs",
+    "vigencia": "node tools/vigencia.mjs",
+    "revision-anual": "node tools/revision-anual.mjs"
   },
   "devDependencies": {
+    "pdfjs-dist": "5.6.205",
     "playwright": "1.49.1"
   }
 }

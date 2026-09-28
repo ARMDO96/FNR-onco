@@ -1,0 +1,19 @@
+{
+ "nota": "Principios activos oncológicos (DCI, en español y en inglés cuando difieren) para detectar fármacos en el pautado y en las fuentes. Además se detectan por sufijo (-mab, -nib, -ciclib, -parib...). Agregar sin tildes o con tildes: se normaliza.",
+ "farmacos": [
+  "abemaciclib", "abiraterona", "abiraterone", "alectinib", "alpelisib", "amivantamab", "anastrozol", "anastrozole", "apalutamida", "apalutamide",
+  "atezolizumab", "avelumab", "bevacizumab", "bicalutamida", "bicalutamide", "binimetinib", "brigatinib", "cabazitaxel", "cabozantinib", "capecitabina", "capecitabine",
+  "capivasertib", "carboplatino", "carboplatin", "cemiplimab", "ceritinib", "cetuximab", "ciclofosfamida", "cyclophosphamide", "cisplatino", "cisplatin",
+  "crizotinib", "dabrafenib", "dacomitinib", "darolutamida", "darolutamide", "datopotamab deruxtecan", "degarelix", "docetaxel", "dostarlimab", "doxorrubicina", "doxorubicin",
+  "doxorrubicina liposomal", "durvalumab", "elacestrant", "encorafenib", "enfortumab vedotin", "entrectinib", "enzalutamida", "enzalutamide", "epirrubicina", "epirubicin", "eribulina", "eribulin",
+  "erlotinib", "etopósido", "etoposide", "everolimus", "exemestano", "exemestane", "fluorouracilo", "fluorouracil", "fruquintinib", "fulvestrant", "gefitinib",
+  "gemcitabina", "gemcitabine", "goserelina", "goserelin", "ifosfamida", "ifosfamide", "inavolisib", "ipilimumab", "irinotecán", "irinotecan", "irinotecán liposomal", "lapatinib",
+  "larotrectinib", "lazertinib", "leucovorina", "leucovorin", "ácido folínico", "letrozol", "letrozole", "leuprorelina", "leuprolide", "lorlatinib", "lurbinectedina", "lurbinectedin",
+  "lutecio-177 psma", "lutetium", "margetuximab", "megestrol", "metotrexato", "methotrexate", "mitomicina", "mitomycin", "neratinib", "nivolumab", "olaparib", "osimertinib",
+  "oxaliplatino", "oxaliplatin", "paclitaxel", "nab-paclitaxel", "palbociclib", "panitumumab", "pembrolizumab", "pemetrexed", "pertuzumab", "pralsetinib", "radio-223", "radium-223",
+  "raltitrexed", "ramucirumab", "regorafenib", "relugolix", "ribociclib", "rucaparib", "sacituzumab govitecán", "sacituzumab govitecan", "selpercatinib", "sotorasib", "adagrasib",
+  "talazoparib", "tamoxifeno", "tamoxifen", "tepotinib", "capmatinib", "tisotumab vedotin", "topotecán", "topotecan", "tovorafenib", "trametinib", "trastuzumab", "trastuzumab deruxtecan",
+  "trastuzumab emtansina", "trastuzumab emtansine", "tremelimumab", "trifluridina/tipiracilo", "trifluridine/tipiracil", "tucatinib", "vinorelbina", "vinorelbine", "zoledrónico", "zoledronic",
+  "denosumab", "zolbetuximab", "tislelizumab", "toripalimab", "sintilimab", "cadonilimab", "ivonescimab", "tarlatamab", "zongertinib", "sunvozertinib", "telisotuzumab vedotin"
+ ]
+}

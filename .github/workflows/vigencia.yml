@@ -6,8 +6,12 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write   # sólo para guardar la instantánea en la rama vigencia-estado
   issues: write
+
+concurrency:
+  group: vigencia
+  cancel-in-progress: false
 
 jobs:
   vigencia:
@@ -17,10 +21,19 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Instalar dependencias (lector de PDF)
+        run: npm install --no-audit --no-fund --ignore-scripts
+      - name: Traer la instantánea anterior (rama vigencia-estado)
+        run: |
+          if git fetch -q --depth=1 origin vigencia-estado; then
+            git show FETCH_HEAD:vigencia-snapshot.json > tools/vigencia-snapshot.json
+          else
+            echo "Primera corrida: no hay instantánea anterior."
+          fi
       - name: Verificar que todas las citas existan
         id: citas
         run: node tools/check-refs.mjs > citas.txt 2>&1 || echo "falla=1" >> "$GITHUB_OUTPUT"; cat citas.txt
-      - name: Normativas, FTM y vencimientos
+      - name: Normativas, pautado, FDA, EMA, ESMO y vencimientos
         id: vig
         run: node tools/vigencia.mjs > informe.md || echo "atencion=1" >> "$GITHUB_OUTPUT"; cat informe.md
       - name: Abrir issue si hay algo que revisar
@@ -28,6 +41,24 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          { cat informe.md; echo; echo '### Citas'; echo '```'; cat citas.txt; echo '```';
-            echo; echo '<details><summary>Instantánea nueva (tools/vigencia-snapshot.json)</summary>'; echo; echo '```json'; cat tools/vigencia-snapshot.json; echo '```'; echo '</details>'; } > cuerpo.md
+          { cat informe.md; echo; echo '### Citas'; echo '```'; cat citas.txt; echo '```'; } > cuerpo.md
           gh issue create --title "Vigilancia de vigencia $(date +%F)" --body-file cuerpo.md
+      - name: Guardar la instantánea en la rama vigencia-estado
+        # Después del issue: si algo falla antes, la novedad se vuelve a reportar la semana siguiente.
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git fetch -q --depth=1 origin vigencia-estado; then
+            git worktree add -q /tmp/estado FETCH_HEAD
+            git -C /tmp/estado checkout -q -B vigencia-estado
+          else
+            git worktree add -q --detach /tmp/estado
+            git -C /tmp/estado checkout -q --orphan vigencia-estado
+            git -C /tmp/estado rm -rqf .
+          fi
+          cp tools/vigencia-snapshot.json /tmp/estado/vigencia-snapshot.json
+          git -C /tmp/estado add vigencia-snapshot.json
+          if git -C /tmp/estado diff --cached --quiet; then echo "Instantánea sin cambios."; exit 0; fi
+          git -C /tmp/estado commit -qm "Instantánea de vigilancia $(date +%F)"
+          git -C /tmp/estado push -q origin vigencia-estado

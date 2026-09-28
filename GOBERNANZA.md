@@ -87,8 +87,30 @@ Con dos revisores no hay tercero que desempate. Por eso:
   - hay una alerta regulatoria.
 - La acción semanal **"Vigilancia de vigencia"** (`.github/workflows/vigencia.yml`) abre un issue cuando:
   - un PMID o NCT citado deja de existir,
-  - cambia la lista de documentos de las páginas de normativas FNR o del FTM,
+  - cambia la lista de documentos de las páginas de normativas FNR, del FTM o de las Pautas HC/UdelaR,
+  - la FDA publica una aprobación oncológica, el CHMP de la EMA publica una reunión o ESMO publica o actualiza una guía que menciona un tumor de la app,
+  - la página de una fuente cambió de estructura y el filtro dejó de encontrar enlaces,
   - hay ítems revisados que vencen en los próximos 30 días.
+- Cada novedad se reporta **una sola vez**: la instantánea de lo ya visto se guarda en la rama `vigencia-estado`.
+
+## Revisión anual del pautado
+
+Las Pautas de Oncología Médica HC/UdelaR no salen en una fecha fija: febrero de 2023 y de 2024, septiembre de 2024 y abril de 2026.
+
+- **Detección:** la vigilancia semanal detecta el PDF nuevo, lo lee y lo divide en capítulos (`tools/pautas.mjs`). Por capítulo informa:
+  - si cambió respecto de la edición anterior (huella del texto);
+  - qué fármacos nombra el pautado que no aparecen en la vía de ese tumor en la app. Es una posible conducta nueva, a evaluar: el pautado también nombra fármacos que desaconseja;
+  - qué temas del pautado no cubre la app, como candidatos a tumor nuevo (siempre como borrador).
+- **Sala limpia:** del pautado sólo se guardan huellas y nombres de fármacos, nunca su texto.
+- **Recordatorio:** el 15 de abril se abre igual el issue "Revisión anual del pautado" (`.github/workflows/revision-anual.yml`), con cada cita al pautado para verificar. A mano: `node tools/revision-anual.mjs`.
+- **Edición citada:** `content/sources.js` registra la edición del pautado que cita el contenido (`citada`) y la última publicada (`vigente`).
+  - El validador rechaza citas a otra edición y avisa si quedan citas sin edición o a portadas genéricas (`esmo.org`, `hc.edu.uy`).
+  - Con `estricto: true` esos avisos pasan a ser errores. Se activa cuando termina la actualización.
+- **Pasos:**
+  1. Confirmar la edición vigente.
+  2. Verificar cada cita contra el capítulo nuevo. Si la conducta sigue igual, se actualizan edición y enlace. Si cambió, se registra una objeción con la fuente.
+  3. Los ítems cuya cita cambió vuelven a revisión, porque cambió su huella, y necesitan las dos aprobaciones.
+- **La IA detecta y redacta, pero no aprueba.**
 
 ## Fe de erratas urgente
 

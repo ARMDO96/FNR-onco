@@ -1,0 +1,5 @@
+[
+ {"title":"Cáncer de mama","tema":"Mama","tumor":"mama","pages":[1,40],"hash":"aaaa000000000001","drugs":["trastuzumab","inavolisib","tamoxifeno"]},
+ {"title":"Cáncer de pulmón no microcítico","tema":"Pulmón no microcítico","tumor":"pulm","pages":[41,70],"hash":"aaaa000000000002","drugs":["osimertinib"]},
+ {"title":"Cáncer renal","tema":"Riñón","tumor":null,"pages":[71,80],"hash":"aaaa000000000003","drugs":["cabozantinib"]}
+]
