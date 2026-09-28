@@ -23,9 +23,11 @@ const registry=t=>(R.reviews&&R.reviews[t])||[];
 const items=t=>ENG.reviewItems(t,R.pathways[t],R.regimens||{}).filter(ri=>!ri.item.retirado);
 const mine=ri=>{const d=S.d[ri.key];return d&&d.hash===ri.hash?d:null;};
 function needsDose(ri){return !!(ri.item.regimen&&R.regimens[ri.item.regimen]);}
+const approves=d=>d.decision==='aprobar'||d.decision==='aprobar-menor'; // "con cambio menor" también cuenta como aprobación
+const hasComment=d=>!!(d.comment&&d.comment.trim());
+function checked(ri,d){const c=d.checks||{};return !!(c.ref&&c.lvl&&c.cov&&(!needsDose(ri)||c.dose));}
 function complete(ri){const d=mine(ri);if(!d||!d.decision)return false;
-  if(d.decision==='aprobar'){const c=d.checks||{};return c.ref&&c.lvl&&c.cov&&(!needsDose(ri)||c.dose);}
-  return !!(d.comment&&d.comment.trim());}
+  return (!approves(d)||checked(ri,d))&&(d.decision==='aprobar'||hasComment(d));}
 
 function refLine(r){
   const c=R.refsCache||{},m=r.pmid?(c.pmid||{})[r.pmid]:r.nct?(c.nct||{})[String(r.nct).toUpperCase()]:null;
@@ -69,8 +71,8 @@ function card(ri,st){
     </div>
     <div class="rv-dec" role="group" aria-label="Decisión">${Object.keys(DEC).map(k=>`<button type="button" class="btn ${d.decision===k?'primary':''}" data-rk="${esc(ri.key)}" data-dec="${k}" aria-pressed="${d.decision===k}">${DEC[k]}</button>`).join('')}</div>
     <textarea class="rv-com" data-rk="${esc(ri.key)}" placeholder="${d.decision&&d.decision!=='aprobar'?'Comentario obligatorio: qué cambiarías y por qué (con fuente)':'Comentario (opcional)'}" rows="2">${esc(d.comment||'')}</textarea>
-    ${d.decision==='aprobar'&&!complete(ri)?'<p class="rv-miss">Para aprobar marcá todos los controles.</p>':''}
-    ${d.decision&&d.decision!=='aprobar'&&!complete(ri)?'<p class="rv-miss">Falta el comentario.</p>':''}
+    ${d.decision&&approves(d)&&!checked(ri,d)?'<p class="rv-miss">Para aprobar marcá todos los controles.</p>':''}
+    ${d.decision&&d.decision!=='aprobar'&&!hasComment(d)?'<p class="rv-miss">Falta el comentario.</p>':''}
     <div class="rv-foot">${closed?`<span class="rv-st ${st.state}">Registro: ${esc(STN[st.state])}${st.date?` · ${esc(st.date)}`:''}</span>`:''}${other?`<span class="muted">Otro revisor: ${esc(DEC[other.decision]||other.decision)}${other.comment?` — ${esc(other.comment)}`:''}</span>`:''}</div>
   </article>`;
 }

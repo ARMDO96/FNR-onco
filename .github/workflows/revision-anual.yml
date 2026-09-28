@@ -1,0 +1,29 @@
+name: Revisión anual del pautado
+
+# El pautado HC/UdelaR no sale en una fecha fija (febrero de 2023 y 2024, septiembre de 2024, abril de 2026):
+# la vigilancia semanal detecta la edición nueva; este recordatorio anual abre la revisión igual.
+on:
+  schedule:
+    - cron: '23 11 15 4 *'   # 15 de abril, 08:23 hora de Uruguay
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  revision:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Traer la última instantánea de la vigilancia
+        run: git fetch -q --depth=1 origin vigencia-estado && git show FETCH_HEAD:vigencia-snapshot.json > tools/vigencia-snapshot.json || true
+      - name: Armar la lista de revisión
+        run: node tools/revision-anual.mjs > informe.md; cat informe.md
+      - name: Abrir el issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue create --title "Revisión anual del pautado $(date +%Y)" --body-file informe.md

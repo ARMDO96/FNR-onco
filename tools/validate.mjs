@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { ROOT, load, contentFiles } from './load.mjs';
+import { citations } from './vigilancia.mjs';
 
 const R = load();
 const errors = [];
@@ -55,6 +56,31 @@ for (const [tid, pw] of Object.entries(R.pathways || {})) {
 // Sala limpia: la marca NCCN no puede aparecer en el contenido ni en la app.
 for (const f of [...contentFiles(), 'index.html', ...fs.readdirSync(path.join(ROOT, 'app')).map(f => `app/${f}`)]) {
   if (/nccn/i.test(fs.readFileSync(path.join(ROOT, f), 'utf8'))) err(f, 'contiene "NCCN" (regla de sala limpia)');
+}
+
+// Citas: las del pautado nombran la edición citada (content/sources.js) y ninguna apunta a una portada genérica.
+// Mientras estricto sea false, las citas desactualizadas se avisan sin fallar (ver tools/revision-anual.mjs).
+const ph = R.sources && R.sources.pautasHC;
+if (!ph || !/^\d{4}$/.test(ph.citada || '') || !/^\d{4}$/.test(ph.vigente || '')) err('content/sources.js', 'pautasHC necesita citada y vigente (AAAA)');
+else {
+  const { pautas, generic } = citations(R);
+  const warn = [];
+  // Durante la actualización (citada ≠ vigente) conviven citas a las dos ediciones: las que ya se verificaron
+  // contra la vigente y las que todavía no. Cualquier otra edición es un error.
+  const lenient = ph.estricto ? err : (w, m) => warn.push(`${w}: ${m}`);
+  let pendientes = 0;
+  for (const r of pautas) {
+    if (!r.edicion) lenient(r.where, 'cita al pautado sin edición');
+    else if (r.edicion === ph.vigente) continue;
+    else if (r.edicion === ph.citada) { pendientes++; if (ph.estricto) err(r.where, `cita las Pautas ${r.edicion} y la vigente es ${ph.vigente}`); }
+    else err(r.where, `cita las Pautas ${r.edicion}: content/sources.js dice citada ${ph.citada} y vigente ${ph.vigente}`);
+  }
+  for (const r of generic) (ph.estricto ? err : (w, m) => warn.push(`${w}: ${m}`))(r.where, `cita a una portada genérica (${r.url})`);
+  if (ph.citada !== ph.vigente) {
+    if (ph.estricto) err('content/sources.js', `el contenido cita las Pautas ${ph.citada} y la vigente es ${ph.vigente}`);
+    else warn.unshift(`${pendientes} citas al pautado corresponden a la edición ${ph.citada}; la vigente es ${ph.vigente}`);
+  }
+  if (warn.length) console.log(`⚠ citas a actualizar (${warn.length}):\n` + warn.map(w => '  · ' + w).join('\n'));
 }
 
 const nP = Object.keys(R.pathways || {}).length, nR = Object.keys(R.regimens || {}).length;

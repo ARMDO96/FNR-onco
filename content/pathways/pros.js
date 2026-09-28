@@ -122,8 +122,9 @@
         items: [
           {
             label: 'Prostatectomía radical (± linfadenectomía)',
+            detail: 'ProtecT (pacientes detectados por PSA) no mostró diferencia de mortalidad a 10 años frente a monitoreo activo o radioterapia, pero sí menos progresión y metástasis con tratamiento radical; el beneficio en sobrevida global de SPCG-4 es de la era previa al PSA.',
             level: 'A',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR (resumen)', url: 'https://www.hc.edu.uy' }],
+            refs: [{ name: 'Guía EAU-EANM-ESTRO-ESUR-SIOG 2020, parte I (Mottet et al.)', pmid: '33172724' }, { name: 'ProtecT (Hamdy et al.)', pmid: '27626136' }, { name: 'SPCG-4 (Bill-Axelson et al.)', pmid: '21542742' }],
             cov: { t: 'NA' }
           },
           {
@@ -156,8 +157,9 @@
         items: [
           {
             label: 'Prostatectomía radical + linfadenectomía pélvica extendida',
+            detail: 'Linfadenectomía extendida: estadifica mejor; en dos ensayos aleatorizados no redujo la recaída bioquímica, y en el de MSKCC (aleatorizado por cirujano, un solo centro) redujo las metástasis con más seguimiento (HR 0,82), sin datos de sobrevida global.',
             level: 'A',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR (resumen)', url: 'https://www.hc.edu.uy' }],
+            refs: [{ name: 'Guía EAU-EANM-ESTRO-ESUR-SIOG 2020, parte I (Mottet et al.)', pmid: '33172724' }, { name: 'Linfadenectomía extendida vs. limitada (Lestingi et al.)', pmid: '33293077' }, { name: 'Linfadenectomía extendida vs. limitada, actualización MSKCC (Touijer et al.)', pmid: '39472200' }],
             cov: { t: 'NA' }
           }
         ],
@@ -196,9 +198,9 @@
         items: [
           {
             label: 'Prostatectomía radical + linfadenectomía pélvica extendida',
-            detail: 'Suele requerir radioterapia adyuvante o de rescate y, en algunos casos, deprivación androgénica adicional según patología final.',
+            detail: 'Suele requerir radioterapia adyuvante o de rescate y, en algunos casos, deprivación androgénica adicional según patología final. Linfadenectomía extendida: estadifica mejor; en dos ensayos aleatorizados no redujo la recaída bioquímica, y en el de MSKCC (aleatorizado por cirujano, un solo centro) redujo las metástasis con más seguimiento (HR 0,82), sin datos de sobrevida global.',
             level: 'B',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR (resumen)', url: 'https://www.hc.edu.uy' }],
+            refs: [{ name: 'Guía EAU-EANM-ESTRO-ESUR-SIOG 2020, parte I (Mottet et al.)', pmid: '33172724' }, { name: 'Linfadenectomía extendida vs. limitada (Lestingi et al.)', pmid: '33293077' }, { name: 'Linfadenectomía extendida vs. limitada, actualización MSKCC (Touijer et al.)', pmid: '39472200' }],
             cov: { t: 'NA' }
           }
         ],
@@ -236,9 +238,9 @@
         items: [
           {
             label: 'Prostatectomía radical + linfadenectomía pélvica extendida',
-            detail: 'Casi siempre requiere terapia adyuvante multimodal posterior.',
+            detail: 'Casi siempre requiere terapia adyuvante multimodal posterior. Linfadenectomía extendida: estadifica mejor; en dos ensayos aleatorizados no redujo la recaída bioquímica, y en el de MSKCC (aleatorizado por cirujano, un solo centro) redujo las metástasis con más seguimiento (HR 0,82), sin datos de sobrevida global.',
             level: 'C',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR (resumen)', url: 'https://www.hc.edu.uy' }],
+            refs: [{ name: 'Guía EAU-EANM-ESTRO-ESUR-SIOG 2020, parte I (Mottet et al.)', pmid: '33172724' }, { name: 'Linfadenectomía extendida vs. limitada (Lestingi et al.)', pmid: '33293077' }, { name: 'Linfadenectomía extendida vs. limitada, actualización MSKCC (Touijer et al.)', pmid: '39472200' }],
             cov: { t: 'NA' }
           }
         ],
@@ -257,11 +259,11 @@
             cov: { t: 'FTM' }
           },
           {
-            label: 'Agregar abiraterona + prednisona a RT + DAE en el subgrupo de mayor riesgo (localmente avanzado, no metastásico)',
-            detail: 'Beneficio de sobrevida mostrado en un subgrupo no metastásico de alto riesgo dentro de una plataforma multi-brazo; discutir caso a caso, ya que la indicación FNR de abiraterona relevada para este documento cubre específicamente el escenario metastásico.',
-            level: 'B',
+            label: 'Agregar abiraterona + prednisona por 2 años a RT + DAE (no metastásico de alto riesgo)',
+            detail: 'Alto riesgo según STAMPEDE: N+, o N0 con al menos dos de T3–T4, Gleason 8–10 o PSA ≥40. Metaanálisis preespecificado de dos ensayos fase III aleatorizados de la plataforma STAMPEDE: mejor sobrevida libre de metástasis (HR 0,53) y sobrevida global (HR 0,60); agregar enzalutamida no sumó beneficio y aumentó la toxicidad. La indicación FNR de abiraterona relevada para este documento cubre el escenario metastásico: cobertura a verificar.',
+            level: 'A',
             regimen: 'pros-abiraterona',
-            refs: [{ name: 'STAMPEDE — abiraterona, subgrupo no metastásico', nct: 'NCT00268476' }],
+            refs: [{ name: 'STAMPEDE, abiraterona en no metastásico de alto riesgo (Attard et al.)', pmid: '34953525' }],
             cov: { t: '?' }
           }
         ],
@@ -315,16 +317,17 @@
         items: [
           {
             label: 'Deprivación androgénica continua (si no hay opción de rescate local o el paciente no es candidato)',
+            detail: 'Momento de inicio: individualizar según el tiempo de duplicación del PSA, el intervalo libre y la expectativa de vida. En TOAD, la DAE inmediata frente a la diferida mejoró la sobrevida global (HR 0,55; IC 95 %% 0,30–1,00; p = 0,05), con aleatorización estratificada por tiempo de duplicación del PSA.',
             level: 'B',
             regimen: 'pros-adt-agonista',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR (resumen)', url: 'https://www.hc.edu.uy' }],
+            refs: [{ name: 'Guía EAU-EANM-ESTRO-ESUR-SIOG 2020, parte II (Cornford et al.)', pmid: '33039206' }, { name: 'TOAD (Duchesne et al.)', pmid: '27155740' }],
             cov: { t: 'FTM' }
           },
           {
             label: 'Rescate local (prostatectomía, crioterapia o braquiterapia de rescate) en casos muy seleccionados',
             detail: 'Requiere confirmar recaída local (biopsia/RMN) y descartar enfermedad a distancia; mayor morbilidad que el tratamiento primario.',
             level: 'C',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR (resumen)', url: 'https://www.hc.edu.uy' }],
+            refs: [{ name: 'MASTER, metaanálisis de rescate local tras RT (Valle et al.)', pmid: '33309278' }, { name: 'Guía EAU-EANM-ESTRO-ESUR-SIOG 2020, parte II (Cornford et al.)', pmid: '33039206' }],
             cov: { t: 'NA' }
           }
         ],
@@ -484,7 +487,7 @@
             label: 'Docetaxel (si progresión rápida, síntomas viscerales o ya se usó un ARPI en fase hormonosensible)',
             level: 'A',
             regimen: 'pros-docetaxel',
-            refs: [{ name: 'CHAARTED (extrapolación del uso de docetaxel a CPRC según práctica histórica)', pmid: '26244877' }],
+            refs: [{ name: 'TAX 327 (Tannock et al.)', pmid: '15470213' }],
             cov: { t: 'FTM' }
           }
         ],
@@ -604,7 +607,7 @@
             label: 'PSA y examen clínico cada 3–6 meses; imágenes dirigidas por síntomas o cinética de PSA',
             detail: 'En pacientes bajo deprivación androgénica, controlar además testosterona, perfil metabólico, densidad mineral ósea y salud cardiovascular.',
             level: 'C',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR (resumen)', url: 'https://www.hc.edu.uy' }],
+            refs: [{ name: 'Guía EAU-EANM-ESTRO-ESUR-SIOG 2020, parte I (Mottet et al.)', pmid: '33172724' }, { name: 'Guía EAU-EANM-ESTRO-ESUR-SIOG 2020, parte II (Cornford et al.)', pmid: '33039206' }],
             cov: { t: 'NA' }
           }
         ]

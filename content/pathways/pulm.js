@@ -72,11 +72,28 @@ R.pathways.pulm = {
       ],
       next: [ { label: 'Seguimiento', next: 'seguimiento' } ]
     },
+    'adj-alk': {
+      type: 'rec',
+      title: 'ALK positivo, adyuvancia (estadio IB ≥ 4 cm – IIIA resecado)',
+      phase: 'adyuvancia',
+      items: [
+        {
+          label: 'Alectinib 600 mg c/12 h × 2 años',
+          detail: 'ALINA frente a QT adyuvante con platino: menor riesgo de recaída o muerte (SLE HR 0,24; IC 95 % 0,13–0,43 en estadio II–IIIA). SG todavía inmadura. Cobertura FNR relevada: alectinib en enfermedad avanzada; en adyuvancia, a verificar.',
+          regimen: 'pulm-alectinib',
+          level: 'A',
+          refs: [ { name: 'ALINA (Wu et al.)', pmid: '38598794' } ],
+          cov: { t: '?' }
+        }
+      ],
+      next: [ { label: 'Seguimiento', next: 'seguimiento' } ]
+    },
     'adj-decision-temprano': {
       type: 'q',
       text: '¿Resultado del panel molecular y riesgo de recaída en estadio IA–IB resecado?',
       options: [
         { label: 'EGFR Ex19del/L858R positivo', next: 'adj-egfr-temprano' },
+        { label: 'ALK positivo (tumor ≥ 4 cm)', next: 'adj-alk' },
         { label: 'PD-L1 ≥ 1% (sin driver EGFR/ALK)', next: 'adj-pdl1-temprano' },
         { label: 'Bajo riesgo / sin indicación de terapia sistémica adyuvante', next: 'seguimiento' }
       ]
@@ -152,6 +169,20 @@ R.pathways.pulm = {
           level: 'A',
           refs: [ { name: 'KEYNOTE-671', pmid: '37272513' } ],
           cov: { t: 'NC' }
+        },
+        {
+          label: 'Nivolumab + QT con platino neoadyuvante + nivolumab adyuvante (perioperatorio)',
+          detail: 'CheckMate 77T: mejor sobrevida libre de eventos (HR 0,58) en análisis interino; SG todavía inmadura.',
+          level: 'A',
+          refs: [ { name: 'CheckMate 77T (Cascone et al.)', pmid: '38749033' } ],
+          cov: { t: '?' }
+        },
+        {
+          label: 'Durvalumab + QT con platino neoadyuvante + durvalumab adyuvante (perioperatorio)',
+          detail: 'AEGEAN: mejor sobrevida libre de eventos (HR 0,68) en análisis interino; SG todavía inmadura. Excluyó tumores con EGFR o ALK conocidos.',
+          level: 'A',
+          refs: [ { name: 'AEGEAN (Heymach et al.)', pmid: '37870974' } ],
+          cov: { t: '?' }
         }
       ],
       notes: ['Ninguno de los dos esquemas perioperatorios integra la normativa FNR vigente para pulmón; verificar cobertura institucional antes de indicar.'],
@@ -180,6 +211,7 @@ R.pathways.pulm = {
       text: '¿Resultado del panel molecular y PD-L1 en la pieza resecada (estadio II–IIIA)?',
       options: [
         { label: 'EGFR Ex19del/L858R positivo', next: 'adj-egfr-ii' },
+        { label: 'ALK positivo', next: 'adj-alk' },
         { label: 'PD-L1 ≥ 1% (sin driver EGFR/ALK)', next: 'adj-pdl1-ii' },
         { label: 'QT adyuvante con platino sin biomarcador accionable', next: 'adj-qt-ii' },
         { label: 'Sin indicación de terapia adyuvante', next: 'seguimiento' }
@@ -284,6 +316,20 @@ R.pathways.pulm = {
           level: 'A',
           refs: [ { name: 'KEYNOTE-671', pmid: '37272513' } ],
           cov: { t: 'NC' }
+        },
+        {
+          label: 'Nivolumab + QT con platino neoadyuvante + nivolumab adyuvante (perioperatorio)',
+          detail: 'CheckMate 77T: mejor sobrevida libre de eventos (HR 0,58) en análisis interino; SG todavía inmadura.',
+          level: 'A',
+          refs: [ { name: 'CheckMate 77T (Cascone et al.)', pmid: '38749033' } ],
+          cov: { t: '?' }
+        },
+        {
+          label: 'Durvalumab + QT con platino neoadyuvante + durvalumab adyuvante (perioperatorio)',
+          detail: 'AEGEAN: mejor sobrevida libre de eventos (HR 0,68) en análisis interino; SG todavía inmadura. Excluyó tumores con EGFR o ALK conocidos.',
+          level: 'A',
+          refs: [ { name: 'AEGEAN (Heymach et al.)', pmid: '37870974' } ],
+          cov: { t: '?' }
         }
       ],
       notes: ['No integran la normativa FNR vigente para pulmón; verificar cobertura institucional.'],
@@ -325,7 +371,7 @@ R.pathways.pulm = {
           detail: 'Iniciar dentro de 42 días de finalizada la QRT concurrente, sin progresión',
           regimen: 'pulm-durvalumab-consolidacion',
           level: 'A',
-          refs: [ { name: 'PACIFIC', pmid: '28885881' } ],
+          refs: [ { name: 'PACIFIC', pmid: '28885881' }, { name: 'PACIFIC, sobrevida global (Antonia et al.)', pmid: '30280658' } ],
           cov: { t: 'NC' }
         }
       ],
@@ -377,6 +423,20 @@ R.pathways.pulm = {
           cov: { t: 'FNR', ind: 'u-osi' }
         },
         {
+          label: 'Osimertinib + platino-pemetrexed (luego osimertinib + pemetrexed de mantenimiento)',
+          detail: 'FLAURA2 frente a osimertinib solo: SG mediana 47,5 vs. 37,6 meses (HR 0,77; IC 95 % 0,61–0,96), a costa de más toxicidad grado ≥3 (70 % vs. 34 %). Cobertura FNR relevada: osimertinib en monoterapia; la combinación, a verificar.',
+          level: 'A',
+          refs: [ { name: 'FLAURA2, sobrevida global (Jänne et al.)', pmid: '41104938' } ],
+          cov: { t: '?' }
+        },
+        {
+          label: 'Amivantamab + lazertinib',
+          detail: 'MARIPOSA frente a osimertinib: SG a 3 años 60 % vs. 51 % (HR 0,75; IC 95 % 0,61–0,92), con más toxicidad grado ≥3 (80 % vs. 52 %: cutánea, tromboembólica e infusional; requiere profilaxis anticoagulante). Fármacos no evaluados por FNR: cobertura a verificar.',
+          level: 'A',
+          refs: [ { name: 'MARIPOSA, sobrevida global (Yang et al.)', pmid: '40923797' } ],
+          cov: { t: '?' }
+        },
+        {
           label: 'Erlotinib 150 mg/día o gefitinib 250 mg/día',
           detail: 'Alternativa de 1ª generación; si progresa con T790M+ se puede rotar a osimertinib',
           regimen: 'pulm-erlotinib',
@@ -424,6 +484,22 @@ R.pathways.pulm = {
           level: 'B',
           refs: [ { name: 'ALEX', pmid: '28586279' } ],
           cov: { t: 'FNR', ind: 'u-alec' }
+        },
+        {
+          label: 'Lorlatinib 100 mg/día (alternativa)',
+          detail: 'CROWN frente a crizotinib: mayor SLP y control intracraneal; SG sin datos maduros. Perfil de toxicidad distinto (dislipidemia, efectos neurocognitivos).',
+          regimen: 'pulm-lorlatinib',
+          level: 'B',
+          refs: [ { name: 'CROWN', pmid: '33207094' } ],
+          cov: { t: 'NC' }
+        },
+        {
+          label: 'Brigatinib 180 mg/día, con 90 mg/día los primeros 7 días (alternativa)',
+          detail: 'ALTA-1L frente a crizotinib: mayor SLP; sin diferencia significativa en SG.',
+          regimen: 'pulm-brigatinib',
+          level: 'B',
+          refs: [ { name: 'ALTA-1L', pmid: '30280657' } ],
+          cov: { t: 'NC' }
         }
       ],
       next: [ { label: 'Progresión', next: 'av-alk-2l' } ]
@@ -435,10 +511,10 @@ R.pathways.pulm = {
       items: [
         {
           label: 'Lorlatinib 100 mg/día',
-          detail: 'Tras alectinib la evidencia es de fase II de un solo brazo; CROWN (citado) probó lorlatinib en 1ª línea y aquí se usa como extrapolación.',
+          detail: 'Tras un inhibidor de ALK de segunda generación la evidencia es de fase II de un solo brazo: respuesta objetiva en 9 de 28 pacientes (32 %) con un inhibidor previo distinto de crizotinib, y respuesta intracraneal en 5 de 9. CROWN probó lorlatinib en 1ª línea.',
           regimen: 'pulm-lorlatinib',
           level: 'C',
-          refs: [ { name: 'CROWN (1ª línea; extrapolación)', pmid: '33207094' } ],
+          refs: [ { name: 'Lorlatinib, fase II global (Solomon et al.)', pmid: '30413378' }, { name: 'CROWN (1ª línea)', pmid: '33207094' } ],
           cov: { t: 'NC' }
         },
         {
@@ -502,7 +578,7 @@ R.pathways.pulm = {
           cov: { t: '?' }
         }
       ],
-      notes: ['Drivers infrecuentes: no integran la normativa FNR de pulmón vigente. Evaluar caso a caso, verificar aprobación regulatoria vigente en Uruguay y disponibilidad institucional. [Dato confirmado: existen aprobaciones FDA/EMA específicas para cada alteración; extrapolación: no se buscó el PMID de cada ensayo individual por tratarse de alteraciones de baja frecuencia y quedar fuera del foco de cobertura FNR.]'],
+      notes: ['Drivers infrecuentes: no integran la normativa FNR de pulmón vigente. Evaluar caso a caso, verificar aprobación regulatoria vigente en Uruguay y disponibilidad institucional. [Dato confirmado: existen aprobaciones FDA/EMA específicas para cada alteración; las citas son los ensayos de aprobación de cada fármaco.]'],
       next: [ { label: 'Progresión / sin terapia dirigida disponible', next: 'av-pdl1' } ]
     },
 

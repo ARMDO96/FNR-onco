@@ -67,7 +67,7 @@
             label: 'Vigilancia, sin quimioterapia adyuvante',
             detail: 'El beneficio de la quimioterapia adyuvante no está demostrado en estadio I.',
             level: 'C',
-            refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR (resumen propio)', url: 'https://www.esmo.org' }],
+            refs: [{ name: 'ESMO 2020, cáncer de colon localizado (Argilés et al.)', pmid: '32702383' }],
             cov: { t: 'NA' }
           }
         ],
@@ -140,9 +140,10 @@
         items: [
           {
             label: 'CAPOX (capecitabina + oxaliplatino) por 3–6 meses',
+            detail: '3 meses de CAPOX es una opción si el tumor no es T4 ni perforado y la resección ganglionar fue suficiente. En estadio II de alto riesgo, la no inferioridad de 3 meses no se demostró en la población global de IDEA; el resultado favorable a 3 meses con CAPOX sale del análisis por esquema, que no fue aleatorizado.',
             regimen: 'ccr-capox',
             level: 'C',
-            refs: [{ name: 'MOSAIC / IDEA, extrapolación a estadio II de alto riesgo', pmid: '29590544' }],
+            refs: [{ name: 'IDEA, estadio II de alto riesgo (Iveson et al.)', pmid: '33439695' }, { name: 'ACHIEVE-2', pmid: '33121997' }],
             cov: { t: 'FTM' }
           },
           {
@@ -233,15 +234,15 @@
             cov: { t: 'NA' }
           },
           {
-            label: 'TC de tórax, abdomen y pelvis anual por 3–5 años (estadio II–III)',
+            label: 'TC de tórax, abdomen y pelvis anual los primeros 3 años (estadio II–III); después, opcional',
             level: 'C',
-            refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR (resumen propio)', url: 'https://www.esmo.org' }],
+            refs: [{ name: 'ESMO 2020, cáncer de colon localizado (Argilés et al.)', pmid: '32702383' }],
             cov: { t: 'NA' }
           },
           {
-            label: 'Colonoscopía al año de la cirugía y luego según hallazgos',
+            label: 'Colonoscopía al año de la cirugía; luego cada 3–5 años, o antes según hallazgos o síntomas',
             level: 'C',
-            refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR (resumen propio)', url: 'https://www.esmo.org' }],
+            refs: [{ name: 'ESMO 2020, cáncer de colon localizado (Argilés et al.)', pmid: '32702383' }],
             cov: { t: 'NA' }
           }
         ]
@@ -367,7 +368,7 @@
             label: 'Quimiorradioterapia con capecitabina concurrente (sin quimioterapia de inducción/consolidación)',
             regimen: 'ccr-capecitabina-rt',
             level: 'A',
-            refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR (resumen propio)', url: 'https://www.esmo.org' }],
+            refs: [{ name: 'CAO/ARO/AIO-94 (Sauer et al.)', pmid: '15496622' }, { name: 'Capecitabina vs. 5-FU en QRT (Hofheinz et al.)', pmid: '22503032' }, { name: 'ESMO 2017, cáncer de recto (Glynne-Jones et al.)', pmid: '28881920' }],
             cov: { t: 'FTM' }
           }
         ],
@@ -407,14 +408,14 @@
           {
             label: 'Escisión total de mesorrecto',
             level: 'A',
-            refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR (resumen propio)', url: 'https://www.esmo.org' }],
+            refs: [{ name: 'Escisión total del mesorrecto (MacFarlane, Ryall y Heald)', pmid: '8094488' }, { name: 'Ensayo holandés ETM ± RT corta (Kapiteijn et al.)', pmid: '11547717' }],
             cov: { t: 'NA' }
           },
           {
             label: 'Completar quimioterapia adyuvante si la neoadyuvancia fue incompleta (individualizar)',
             regimen: 'ccr-folfox6m',
             level: 'C',
-            refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR (resumen propio)', url: 'https://www.esmo.org' }],
+            refs: [{ name: 'ESMO 2017, cáncer de recto (Glynne-Jones et al.)', pmid: '28881920' }],
             cov: { t: 'FTM' }
           }
         ],
@@ -429,14 +430,14 @@
           {
             label: 'Escisión total de mesorrecto',
             level: 'A',
-            refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR (resumen propio)', url: 'https://www.esmo.org' }],
+            refs: [{ name: 'Escisión total del mesorrecto (MacFarlane, Ryall y Heald)', pmid: '8094488' }, { name: 'Ensayo holandés ETM ± RT corta (Kapiteijn et al.)', pmid: '11547717' }],
             cov: { t: 'NA' }
           },
           {
             label: 'CAPOX o mFOLFOX6 adyuvante, hasta completar ~6 meses de tratamiento sistémico total',
             regimen: 'ccr-capox',
             level: 'B',
-            refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR, extrapolación de CAO/ARO/AIO-04 (resumen propio)', url: 'https://www.esmo.org' }],
+            refs: [{ name: 'CAO/ARO/AIO-04 (Rödel et al.)', pmid: '26189067' }, { name: 'ESMO 2017, cáncer de recto (Glynne-Jones et al.)', pmid: '28881920' }],
             cov: { t: 'FTM' }
           }
         ],
@@ -449,15 +450,16 @@
         phase: 'seguimiento',
         items: [
           {
-            label: 'CEA cada 3–6 meses por 2 años, luego cada 6 meses hasta el año 5',
+            label: 'Control clínico y CEA cada 3 meses los primeros 2 años, cada 3–6 meses el 3.er año y cada 6 meses los años 4 y 5',
+            detail: 'El CEA y la TC programados aumentan la detección de recaídas resecables (FACS), sin beneficio demostrado en sobrevida global con un seguimiento más intensivo (COLOFOL).',
             level: 'C',
-            refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR (resumen propio)', url: 'https://www.esmo.org' }],
+            refs: [{ name: 'FACS (Primrose et al.)', pmid: '24430319' }, { name: 'COLOFOL (Wille-Jørgensen et al.)', pmid: '29800179' }, { name: 'ESMO 2017, cáncer de recto (Glynne-Jones et al.)', pmid: '28881920' }],
             cov: { t: 'NA' }
           },
           {
-            label: 'TC de tórax, abdomen y pelvis anual por 3–5 años',
+            label: 'TC de tórax, abdomen y pelvis anual los primeros 3 años; después, opcional',
             level: 'C',
-            refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR (resumen propio)', url: 'https://www.esmo.org' }],
+            refs: [{ name: 'ESMO 2017, cáncer de recto (Glynne-Jones et al.)', pmid: '28881920' }, { name: 'FACS (Primrose et al.)', pmid: '24430319' }],
             cov: { t: 'NA' }
           },
           {
@@ -515,7 +517,7 @@
           {
             label: 'Metastasectomía (p. ej. hepatectomía)',
             level: 'A',
-            refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR (resumen propio)', url: 'https://www.esmo.org' }],
+            refs: [{ name: 'ESMO 2022, CCR metastásico (Cervantes et al.)', pmid: '36307056' }],
             cov: { t: 'NA' }
           },
           {
@@ -538,7 +540,7 @@
           {
             label: 'CEA e imágenes (TC tórax/abdomen/pelvis) cada 3–6 meses por 2 años, luego cada 6–12 meses',
             level: 'C',
-            refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR (resumen propio)', url: 'https://www.esmo.org' }],
+            refs: [{ name: 'ESMO 2022, CCR metastásico (Cervantes et al.)', pmid: '36307056' }, { name: 'FACS (Primrose et al.)', pmid: '24430319' }],
             cov: { t: 'NA' }
           }
         ]
@@ -646,13 +648,21 @@
         type: 'rec',
         title: '1ª línea, BRAF V600E mutado',
         phase: 'Enfermedad avanzada · 1ª línea',
-        help: 'Peor pronóstico biológico; se prefiere intensificar el tratamiento inicial en pacientes con buen estado general.',
+        help: 'Peor pronóstico biológico. Es el único subgrupo con un ensayo fase III propio en 1ª línea (BREAKWATER).',
         items: [
           {
-            label: 'FOLFOXIRI + bevacizumab (preferido si PS 0–1)',
+            label: 'Encorafenib + cetuximab + mFOLFOX6',
+            detail: 'BREAKWATER (fase III) frente a quimioterapia ± bevacizumab: mejor SVLP (HR 0,53) y SG en análisis interino (mediana 30,3 vs. 15,1 meses; HR 0,49). Dosis: verificar contra el protocolo del ensayo antes de cargar el régimen. Fármaco no evaluado por FNR para esta indicación: cobertura a verificar.',
+            level: 'A',
+            refs: [{ name: 'BREAKWATER (Elez et al.)', pmid: '40444708' }],
+            cov: { t: '?' }
+          },
+          {
+            label: 'FOLFOXIRI + bevacizumab, si PS 0–1',
+            detail: 'En el metaanálisis de datos individuales (5 ensayos, 1697 pacientes) FOLFOXIRI + bevacizumab mejoró la SG frente a dobletes + bevacizumab en la población general, pero no mostró beneficio adicional en tumores BRAF mutados. El dato favorable previo venía de un subgrupo de TRIBE.',
             regimen: 'ccr-folfoxiri-bev',
             level: 'C',
-            refs: [{ name: 'TRIBE2, subgrupo BRAF (extrapolación)', pmid: '32164906' }],
+            refs: [{ name: 'Metaanálisis de datos individuales FOLFOXIRI + bevacizumab (Cremolini et al.)', pmid: '32816630' }, { name: 'TRIBE2', pmid: '32164906' }],
             cov: { t: 'FNR', ind: 'c-bev' }
           },
           {

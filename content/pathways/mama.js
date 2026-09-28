@@ -96,8 +96,8 @@
           {
             label: 'Inhibidor de CDK4/6 adyuvante (abemaciclib) en alto riesgo con ganglios positivos',
             detail: 'No evaluado en esta guía por falta de cobertura confirmada en Uruguay',
-            level: 'B',
-            refs: [{ name: 'monarchE', nct: 'NCT03155997' }],
+            level: 'A',
+            refs: [{ name: 'monarchE', pmid: '32954927' }],
             cov: { t: 'NC' }
           }
         ],
@@ -131,7 +131,7 @@
             label: 'Tamoxifeno 20 mg/día × 5–10 años',
             regimen: 'mama-tamoxifeno',
             level: 'A',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }],
+            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2025, cáncer de mama localizado', url: 'https://oncologiamedica.hc.edu.uy/publicaciones/pautas-de-oncologia-medica-para-el-diagnostico-tratamiento-sistemico-y-seguimiento/' }],
             cov: { t: 'FTM' }
           },
           {
@@ -155,14 +155,14 @@
             label: 'Inhibidor de aromatasa (letrozol/anastrozol/exemestano) × 5 años',
             regimen: 'mama-ai',
             level: 'A',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }],
+            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2025, cáncer de mama localizado', url: 'https://oncologiamedica.hc.edu.uy/publicaciones/pautas-de-oncologia-medica-para-el-diagnostico-tratamiento-sistemico-y-seguimiento/' }],
             cov: { t: 'FTM' }
           },
           {
             label: 'Tamoxifeno 20 mg/día si intolerancia a inhibidor de aromatasa',
             regimen: 'mama-tamoxifeno',
             level: 'A',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }],
+            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2025, cáncer de mama localizado', url: 'https://oncologiamedica.hc.edu.uy/publicaciones/pautas-de-oncologia-medica-para-el-diagnostico-tratamiento-sistemico-y-seguimiento/' }],
             cov: { t: 'FTM' }
           }
         ],
@@ -179,7 +179,7 @@
             detail: 'Menor tasa de respuesta patológica completa que en HER2+ o triple negativo; valorar cirugía primaria si es operable',
             regimen: 'mama-ac',
             level: 'B',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }],
+            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2025, cáncer de mama localizado', url: 'https://oncologiamedica.hc.edu.uy/publicaciones/pautas-de-oncologia-medica-para-el-diagnostico-tratamiento-sistemico-y-seguimiento/' }],
             cov: { t: 'FTM' }
           }
         ],
@@ -198,7 +198,7 @@
             detail: 'Beneficio en sobrevida global demostrado en postmenopáusicas; en premenopáusicas se agrega goserelina',
             regimen: 'mama-ribociclib-ai',
             level: 'A',
-            refs: [{ name: 'MONALEESA-2', pmid: '27717303' }],
+            refs: [{ name: 'MONALEESA-2', pmid: '27717303' }, { name: 'MONALEESA-2, SG (Hortobagyi et al.)', pmid: '35263519' }, { name: 'MONALEESA-7 (premenopáusicas)', pmid: '29804902' }],
             cov: { t: 'FNR', ind: 'm-ribo1' }
           },
           {
@@ -221,14 +221,14 @@
             label: 'Ribociclib + fulvestrant (si no recibió CDK4/6 previo)',
             regimen: 'mama-ribociclib-fulvestrant',
             level: 'A',
-            refs: [{ name: 'MONALEESA-3', pmid: '29860922' }],
+            refs: [{ name: 'MONALEESA-3', pmid: '29860922' }, { name: 'MONALEESA-3, SG (Slamon et al.)', pmid: '31826360' }],
             cov: { t: 'FNR', ind: 'm-ribo2' }
           },
           {
             label: 'Fulvestrant en monoterapia tras progresión a un CDK4/6',
             regimen: 'mama-fulvestrant',
             level: 'B',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }],
+            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2025, cáncer de mama metastásico', url: 'https://oncologiamedica.hc.edu.uy/publicaciones/pautas-de-oncologia-medica-para-el-diagnostico-tratamiento-sistemico-y-seguimiento/' }],
             cov: { t: 'FNR', ind: 'm-fulv' }
           },
           {
@@ -251,14 +251,14 @@
             label: 'Quimioterapia secuencial: capecitabina',
             regimen: 'mama-capecitabina',
             level: 'B',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }],
+            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2025, cáncer de mama metastásico', url: 'https://oncologiamedica.hc.edu.uy/publicaciones/pautas-de-oncologia-medica-para-el-diagnostico-tratamiento-sistemico-y-seguimiento/' }],
             cov: { t: 'FTM' }
           },
           {
             label: 'Paclitaxel u otro taxano en monoterapia',
             regimen: 'mama-paclitaxel-av',
             level: 'B',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }],
+            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2025, cáncer de mama metastásico', url: 'https://oncologiamedica.hc.edu.uy/publicaciones/pautas-de-oncologia-medica-para-el-diagnostico-tratamiento-sistemico-y-seguimiento/' }],
             cov: { t: 'FTM' }
           },
           {
@@ -354,10 +354,10 @@
           },
           {
             label: 'Agregar pertuzumab al trastuzumab adyuvante (ganglios positivos)',
-            detail: 'La normativa FNR de adyuvancia cubre trastuzumab; pertuzumab adyuvante no figura en ella. El beneficio de APHINITY se concentró en ganglios positivos.',
+            detail: 'La normativa FNR de adyuvancia cubre trastuzumab; pertuzumab adyuvante no figura en ella. El beneficio de APHINITY en sobrevida libre de enfermedad invasiva se concentró en ganglios positivos; a 6 años, sin diferencia significativa en SG.',
             regimen: 'mama-pertuzumab-trastuzumab-adj',
             level: 'A',
-            refs: [{ name: 'APHINITY', pmid: '28581356' }],
+            refs: [{ name: 'APHINITY', pmid: '28581356' }, { name: 'APHINITY, 6 años (Piccart et al.)', pmid: '33539215' }],
             cov: { t: '?' }
           }
         ],
@@ -397,7 +397,7 @@
             detail: 'Sobrevida global mediana de 56 meses en el brazo con pertuzumab',
             regimen: 'mama-docetaxel-tp-av',
             level: 'A',
-            refs: [{ name: 'CLEOPATRA', pmid: '22149875' }],
+            refs: [{ name: 'CLEOPATRA', pmid: '22149875' }, { name: 'CLEOPATRA, SG final (Swain et al.)', pmid: '25693012' }],
             cov: { t: 'FNR', ind: 'm-av-tp' }
           }
         ],
@@ -522,7 +522,7 @@
             label: 'Sin quimioterapia adicional; continuar seguimiento estrecho',
             detail: 'Si recibió pembrolizumab neoadyuvante, completar ciclos adyuvantes del mismo esquema (no evaluado aquí por cobertura)',
             level: 'B',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }],
+            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2025, cáncer de mama localizado', url: 'https://oncologiamedica.hc.edu.uy/publicaciones/pautas-de-oncologia-medica-para-el-diagnostico-tratamiento-sistemico-y-seguimiento/' }],
             cov: { t: 'NA' }
           }
         ],
@@ -562,16 +562,16 @@
         items: [
           {
             label: 'Olaparib en monoterapia',
-            detail: 'Alternativa a quimioterapia en BRCA1/2 mutado; sin cobertura confirmada en Uruguay para enfermedad avanzada',
-            level: 'A',
-            refs: [{ name: 'OlympiAD', pmid: '28578601' }],
+            detail: 'Alternativa a quimioterapia en BRCA1/2 mutado: mejor SLP (OlympiAD), sin diferencia significativa en SG en el análisis final. Sin cobertura confirmada en Uruguay para enfermedad avanzada',
+            level: 'B',
+            refs: [{ name: 'OlympiAD', pmid: '28578601' }, { name: 'OlympiAD, SG final (Robson et al.)', pmid: '30689707' }],
             cov: { t: 'NC' }
           },
           {
             label: 'Quimioterapia con platino como alternativa (carboplatino)',
-            detail: 'Alta sensibilidad a platino en tumores BRCA mutados',
+            detail: 'En TNT el carboplatino no superó al docetaxel en la población global; el beneficio se vio en el subgrupo con BRCA mutado',
             regimen: 'mama-docetaxel-carbo',
-            level: 'B',
+            level: 'C',
             refs: [{ name: 'TNT trial', pmid: '29713086' }],
             cov: { t: 'FTM' }
           }
@@ -598,7 +598,7 @@
             detail: 'Beneficio en sobrevida global en el subgrupo PD-L1 CPS ≥ 10',
             regimen: 'mama-pembrolizumab-quimio',
             level: 'A',
-            refs: [{ name: 'KEYNOTE-355', pmid: '33278935' }],
+            refs: [{ name: 'KEYNOTE-355', pmid: '33278935' }, { name: 'KEYNOTE-355, SG (Cortés et al.)', pmid: '35857659' }],
             cov: { t: 'FNR', ind: 'm-pembro' }
           }
         ],
@@ -614,7 +614,7 @@
             label: 'Quimioterapia en monoterapia (paclitaxel u otro taxano)',
             regimen: 'mama-paclitaxel-av',
             level: 'B',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }],
+            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2025, cáncer de mama metastásico', url: 'https://oncologiamedica.hc.edu.uy/publicaciones/pautas-de-oncologia-medica-para-el-diagnostico-tratamiento-sistemico-y-seguimiento/' }],
             cov: { t: 'FTM' }
           }
         ],
@@ -635,10 +635,19 @@
             cov: { t: 'NC' }
           },
           {
-            label: 'Capecitabina o eribulina en monoterapia',
+            label: 'Eribulina en monoterapia',
+            detail: 'EMBRACE frente a tratamiento de elección del médico: mejor SG (HR 0,81), en pacientes con ≥2 líneas previas',
             regimen: 'mama-eribulina',
-            level: 'B',
+            level: 'A',
             refs: [{ name: 'EMBRACE', pmid: '21376385' }],
+            cov: { t: 'FTM' }
+          },
+          {
+            label: 'Capecitabina en monoterapia',
+            detail: 'Activa tras taxanos; sin ensayo aleatorizado propio en esta línea',
+            regimen: 'mama-capecitabina',
+            level: 'C',
+            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2025, cáncer de mama metastásico', url: 'https://oncologiamedica.hc.edu.uy/publicaciones/pautas-de-oncologia-medica-para-el-diagnostico-tratamiento-sistemico-y-seguimiento/' }],
             cov: { t: 'FTM' }
           }
         ]
@@ -666,7 +675,7 @@
             label: 'No solicitar de rutina marcadores tumorales ni imágenes de estadificación asintomáticas',
             detail: 'Sin beneficio demostrado en sobrevida en pacientes asintomáticas',
             level: 'B',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }],
+            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2025, cáncer de mama localizado', url: 'https://oncologiamedica.hc.edu.uy/publicaciones/pautas-de-oncologia-medica-para-el-diagnostico-tratamiento-sistemico-y-seguimiento/' }],
             cov: { t: 'NA' }
           }
         ]
