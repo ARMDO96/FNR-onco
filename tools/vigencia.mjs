@@ -31,7 +31,8 @@ async function analyzePautas(pdf) {
     return JSON.parse(fs.readFileSync(fs.existsSync(own) ? own : path.join(FIX, 'pautas-chapters.json'), 'utf8'));
   }
   const { analyzePdf } = await import('./pautas.mjs');
-  return (await analyzePdf(pdf)).chapters;
+  const r = await analyzePdf(pdf);
+  return Object.assign(r.chapters, { method: r.method, unmapped: r.unmapped });
 }
 const year = s => Math.max(0, ...(decodeURIComponent(s.split('/').pop()).match(/20\d\d/g) || []).map(Number));
 const uploaded = s => (s.match(/\/uploads\/(\d{4}\/\d{2})\//) || [])[1] || '';
@@ -44,7 +45,8 @@ for (const src of SOURCES) {
     if (src.kind === 'docs') {
       const docs = docLinks(html, src.url);
       next.sources[src.id] = { url: src.url, docs };
-      if (!prev) lines.push(`- ${src.name}: primera instantánea (${docs.length} documentos), queda como referencia.`);
+      if (!docs.length) { attention = true; lines.push(`- **${src.name}**: no se encontró ningún documento. La página probablemente cambió de estructura: revisar el filtro en tools/vigilancia.mjs.`); }
+      else if (!prev) lines.push(`- ${src.name}: primera instantánea (${docs.length} documentos), queda como referencia.`);
       else {
         const { added, removed } = diff(prev.docs, docs);
         if (added.length || removed.length) {
@@ -73,7 +75,9 @@ for (const src of SOURCES) {
             try {
               const chs = await analyzePautas(pdf);
               chs.forEach(c => byTema.set(c.tema, { ...c, pdf }));
-              read.push(`${name} (${chs.length} capítulos reconocidos)`);
+              read.push(`${name} (${chs.length} capítulos reconocidos, ${chs.method === 'paginas'
+                ? 'separados por títulos de página porque el PDF no tiene índice: separación poco confiable, revisar a mano'
+                : 'separados por el índice del PDF'}${chs.unmapped && chs.unmapped.length ? `; títulos del índice sin tema en tools/pautas-map.json: ${chs.unmapped.join(', ')}` : ''})`);
             } catch (e) { read.push(`${name}: no se pudo leer (${e.message})`); }
           }
           const chapters = [...byTema.values()];
@@ -91,6 +95,10 @@ for (const src of SOURCES) {
       if (!items.length) {
         attention = true;
         lines.push(`- **${src.name}**: el filtro no encontró ningún enlace. La página probablemente cambió de estructura: revisar el filtro en tools/vigilancia.mjs.`);
+        // diagnóstico: rutas del mismo sitio que sí aparecen, para ajustar el filtro sin tener que abrir la página
+        const host = new URL(src.url).host, seen = [...new Set(extractLinks(html, src.url).map(l => l.href)
+          .filter(h => { try { return new URL(h).host === host; } catch { return false; } }).map(h => new URL(h).pathname))];
+        lines.push(`  - ${seen.length} enlaces del sitio en la página${seen.length ? `; primeros: ${seen.slice(0, 15).map(p => `\`${p}\``).join(', ')}` : ' (la página puede armarse con JavaScript: el HTML no trae los enlaces)'}.`);
         if (prev) next.sources[src.id].items = prev.items; // no perder la referencia por una página rota
         continue;
       }

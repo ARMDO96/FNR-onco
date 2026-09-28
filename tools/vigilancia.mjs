@@ -107,24 +107,40 @@ export function pautasMap() {
 export function chapterOf(title, map = pautasMap()) {
   const t = norm(title);
   const c = map.find(c => c.re.test(t));
-  return c ? { tema: c.tema, tumor: c.tumor } : null;
+  return c ? { tema: c.tema, tumor: c.tumor, ...(c.candidato === false ? { candidato: false } : {}) } : null;
 }
 
 /* Divide el pautado en capítulos.
-   pages: [texto de cada página]; outline: [{title, page (0-based)}] del índice del PDF, si lo tiene.
-   Sin índice: una página abre capítulo si su comienzo coincide con un tema del mapa. */
+   pages: [texto de cada página]; outline: [{title, page (0-based), depth}] del índice del PDF, si lo tiene.
+   Con índice: todas las entradas del nivel de capítulo son límites, aunque su título no esté en el mapa
+   (si no, el capítulo anterior absorbería sus páginas y sus fármacos); sólo se informan las reconocidas.
+   Sin índice: una página abre capítulo si su comienzo coincide con un tema del mapa (menos confiable).
+   Devuelve los capítulos reconocidos; en .method ('indice' | 'paginas') y .unmapped (títulos sin tema). */
 export function splitChapters(pages, outline = [], map = pautasMap()) {
-  let starts = outline.map(o => ({ title: o.title, page: o.page, ch: chapterOf(o.title, map) })).filter(s => s.ch && s.page >= 0);
-  if (!starts.length)
+  const entries = outline.filter(o => o.page >= 0).map(o => ({ title: o.title, page: o.page, depth: o.depth || 0, ch: chapterOf(o.title, map) }));
+  const mapped = entries.filter(e => e.ch);
+  let starts, method;
+  if (mapped.length) {
+    const level = Math.min(...mapped.map(e => e.depth));
+    starts = entries.filter(e => e.depth === level); method = 'indice';
+  } else {
+    starts = []; method = 'paginas';
     pages.forEach((p, i) => { const head = p.slice(0, 160), ch = chapterOf(head, map); if (ch) starts.push({ title: ch.tema, page: i, ch }); });
+  }
   starts.sort((a, b) => a.page - b.page);
   // entradas seguidas con el mismo tema (subtítulos, páginas del mismo capítulo) son un solo capítulo
-  starts = starts.filter((s, i) => i === 0 || s.ch.tema !== starts[i - 1].ch.tema);
-  return starts.map((s, i) => {
+  starts = starts.filter((s, i) => i === 0 || !s.ch || !starts[i - 1].ch || s.ch.tema !== starts[i - 1].ch.tema);
+  const out = [];
+  starts.forEach((s, i) => {
+    if (!s.ch) return;
     const end = i + 1 < starts.length ? starts[i + 1].page : pages.length;
     const text = pages.slice(s.page, Math.max(end, s.page + 1)).join('\n');
-    return { title: s.title.trim(), tema: s.ch.tema, tumor: s.ch.tumor, pages: [s.page + 1, Math.max(end, s.page + 1)], hash: hash(norm(text).replace(/\s+/g, ' ')), drugs: detectDrugs(text) };
+    out.push({ title: s.title.trim(), tema: s.ch.tema, tumor: s.ch.tumor, ...(s.ch.candidato === false ? { candidato: false } : {}),
+      pages: [s.page + 1, Math.max(end, s.page + 1)], hash: hash(norm(text).replace(/\s+/g, ' ')), drugs: detectDrugs(text) });
   });
+  out.method = method;
+  out.unmapped = [...new Set(starts.filter(s => !s.ch).map(s => s.title.trim()))];
+  return out;
 }
 
 /* Informe de un pautado nuevo frente al anterior y frente a la app. Sólo huellas y nombres de fármacos: nunca texto del pautado. */
@@ -153,7 +169,7 @@ export function pautasReport(chapters, prevChapters, R) {
     if (miss.length) gaps.push(`  - **${R.pathways[tid].title}**: ${miss.join(', ')}`);
   }
   if (gaps.length) lines.push('- Fármacos que nombra el pautado y no aparecen en la vía de la app (posible conducta nueva, a evaluar: el pautado también nombra fármacos que desaconseja):', ...gaps);
-  const uncovered = [...new Set(chapters.filter(c => !c.tumor || !covered.has(c.tumor)).map(c => c.tema))];
+  const uncovered = [...new Set(chapters.filter(c => (!c.tumor || !covered.has(c.tumor)) && c.candidato !== false).map(c => c.tema))];
   if (uncovered.length) lines.push(`- Temas del pautado que la app no cubre (candidatos a tumor nuevo, siempre como borrador): ${uncovered.join('; ')}.`);
   return { lines, changedTumors: [...new Set(changed.map(c => c.tumor).filter(Boolean))] };
 }

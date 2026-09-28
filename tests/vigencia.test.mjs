@@ -50,7 +50,14 @@ test('mapa de capítulos: lo específico gana', () => {
   assert.equal(chapterOf('Cáncer de mama asociado al embarazo').tema, 'Mama asociado al embarazo');
   assert.equal(chapterOf('CÁNCER DE MAMA').tumor, 'mama');
   assert.equal(chapterOf('Cáncer de recto').tumor, 'ccr');
-  assert.equal(chapterOf('Introducción'), null);
+  assert.equal(chapterOf('Introducción').candidato, false, 'la introducción corta capítulos pero no es un tumor');
+  assert.equal(chapterOf('Otro tema cualquiera'), null);
+  // títulos reales del índice del pautado 2025
+  assert.equal(chapterOf('CÁNCER DE CUELLO DE UTERO').tumor, 'ccu');
+  assert.equal(chapterOf('CÁNCER DE REGION ANAL').tema, 'Canal anal');
+  assert.equal(chapterOf('CÁNCER DE A PULMON A CELULAS PEQUEÑAS').tema, 'Pulmón microcítico');
+  assert.equal(chapterOf('CÁNCER DE PULMON CELULAS NO PEQUEÑAS').tumor, 'pulm');
+  assert.equal(chapterOf('TUMORES DE PIEL NO MELANOMA').tema, 'Piel no melanoma');
 });
 
 test('capítulos: por índice del PDF y por títulos de página', () => {
@@ -61,6 +68,16 @@ test('capítulos: por índice del PDF y por títulos de página', () => {
   const byPages = splitChapters(pages, []);
   assert.deepEqual(byPages.map(c => c.tema), ['Mama', 'Pulmón no microcítico', 'Riñón']);
   assert.ok(!JSON.stringify(byOutline).includes('más mama'), 'no guarda texto del pautado');
+  assert.equal(byOutline.method, 'indice'); assert.equal(byPages.method, 'paginas');
+  // un título del índice sin tema corta el capítulo anterior: sus fármacos no se atribuyen a colorrecto
+  const anal = splitChapters(['Cáncer de colon\ncetuximab', 'Otro capítulo\nmitomicina', 'Cáncer renal\ncabozantinib'],
+    [{ title: 'Cáncer de colon', page: 0 }, { title: 'Otro capítulo', page: 1 }, { title: 'Cáncer renal', page: 2 }]);
+  assert.deepEqual(anal.map(c => [c.tema, c.pages, c.drugs]), [['Colon y recto', [1, 1], ['cetuximab']], ['Riñón', [3, 3], ['cabozantinib']]]);
+  assert.deepEqual(anal.unmapped, ['Otro capítulo']);
+  // los subtítulos (nivel más profundo) no cortan el capítulo
+  const deep = splitChapters(['Cáncer de mama', 'Adyuvancia\npalbociclib', 'Cáncer renal'],
+    [{ title: 'Cáncer de mama', page: 0, depth: 0 }, { title: 'Adyuvancia', page: 1, depth: 1 }, { title: 'Cáncer renal', page: 2, depth: 0 }]);
+  assert.deepEqual(deep.map(c => [c.tema, c.pages]), [['Mama', [1, 2]], ['Riñón', [3, 3]]]);
 });
 
 test('informe del pautado: cambios, fármacos ausentes y temas no cubiertos', () => {
