@@ -79,6 +79,22 @@ La usuaria ya habilitó `oncologiamedica.hc.edu.uy`.
 8. Con el acceso habilitado, probar también la vigilancia real: `VIGENCIA_SNAPSHOT=/tmp/s.json node tools/vigencia.mjs`. Revisar que los filtros de FDA, EMA y ESMO encuentren enlaces: se armaron sin ver las páginas en vivo [Inferencia razonable]. Si alguno falla, ajustar el `filter` en `SOURCES` y sumar un fixture.
 9. Si el proxy lo permite, informe de fármacos por tumor: fármacos que nombra el pautado y faltan en la app. Entregárselo a la usuaria como **lista a evaluar**, no como cambios.
 
+**Avance de D al 2026-09-28** (detalle en `content/reviews/pautado-2025.md` y `content/reviews/patron-editora.md`):
+
+| Paso | Estado |
+|---|---|
+| 1. Acceso al dominio | 403 en el proxy. El PDF llegó por Google Drive ("PAUTAS-DE-ONCOLOGIA-MEDICA-FF-2025-.pdf", 13,5 MB). |
+| 2. Edición vigente | [Dato confirmado] Diciembre de 2025, un solo PDF de unas 780 páginas. Mama, colon-recto y próstata figuran entre los capítulos actualizados. |
+| 3. `pautas.mjs` | **Sin hacer**: Drive no descarga archivos de más de 10 MB, y su texto se corta en la p. 79. Hace falta el PDF partido por capítulo. |
+| 4. Verificar las citas | **Mama**: hecho. 12 se actualizaron a 2025; 6 difieren del pautado y esperan decisión de las revisoras. **Colorrecto y próstata**: sin verificar contra el pautado. Sus citas se reemplazaron por guías ESMO/EAU y ensayos, así que hay que volver a citar el pautado cuando se lea el capítulo. |
+| 5. Portadas genéricas | De 33 quedan 2 (`ccr/stage0#0` y `ccr/seguimiento-colon#0`), que tienen aprobación de la editora: se espera su respuesta. |
+| 6. `citada`/`estricto` | Sin hacer: primero hay que cerrar el 4. Mientras tanto, el validador acepta mezclar las dos ediciones. |
+| 8. Vigilancia real | Sin hacer por el bloqueo de red. |
+| 9. Fármacos | Mama, hecho (lista para evaluar). |
+
+- Revisión de la editora de colorrecto: incorporada. Se corrigieron los huecos de gobernanza en "aprobar con cambio menor" y en los vencimientos que se repetían.
+- **NCCN**: la usuaria confirmó el 2026-09-28 que no hay autorización. Sigue la sala limpia.
+
 ### PR hacia `main` (preguntar primero)
 Las tareas programadas de GitHub (`vigencia.yml`, `revision-anual.yml`) **solo corren desde `main`**. Hay que preguntarle a la usuaria si abre el PR. Después de fusionar, que dispare a mano "Vigilancia de vigencia" desde Actions.
 
