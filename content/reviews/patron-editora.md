@@ -46,3 +46,32 @@ Por eso no se extrapolaron sus preferencias de conducta de colon a mama, prósta
 - Esquema de controles clínicos y CEA: su comentario en `seguimiento-colon#1` contradice `seguimiento-colon#0`, que aprobó. Lo mismo aplica a `seguimiento-recto#0`.
 - `recto-dmmr#0` (dostarlimab): ver `pautado-2025.md`.
 - Las citas a portadas genéricas de colorrecto, cuello uterino y próstata se reemplazan con propuestas verificadas en PubMed. Cada una vuelve a revisión.
+
+## Portadas genéricas reemplazadas (2026-09-28)
+
+Tres subagentes propusieron referencias concretas. El mantenimiento técnico verificó cada PMID en PubMed y, en cuello uterino, las recomendaciones contra el texto completo de la guía ESGO 2023 (PMC10176411). Quedan 2 portadas, en `stage0#0` y `seguimiento-colon#0`, porque tienen aprobación de la editora.
+
+**Correcciones de conducta** (vuelven a revisión y **tienen prioridad**):
+
+- `ccu/ia-linfadenectomia#0`: decía "histerectomía radical modificada tipo B" para IA1 con ILV / IA2.
+  - ESGO 2023: la cirugía radical es **sobretratamiento** en IA1 [IV, D] y la resección parametrial **no está indicada** en IA2 [IV, D].
+  - Pasa a histerectomía simple o conización + ganglio centinela. El nivel baja de B a C, porque la guía la gradúa IV.
+- `ccu/ia-fertilidad#0`: decía "traquelectomía radical" para IA1 con ILV / IA2.
+  - ESGO 2023: en IA1–IA2 alcanzan la conización o la traquelectomía simple, sea cual sea el estado de ILV.
+  - La traquelectomía radical queda para IB1 con ILV.
+- `ccu/inicio#2`: el PET-TC pasa a indicarse desde IB3, no IB2 (salvo ganglios sospechosos o antes de quimiorradioterapia).
+- `ccu/seguimiento#0`: se aclara que el esquema es orientativo; la guía pide individualizarlo según el riesgo.
+- `ccr/seguimiento-recto#0`: esquema de la editora (clínica y CEA cada 3 meses los primeros 2 años), respaldado por el protocolo de FACS.
+
+**Matices agregados sin cambiar la conducta:**
+
+- Próstata, linfadenectomía extendida: sin diferencia en recaída bioquímica en dos ensayos aleatorizados. El ensayo de MSKCC (aleatorizado por cirujano) mostró menos metástasis en la actualización de 2024.
+- Próstata, recaída bioquímica post-RT: el momento de iniciar la DAE depende del tiempo de duplicación del PSA (TOAD).
+- Próstata, riesgo intermedio favorable: ProtecT no mostró diferencia de mortalidad a 10 años.
+
+**Niveles que la escala de `SCHEMA.md` cuestiona, a decisión de las revisoras** (no se cambiaron):
+
+- Escisión total del mesorrecto (nivel A) y metastasectomía hepática (nivel A): son estándar universal, pero nunca se compararon en un ensayo aleatorizado. Por la escala corresponderían a C.
+- Prostatectomía en riesgo intermedio (nivel A): el beneficio en sobrevida global viene de SPCG-4, de la era previa al PSA.
+
+**Sin respaldo en la guía** (no se cambió): `ccu/av-3l#0`, "rechallenge de agente previo".

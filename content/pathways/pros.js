@@ -122,8 +122,9 @@
         items: [
           {
             label: 'Prostatectomía radical (± linfadenectomía)',
+            detail: 'ProtecT (pacientes detectados por PSA) no mostró diferencia de mortalidad a 10 años frente a monitoreo activo o radioterapia, pero sí menos progresión y metástasis con tratamiento radical; el beneficio en sobrevida global de SPCG-4 es de la era previa al PSA.',
             level: 'A',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR (resumen)', url: 'https://www.hc.edu.uy' }],
+            refs: [{ name: 'Guía EAU-EANM-ESTRO-ESUR-SIOG 2020, parte I (Mottet et al.)', pmid: '33172724' }, { name: 'ProtecT (Hamdy et al.)', pmid: '27626136' }, { name: 'SPCG-4 (Bill-Axelson et al.)', pmid: '21542742' }],
             cov: { t: 'NA' }
           },
           {
@@ -156,8 +157,9 @@
         items: [
           {
             label: 'Prostatectomía radical + linfadenectomía pélvica extendida',
+            detail: 'Linfadenectomía extendida: estadifica mejor; en dos ensayos aleatorizados no redujo la recaída bioquímica, y en el de MSKCC (aleatorizado por cirujano, un solo centro) redujo las metástasis con más seguimiento (HR 0,82), sin datos de sobrevida global.',
             level: 'A',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR (resumen)', url: 'https://www.hc.edu.uy' }],
+            refs: [{ name: 'Guía EAU-EANM-ESTRO-ESUR-SIOG 2020, parte I (Mottet et al.)', pmid: '33172724' }, { name: 'Linfadenectomía extendida vs. limitada (Lestingi et al.)', pmid: '33293077' }, { name: 'Linfadenectomía extendida vs. limitada, actualización MSKCC (Touijer et al.)', pmid: '39472200' }],
             cov: { t: 'NA' }
           }
         ],
@@ -196,9 +198,9 @@
         items: [
           {
             label: 'Prostatectomía radical + linfadenectomía pélvica extendida',
-            detail: 'Suele requerir radioterapia adyuvante o de rescate y, en algunos casos, deprivación androgénica adicional según patología final.',
+            detail: 'Suele requerir radioterapia adyuvante o de rescate y, en algunos casos, deprivación androgénica adicional según patología final. Linfadenectomía extendida: estadifica mejor; en dos ensayos aleatorizados no redujo la recaída bioquímica, y en el de MSKCC (aleatorizado por cirujano, un solo centro) redujo las metástasis con más seguimiento (HR 0,82), sin datos de sobrevida global.',
             level: 'B',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR (resumen)', url: 'https://www.hc.edu.uy' }],
+            refs: [{ name: 'Guía EAU-EANM-ESTRO-ESUR-SIOG 2020, parte I (Mottet et al.)', pmid: '33172724' }, { name: 'Linfadenectomía extendida vs. limitada (Lestingi et al.)', pmid: '33293077' }, { name: 'Linfadenectomía extendida vs. limitada, actualización MSKCC (Touijer et al.)', pmid: '39472200' }],
             cov: { t: 'NA' }
           }
         ],
@@ -236,9 +238,9 @@
         items: [
           {
             label: 'Prostatectomía radical + linfadenectomía pélvica extendida',
-            detail: 'Casi siempre requiere terapia adyuvante multimodal posterior.',
+            detail: 'Casi siempre requiere terapia adyuvante multimodal posterior. Linfadenectomía extendida: estadifica mejor; en dos ensayos aleatorizados no redujo la recaída bioquímica, y en el de MSKCC (aleatorizado por cirujano, un solo centro) redujo las metástasis con más seguimiento (HR 0,82), sin datos de sobrevida global.',
             level: 'C',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR (resumen)', url: 'https://www.hc.edu.uy' }],
+            refs: [{ name: 'Guía EAU-EANM-ESTRO-ESUR-SIOG 2020, parte I (Mottet et al.)', pmid: '33172724' }, { name: 'Linfadenectomía extendida vs. limitada (Lestingi et al.)', pmid: '33293077' }, { name: 'Linfadenectomía extendida vs. limitada, actualización MSKCC (Touijer et al.)', pmid: '39472200' }],
             cov: { t: 'NA' }
           }
         ],
@@ -315,16 +317,17 @@
         items: [
           {
             label: 'Deprivación androgénica continua (si no hay opción de rescate local o el paciente no es candidato)',
+            detail: 'Momento de inicio: individualizar según el tiempo de duplicación del PSA, el intervalo libre y la expectativa de vida. En TOAD, la DAE inmediata frente a la diferida mejoró la sobrevida global (HR 0,55; IC 95 %% 0,30–1,00; p = 0,05), con aleatorización estratificada por tiempo de duplicación del PSA.',
             level: 'B',
             regimen: 'pros-adt-agonista',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR (resumen)', url: 'https://www.hc.edu.uy' }],
+            refs: [{ name: 'Guía EAU-EANM-ESTRO-ESUR-SIOG 2020, parte II (Cornford et al.)', pmid: '33039206' }, { name: 'TOAD (Duchesne et al.)', pmid: '27155740' }],
             cov: { t: 'FTM' }
           },
           {
             label: 'Rescate local (prostatectomía, crioterapia o braquiterapia de rescate) en casos muy seleccionados',
             detail: 'Requiere confirmar recaída local (biopsia/RMN) y descartar enfermedad a distancia; mayor morbilidad que el tratamiento primario.',
             level: 'C',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR (resumen)', url: 'https://www.hc.edu.uy' }],
+            refs: [{ name: 'MASTER, metaanálisis de rescate local tras RT (Valle et al.)', pmid: '33309278' }, { name: 'Guía EAU-EANM-ESTRO-ESUR-SIOG 2020, parte II (Cornford et al.)', pmid: '33039206' }],
             cov: { t: 'NA' }
           }
         ],
@@ -604,7 +607,7 @@
             label: 'PSA y examen clínico cada 3–6 meses; imágenes dirigidas por síntomas o cinética de PSA',
             detail: 'En pacientes bajo deprivación androgénica, controlar además testosterona, perfil metabólico, densidad mineral ósea y salud cardiovascular.',
             level: 'C',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR (resumen)', url: 'https://www.hc.edu.uy' }],
+            refs: [{ name: 'Guía EAU-EANM-ESTRO-ESUR-SIOG 2020, parte I (Mottet et al.)', pmid: '33172724' }, { name: 'Guía EAU-EANM-ESTRO-ESUR-SIOG 2020, parte II (Cornford et al.)', pmid: '33039206' }],
             cov: { t: 'NA' }
           }
         ]

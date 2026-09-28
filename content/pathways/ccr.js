@@ -368,7 +368,7 @@
             label: 'Quimiorradioterapia con capecitabina concurrente (sin quimioterapia de inducción/consolidación)',
             regimen: 'ccr-capecitabina-rt',
             level: 'A',
-            refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR (resumen propio)', url: 'https://www.esmo.org' }],
+            refs: [{ name: 'CAO/ARO/AIO-94 (Sauer et al.)', pmid: '15496622' }, { name: 'Capecitabina vs. 5-FU en QRT (Hofheinz et al.)', pmid: '22503032' }, { name: 'ESMO 2017, cáncer de recto (Glynne-Jones et al.)', pmid: '28881920' }],
             cov: { t: 'FTM' }
           }
         ],
@@ -408,14 +408,14 @@
           {
             label: 'Escisión total de mesorrecto',
             level: 'A',
-            refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR (resumen propio)', url: 'https://www.esmo.org' }],
+            refs: [{ name: 'Escisión total del mesorrecto (MacFarlane, Ryall y Heald)', pmid: '8094488' }, { name: 'Ensayo holandés ETM ± RT corta (Kapiteijn et al.)', pmid: '11547717' }],
             cov: { t: 'NA' }
           },
           {
             label: 'Completar quimioterapia adyuvante si la neoadyuvancia fue incompleta (individualizar)',
             regimen: 'ccr-folfox6m',
             level: 'C',
-            refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR (resumen propio)', url: 'https://www.esmo.org' }],
+            refs: [{ name: 'ESMO 2017, cáncer de recto (Glynne-Jones et al.)', pmid: '28881920' }],
             cov: { t: 'FTM' }
           }
         ],
@@ -430,14 +430,14 @@
           {
             label: 'Escisión total de mesorrecto',
             level: 'A',
-            refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR (resumen propio)', url: 'https://www.esmo.org' }],
+            refs: [{ name: 'Escisión total del mesorrecto (MacFarlane, Ryall y Heald)', pmid: '8094488' }, { name: 'Ensayo holandés ETM ± RT corta (Kapiteijn et al.)', pmid: '11547717' }],
             cov: { t: 'NA' }
           },
           {
             label: 'CAPOX o mFOLFOX6 adyuvante, hasta completar ~6 meses de tratamiento sistémico total',
             regimen: 'ccr-capox',
             level: 'B',
-            refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR, extrapolación de CAO/ARO/AIO-04 (resumen propio)', url: 'https://www.esmo.org' }],
+            refs: [{ name: 'CAO/ARO/AIO-04 (Rödel et al.)', pmid: '26189067' }, { name: 'ESMO 2017, cáncer de recto (Glynne-Jones et al.)', pmid: '28881920' }],
             cov: { t: 'FTM' }
           }
         ],
@@ -450,15 +450,16 @@
         phase: 'seguimiento',
         items: [
           {
-            label: 'CEA cada 3–6 meses por 2 años, luego cada 6 meses hasta el año 5',
+            label: 'Control clínico y CEA cada 3 meses los primeros 2 años, cada 3–6 meses el 3.er año y cada 6 meses los años 4 y 5',
+            detail: 'El CEA y la TC programados aumentan la detección de recaídas resecables (FACS), sin beneficio demostrado en sobrevida global con un seguimiento más intensivo (COLOFOL).',
             level: 'C',
-            refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR (resumen propio)', url: 'https://www.esmo.org' }],
+            refs: [{ name: 'FACS (Primrose et al.)', pmid: '24430319' }, { name: 'COLOFOL (Wille-Jørgensen et al.)', pmid: '29800179' }, { name: 'ESMO 2017, cáncer de recto (Glynne-Jones et al.)', pmid: '28881920' }],
             cov: { t: 'NA' }
           },
           {
             label: 'TC de tórax, abdomen y pelvis anual los primeros 3 años; después, opcional',
             level: 'C',
-            refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR (resumen propio)', url: 'https://www.esmo.org' }],
+            refs: [{ name: 'ESMO 2017, cáncer de recto (Glynne-Jones et al.)', pmid: '28881920' }, { name: 'FACS (Primrose et al.)', pmid: '24430319' }],
             cov: { t: 'NA' }
           },
           {
@@ -516,7 +517,7 @@
           {
             label: 'Metastasectomía (p. ej. hepatectomía)',
             level: 'A',
-            refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR (resumen propio)', url: 'https://www.esmo.org' }],
+            refs: [{ name: 'ESMO 2022, CCR metastásico (Cervantes et al.)', pmid: '36307056' }],
             cov: { t: 'NA' }
           },
           {
@@ -539,7 +540,7 @@
           {
             label: 'CEA e imágenes (TC tórax/abdomen/pelvis) cada 3–6 meses por 2 años, luego cada 6–12 meses',
             level: 'C',
-            refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR (resumen propio)', url: 'https://www.esmo.org' }],
+            refs: [{ name: 'ESMO 2022, CCR metastásico (Cervantes et al.)', pmid: '36307056' }, { name: 'FACS (Primrose et al.)', pmid: '24430319' }],
             cov: { t: 'NA' }
           }
         ]

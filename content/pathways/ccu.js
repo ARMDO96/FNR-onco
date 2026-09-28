@@ -18,21 +18,21 @@
           {
             label: 'Historia y examen ginecológico + biopsia con histología (confirmar tipo histológico)',
             level: 'A',
-            refs: [{ name: 'FIGO 2018 (estadificación clínico-quirúrgica)', url: 'https://www.figo.org' }],
+            refs: [{ name: 'Guía ESGO/ESTRO/ESP 2023, cáncer de cuello uterino (Cibula et al.)', pmid: '37127326' }, { name: 'Estadificación FIGO 2018 (Bhatla et al.)', pmid: '30656645' }],
             cov: { t: 'NA' }
           },
           {
             label: 'RM de pelvis con contraste (tamaño tumoral, invasión parametrial, ganglios)',
             detail: 'De elección para planificar cirugía o radioterapia en estadios ≥ IB1',
             level: 'B',
-            refs: [{ name: 'Consenso ESGO-ESTRO-ESP', url: 'https://www.esgo.org' }],
+            refs: [{ name: 'Guía ESGO/ESTRO/ESP 2023, cáncer de cuello uterino (Cibula et al.)', pmid: '37127326' }],
             cov: { t: 'NA' }
           },
           {
             label: 'PET-TC de cuerpo entero',
-            detail: 'Recomendado desde IB2/IB3 en adelante o ante sospecha de compromiso ganglionar/metástasis, para planificación de radioterapia',
+            detail: 'Recomendado en enfermedad localmente avanzada (desde IB3, salvo IIA1), en estadios tempranos con ganglios sospechosos en la imagen y antes de quimiorradioterapia con intención curativa',
             level: 'B',
-            refs: [{ name: 'Consenso ESGO-ESTRO-ESP', url: 'https://www.esgo.org' }],
+            refs: [{ name: 'Guía ESGO/ESTRO/ESP 2023, cáncer de cuello uterino (Cibula et al.)', pmid: '37127326' }],
             cov: { t: 'NA' }
           },
           {
@@ -77,7 +77,7 @@
             label: 'Conización con márgenes negativos (o histerectomía simple si no desea más fertilidad)',
             detail: 'Riesgo de compromiso ganglionar despreciable; no requiere linfadenectomía',
             level: 'B',
-            refs: [{ name: 'Consenso ESGO-ESTRO-ESP', url: 'https://www.esgo.org' }],
+            refs: [{ name: 'Guía ESGO/ESTRO/ESP 2023, cáncer de cuello uterino (Cibula et al.)', pmid: '37127326' }],
             cov: { t: 'NA' }
           }
         ],
@@ -90,9 +90,10 @@
         phase: 'primario',
         items: [
           {
-            label: 'Histerectomía radical modificada (tipo B) o simple + linfadenectomía pélvica (considerar ganglio centinela)',
-            level: 'B',
-            refs: [{ name: 'Consenso ESGO-ESTRO-ESP', url: 'https://www.esgo.org' }],
+            label: 'Histerectomía simple (o conización con márgenes libres si se prefiere) + ganglio centinela, sin resección parametrial',
+            detail: 'Según la guía ESGO 2023, la histerectomía radical o la parametrectomía son sobretratamiento en IA1 y la resección parametrial no está indicada en IA2. Estadificación ganglionar: ganglio centinela en IA1 con ILV; en IA2 con ILV corresponde evaluar los ganglios (linfadenectomía pélvica si no se identifica el centinela).',
+            level: 'C',
+            refs: [{ name: 'Guía ESGO/ESTRO/ESP 2023, cáncer de cuello uterino (Cibula et al.)', pmid: '37127326' }, { name: 'SHAPE, histerectomía simple vs. radical (Plante et al.)', pmid: '38416430' }],
             cov: { t: 'NA' }
           }
         ],
@@ -105,10 +106,10 @@
         phase: 'primario',
         items: [
           {
-            label: 'Traquelectomía radical (o conización ampliada en IA) + linfadenectomía pélvica (ganglio centinela)',
-            detail: 'Selección estricta: tumor ≤ 2 cm, histología favorable, sin compromiso del orificio cervical interno',
+            label: 'IA1 con ILV o IA2: conización o traquelectomía simple + ganglio centinela. IB1 ≤ 2 cm con ILV: traquelectomía radical (tipo B) + ganglio centinela',
+            detail: 'El estado ganglionar negativo es condición previa: el ganglio centinela va primero. Selección estricta: tumor ≤ 2 cm, histología favorable, sin compromiso del orificio cervical interno. En IB1 sin ILV también son adecuadas la conización o la traquelectomía simple.',
             level: 'C',
-            refs: [{ name: 'Consenso ESGO-ESTRO-ESP', url: 'https://www.esgo.org' }],
+            refs: [{ name: 'Guía ESGO/ESTRO/ESP 2023, cáncer de cuello uterino (Cibula et al.)', pmid: '37127326' }],
             cov: { t: 'NA' }
           }
         ],
@@ -207,7 +208,7 @@
           {
             label: 'Radioterapia externa pélvica + braquiterapia intracavitaria (componente esencial, no sustituible por dosis externa sola)',
             level: 'A',
-            refs: [{ name: 'Guía ESGO-ESTRO-ESP', url: 'https://www.esgo.org' }],
+            refs: [{ name: 'Guía ESGO/ESTRO/ESP 2023, cáncer de cuello uterino (Cibula et al.)', pmid: '37127326' }, { name: 'EMBRACE-I (Pötter et al.)', pmid: '33794207' }],
             cov: { t: 'NA' }
           },
           {
@@ -270,14 +271,15 @@
         items: [
           {
             label: 'Examen físico y ginecológico cada 3–6 meses los primeros 2 años, luego cada 6–12 meses',
+            detail: 'Esquema orientativo: la guía ESGO 2023 pide individualizar intensidad y duración según el riesgo de recaída (hay una calculadora de riesgo anual de ESGO). Tras preservación de fertilidad, test de VPH a los 6–12 y a los 24 meses.',
             level: 'C',
-            refs: [{ name: 'Consenso ESGO-ESTRO-ESP', url: 'https://www.esgo.org' }],
+            refs: [{ name: 'Guía ESGO/ESTRO/ESP 2023, cáncer de cuello uterino (Cibula et al.)', pmid: '37127326' }],
             cov: { t: 'NA' }
           },
           {
             label: 'Citología/colposcopia e imágenes según hallazgos clínicos o síntomas (no de rutina en asintomáticas)',
             level: 'C',
-            refs: [{ name: 'Consenso ESGO-ESTRO-ESP', url: 'https://www.esgo.org' }],
+            refs: [{ name: 'Guía ESGO/ESTRO/ESP 2023, cáncer de cuello uterino (Cibula et al.)', pmid: '37127326' }],
             cov: { t: 'NA' }
           }
         ],
@@ -313,7 +315,7 @@
             label: 'Exenteración pélvica (recaída central sin compromiso de pared) o reirradiación ± braquiterapia si no irradiada antes',
             detail: 'Selección estricta de casos en centro con experiencia; evaluación multidisciplinaria',
             level: 'C',
-            refs: [{ name: 'Consenso ESGO-ESTRO-ESP', url: 'https://www.esgo.org' }],
+            refs: [{ name: 'Guía ESGO/ESTRO/ESP 2023, cáncer de cuello uterino (Cibula et al.)', pmid: '37127326' }],
             cov: { t: 'NA' }
           }
         ],
@@ -407,7 +409,7 @@
           {
             label: 'Evaluar ensayo clínico disponible',
             level: 'C',
-            refs: [{ name: 'Consenso ESGO-ESTRO-ESP', url: 'https://www.esgo.org' }],
+            refs: [{ name: 'Guía ESGO/ESTRO/ESP 2023, cáncer de cuello uterino (Cibula et al.)', pmid: '37127326' }],
             cov: { t: 'NA' }
           }
         ],
@@ -423,7 +425,7 @@
           {
             label: 'Mejor soporte, reevaluar opción de ensayo clínico, o rechallenge de agente previo según estado funcional',
             level: 'C',
-            refs: [{ name: 'Consenso ESGO-ESTRO-ESP', url: 'https://www.esgo.org' }],
+            refs: [{ name: 'Guía ESGO/ESTRO/ESP 2023, cáncer de cuello uterino (Cibula et al.)', pmid: '37127326' }],
             cov: { t: 'NA' }
           }
         ]
