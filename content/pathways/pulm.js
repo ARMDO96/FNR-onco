@@ -106,7 +106,7 @@ R.pathways.pulm = {
           label: 'Atezolizumab 1200 mg IV c/21 días × 16 ciclos (post-QT adyuvante con platino)',
           detail: 'IMpower010 incluyó estadio IB–IIIA con PD-L1 ≥ 1%; en IB la evidencia de beneficio es más marginal',
           regimen: 'pulm-atezolizumab-adj',
-          level: 'B',
+          level: 'C',
           refs: [ { name: 'IMpower010', pmid: '34555333' } ],
           cov: { t: 'NC' }
         }
@@ -239,8 +239,9 @@ R.pathways.pulm = {
         },
         {
           label: 'Cisplatino + Pemetrexed, 4 ciclos (no escamoso)',
+          detail: 'Extrapolación: los ensayos del metaanálisis LACE no usaron pemetrexed; se acepta como doblete de cisplatino alternativo en no escamosos.',
           regimen: 'pulm-cis-pem',
-          level: 'B',
+          level: 'C',
           refs: [ { name: 'LACE (metaanálisis)', pmid: '18506026' } ],
           cov: { t: 'FTM' }
         }
@@ -338,9 +339,10 @@ R.pathways.pulm = {
       items: [
         {
           label: 'Osimertinib de consolidación/adyuvancia post-QRT',
-          detail: 'El subgrupo EGFR mutado de PACIFIC no mostró beneficio claro con durvalumab; existe evidencia dedicada de osimertinib post-QRT en este escenario',
+          detail: 'LAURA: osimertinib tras QRT mejoró la sobrevida libre de progresión en estadio III irresecable EGFR mutado; la sobrevida global todavía era inmadura. En el subgrupo EGFR de PACIFIC, durvalumab no mostró beneficio claro.',
+          regimen: 'pulm-osimertinib-1l',
           level: 'B',
-          refs: [ { name: 'PACIFIC (subgrupo EGFR)', pmid: '28885881' } ],
+          refs: [ { name: 'LAURA', pmid: '38828946' } ],
           cov: { t: '?' }
         }
       ],
@@ -371,15 +373,15 @@ R.pathways.pulm = {
           label: 'Osimertinib 80 mg/día',
           regimen: 'pulm-osimertinib-1l',
           level: 'A',
-          refs: [ { name: 'FLAURA', pmid: '29151359' } ],
+          refs: [ { name: 'FLAURA', pmid: '29151359' }, { name: 'FLAURA, sobrevida global', pmid: '31751012' } ],
           cov: { t: 'FNR', ind: 'u-osi' }
         },
         {
           label: 'Erlotinib 150 mg/día o gefitinib 250 mg/día',
           detail: 'Alternativa de 1ª generación; si progresa con T790M+ se puede rotar a osimertinib',
           regimen: 'pulm-erlotinib',
-          level: 'A',
-          refs: [ { name: 'EURTAC', pmid: '22285167' }, { name: 'IPASS', pmid: '19692680' } ],
+          level: 'B',
+          refs: [ { name: 'EURTAC', pmid: '22285168' }, { name: 'IPASS', pmid: '19692680' } ],
           cov: { t: 'FNR', ind: 'u-1g' }
         }
       ],
@@ -401,7 +403,7 @@ R.pathways.pulm = {
         {
           label: 'Osimertinib 80 mg/día',
           regimen: 'pulm-osimertinib-2l',
-          level: 'A',
+          level: 'B',
           detail: 'La normativa FNR de osimertinib (u-osi) exige no haber recibido tratamiento sistémico previo para la enfermedad avanzada: tras gefitinib/erlotinib la cobertura se discute caso a caso.',
           refs: [ { name: 'AURA3', pmid: '27959700' } ],
           cov: { t: '?' }
@@ -419,7 +421,7 @@ R.pathways.pulm = {
         {
           label: 'Alectinib 600 mg c/12 h',
           regimen: 'pulm-alectinib',
-          level: 'A',
+          level: 'B',
           refs: [ { name: 'ALEX', pmid: '28586279' } ],
           cov: { t: 'FNR', ind: 'u-alec' }
         }
@@ -458,7 +460,7 @@ R.pathways.pulm = {
         {
           label: 'Crizotinib 250 mg c/12 h',
           regimen: 'pulm-crizotinib-ros1',
-          level: 'B',
+          level: 'C',
           refs: [ { name: 'PROFILE 1001', pmid: '30980071' } ],
           cov: { t: 'NC' }
         }
@@ -494,7 +496,7 @@ R.pathways.pulm = {
           label: 'Terapia dirigida específica (p. ej. capmatinib/tepotinib para MET, selpercatinib/pralsetinib para RET, dabrafenib+trametinib para BRAF V600E, entrectinib/larotrectinib para NTRK)',
           detail: 'Cada alteración tiene aprobación regulatoria específica (FDA/EMA) con evidencia de fase II de un solo brazo en su mayoría; no se detalla dosis por régimen individual dada la baja frecuencia',
           level: 'C',
-          refs: [ { name: 'GEOMETRY mono-1 (capmatinib, MET)', pmid: '32877583' }, { name: 'LIBRETTO-001 (selpercatinib, RET)', pmid: '32846060' }, { name: 'Dabrafenib + trametinib (BRAF V600E)', pmid: '27283860' }, { name: 'Entrectinib (NTRK/ROS1), análisis integrado', pmid: '31838007' } ],
+          refs: [ { name: 'GEOMETRY mono-1 (capmatinib, MET)', pmid: '32877583' }, { name: 'LIBRETTO-001 (selpercatinib, RET)', pmid: '32846060' }, { name: 'Dabrafenib + trametinib (BRAF V600E)', pmid: '27283860' }, { name: 'Entrectinib (NTRK), análisis integrado', pmid: '31838007' } ],
           cov: { t: '?' }
         }
       ],
@@ -550,7 +552,7 @@ R.pathways.pulm = {
           label: 'Pembrolizumab 1 % ≤ PD-L1 < 50 %: alternativa en monoterapia según KEYNOTE-042',
           detail: 'Opción si no se desea o tolera el esquema con bevacizumab. El beneficio en el subgrupo 1–49 % surge de un análisis exploratorio: la sobrevida global mejoró sobre todo a expensas de PD-L1 ≥ 50 %.',
           regimen: 'pulm-pembrolizumab-mono',
-          level: 'B',
+          level: 'C',
           refs: [ { name: 'KEYNOTE-042', pmid: '30955977' } ],
           cov: { t: 'FNR', ind: 'u-io' }
         }
@@ -619,7 +621,8 @@ R.pathways.pulm = {
       phase: 'avanzada · 2ª línea',
       items: [
         {
-          label: 'Carboplatino + Pemetrexed (no escamoso) ± continuar terapia dirigida según criterio clínico en progresión oligometastásica',
+          label: 'Doblete de platino + pemetrexed (no escamoso), suspendiendo el inhibidor de EGFR',
+          detail: 'En IMPRESS, continuar gefitinib junto con la QT no mejoró la sobrevida libre de progresión y sugirió peor sobrevida global. En progresión oligometastásica puede discutirse tratamiento local y seguir con el TKI.',
           regimen: 'pulm-cis-pem',
           level: 'B',
           refs: [ { name: 'IMPRESS', pmid: '26159065' } ],

@@ -325,7 +325,7 @@ window.addEventListener('popstate',e=>{
 });
 try{history.replaceState({fnrGate:true},'');}catch(e){}
 renderGate();
-if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js");}
+if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(()=>{});}
 /* pide al navegador que no borre las fichas guardadas por falta de espacio o inactividad */
 if(navigator.storage&&navigator.storage.persist){navigator.storage.persist().catch(()=>{});}
 })();

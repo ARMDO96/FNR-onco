@@ -45,7 +45,7 @@ R.regimens['pulm-erlotinib'] = {
   drugs: [
     { name: 'Erlotinib', dose: { type: 'flat', value: 150, unit: 'mg' }, day: 'continuo' }
   ],
-  refs: [{ name: 'EURTAC', pmid: '22285167' }]
+  refs: [{ name: 'EURTAC', pmid: '22285168' }]
 };
 
 R.regimens['pulm-gefitinib'] = {
@@ -229,7 +229,7 @@ R.regimens['pulm-cis-pem'] = {
     { name: 'Pemetrexed', dose: { type: 'm2', value: 500, unit: 'mg' }, day: 'D1' }
   ],
   notes: ['Sólo histología no escamosa.', 'Ácido fólico + vitamina B12 antes de pemetrexed.'],
-  refs: [{ name: 'LACE (metaanálisis QT adyuvante)', pmid: '18506026' }]
+  refs: [{ name: 'Scagliotti 2008 (cisplatino + pemetrexed)', pmid: '18506025' }]
 };
 
 R.regimens['pulm-cis-vinorelbina'] = {
