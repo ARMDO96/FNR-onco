@@ -47,8 +47,30 @@ try {
   });
   await step('estadificar pulmón', async () => {
     await page.click('.tt[data-t="pulm"]'); await page.click('#tab-tnm');
+    await page.click('.opt[data-ax="HIST"][data-v="CPNCP"]');
     for (const [a, v] of [['T', 'T2a'], ['N', 'N0'], ['M', 'M1c2']]) await page.click(`.opt[data-ax="${a}"][data-v="${v}"]`);
     assert.equal((await page.textContent('.st-val')).trim(), 'IVB');
+  });
+  await step('histología de pulmón condiciona el tratamiento; ccu tiene evaluación inicial separada', async () => {
+    // células pequeñas: tarjeta en vez de vía, sin preguntas de tratamiento
+    await page.click('.opt[data-ax="HIST"][data-v="CPCP"]');
+    await page.click('#tab-tx');
+    assert.match(await page.textContent('.empty h4'), /células pequeñas/);
+    assert.equal(await page.locator('.qopt').count(), 0);
+    // volver a células no pequeñas: se restaura la vía de tratamiento
+    await page.click('#tab-tnm');
+    await page.click('.opt[data-ax="HIST"][data-v="CPNCP"]');
+    await page.click('#tab-tx');
+    await page.waitForSelector('.qopt');
+    // cuello uterino: la evaluación inicial aparece como tarjeta en Estadio (no como paso del tratamiento)
+    await page.click('.tt[data-t="ccu"]'); await page.click('#tab-tnm');
+    await page.waitForSelector('details.workup');
+    assert.match(await page.textContent('details.workup summary'), /Evaluación inicial/);
+    await page.click('#tab-tx');
+    await page.waitForSelector('.qopt');
+    assert.ok(!(await page.textContent('#v-tx')).includes('Evaluación inicial'), 'la vía de ccu no arranca con la evaluación inicial');
+    // dejar el tumor en pulmón con CPNCP para no romper los pasos siguientes
+    await page.click('.tt[data-t="pulm"]');
   });
   const hasPw = await page.evaluate(() => !!(window.FNRO.pathways || {}).pulm);
   if (hasPw) {
@@ -56,13 +78,14 @@ try {
       await page.click('#tab-tx');
       await page.waitForSelector('.qopt');
       // avanzar siguiendo la sugerida o la primera opción hasta llegar a una recomendación con ítems
-      for (let i = 0; i < 12 && !(await page.$('.rx')); i++) {
+      // (acotado a #v-tx: la tarjeta de evaluación inicial en Estadio también usa .rx, aunque esté oculta)
+      for (let i = 0; i < 12 && !(await page.$('#v-tx .rx')); i++) {
         const sug = await page.$('.qopt.sug'); await (sug || (await page.$('.qopt'))).click();
       }
-      assert.ok(await page.$('.rx'), 'se llegó a una recomendación');
+      assert.ok(await page.$('#v-tx .rx'), 'se llegó a una recomendación');
     });
     await step('elegir plan y copiarlo', async () => {
-      await page.click('.rx [data-pick]');
+      await page.click('#v-tx .rx [data-pick]');
       assert.ok(await page.$('.plan'));
     });
     await step('régimen con dosis calculadas', async () => {

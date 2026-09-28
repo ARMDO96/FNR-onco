@@ -121,23 +121,37 @@ const curInd=()=>{const t=tumorObj();const id=P().sel[t.id];return t.inds.find(i
 /* ---------- estadificación TNM ---------- */
 const TNM=window.TNM_DATA||{};
 function tnmStage(tid,sel){const d=TNM[tid];if(!d)return {stage:null,note:'Sin tabla TNM para este tumor.'};try{return d.stage(sel||{});}catch(e){return {stage:null,note:'No se pudo calcular.'};}}
-function tnmCode(d,sel){return d.axes.filter(a=>sel[a.key]).map(a=>a.key==='PSA'?'PSA '+a.options.find(o=>o.v===sel.PSA).d.replace(/^PSA\s*/,''):a.key==='GG'?'Grupo de grado '+sel.GG.replace('GG',''):a.key==='FIGO'?'FIGO '+sel.FIGO:a.key==='N'&&d.id==='ccu'?'Ganglios: '+(sel.N==='N0'?'negativos':sel.N):sel[a.key]).join(' · ');}
+function tnmCode(d,sel){
+  const parts=d.axes.filter(a=>sel[a.key]).map(a=>a.key==='PSA'?'PSA '+a.options.find(o=>o.v===sel.PSA).d.replace(/^PSA\s*/,''):a.key==='GG'?'Grupo de grado '+sel.GG.replace('GG',''):a.key==='FIGO'?'FIGO '+sel.FIGO:a.key==='N'&&d.id==='ccu'?'Ganglios: '+(sel.N==='N0'?'negativos':sel.N):sel[a.key]);
+  if(d.pre&&sel[d.pre.key])parts.unshift(sel[d.pre.key]);
+  return parts.join(' · ');
+}
 function tnmSel(){const p=P();p.tnm=p.tnm||{};return p.tnm[p.tumor]=p.tnm[p.tumor]||{};}
 function renderTnm(t){
   const d=TNM[t.id],box=document.getElementById('v-tnm');
   if(!d){box.innerHTML='<p class="gate-empty">No hay tabla de estadificación para este tumor.</p>';return;}
   const sel=tnmSel(),r=tnmStage(t.id,sel),code=tnmCode(d,sel);
-  box.innerHTML=`<aside class="stage card" aria-live="polite">
+  const preVal=d.pre&&sel[d.pre.key];
+  const preHtml=d.pre?`<fieldset class="axis card"><legend>${esc(d.pre.label)}${preVal?`<span class="count">${esc(preVal)}</span>`:''}</legend>
+    <div class="opts">${d.pre.options.map(o=>`<button type="button" class="opt" data-ax="${esc(d.pre.key)}" data-v="${esc(o.v)}" aria-pressed="${sel[d.pre.key]===o.v}"><code>${esc(o.v)}</code><span>${esc(o.d)}</span></button>`).join('')}</div></fieldset>`:'';
+  const stageHtml=`<aside class="stage card" aria-live="polite">
     <span class="st-lbl">Estadio</span>
     <div class="st-val ${r.stage?'':'none'}">${r.stage?esc(r.stage):esc(r.note||'Elegí las categorías')}</div>
     ${code?`<div class="st-code">${esc(code)}</div>`:''}
     <div class="st-ed">${esc(d.edition)}</div>
     ${r.stage&&r.note?`<div class="st-note">${esc(r.note)}</div>`:''}
     <div class="st-act"><button type="button" class="btn primary" id="tnm-copy" ${r.stage?'':'disabled'}>Copiar resumen</button><button type="button" class="btn" id="tnm-clear">Limpiar</button></div>
-  </aside>
-  <div class="axes">${d.axes.map(a=>`<fieldset class="axis card"><legend>${esc(a.label)}${sel[a.key]?`<span class="count">${esc(sel[a.key]==='N0'&&d.id==='ccu'?'N0':(a.options.find(o=>o.v===sel[a.key])||{v:''}).v.replace(/^GG/,'GG ').replace(/^lt10$/,'< 10').replace(/^10a20$/,'10–20').replace(/^ge20$/,'≥ 20'))}</span>`:''}</legend>
+  </aside>`;
+  if(d.pre&&!preVal){
+    /* falta el tipo histológico: todavía no tiene sentido mostrar los ejes TNM */
+    box.innerHTML=stageHtml+`<div class="axes">${preHtml}</div>`;
+    return;
+  }
+  box.innerHTML=stageHtml+
+  `<div class="axes">${preHtml}${d.axes.map(a=>`<fieldset class="axis card"><legend>${esc(a.label)}${sel[a.key]?`<span class="count">${esc(sel[a.key]==='N0'&&d.id==='ccu'?'N0':(a.options.find(o=>o.v===sel[a.key])||{v:''}).v.replace(/^GG/,'GG ').replace(/^lt10$/,'< 10').replace(/^10a20$/,'10–20').replace(/^ge20$/,'≥ 20'))}</span>`:''}</legend>
     <div class="opts">${a.options.map(o=>`<button type="button" class="opt" data-ax="${esc(a.key)}" data-v="${esc(o.v)}" aria-pressed="${sel[a.key]===o.v}"><code>${esc(o.v.replace(/^GG/,'GG ').replace(/^lt10$/,'< 10').replace(/^10a20$/,'10–20').replace(/^ge20$/,'≥ 20'))}</code><span>${esc(o.d)}</span></button>`).join('')}</div></fieldset>`).join('')}
     <section class="tnm-notes card"><h4>Para tener en cuenta</h4><ul>${d.notes.map(n=>`<li>${esc(n)}</li>`).join('')}<li>Fuente: ${esc(d.source)}. Descripciones resumidas; ante duda, rige la tabla oficial.</li></ul></section>
+    ${renderWorkup(t)}
   </div>`;
 }
 /* ---------- tratamiento: vía terapéutica según estadio ---------- */
@@ -193,6 +207,24 @@ function renderRec(id,node,ps){
     </article>`;}).join('');
   return `<section class="card rec"><div class="rec-h"><span class="phase">${esc(node.phase||'Recomendación')}</span><h4>${esc(node.title)}</h4></div>${items}${(node.notes||[]).length?`<ul class="rec-notes">${node.notes.map(n=>`<li>${esc(n)}</li>`).join('')}</ul>`:''}</section>`;
 }
+/* ítem de evaluación inicial (workup): mismo estilo que renderRec, sin botones de acción */
+function renderWorkupItem(tid,nodeId,i,it){
+  if(hiddenItem(tid,nodeId,i,it))return '';
+  const rv=rvState(tid,nodeId,i,it);
+  return `<article class="rx">
+    <div class="rx-top"><h5>${esc(it.label)}</h5>${covBadge(it.cov)}</div>
+    ${rv.state==='revisado'?`<span class="rv-badge">Revisado por dos oncólogos · ${esc(rv.date.slice(5,7)+'/'+rv.date.slice(0,4))}</span>`:rv.state==='discusion'?'<span class="rv-badge disc">En discusión entre revisores</span>':''}
+    ${it.detail?`<p class="rx-d">${esc(it.detail)}</p>`:''}
+    <div class="rx-meta">${it.level?`<span class="lv" title="${esc(LVL[it.level]||'')}">Evidencia ${esc(it.level)}</span>`:''}${(it.refs||[]).length?`<span class="refs">${it.refs.map(refLink).join(' · ')}</span>`:''}</div>
+  </article>`;
+}
+/* tarjeta plegable de evaluación inicial (pw.workup), mostrada en Estadio y no en el recorrido de tratamiento */
+function renderWorkup(t){
+  const pw=PW()[t.id];if(!pw||!pw.workup)return '';
+  const node=pw.nodes[pw.workup];if(!node)return '';
+  const items=node.items.map((it,i)=>renderWorkupItem(t.id,pw.workup,i,it)).join('');
+  return `<details class="card workup"><summary>${esc(node.title)}</summary><div class="rec">${items}${(node.notes||[]).length?`<ul class="rec-notes">${node.notes.map(n=>`<li>${esc(n)}</li>`).join('')}</ul>`:''}</div></details>`;
+}
 function planText(){
   const t=tumorObj(),ps=pathSt(),d=TNM[t.id],sel=(P().tnm||{})[t.id]||{},r=tnmStage(t.id,sel);
   const pl=ps.plan;if(!pl)return '';
@@ -201,9 +233,15 @@ function planText(){
 function renderTx(t){
   const box=document.getElementById('v-tx'),pw=PW()[t.id];
   if(!pw){box.innerHTML='<section class="card empty"><h4>Todavía no hay vía terapéutica para este tumor</h4><p>Se va a sumar en próximas versiones. Mientras tanto están disponibles la estadificación y los requisitos FNR.</p></section>';return;}
-  const ps=pathSt(),st=tnmStage(t.id,(P().tnm||{})[t.id]).stage;
+  const tnmSelT=(P().tnm||{})[t.id]||{};
+  if(t.id==='pulm'&&tnmSelT.HIST==='CPCP'){
+    box.innerHTML=`<section class="card empty"><h4>Todavía no hay vía de tratamiento para cáncer de pulmón de células pequeñas</h4><p>Esta guía está redactada para cáncer de pulmón de células no pequeñas (no microcítico); el de células pequeñas está en la lista de tumores a agregar.</p></section>`;
+    return;
+  }
+  const ps=pathSt(),st=tnmStage(t.id,tnmSelT).stage;
   const res=ENG.walk(pw,ps.a,st);
   let h='';
+  if(t.id==='pulm'&&!tnmSelT.HIST)h+=`<div class="warn"><b>Elegí el tipo histológico en Estadio:</b> esta guía es para células no pequeñas.</div>`;
   const tr=ENG.tumorReview(t.id,pw,RG(),(window.FNRO.reviews||{})[t.id]);
   if(pw.status!=='revisado'||!tr.complete)h+=`<div class="warn"><b>Borrador sin revisión clínica completa.</b> ${tr.count.revisado||0} de ${tr.total} opciones tienen doble aprobación de oncólogos; las demás son preliminares: verificá cada recomendación antes de usarla. Actualizado ${esc(pw.updated)}.</div>`;
   h+=`<div class="card txbar"><div><span class="lbl">Estadio</span> ${st?`<b class="txst">${esc(st)}</b>`:'<span class="muted">sin estadificar: completá la pestaña 1 para que la guía sugiera el camino</span>'}</div>
