@@ -286,6 +286,7 @@ ol.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;g
 .rec{padding:14px 16px;display:flex;flex-direction:column;gap:10px}
 .rec-h .phase{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--t)}
 .rec-h h4{margin:2px 0 0;font:500 1.05rem var(--display);text-wrap:balance}
+.rec-notes{margin:0;padding:10px 12px 10px 28px;background:var(--ind-soft);border-radius:10px;font-size:.84rem;color:var(--ink-2);display:flex;flex-direction:column;gap:4px}
 .rx{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
 .rx.picked{border-color:var(--t);box-shadow:inset 0 0 0 1px var(--t)}
 .rx-top{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline;justify-content:space-between}

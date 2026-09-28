@@ -177,7 +177,7 @@ function renderRec(id,node,ps){
       </div>
       ${open&&it.regimen?renderRegimen(it.regimen):''}
     </article>`;}).join('');
-  return `<section class="card rec"><div class="rec-h"><span class="phase">${esc(node.phase||'Recomendación')}</span><h4>${esc(node.title)}</h4></div>${items}</section>`;
+  return `<section class="card rec"><div class="rec-h"><span class="phase">${esc(node.phase||'Recomendación')}</span><h4>${esc(node.title)}</h4></div>${items}${(node.notes||[]).length?`<ul class="rec-notes">${node.notes.map(n=>`<li>${esc(n)}</li>`).join('')}</ul>`:''}</section>`;
 }
 function planText(){
   const t=tumorObj(),ps=pathSt(),d=TNM[t.id],sel=(P().tnm||{})[t.id]||{},r=tnmStage(t.id,sel);
