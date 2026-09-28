@@ -2,6 +2,7 @@
 // Uso: node tools/gen.mjs   (correr después de agregar o quitar archivos de content/)
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import { ROOT, contentFiles } from './load.mjs';
 
 const files = contentFiles();
@@ -18,5 +19,10 @@ const cache = ['./', 'index.html', 'manifest.webmanifest', 'app/app.css',
 const swPath = path.join(ROOT, 'sw.js');
 let sw = fs.readFileSync(swPath, 'utf8');
 sw = sw.replace(/const FILES=\[[\s\S]*?\];/, `const FILES=${JSON.stringify(cache).replace(/","/g, '",\n"')};`);
+// El nombre de la caché depende del contenido de los archivos: cualquier cambio publica una versión nueva
+// y el service worker descarta la anterior (si no, los scripts se seguirían sirviendo desde la caché vieja).
+const h = crypto.createHash('sha256');
+for (const f of cache.filter(f => f !== './')) h.update(f).update(fs.readFileSync(path.join(ROOT, f)));
+sw = sw.replace(/const CACHE='[^']*';/, `const CACHE='fnr-onco-${h.digest('hex').slice(0, 10)}';`);
 fs.writeFileSync(swPath, sw);
 console.log(`index.html: ${files.length} archivos de contenido · sw.js: ${cache.length} archivos en caché`);
