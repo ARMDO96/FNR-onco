@@ -393,7 +393,7 @@
             label: 'Cemiplimab en monoterapia (si no recibió inhibidor de PD-1/PD-L1 previo)',
             regimen: 'ccu-cemiplimab',
             level: 'A',
-            refs: [{ name: 'EMPOWER-Cervical 1/GOG-3016/ENGOT-cx9', pmid: '35045221' }],
+            refs: [{ name: 'EMPOWER-Cervical 1/GOG-3016/ENGOT-cx9', pmid: '35139273' }],
             cov: { t: '?' }
           },
           {

@@ -42,8 +42,9 @@
           },
           {
             label: 'Radioterapia adyuvante tras cirugía conservadora',
-            level: 'A',
-            refs: [{ name: 'NSABP B-24', pmid: '10376613' }],
+            detail: 'Reduce la recurrencia ipsilateral, sin impacto demostrado en sobrevida global.',
+            level: 'B',
+            refs: [{ name: 'NSABP B-17', pmid: '8292119' }],
             cov: { t: 'NA' }
           },
           {
@@ -89,7 +90,7 @@
             detail: 'Indicado en ganglios positivos o alto riesgo clínico-patológico',
             regimen: 'mama-ac',
             level: 'A',
-            refs: [{ name: 'CALGB 9741', pmid: '12668651' }],
+            refs: [{ name: 'ECOG E1199 (paclitaxel semanal)', pmid: '18420499' }, { name: 'CALGB 9741 (dosis densa)', pmid: '12668651' }],
             cov: { t: 'FTM' }
           },
           {
@@ -138,7 +139,7 @@
             detail: 'Preferir sobre tamoxifeno solo en pacientes jóvenes de alto riesgo',
             regimen: 'mama-ofs-ai',
             level: 'A',
-            refs: [{ name: 'SOFT/TEXT', pmid: '25396347' }],
+            refs: [{ name: 'SOFT/TEXT', pmid: '24881463' }],
             cov: { t: 'FTM' }
           }
         ],
@@ -265,7 +266,7 @@
             detail: 'Aprobado por FDA/EMA para RH+/HER2− tras endocrino y ≥2 quimioterapias; sin cobertura confirmada en Uruguay',
             regimen: 'mama-sacituzumab',
             level: 'A',
-            refs: [{ name: 'TROPiCS-02', pmid: '36074951' }],
+            refs: [{ name: 'TROPiCS-02 (sobrevida global)', pmid: '37633306' }],
             cov: { t: 'NC' }
           }
         ]
@@ -292,7 +293,7 @@
             label: 'Paclitaxel semanal + trastuzumab (esquema APT) × 12 semanas, trastuzumab hasta 1 año',
             detail: 'Reservado a tumores ≤3 cm con ganglios negativos; excelente pronóstico',
             regimen: 'mama-apt',
-            level: 'B',
+            level: 'C',
             refs: [{ name: 'APT trial', pmid: '30939096' }],
             cov: { t: 'FNR', ind: 'm-adj-t' }
           }
@@ -312,10 +313,10 @@
             label: 'Docetaxel + carboplatino + trastuzumab + pertuzumab (TCHP) × 6 ciclos',
             detail: 'Mayor tasa de respuesta patológica completa que trastuzumab solo',
             regimen: 'mama-tchp',
-            level: 'A',
+            level: 'B',
             refs: [
               { name: 'NeoSphere', pmid: '22153890' },
-              { name: 'TRYPHAENA', nct: 'NCT00976742' }
+              { name: 'TRYPHAENA', nct: 'NCT00976989' }
             ],
             cov: { t: 'FNR', ind: 'm-neo-tp' }
           },
@@ -434,7 +435,7 @@
           {
             label: 'Lapatinib + capecitabina',
             regimen: 'mama-lapatinib-capecitabina',
-            level: 'A',
+            level: 'B',
             refs: [{ name: 'Geyer et al.', pmid: '17192538' }],
             cov: { t: 'FNR', ind: 'm-lap' }
           },
@@ -496,7 +497,7 @@
             label: 'Pembrolizumab neoadyuvante y adyuvante asociado a quimioterapia',
             detail: 'Mejora respuesta patológica completa y sobrevida libre de eventos; sin cobertura confirmada en Uruguay para este uso',
             level: 'A',
-            refs: [{ name: 'estudio fase III de pembrolizumab perioperatorio en TNBC', pmid: '35139272' }],
+            refs: [{ name: 'KEYNOTE-522', pmid: '35139274' }],
             cov: { t: 'NC' }
           }
         ],
@@ -571,7 +572,7 @@
             detail: 'Alta sensibilidad a platino en tumores BRCA mutados',
             regimen: 'mama-docetaxel-carbo',
             level: 'B',
-            refs: [{ name: 'TNT trial', pmid: '25849146' }],
+            refs: [{ name: 'TNT trial', pmid: '29713086' }],
             cov: { t: 'FTM' }
           }
         ],

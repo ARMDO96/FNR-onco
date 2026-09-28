@@ -109,7 +109,7 @@
       { name: 'Cemiplimab', dose: { type: 'flat', value: 350, unit: 'mg' }, day: 'D1' }
     ],
     notes: ['Estudiado en pacientes sin exposición previa a inhibidores de PD-1/PD-L1.'],
-    refs: [{ name: 'EMPOWER-Cervical 1/GOG-3016/ENGOT-cx9', pmid: '35045221' }]
+    refs: [{ name: 'EMPOWER-Cervical 1/GOG-3016/ENGOT-cx9', pmid: '35139273' }]
   };
 
   R.regimens['ccu-topotecan'] = {

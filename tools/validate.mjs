@@ -31,6 +31,7 @@ for (const [id, rg] of Object.entries(R.regimens || {})) {
     if (!['m2', 'kg', 'auc', 'flat', 'text'].includes(t)) err(`régimen ${id}.drugs[${i}]`, `tipo de dosis inválido: ${t}`);
     if (t !== 'text' && !(typeof d.dose.value === 'number' && d.dose.value > 0)) err(`régimen ${id}.drugs[${i}]`, 'dosis no numérica');
   });
+  (rg.refs || []).forEach((r, j) => { if (!r.pmid && !r.nct && !r.url) err(`régimen ${id}.refs[${j}]`, 'sin pmid/nct/url'); });
 }
 
 for (const [tid, pw] of Object.entries(R.pathways || {})) {

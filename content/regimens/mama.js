@@ -16,7 +16,7 @@
       'Esquema dosis-densa (cada 14 días) con soporte de G-CSF si el estado general lo permite',
       'Requiere control de FEVI basal antes de iniciar antraciclina'
     ],
-    refs: [{ name: 'CALGB 9741 (dosis-densa)', pmid: '12668651' }]
+    refs: [{ name: 'ECOG E1199 (paclitaxel semanal)', pmid: '18420499' }, { name: 'CALGB 9741 (dosis densa)', pmid: '12668651' }]
   };
 
   R.regimens['mama-paclitaxel-semanal'] = {
@@ -26,7 +26,7 @@
       { name: 'Paclitaxel', dose: { type: 'm2', value: 80, unit: 'mg' }, day: 'D1' }
     ],
     notes: ['Premedicación con corticoides y antihistamínicos por riesgo de hipersensibilidad'],
-    refs: [{ name: 'CALGB 9741 (dosis-densa)', pmid: '12668651' }]
+    refs: [{ name: 'ECOG E1199 (paclitaxel semanal)', pmid: '18420499' }, { name: 'CALGB 9741 (dosis densa)', pmid: '12668651' }]
   };
 
   R.regimens['mama-docetaxel-carbo'] = {
@@ -37,7 +37,7 @@
       { name: 'Carboplatino', dose: { type: 'auc', value: 6 }, day: 'D1' }
     ],
     notes: ['Base quimioterápica habitual para combinar con anti-HER2 o pembrolizumab según subtipo'],
-    refs: [{ name: 'NeoSphere (base TCH/TCHP)', pmid: '22153890' }]
+    refs: [{ name: 'TNT trial (carboplatino en triple negativo)', pmid: '29713086' }]
   };
 
   R.regimens['mama-tchp'] = {
@@ -52,7 +52,7 @@
     notes: ['Cirugía tras completar 6 ciclos; continuar trastuzumab ± pertuzumab hasta completar 1 año'],
     refs: [
       { name: 'NeoSphere', pmid: '22153890' },
-      { name: 'TRYPHAENA', nct: 'NCT00976742' }
+      { name: 'TRYPHAENA', nct: 'NCT00976989' }
     ]
   };
 
@@ -155,7 +155,7 @@
       { name: 'Letrozol', dose: { type: 'flat', value: 2.5, unit: 'mg/día' }, day: 'continuo' }
     ],
     notes: ['Solo en mujeres postmenopáusicas (o con supresión ovárica); anastrozol 1 mg/día y exemestano 25 mg/día son alternativas equivalentes'],
-    refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: '' }]
+    refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }]
   };
 
   R.regimens['mama-ofs-ai'] = {
@@ -166,7 +166,7 @@
       { name: 'Letrozol', dose: { type: 'flat', value: 2.5, unit: 'mg/día' }, day: 'continuo' }
     ],
     notes: ['Alternativa en premenopáusicas de alto riesgo, en lugar de tamoxifeno solo'],
-    refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: '' }]
+    refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }]
   };
 
   R.regimens['mama-ribociclib-ai'] = {
@@ -229,7 +229,7 @@
       { name: 'Paclitaxel', dose: { type: 'm2', value: 90, unit: 'mg' }, day: 'D1, D8, D15 c/28d' }
     ],
     notes: ['Quimioterapia estándar cuando no corresponde inmunoterapia (PD-L1 CPS < 10)'],
-    refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: '' }]
+    refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }]
   };
 
   R.regimens['mama-eribulina'] = {
