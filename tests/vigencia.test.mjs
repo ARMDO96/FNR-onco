@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { load, ROOT } from '../tools/load.mjs';
-import { extractLinks, docLinks, tagTumors, detectDrugs, chapterOf, splitChapters, pautasReport, citations, SOURCES } from '../tools/vigilancia.mjs';
+import { extractLinks, docLinks, tagTumors, detectDrugs, drugKey, chapterOf, splitChapters, pautasReport, citations, SOURCES } from '../tools/vigilancia.mjs';
 
 const R = load();
 const FIX = path.join(ROOT, 'tests/fixtures/vigencia');
@@ -38,6 +38,9 @@ test('fármacos: diccionario, sufijos y tildes', () => {
   for (const x of ['irinotecan', 'fluorouracilo', 'leucovorina', 'cetuximab', 'zanidatamab']) assert.ok(d.includes(x), x);
   assert.ok(!d.includes('mesa'));
   assert.ok(!detectDrugs('fluorouracilo').includes('fluorouracil'), 'la variante inglesa no se confunde con la española');
+  for (const [a, b] of [['capecitabine', 'capecitabina'], ['epirrubicina', 'epirubicina'], ['letrozole', 'letrozol'], ['exemestane', 'exemestano'], ['vinorelbine', 'vinorelbina']])
+    assert.equal(drugKey(a), drugKey(b), `${a} y ${b} se comparan como el mismo fármaco`);
+  assert.notEqual(drugKey('palbociclib'), drugKey('ribociclib'));
 });
 
 test('mapa de capítulos: lo específico gana', () => {

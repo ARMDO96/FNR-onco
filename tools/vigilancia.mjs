@@ -81,6 +81,10 @@ export function detectDrugs(text, dict = drugDict()) {
   return [...found].sort();
 }
 
+/* Clave para comparar fármacos entre textos en español y en inglés: capecitabina = capecitabine,
+   epirrubicina = epirubicina, letrozol = letrozole. Sólo compara; detectDrugs devuelve la forma escrita. */
+export const drugKey = d => norm(d).replace(/(.)\1/g, '$1').replace(/[aeo]$/, '');
+
 /* Texto de la app por tumor: etiquetas, detalles y regímenes de su vía. */
 export function appText(R, tid) {
   const pw = R.pathways[tid]; if (!pw) return '';
@@ -144,8 +148,8 @@ export function pautasReport(chapters, prevChapters, R) {
   }
   const gaps = [];
   for (const [tid, drugs] of Object.entries(byTumor)) {
-    const have = new Set(detectDrugs(appText(R, tid)));
-    const miss = [...drugs].filter(d => !have.has(d)).sort();
+    const have = new Set(detectDrugs(appText(R, tid)).map(drugKey));
+    const miss = [...new Map([...drugs].filter(d => !have.has(drugKey(d))).map(d => [drugKey(d), d])).values()].sort();
     if (miss.length) gaps.push(`  - **${R.pathways[tid].title}**: ${miss.join(', ')}`);
   }
   if (gaps.length) lines.push('- Fármacos que nombra el pautado y no aparecen en la vía de la app (posible conducta nueva, a evaluar: el pautado también nombra fármacos que desaconseja):', ...gaps);
