@@ -456,7 +456,7 @@
             cov: { t: 'NA' }
           },
           {
-            label: 'TC de tórax, abdomen y pelvis anual por 3–5 años',
+            label: 'TC de tórax, abdomen y pelvis anual los primeros 3 años; después, opcional',
             level: 'C',
             refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR (resumen propio)', url: 'https://www.esmo.org' }],
             cov: { t: 'NA' }
@@ -647,13 +647,21 @@
         type: 'rec',
         title: '1ª línea, BRAF V600E mutado',
         phase: 'Enfermedad avanzada · 1ª línea',
-        help: 'Peor pronóstico biológico; se prefiere intensificar el tratamiento inicial en pacientes con buen estado general.',
+        help: 'Peor pronóstico biológico. Es el único subgrupo con un ensayo fase III propio en 1ª línea (BREAKWATER).',
         items: [
           {
-            label: 'FOLFOXIRI + bevacizumab (preferido si PS 0–1)',
+            label: 'Encorafenib + cetuximab + mFOLFOX6',
+            detail: 'BREAKWATER (fase III) frente a quimioterapia ± bevacizumab: mejor SVLP (HR 0,53) y SG en análisis interino (mediana 30,3 vs. 15,1 meses; HR 0,49). Dosis: verificar contra el protocolo del ensayo antes de cargar el régimen. Fármaco no evaluado por FNR para esta indicación: cobertura a verificar.',
+            level: 'A',
+            refs: [{ name: 'BREAKWATER (Elez et al.)', pmid: '40444708' }],
+            cov: { t: '?' }
+          },
+          {
+            label: 'FOLFOXIRI + bevacizumab, si PS 0–1',
+            detail: 'En el metaanálisis de datos individuales (5 ensayos, 1697 pacientes) FOLFOXIRI + bevacizumab mejoró la SG frente a dobletes + bevacizumab en la población general, pero no mostró beneficio adicional en tumores BRAF mutados. El dato favorable previo venía de un subgrupo de TRIBE.',
             regimen: 'ccr-folfoxiri-bev',
             level: 'C',
-            refs: [{ name: 'TRIBE2, subgrupo BRAF (extrapolación)', pmid: '32164906' }],
+            refs: [{ name: 'Metaanálisis de datos individuales FOLFOXIRI + bevacizumab (Cremolini et al.)', pmid: '32816630' }, { name: 'TRIBE2', pmid: '32164906' }],
             cov: { t: 'FNR', ind: 'c-bev' }
           },
           {

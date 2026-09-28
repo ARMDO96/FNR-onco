@@ -435,10 +435,10 @@ R.pathways.pulm = {
       items: [
         {
           label: 'Lorlatinib 100 mg/día',
-          detail: 'Tras alectinib la evidencia es de fase II de un solo brazo; CROWN (citado) probó lorlatinib en 1ª línea y aquí se usa como extrapolación.',
+          detail: 'Tras un inhibidor de ALK de segunda generación la evidencia es de fase II de un solo brazo: respuesta objetiva en 9 de 28 pacientes (32 %) con un inhibidor previo distinto de crizotinib, y respuesta intracraneal en 5 de 9. CROWN probó lorlatinib en 1ª línea.',
           regimen: 'pulm-lorlatinib',
           level: 'C',
-          refs: [ { name: 'CROWN (1ª línea; extrapolación)', pmid: '33207094' } ],
+          refs: [ { name: 'Lorlatinib, fase II global (Solomon et al.)', pmid: '30413378' }, { name: 'CROWN (1ª línea)', pmid: '33207094' } ],
           cov: { t: 'NC' }
         },
         {

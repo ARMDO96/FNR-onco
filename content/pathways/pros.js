@@ -257,11 +257,11 @@
             cov: { t: 'FTM' }
           },
           {
-            label: 'Agregar abiraterona + prednisona a RT + DAE en el subgrupo de mayor riesgo (localmente avanzado, no metastásico)',
-            detail: 'Beneficio de sobrevida mostrado en un subgrupo no metastásico de alto riesgo dentro de una plataforma multi-brazo; discutir caso a caso, ya que la indicación FNR de abiraterona relevada para este documento cubre específicamente el escenario metastásico.',
-            level: 'B',
+            label: 'Agregar abiraterona + prednisona por 2 años a RT + DAE (no metastásico de alto riesgo)',
+            detail: 'Alto riesgo según STAMPEDE: N+, o N0 con al menos dos de T3–T4, Gleason 8–10 o PSA ≥40. Metaanálisis preespecificado de dos ensayos fase III aleatorizados de la plataforma STAMPEDE: mejor sobrevida libre de metástasis (HR 0,53) y sobrevida global (HR 0,60); agregar enzalutamida no sumó beneficio y aumentó la toxicidad. La indicación FNR de abiraterona relevada para este documento cubre el escenario metastásico: cobertura a verificar.',
+            level: 'A',
             regimen: 'pros-abiraterona',
-            refs: [{ name: 'STAMPEDE — abiraterona, subgrupo no metastásico', nct: 'NCT00268476' }],
+            refs: [{ name: 'STAMPEDE, abiraterona en no metastásico de alto riesgo (Attard et al.)', pmid: '34953525' }],
             cov: { t: '?' }
           }
         ],
@@ -484,7 +484,7 @@
             label: 'Docetaxel (si progresión rápida, síntomas viscerales o ya se usó un ARPI en fase hormonosensible)',
             level: 'A',
             regimen: 'pros-docetaxel',
-            refs: [{ name: 'CHAARTED (extrapolación del uso de docetaxel a CPRC según práctica histórica)', pmid: '26244877' }],
+            refs: [{ name: 'TAX 327 (Tannock et al.)', pmid: '15470213' }],
             cov: { t: 'FTM' }
           }
         ],
