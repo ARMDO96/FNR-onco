@@ -13,8 +13,9 @@ function stagesOf(tid) {
   const d = R.staging[tid]; if (!d) return null;
   const out = new Set();
   const rec = (i, sel) => {
-    if (i === d.axes.length) { const r = d.stage(sel); if (r && r.stage) out.add(r.stage); return; }
-    for (const o of d.axes[i].options) rec(i + 1, { ...sel, [d.axes[i].key]: o.v });
+    const axes = d.pre ? [d.pre, ...d.axes] : d.axes; // 'pre' (p. ej. histología en pulmón) también se combina
+    if (i === axes.length) { const r = d.stage(sel); if (r && r.stage) out.add(r.stage); return; }
+    for (const o of axes[i].options) rec(i + 1, { ...sel, [axes[i].key]: o.v });
   };
   rec(0, {});
   return [...out];

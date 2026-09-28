@@ -9,10 +9,10 @@ const R = load();
 
 test('estadificación: casos de referencia', () => {
   const cases = [
-    ['pulm', { T: 'T1b', N: 'N1', M: 'M0' }, 'IIA'], ['pulm', { T: 'T2a', N: 'N1', M: 'M0' }, 'IIB'],
-    ['pulm', { T: 'T1c', N: 'N2a', M: 'M0' }, 'IIB'], ['pulm', { T: 'T2b', N: 'N2a', M: 'M0' }, 'IIIA'],
-    ['pulm', { T: 'T1a', N: 'N2b', M: 'M0' }, 'IIIA'], ['pulm', { T: 'T3', N: 'N2b', M: 'M0' }, 'IIIB'],
-    ['pulm', { T: 'T4', N: 'N3', M: 'M0' }, 'IIIC'], ['pulm', { T: 'T1a', N: 'N0', M: 'M1c2' }, 'IVB'],
+    ['pulm', { HIST: 'CPNCP', T: 'T1b', N: 'N1', M: 'M0' }, 'IIA'], ['pulm', { HIST: 'CPNCP', T: 'T2a', N: 'N1', M: 'M0' }, 'IIB'],
+    ['pulm', { HIST: 'CPNCP', T: 'T1c', N: 'N2a', M: 'M0' }, 'IIB'], ['pulm', { HIST: 'CPNCP', T: 'T2b', N: 'N2a', M: 'M0' }, 'IIIA'],
+    ['pulm', { HIST: 'CPNCP', T: 'T1a', N: 'N2b', M: 'M0' }, 'IIIA'], ['pulm', { HIST: 'CPNCP', T: 'T3', N: 'N2b', M: 'M0' }, 'IIIB'],
+    ['pulm', { HIST: 'CPNCP', T: 'T4', N: 'N3', M: 'M0' }, 'IIIC'], ['pulm', { HIST: 'CPNCP', T: 'T1a', N: 'N0', M: 'M1c2' }, 'IVB'],
     ['mama', { T: 'T0', N: 'N1mi', M: 'M0' }, 'IB'], ['mama', { T: 'T0', N: 'N1', M: 'M0' }, 'IIA'],
     ['mama', { T: 'T0', N: 'N2', M: 'M0' }, 'IIIA'], ['mama', { T: 'T4d', N: 'N0', M: 'M0' }, 'IIIB'],
     ['mama', { T: 'T2', N: 'N3', M: 'M0' }, 'IIIC'],
@@ -26,7 +26,11 @@ test('estadificación: casos de referencia', () => {
     ['ccu', { FIGO: 'IIIB', N: 'IIIC1' }, 'IIIC1'], ['ccu', { FIGO: 'IB2', N: 'N0' }, 'IB2'],
     ['ccu', { FIGO: 'IVA', N: 'IIIC2' }, 'IVA'],
   ];
-  for (const [t, sel, want] of cases) assert.equal(R.staging[t].stage(sel).stage, want, `${t} ${JSON.stringify(sel)}`);
+  for (const [t, sel, want] of cases) assert.equal(R.staging[t].stage(sel).stage, want, `${t} ${JSON.stringify(sel)}`);  // pulmón: sin tipo histológico no hay estadio; en células pequeñas, mismo TNM + limitada/extendida
+  assert.equal(R.staging.pulm.stage({ T: 'T1b', N: 'N1', M: 'M0' }).stage, null);
+  const cpcp = R.staging.pulm.stage({ HIST: 'CPCP', T: 'T1a', N: 'N0', M: 'M1c2' });
+  assert.equal(cpcp.stage, 'IVB'); assert.match(cpcp.note, /extendida/);
+  assert.match(R.staging.pulm.stage({ HIST: 'CPCP', T: 'T1b', N: 'N1', M: 'M0' }).note, /limitada/);
 });
 
 test('calculadoras: valores conocidos', () => {
