@@ -60,7 +60,7 @@ Documento para la sesión que sigue. Resume qué se decidió, qué está hecho y
   - `tools/validate.mjs`: rechaza citas a otra edición y avisa citas sin edición o a portadas genéricas. Con `estricto: true`, esos avisos pasan a ser errores.
   - `tests/vigencia.test.mjs` con fixtures armados a mano en `tests/fixtures/vigencia/`.
 - `npm run check`: 16 de 16 pruebas pasan. La prueba de punta a punta pasa 7 de 7.
-- Hallazgo pendiente: **39 citas al pautado** (18 dicen "2023" y 21 no dicen edición, en colorrecto y próstata) y **48 citas a portadas genéricas** (`esmo.org`, `esgo.org`, `figo.org`, `hc.edu.uy`). Se listan con `node tools/revision-anual.mjs`.
+- Hallazgo pendiente: **39 citas al pautado** (18 dicen "2023" y 21 no dicen edición, en colorrecto y próstata) y **33 citas a portadas genéricas** (14 `esmo.org`, 11 `esgo.org`, 1 `figo.org`, 7 `hc.edu.uy`; una versión anterior de este documento decía 48 por error). Se listan con `node tools/revision-anual.mjs`.
 - `FNR-onco-v4.zip` está en la rama porque lo subió la usuaria. No borrarlo sin que lo pida.
 
 ## 5. Trabajo pendiente, en orden
@@ -73,7 +73,7 @@ La usuaria ya habilitó `oncologiamedica.hc.edu.uy`.
 4. Verificar **cada una de las 39 citas** contra el capítulo nuevo:
    - si la conducta sigue igual, actualizar nombre, edición y URL (que apunte al capítulo o al PDF);
    - si cambió, **no corregirla en silencio**: dejar una nota u objeción con la fuente y avisarle a la usuaria.
-5. Reemplazar las 48 portadas genéricas por la guía concreta (ESMO, ESGO o FIGO con su URL real, o el PDF del pautado).
+5. Reemplazar las 33 portadas genéricas por la guía concreta (ESMO, ESGO o FIGO con su URL real, o el PDF del pautado).
 6. Poner `citada = vigente` en `content/sources.js` y después `estricto: true`. Correr `npm run check`.
 7. Cambiar una cita cambia la huella del ítem, así que ese ítem vuelve a revisión, que es lo correcto.
 8. Con el acceso habilitado, probar también la vigilancia real: `VIGENCIA_SNAPSHOT=/tmp/s.json node tools/vigencia.mjs`. Revisar que los filtros de FDA, EMA y ESMO encuentren enlaces: se armaron sin ver las páginas en vivo [Inferencia razonable]. Si alguno falla, ajustar el `filter` en `SOURCES` y sumar un fixture.
@@ -135,6 +135,7 @@ Necesita que la usuaria cree el proyecto gratis `app-cancer-demo` en Frankfurt y
 - **Prueba de punta a punta local:** el Playwright fijado (1.49.1) busca un navegador que no está instalado acá. Correr una copia temporal con `chromium.launch({executablePath: '/opt/pw-browsers/chromium'})` y borrarla después. En GitHub funciona sin cambios.
 - **Docker** no tiene daemon en este contenedor. Supabase local solo corre en la CI de GitHub.
 - **Dominios:** si un dominio da 403 en el proxy, no reintentar; avisarle a la usuaria.
+  - 2026-09-28: `oncologiamedica.hc.edu.uy` dio 403 en el proxy pese a estar habilitado, y también `esmo.org`, `esgo.org`, `figo.org`, `fda.gov`, `ema.europa.eu` y `fnr.gub.uy`. La tarea D quedó sin empezar. [Inferencia razonable] El cambio de red se aplica a sesiones nuevas, o no se guardó.
 - **Después de tocar `content/` o `app/`:** correr `node tools/gen.mjs`. La CI exige `index.html` y `sw.js` al día.
 - **Antes de cada commit:** `npm run check`.
 
