@@ -265,6 +265,7 @@ fieldset.axis legend .count{margin-left:auto;font:500 .78rem var(--mono);color:v
 .warn{background:var(--ind-soft);color:var(--ink);border:1px solid var(--ind);border-radius:var(--r-sm);padding:10px 14px;font-size:.86rem;line-height:1.45}
 .warn b{color:var(--ind)}
 .txbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px}
+.lbl{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-3)}
 .txst{font:500 1.5rem var(--display);color:var(--t);margin-left:6px;vertical-align:-2px}
 .txbar-act{display:flex;gap:8px}
 .muted{color:var(--ink-3);font-size:.86rem}

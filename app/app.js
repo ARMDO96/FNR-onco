@@ -191,9 +191,9 @@ function renderTx(t){
   const res=ENG.walk(pw,ps.a,st);
   let h='';
   if(pw.status!=='revisado')h+=`<div class="warn"><b>Borrador sin revisión clínica.</b> Contenido preliminar redactado a partir de ensayos y guías abiertas; verificá cada recomendación antes de usarla. Actualizado ${esc(pw.updated)}.</div>`;
-  h+=`<div class="card txbar"><div><span class="st-lbl">Estadio</span> ${st?`<b class="txst">${esc(st)}</b>`:'<span class="muted">sin estadificar: completá la pestaña 1 para que la guía sugiera el camino</span>'}</div>
+  h+=`<div class="card txbar"><div><span class="lbl">Estadio</span> ${st?`<b class="txst">${esc(st)}</b>`:'<span class="muted">sin estadificar: completá la pestaña 1 para que la guía sugiera el camino</span>'}</div>
     <div class="txbar-act">${ps.plan?`<button type="button" class="btn primary" id="plan-copy">Copiar plan</button>`:''}<button type="button" class="btn" id="tx-reset">Reiniciar</button></div></div>`;
-  if(ps.plan)h+=`<div class="card plan"><span class="st-lbl">Plan elegido</span><div><b>${esc(ps.plan.label)}</b> ${covBadge({t:ps.plan.cov})}</div>${ps.plan.phase?`<small>${esc(ps.plan.phase)}</small>`:''}</div>`;
+  if(ps.plan)h+=`<div class="card plan"><span class="lbl">Plan elegido</span><div><b>${esc(ps.plan.label)}</b> ${covBadge({t:ps.plan.cov})}</div>${ps.plan.phase?`<small>${esc(ps.plan.phase)}</small>`:''}</div>`;
   h+='<ol class="steps">';
   res.steps.forEach(s=>{
     if(s.node.type==='q')h+=`<li class="step done"><span class="q">${esc(s.node.text)}</span><span class="a">${esc(s.node.options[s.chosen].label)}</span><button type="button" class="lnk" data-undo="${esc(s.id)}">Cambiar</button></li>`;
