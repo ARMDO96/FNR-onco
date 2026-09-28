@@ -165,7 +165,7 @@
       { name: 'Pembrolizumab', dose: { type: 'flat', value: 200, unit: 'mg' }, day: 'D1' }
     ],
     notes: ['1ª línea en CCR metastásico dMMR/MSI-H; reemplaza a la quimioterapia en ese subgrupo.'],
-    refs: [{ name: 'KEYNOTE-177', pmid: '32663901' }]
+    refs: [{ name: 'KEYNOTE-177', pmid: '33264544' }]
   };
 
   R.regimens['ccr-dostarlimab'] = {

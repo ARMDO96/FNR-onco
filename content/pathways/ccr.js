@@ -118,7 +118,7 @@
           {
             label: 'Vigilancia, sin quimioterapia adyuvante (preferido)',
             detail: 'El beneficio absoluto de la adyuvancia en estadio II de bajo riesgo es pequeño (≈2-4%); discutir con el paciente.',
-            level: 'B',
+            level: 'C',
             refs: [{ name: 'MOSAIC, subgrupo estadio II', pmid: '15175436' }],
             cov: { t: 'NA' }
           },
@@ -141,7 +141,7 @@
           {
             label: 'CAPOX (capecitabina + oxaliplatino) por 3–6 meses',
             regimen: 'ccr-capox',
-            level: 'B',
+            level: 'C',
             refs: [{ name: 'MOSAIC / IDEA, extrapolación a estadio II de alto riesgo', pmid: '29590544' }],
             cov: { t: 'FTM' }
           },
@@ -491,7 +491,7 @@
             label: 'Pembrolizumab 200 mg IV cada 3 semanas',
             regimen: 'ccr-pembrolizumab',
             level: 'A',
-            refs: [{ name: 'KEYNOTE-177', pmid: '32663901' }],
+            refs: [{ name: 'KEYNOTE-177', pmid: '33264544' }],
             cov: { t: 'FNR', ind: 'c-pembro' }
           }
         ],
@@ -651,7 +651,7 @@
           {
             label: 'FOLFOXIRI + bevacizumab (preferido si PS 0–1)',
             regimen: 'ccr-folfoxiri-bev',
-            level: 'B',
+            level: 'C',
             refs: [{ name: 'TRIBE2, subgrupo BRAF (extrapolación)', pmid: '32164906' }],
             cov: { t: 'FNR', ind: 'c-bev' }
           },
@@ -684,7 +684,7 @@
             detail: 'La normativa FNR de cetuximab exige no haber recibido tratamiento sistémico previo para la enfermedad metastásica: en 2ª línea no está cubierto por esa vía.',
             regimen: 'ccr-folfiri-cetux',
             level: 'B',
-            refs: [{ name: 'EPIC (cetuximab + irinotecán en 2ª línea)', pmid: '18458037' }],
+            refs: [{ name: 'EPIC (cetuximab + irinotecán en 2ª línea)', pmid: '18390971' }],
             cov: { t: '?' }
           }
         ],

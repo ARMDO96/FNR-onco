@@ -170,9 +170,10 @@
         items: [
           {
             label: 'Radioterapia externa + deprivación androgénica por 6 meses',
-            level: 'A',
+            detail: 'El beneficio de agregar 6 meses de DAE se demostró en control bioquímico y clínico; la sobrevida global no difirió significativamente.',
+            level: 'B',
             regimen: 'pros-adt-agonista',
-            refs: [{ name: 'EORTC 22991 / RTOG 9910 (DAE corta + RT, riesgo intermedio)', nct: 'NCT00005044' }],
+            refs: [{ name: 'EORTC 22991 (RT ± 6 meses de DAE)', nct: 'NCT00021450' }],
             cov: { t: 'FTM' }
           }
         ],
@@ -286,14 +287,19 @@
         phase: 'Recaída bioquímica',
         items: [
           {
-            label: 'Radioterapia de rescate sobre el lecho prostático ± deprivación androgénica corta (bicalutamida a dosis alta, 4–6 meses)',
-            detail: 'Iniciar antes de que el PSA supere ~0.5 ng/mL mejora el control; la DAE corta agrega beneficio en pacientes de mayor riesgo (PSA más alto, Grupo de Grado más agresivo).',
+            label: 'Radioterapia de rescate sobre el lecho prostático + bicalutamida 150 mg/día por 24 meses',
+            detail: 'Iniciar la RT antes de que el PSA supere ~0,5 ng/mL mejora el control. El beneficio en sobrevida se concentró en PSA prerrescate más alto (> 0,7 ng/mL); con PSA bajo el beneficio es incierto.',
             level: 'A',
             regimen: 'pros-bicalutamida',
-            refs: [
-              { name: 'RTOG 9601', nct: 'NCT00002874' },
-              { name: 'GETUG-AFU 16', nct: 'NCT00423475' }
-            ],
+            refs: [{ name: 'RTOG 9601', pmid: '28146658' }],
+            cov: { t: 'FTM' }
+          },
+          {
+            label: 'Radioterapia de rescate + agonista LHRH por 6 meses (alternativa)',
+            detail: 'Esquema de GETUG-AFU 16 (goserelina): mejoró la sobrevida libre de progresión.',
+            level: 'B',
+            regimen: 'pros-adt-agonista',
+            refs: [{ name: 'GETUG-AFU 16', nct: 'NCT00423475' }],
             cov: { t: 'FTM' }
           }
         ],
@@ -471,7 +477,7 @@
             label: 'Enzalutamida',
             level: 'A',
             regimen: 'pros-enzalutamida',
-            refs: [{ name: 'COU-AA-302 (comparador conceptual, clase ARPI)', pmid: '23228172' }],
+            refs: [{ name: 'PREVAIL', pmid: '24881730' }],
             cov: { t: 'NC' }
           },
           {
@@ -544,7 +550,7 @@
             label: 'Docetaxel (si no se usó previamente)',
             level: 'A',
             regimen: 'pros-docetaxel',
-            refs: [{ name: 'TAX 327 (docetaxel vs. mitoxantrona en CPRC)', nct: 'NCT00003644' }],
+            refs: [{ name: 'TAX 327 (docetaxel vs. mitoxantrona en CPRC)', pmid: '15470213' }],
             cov: { t: 'FTM' }
           }
         ],

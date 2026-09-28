@@ -41,14 +41,14 @@
     name: 'Bicalutamida',
     cycle: 'Continuo, mientras dure el beneficio clínico',
     drugs: [
-      { name: 'Bicalutamida', dose: { type: 'text', value: '50 mg VO/día (bloqueo androgénico combinado o cobertura de flare); 150 mg VO/día si se usa junto con RT de rescate' }, day: 'Diario' }
+      { name: 'Bicalutamida', dose: { type: 'text', value: '50 mg VO/día (bloqueo androgénico combinado o cobertura de flare); 150 mg VO/día por 24 meses si se usa junto con RT de rescate' }, day: 'Diario' }
     ],
     notes: [
       'A 50 mg/día: cobertura del flare al iniciar un agonista LHRH, o bloqueo androgénico combinado.',
-      'A 150 mg/día: esquema usado junto con radioterapia de rescate en recaída bioquímica post-prostatectomía (RTOG 9601).'
+      'A 150 mg/día por 24 meses: esquema de RTOG 9601 junto con radioterapia de rescate en recaída bioquímica post-prostatectomía. Duraciones más cortas no reproducen su beneficio en sobrevida.'
     ],
     refs: [
-      { name: 'RTOG 9601 (bicalutamida 150 mg + RT de rescate)', nct: 'NCT00002874' }
+      { name: 'RTOG 9601 (bicalutamida 150 mg × 24 meses + RT de rescate)', pmid: '28146658' }
     ]
   };
 
