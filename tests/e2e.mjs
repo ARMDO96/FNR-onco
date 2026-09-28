@@ -97,6 +97,32 @@ try {
         assert.match(await page.textContent('.derived'), /1\.82 m²/);
       }
     });
+    await step('sincronizar Requisitos FNR con el plan elegido (mejora 1)', async () => {
+      // el plan recién elegido en Tratamiento debe verse, sin más clics, en la pestaña Requisitos FNR
+      const planLabel = (await page.textContent('.plan b')).trim();
+      const indTitle = await page.evaluate((label) => {
+        const pw = window.FNRO.pathways.pulm;
+        let ind;
+        for (const nid in pw.nodes) {
+          const n = pw.nodes[nid];
+          if (n.type !== 'rec') continue;
+          const it = n.items.find((i) => i.label === label);
+          if (it && it.cov && it.cov.t === 'FNR') { ind = it.cov.ind; break; }
+        }
+        const t = window.FNRO.fnr.TUMORS.find((x) => x.id === 'pulm');
+        return t.inds.find((i) => i.id === ind).title;
+      }, planLabel);
+      await page.click('#tab-fnr');
+      assert.equal(await page.textContent('#i-title'), indTitle, 'Requisitos FNR muestra la indicación del plan recién elegido, no una por defecto');
+      assert.equal(await page.locator('#fnr-sync .warn').count(), 0, 'sin aviso mientras se ve la indicación del plan elegido');
+      // cambiar a otra indicación del mismo tumor no debe desincronizar en silencio: tiene que avisar
+      await page.locator('#picker .chip:not([aria-pressed="true"])').first().click();
+      await page.waitForSelector('#fnr-sync .warn');
+      assert.match(await page.textContent('#fnr-sync'), /tu plan elegido es/);
+      await page.click('#fnr-goplan');
+      assert.equal(await page.textContent('#i-title'), indTitle, 'el botón "Ver requisitos del plan" vuelve a la indicación del plan');
+      assert.equal(await page.locator('#fnr-sync .warn').count(), 0, 'el aviso desaparece al volver a la indicación del plan');
+    });
   }
   await step('requisitos FNR siguen funcionando', async () => {
     await page.click('#tab-fnr');
@@ -131,12 +157,19 @@ try {
     assert.match(await page.textContent('#pt-err'), /no es válido/);
     await page.fill('#pt-cod', '123456'); await page.click('[data-pt="verificar"]');
     assert.match(await page.textContent('.pt-top h1'), /Hola/);
-    assert.ok(await page.isVisible('.alarm'), 'aviso fijo de fiebre en quimioterapia');
+    // La quimio de la demo está coordinada para dentro de unos días (app/demo.js: dia(3)): todavía no
+    // entró en la ventana de riesgo (día 5 a 14 desde la sesión, TRASPASO §3), así que hoy se ve sólo el
+    // recordatorio discreto, no el aviso fijo.
+    assert.equal(await page.locator('.alarm.card').count(), 0, 'fuera de la ventana: sin aviso fijo de fiebre');
+    assert.match(await page.textContent('#patient'), /Si tenés fiebre/, 'recordatorio discreto de fiebre siempre visible');
     await page.click('.todo');
     await page.fill('input[type="datetime-local"]', '2026-10-05T08:30'); await page.click('[data-pt-fecha]');
     assert.match(await page.textContent('#patient'), /Coordinado/);
+    assert.match(await page.textContent('#toast'), /Fecha guardada: .*octubre/i, 'el toast repite la fecha en español');
+    assert.match(await page.textContent('#patient'), /Agregar a mi calendario/, 'botón para descargar el .ics del ítem coordinado');
     await page.click('[data-pt-view="sintomas"]'); await page.click('[data-pt-sym="fiebre"]');
     assert.match(await page.textContent('.alarm.big'), /emergencia/);
+    assert.match(await page.getAttribute('.alarm.big a[href="tel:911"]', 'href'), /tel:911/, 'llamar al 911 es un enlace tel:');
   });
   await step('doctor: la bandeja muestra la alarma y la fecha con hora', async () => {
     await page.click('#patient [data-role-reset]'); await page.click('[data-role="doctor"]');

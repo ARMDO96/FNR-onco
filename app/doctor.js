@@ -18,7 +18,8 @@ function revision(){
       <span class="rv-bar" role="img" aria-label="${ok} de ${n} ítems revisados"><i style="width:${n?Math.round(100*ok/n):0}%"></i><i class="half" style="width:${n?Math.round(100*part/n):0}%"></i></span>
       <span class="muted small">${ok}/${n}</span></li>`;
   });
-  return `<section class="card dash-card"><div class="dash-h"><h2>Revisión clínica</h2><button type="button" class="linkbtn" id="dash-rv">Abrir modo revisión</button></div>
+  /* jerarquía más baja que "Bandeja de pacientes": es gobernanza/estado, no algo con urgencia diaria */
+  return `<section class="card dash-card rv-card"><div class="dash-h"><h3>Revisión clínica</h3><button type="button" class="linkbtn" id="dash-rv">Abrir modo revisión</button></div>
     <p class="muted small">Ítems con doble aprobación vigente por tumor (barra clara: 1 de 2). Hasta completar un tumor, sus opciones se muestran como borrador.</p>
     <ul class="rv-list">${rows.join('')}</ul></section>`;
 }
@@ -31,7 +32,7 @@ function bandeja(){
     ${lista.length?`<ul class="inbox">${lista.map(e=>`<li class="${e.visto?'':'new'} k-${e.tipo}">
         <span class="ib-ico" aria-hidden="true">${ICON[e.tipo]||'·'}</span>
         <span class="ib-b"><span class="ib-top"><b>${esc(p.nombre)}</b><span class="muted small">${esc(LABEL[e.tipo]||e.tipo)} · ${esc(corta(e.t))}</span></span>
-        <span>${esc(e.texto)}</span></span>
+        <span>${esc(e.texto||e.pTexto||'')}</span></span>
         ${e.visto?'':`<button type="button" class="btn" data-dash-visto="${e.id}">Visto</button>`}</li>`).join('')}</ul>`
       :`<p class="muted">${filtro==='pendientes'?'No hay nada sin ver.':'Todavía no hay reportes.'} Probá el recorrido completo: entrá como paciente, cargá una fecha o marcá un síntoma, y volvé acá.</p>`}
     <p class="muted small">Modo demostración: un paciente ficticio en este dispositivo. Con el servidor, cada paciente vinculado a vos.

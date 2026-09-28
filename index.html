@@ -40,7 +40,7 @@
       <span class="role-go" aria-hidden="true">→</span>
     </button>
   </div>
-  <p class="sos" role="note"><b>No es un servicio de emergencia.</b> Ante una urgencia llamá al 911 o a tu emergencia móvil.</p>
+  <p class="sos" role="note"><b>No es un servicio de emergencia.</b> Ante una urgencia llamá al <a href="tel:911">911</a> o a tu emergencia móvil.</p>
 </section>
 
 <section class="pt" id="patient" hidden></section>
@@ -95,6 +95,7 @@
   <div class="tnm" id="v-tnm" role="tabpanel" aria-labelledby="tab-tnm" hidden></div>
   <div class="tx" id="v-tx" role="tabpanel" aria-labelledby="tab-tx" hidden></div>
   <div id="v-fnr" role="tabpanel" aria-labelledby="tab-fnr" style="display:contents">
+  <div id="fnr-sync" aria-live="polite" hidden></div>
   <nav class="picker" id="picker" aria-label="Indicación"></nav>
   <div class="ihead card">
     <div class="ihead-top">
@@ -138,6 +139,7 @@
 <script src="app/config.js"></script>
 <script src="app/calc.js"></script>
 <script src="app/ci.js"></script>
+<script src="app/ciclo.js"></script>
 <script src="app/demo.js"></script>
 <script src="app/engine.js"></script>
 <script src="app/app.js"></script>

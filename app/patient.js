@@ -13,6 +13,10 @@ const corta=iso=>new Date(iso).toLocaleString('es-UY',{timeZone:TZ,day:'numeric'
 const TIPO={tratamiento:'Tratamiento',estudio:'Estudio',consulta:'Consulta'};
 const EST={'a-coordinar':['Falta coordinar la fecha','ind'],coordinado:['Coordinado','brand'],realizado:['Realizado','ok'],'no-realizado':['No se realizó','exc']};
 const PEND='<span class="pend">Texto pendiente de revisión clínica</span>';
+// Texto genérico para "Lo que enviaste" cuando un evento viejo no tiene pTexto (compatibilidad).
+const GENERICO={alarma:'Avisaste fiebre de 38 °C o más. Te indicamos ir a emergencia.',
+  fecha:'Coordinaste una fecha de tu plan.',confirmacion:'Marcaste una indicación de tu plan.',
+  comentario:'Le enviaste un comentario a tu médico.',sintoma:'Le avisaste un síntoma a tu médico.'};
 let view='inicio',codigoPedido=null,abierto=null;
 
 function header(){
@@ -36,19 +40,26 @@ function login(){
     :`<button type="button" class="btn primary wide" data-pt="pedir">Recibir código</button>`}
     <p class="err" id="pt-err" role="alert"></p>
   </div>
-  <p class="sos" role="note"><b>No es un servicio de emergencia.</b> Ante una urgencia llamá al 911 o a tu emergencia móvil.</p>`;
+  <p class="sos" role="note"><b>No es un servicio de emergencia.</b> Ante una urgencia llamá al <a href="tel:911">911</a> o a tu emergencia móvil.</p>`;
 }
 
 function proximo(){
   const s=D.get();
   return s.plan.filter(i=>i.estado==='coordinado'&&i.fecha).sort((a,b)=>a.fecha.localeCompare(b.fecha))[0];
 }
-function enQuimio(){return D.get().plan.some(i=>i.quimio&&i.estado!=='no-realizado');}
+// Ventana de riesgo (TRASPASO §3): día 5 a 14 desde la fecha del ítem de quimioterapia coordinado o
+// realizado. R.patient.ventanaFiebre es una función pura (app/ciclo.js), probada en tests/patient.test.mjs.
+function enVentanaFiebre(){
+  const ahora=new Date();
+  return D.get().plan.some(i=>i.quimio&&i.fecha&&(i.estado==='coordinado'||i.estado==='realizado')&&R.patient.ventanaFiebre(i.fecha,ahora));
+}
 
 function inicio(){
   const s=D.get(),p=proximo(),falta=s.plan.filter(i=>i.estado==='a-coordinar');
-  return `${enQuimio()?`<div class="alarm card" role="note"><b>Si tenés fiebre de 38 °C o más durante la quimioterapia, andá a emergencia ahora.</b>
-      <span>No esperes a la próxima consulta ni a que baje sola.</span></div>`:''}
+  return `${enVentanaFiebre()
+    ?`<div class="alarm card" role="note"><b>Si tenés fiebre de 38 °C o más durante la quimioterapia, andá a emergencia ahora.</b>
+      <span>No esperes a la próxima consulta ni a que baje sola.</span></div>`
+    :`<p class="fiebre-rec"><b>Si tenés fiebre de 38 °C o más</b>, entrá en <button type="button" class="linkbtn" data-pt-view="sintomas">Síntomas</button>.</p>`}
     ${p?`<div class="card pt-next"><span class="eyebrow">Lo próximo</span><h2>${esc(p.nombre)}</h2>
       <p class="when">${esc(fecha(p.fecha))}</p>${p.lugar?`<p class="muted">${esc(p.lugar)}</p>`:''}
       <button type="button" class="btn" data-pt-open="${p.id}">Ver detalle</button></div>`:''}
@@ -69,7 +80,9 @@ function itemCard(i){
     ${open?`<div class="item-b">
       ${i.estado==='a-coordinar'||i.estado==='coordinado'?`<label for="f-${i.id}">${i.estado==='a-coordinar'?'¿Qué día y hora coordinaste?':'Cambiar la fecha coordinada'}</label>
         <div class="row"><input type="datetime-local" id="f-${i.id}" value="${i.fecha?new Date(new Date(i.fecha).getTime()-new Date(i.fecha).getTimezoneOffset()*60000).toISOString().slice(0,16):''}">
-        <button type="button" class="btn primary" data-pt-fecha="${i.id}">Guardar</button></div>`:''}
+        <button type="button" class="btn primary" data-pt-fecha="${i.id}">Guardar</button></div>
+        <p class="hint" id="prev-${i.id}" aria-live="polite">${i.fecha?'Fecha coordinada: '+esc(fecha(i.fecha)):''}</p>`:''}
+      ${i.fecha?`<button type="button" class="btn" data-pt-ics="${i.id}">Agregar a mi calendario</button>`:''}
       <div class="prep"><h3>Preparación</h3>
         <p>${i.ayuno?'Este estudio puede requerir ayuno. ':''}La indicación concreta (ayuno, medicación, qué llevar) te la da tu médico. ${PEND}</p>
         <p class="muted small">No suspendas ningún medicamento sin que tu médico te lo indique.</p></div>
@@ -99,13 +112,33 @@ function sintomas(){
 function emergencia(){
   return `<div class="card alarm big" role="alert"><h2>Andá a emergencia ahora</h2>
     <p>Con fiebre de 38 °C o más durante la quimioterapia hay que consultar enseguida, aunque te sientas bien.</p>
-    <p><b>Llamá al 911 o a tu emergencia móvil</b> y decí que estás en tratamiento de quimioterapia.</p>
+    <a class="btn primary wide" href="tel:911">Llamar al 911</a>
+    <p>O llamá a tu emergencia móvil y decí que estás en tratamiento de quimioterapia.</p>
     <p class="muted small">Le avisamos también a tu médico.</p>
     <button type="button" class="btn" data-pt-view="inicio">Volver</button></div>`;
 }
 function avisos(){
   const ev=D.get().eventos;
-  return `<h2 class="sec">Lo que enviaste</h2>${ev.length?`<ul class="log">${ev.map(e=>`<li><span class="muted small">${esc(corta(e.t))}</span> ${esc(e.texto)}</li>`).join('')}</ul>`:'<p class="muted">Todavía no enviaste nada.</p>'}`;
+  return `<h2 class="sec">Lo que enviaste</h2>${ev.length?`<ul class="log">${ev.map(e=>`<li><span class="muted small">${esc(corta(e.t))}</span> ${esc(e.pTexto||GENERICO[e.tipo]||'Le avisaste algo a tu médico.')}</li>`).join('')}</ul>`:'<p class="muted">Todavía no enviaste nada.</p>'}`;
+}
+
+// Recordatorio de calendario sin servidor (mejora #9 del informe de UX): un .ics local, sin red ni
+// dependencias. Título genérico ("Turno médico") sin dato clínico; el nombre del ítem va sólo en la
+// descripción, que el paciente ve al abrir el evento en su calendario, no en la notificación del sistema.
+const icsEsc=s=>String(s||'').replace(/\\/g,'\\\\').replace(/\r?\n/g,'\\n').replace(/,/g,'\\,').replace(/;/g,'\\;');
+const icsFecha=iso=>new Date(iso).toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
+function descargarIcs(i){
+  const uid=Date.now().toString(36)+Math.random().toString(36).slice(2,8)+'@app-para-el-cancer';
+  const cuerpo=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//App para el Cáncer//ES','CALSCALE:GREGORIAN',
+    'BEGIN:VEVENT',`UID:${uid}`,`DTSTAMP:${icsFecha(new Date().toISOString())}`,`DTSTART:${icsFecha(i.fecha)}`,
+    'SUMMARY:Turno médico',`DESCRIPTION:${icsEsc(i.nombre)}`,
+    i.lugar?`LOCATION:${icsEsc(i.lugar)}`:'',
+    'BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:Recordatorio de turno médico','TRIGGER:-P1D','END:VALARM',
+    'BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:Recordatorio de turno médico','TRIGGER:-PT2H','END:VALARM',
+    'END:VEVENT','END:VCALENDAR'].filter(Boolean).join('\r\n');
+  const url=URL.createObjectURL(new Blob([cuerpo],{type:'text/calendar;charset=utf-8'}));
+  const a=document.createElement('a');a.href=url;a.download='turno-medico.ics';document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),4000);
 }
 
 function render(){
@@ -139,16 +172,30 @@ document.addEventListener('click',e=>{
     const it=document.getElementById('it-'+id);if(it)it.scrollIntoView({block:'start'});return;}
   if((b=q('data-pt-fecha'))){const i=s.plan.find(x=>x.id===b.dataset.ptFecha),v=document.getElementById('f-'+i.id).value;
     if(!v)return toast('Elegí el día y la hora.');
-    i.fecha=new Date(v).toISOString();i.estado='coordinado';D.evento('fecha',i.id,`Coordinó "${i.nombre}" para el ${corta(i.fecha)}.`);render();toast('Fecha guardada: tu médico la ve.');return;}
+    i.fecha=new Date(v).toISOString();i.estado='coordinado';
+    D.evento('fecha',i.id,`Coordinó "${i.nombre}" para el ${corta(i.fecha)}.`,`Coordinaste "${i.nombre}" para el ${fecha(i.fecha)}.`);
+    render();toast('Fecha guardada: '+fecha(i.fecha)+'. Tu médico la ve.');return;}
+  if((b=q('data-pt-ics'))){const i=s.plan.find(x=>x.id===b.dataset.ptIcs);if(i&&i.fecha)descargarIcs(i);return;}
   if((b=q('data-pt-hecho'))){const i=s.plan.find(x=>x.id===b.dataset.ptHecho),si=b.dataset.v==='si';
-    i.estado=si?'realizado':'no-realizado';D.evento('confirmacion',i.id,`${si?'Confirmó que se realizó':'Indicó que NO se realizó'}: "${i.nombre}".`);render();return;}
+    i.estado=si?'realizado':'no-realizado';
+    D.evento('confirmacion',i.id,`${si?'Confirmó que se realizó':'Indicó que NO se realizó'}: "${i.nombre}".`,
+      si?`Confirmaste que se realizó "${i.nombre}". Tu médico ya lo sabe.`:`Avisaste que "${i.nombre}" no se hizo. Tu médico ya lo sabe.`);
+    render();toast(si?'Gracias, tu médico lo ve.':'Avisado a tu médico.');return;}
   if((b=q('data-pt-com'))){const i=s.plan.find(x=>x.id===b.dataset.ptCom),t=document.getElementById('com-'+i.id).value.trim();
-    if(!t)return;D.evento('comentario',i.id,`Comentario sobre "${i.nombre}": ${t}`);render();toast('Comentario enviado.');return;}
+    if(!t)return;D.evento('comentario',i.id,`Comentario sobre "${i.nombre}": ${t}`,`Le escribiste a tu médico sobre "${i.nombre}": ${t}`);render();toast('Comentario enviado.');return;}
   if((b=q('data-pt-sym'))){
-    if(b.dataset.ptSym==='fiebre'){D.evento('alarma',null,'ALARMA: fiebre ≥38 °C en quimioterapia. Se le indicó ir a emergencia.');view='emergencia';render();window.scrollTo(0,0);return;}
+    if(b.dataset.ptSym==='fiebre'){
+      D.evento('alarma',null,'ALARMA: fiebre ≥38 °C en quimioterapia. Se le indicó ir a emergencia.','Avisaste que tenés fiebre. Te indicamos ir a emergencia.');
+      view='emergencia';render();window.scrollTo(0,0);return;}
     const t=document.getElementById('sym-txt').value.trim();if(!t)return;
-    D.evento('sintoma',null,`Síntoma: ${t}`);render();toast('Enviado a tu médico.');return;
+    D.evento('sintoma',null,`Síntoma: ${t}`,`Le contaste a tu médico: ${t}`);render();toast('Enviado a tu médico.');return;
   }
 });
-R.patient={render};
+document.addEventListener('input',e=>{
+  if(!e.target.closest('#patient'))return;
+  const inp=e.target.closest('input[type="datetime-local"]');if(!inp)return;
+  const prev=document.getElementById('prev-'+inp.id.slice(2));if(!prev)return;
+  prev.textContent=inp.value?'Vas a guardar: '+fecha(new Date(inp.value).toISOString()):'';
+});
+R.patient=Object.assign(R.patient||{},{render});
 })();
