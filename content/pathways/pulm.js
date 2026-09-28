@@ -435,16 +435,18 @@ R.pathways.pulm = {
       items: [
         {
           label: 'Lorlatinib 100 mg/día',
+          detail: 'Tras alectinib la evidencia es de fase II de un solo brazo; CROWN (citado) probó lorlatinib en 1ª línea y aquí se usa como extrapolación.',
           regimen: 'pulm-lorlatinib',
-          level: 'B',
-          refs: [ { name: 'CROWN', pmid: '33207094' } ],
+          level: 'C',
+          refs: [ { name: 'CROWN (1ª línea; extrapolación)', pmid: '33207094' } ],
           cov: { t: 'NC' }
         },
         {
           label: 'Brigatinib 180 mg/día (lead-in 90 mg × 7 d)',
+          detail: 'Tras alectinib la actividad de brigatinib es modesta y proviene de estudios de un solo brazo; ALTA-1L (citado) fue en 1ª línea.',
           regimen: 'pulm-brigatinib',
-          level: 'B',
-          refs: [ { name: 'ALTA-1L', pmid: '30280657' } ],
+          level: 'C',
+          refs: [ { name: 'ALTA-1L (1ª línea; extrapolación)', pmid: '30280657' } ],
           cov: { t: 'NC' }
         }
       ],

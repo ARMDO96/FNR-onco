@@ -58,7 +58,12 @@ function patientSummary(p){
   const d=ks.filter(k=>doneFor(ind,c,k)).length;
   return {tumorId:t.id,tumorName:t.name,indChip:ind.chip,d,total:ks.length,stage:tnmStage(t.id,(p.tnm||{})[t.id]).stage};
 }
+function renderReviewers(){
+  const el=document.getElementById('reviewers'),rv=window.FNRO.reviewers;if(!el||!rv)return;
+  el.innerHTML='<ul class="rvw">'+Object.values(rv).map(r=>`<li><b>${esc(r.rol)}:</b> ${esc(r.nombre||'pendiente de designar')}. <span class="muted">Conflictos declarados: ${esc(r.coi)}</span></li>`).join('')+'</ul>';
+}
 function renderGate(){
+  renderReviewers();
   const rows=Object.entries(STORE.patients).sort((a,b)=>b[1].updatedAt-a[1].updatedAt);
   const list=document.getElementById('plist');
   if(!rows.length){list.innerHTML='<p class="gate-empty">Todavía no hay pacientes guardados en este dispositivo.</p>';return;}
@@ -164,10 +169,19 @@ function renderRegimen(id){
     <p class="rg-foot">Dosis orientativas: verificá contra el protocolo institucional, función de órganos y toxicidad previa.${(rg.refs||[]).length?' Ref.: '+rg.refs.map(refLink).join(', '):''}</p>
   </div>`;
 }
+/* estado de revisión clínica de un ítem (registro en content/reviews/) */
+function rvState(tid,nodeId,i,it){
+  const ri={key:`${tid}/${nodeId}#${i}`,hash:ENG.fingerprint(it,it.regimen?RG()[it.regimen]:null)};
+  return ENG.itemStatus(ri,(window.FNRO.reviews||{})[tid]);
+}
+const hiddenItem=(tid,id,i,it)=>it.retirado||rvState(tid,id,i,it).state==='retirado';
 function renderRec(id,node,ps){
-  const items=node.items.map((it,i)=>{const k=id+':'+i,open=ps.open[k],picked=ps.plan&&ps.plan.k===k;
+  const tid=P().tumor;
+  const items=node.items.map((it,i)=>{if(hiddenItem(tid,id,i,it))return '';
+    const k=id+':'+i,open=ps.open[k],picked=ps.plan&&ps.plan.k===k,rv=rvState(tid,id,i,it);
     return `<article class="rx ${picked?'picked':''}">
       <div class="rx-top"><h5>${esc(it.label)}</h5>${covBadge(it.cov)}</div>
+      ${rv.state==='revisado'?`<span class="rv-badge">Revisado por dos oncólogos · ${esc(rv.date.slice(5,7)+'/'+rv.date.slice(0,4))}</span>`:rv.state==='discusion'?'<span class="rv-badge disc">En discusión entre revisores</span>':''}
       ${it.detail?`<p class="rx-d">${esc(it.detail)}</p>`:''}
       <div class="rx-meta">${it.level?`<span class="lv" title="${esc(LVL[it.level]||'')}">Evidencia ${esc(it.level)}</span>`:''}${(it.refs||[]).length?`<span class="refs">${it.refs.map(refLink).join(' · ')}</span>`:''}</div>
       <div class="rx-act">
@@ -190,7 +204,8 @@ function renderTx(t){
   const ps=pathSt(),st=tnmStage(t.id,(P().tnm||{})[t.id]).stage;
   const res=ENG.walk(pw,ps.a,st);
   let h='';
-  if(pw.status!=='revisado')h+=`<div class="warn"><b>Borrador sin revisión clínica.</b> Contenido preliminar redactado a partir de ensayos y guías abiertas; verificá cada recomendación antes de usarla. Actualizado ${esc(pw.updated)}.</div>`;
+  const tr=ENG.tumorReview(t.id,pw,RG(),(window.FNRO.reviews||{})[t.id]);
+  if(pw.status!=='revisado'||!tr.complete)h+=`<div class="warn"><b>Borrador sin revisión clínica completa.</b> ${tr.count.revisado||0} de ${tr.total} opciones tienen doble aprobación de oncólogos; las demás son preliminares: verificá cada recomendación antes de usarla. Actualizado ${esc(pw.updated)}.</div>`;
   h+=`<div class="card txbar"><div><span class="lbl">Estadio</span> ${st?`<b class="txst">${esc(st)}</b>`:'<span class="muted">sin estadificar: completá la pestaña 1 para que la guía sugiera el camino</span>'}</div>
     <div class="txbar-act">${ps.plan?`<button type="button" class="btn primary" id="plan-copy">Copiar plan</button>`:''}<button type="button" class="btn" id="tx-reset">Reiniciar</button></div></div>`;
   if(ps.plan)h+=`<div class="card plan"><span class="lbl">Plan elegido</span><div><b>${esc(ps.plan.label)}</b> ${covBadge({t:ps.plan.cov})}</div>${ps.plan.phase?`<small>${esc(ps.plan.phase)}</small>`:''}</div>`;

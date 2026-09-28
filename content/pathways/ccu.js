@@ -398,8 +398,9 @@
           },
           {
             label: 'Quimioterapia de agente único (p. ej. topotecán)',
+            detail: 'Actividad modesta. GOG-179 evaluó topotecán combinado con cisplatino; su uso en monoterapia es extrapolación.',
             regimen: 'ccu-topotecan',
-            level: 'B',
+            level: 'C',
             refs: [{ name: 'GOG-179 (topotecán + cisplatino)', pmid: '15911865' }],
             cov: { t: 'FTM' }
           },

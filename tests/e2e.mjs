@@ -3,6 +3,8 @@ import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
+import os from 'node:os';
+import { execFileSync } from 'node:child_process';
 import { ROOT } from '../tools/load.mjs';
 
 let pw;
@@ -86,6 +88,34 @@ try {
       localStorage.setItem(k, JSON.stringify(s)); });
     await page.reload(); await page.fill('#pid-input', '99'); await page.click('#pid-go');
     assert.ok((await page.textContent('#band h2')).length > 0);
+  });
+  await step('modo revisión: aprobar, exportar e incorporar al registro', async () => {
+    await page.goto(URL0);
+    await page.click('#about summary'); await page.click('#rv-open');
+    await page.selectOption('#rv-role', 'editor'); await page.fill('#rv-name', 'Revisor de prueba'); await page.fill('#rv-coi', 'ninguno');
+    await page.click('#rv-start');
+    await page.click('[data-rvt="pulm"]');
+    const card = page.locator('.rv-item').first();
+    // aprobar sin controles no alcanza
+    await card.locator('[data-dec="aprobar"]').click();
+    assert.ok(await page.locator('.rv-item').first().locator('.rv-miss').count());
+    for (const box of await page.locator('.rv-item').first().locator('input[data-ck]:not([data-ck="coi"])').all()) await box.check();
+    await page.click('#rv-export');
+    const out = JSON.parse(await page.inputValue('#rv-json'));
+    assert.equal(out.role, 'editor'); assert.equal(out.decisions.length, 1); assert.equal(out.decisions[0].decision, 'aprobar');
+    // incorporar el archivo en una copia del repositorio y comprobar el estado
+    const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'fnro-'));
+    for (const d of ['app', 'content', 'tools']) fs.cpSync(path.join(ROOT, d), path.join(tmp, d), { recursive: true });
+    fs.writeFileSync(path.join(tmp, 'rev.json'), JSON.stringify(out));
+    const log = execFileSync('node', ['tools/apply-review.mjs', 'rev.json'], { cwd: tmp }).toString();
+    assert.match(log, /1 decisiones nuevas/);
+    const again = execFileSync('node', ['tools/apply-review.mjs', 'rev.json'], { cwd: tmp }).toString();
+    assert.match(again, /0 decisiones nuevas/, 'no duplica');
+    const st = execFileSync('node', ['tools/review-status.mjs'], { cwd: tmp }).toString();
+    assert.match(st, /pulmón[^\n]*1 con 1 de 2/);
+    assert.match(fs.readFileSync(path.join(tmp, 'content/reviewers.js'), 'utf8'), /Revisor de prueba/);
+    fs.rmSync(tmp, { recursive: true, force: true });
+    await page.click('#rv-exit');
   });
   assert.deepEqual(errors, [], 'errores de consola: ' + errors.join(' | '));
   console.log('E2E OK');

@@ -19,6 +19,8 @@ jobs:
         run: node tools/gen.mjs && git diff --exit-code -- index.html sw.js
       - name: Validar contenido clínico
         run: node tools/validate.mjs
+      - name: Verificar que todas las citas existan (PubMed / ClinicalTrials.gov)
+        run: node tools/check-refs.mjs
       - name: Pruebas unitarias
         run: node --test tests/*.test.mjs
       - name: Prueba de punta a punta

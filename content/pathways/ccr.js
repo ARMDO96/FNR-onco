@@ -573,7 +573,7 @@
             detail: 'La normativa FNR cubre cetuximab sólo asociado a un plan con irinotecán (FOLFIRI); con oxaliplatino la cobertura no está contemplada.',
             regimen: 'ccr-folfox-cetux',
             level: 'B',
-            refs: [{ name: 'OPUS', pmid: '21597447' }],
+            refs: [{ name: 'OPUS', pmid: '19114683' }, { name: 'OPUS, actualización RAS', pmid: '21228335' }],
             cov: { t: '?' }
           },
           {

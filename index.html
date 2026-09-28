@@ -39,10 +39,15 @@
       <p><b>Qué es.</b> Una ayuda de consulta para oncólogos en Uruguay: estadificación, tratamiento según guía propia y requisitos de cobertura del Fondo Nacional de Recursos. No reemplaza el juicio clínico, el ateneo multidisciplinario ni el texto oficial de cada normativa.</p>
       <p><b>Fuentes.</b> Normativas publicadas en fnr.gub.uy y el Formulario Terapéutico de Medicamentos del MSP; tablas AJCC, IASLC y FIGO resumidas con palabras propias; recomendaciones redactadas a partir de ensayos clínicos (con su referencia en cada opción), aprobaciones regulatorias y guías de acceso abierto. Cada sección indica su fecha y si fue revisada por un oncólogo o si todavía es un borrador.</p>
       <p><b>Privacidad.</b> Las fichas se guardan sólo en este dispositivo y no se envían a ningún servidor. Los datos de salud son datos sensibles (Ley 18.331): preferí un identificador interno o iniciales en lugar de la cédula completa, y protegé el celular con bloqueo.</p>
+      <p><b>Revisión clínica.</b> Cada opción de tratamiento necesita dos aprobaciones independientes de oncólogos para dejar de ser borrador. Proceso y reglas en <a href="https://github.com/ARMDO96/FNR-onco/blob/main/GOBERNANZA.md" target="_blank" rel="noopener">GOBERNANZA.md</a>.</p>
+      <div id="reviewers"></div>
+      <p><button type="button" class="btn" id="rv-open">Modo revisión (para revisores)</button></p>
       <p><b>Errores o sugerencias.</b> Reportalos en <a href="https://github.com/ARMDO96/FNR-onco/issues" target="_blank" rel="noopener">github.com/ARMDO96/FNR-onco/issues</a>.</p>
     </div>
   </details>
 </section>
+
+<section class="review" id="review" hidden></section>
 
 <div class="app" id="app" data-tumor="mama" hidden>
   <div class="pbar card" id="pbar"></div>
@@ -82,6 +87,8 @@
 <!-- contenido: generado por tools/gen.mjs -->
 <script src="content/fnr.js"></script>
 <script src="content/staging.js"></script>
+<script src="content/reviewers.js"></script>
+<script src="content/refs-cache.js"></script>
 <script src="content/regimens/ccr.js"></script>
 <script src="content/regimens/ccu.js"></script>
 <script src="content/regimens/mama.js"></script>
@@ -92,10 +99,16 @@
 <script src="content/pathways/mama.js"></script>
 <script src="content/pathways/pros.js"></script>
 <script src="content/pathways/pulm.js"></script>
+<script src="content/reviews/ccr.js"></script>
+<script src="content/reviews/ccu.js"></script>
+<script src="content/reviews/mama.js"></script>
+<script src="content/reviews/pros.js"></script>
+<script src="content/reviews/pulm.js"></script>
 <!-- /contenido -->
 <script src="app/calc.js"></script>
 <script src="app/engine.js"></script>
 <script src="app/app.js"></script>
+<script src="app/review.js"></script>
 
 </body>
 </html>

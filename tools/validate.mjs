@@ -37,6 +37,11 @@ for (const [id, rg] of Object.entries(R.regimens || {})) {
 for (const [tid, pw] of Object.entries(R.pathways || {})) {
   if (!['borrador', 'revisado'].includes(pw.status)) err(`vía ${tid}`, 'status debe ser borrador o revisado');
   if (!/^\d{4}-\d{2}-\d{2}$/.test(pw.updated || '')) err(`vía ${tid}`, 'updated debe ser AAAA-MM-DD');
+  // Gobernanza: una vía sólo puede declararse revisada si todos sus ítems tienen doble aprobación vigente.
+  if (pw.status === 'revisado') {
+    const tr = R.engine.tumorReview(tid, pw, R.regimens || {}, (R.reviews || {})[tid]);
+    if (!tr.complete) err(`vía ${tid}`, `status "revisado" pero sólo ${tr.count.revisado || 0} de ${tr.total} ítems tienen doble aprobación vigente`);
+  }
   const stages = stagesOf(tid);
   for (const e of R.engine.check(pw, { fnrInds, regimens: R.regimens || {}, stages })) err(`vía ${tid}`, e);
   // Todo estadio que produce la app debería poder sugerirse en algún nodo.

@@ -155,7 +155,7 @@
       { name: 'Cetuximab (mantenimiento)', dose: { type: 'm2', value: 250, unit: 'mg' }, day: 'semanal (o 500 mg/m² quincenal)' }
     ],
     notes: ['Alternativa a FOLFIRI-cetuximab; solo RAS/BRAF wild-type, preferentemente colon izquierdo.'],
-    refs: [{ name: 'OPUS', pmid: '21597447' }]
+    refs: [{ name: 'OPUS', pmid: '19114683' }, { name: 'OPUS, actualización RAS', pmid: '21228335' }]
   };
 
   R.regimens['ccr-pembrolizumab'] = {
