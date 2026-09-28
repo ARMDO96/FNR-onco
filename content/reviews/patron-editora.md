@@ -75,3 +75,36 @@ Tres subagentes propusieron referencias concretas. El mantenimiento técnico ver
 - Prostatectomía en riesgo intermedio (nivel A): el beneficio en sobrevida global viene de SPCG-4, de la era previa al PSA.
 
 **Sin respaldo en la guía** (no se cambió): `ccu/av-3l#0`, "rechallenge de agente previo".
+
+## Auditoría de mama y pulmón (2026-09-28)
+
+Dos subagentes auditaron las vías contra ensayos y guías ESMO, siempre en sala limpia y sin NCCN. El mantenimiento técnico verificó cada PMID en PubMed. Todo ítem cambiado vuelve a revisión.
+
+**Pulmón**
+
+- EGFR en 1.ª línea: se agregan FLAURA2 (osimertinib + QT) y MARIPOSA (amivantamab + lazertinib) con nivel A. Ambos tienen SG final significativa (HR 0,77 y 0,75) y más toxicidad grado ≥3.
+  - El subagente proponía nivel B para MARIPOSA porque se basaba en el análisis interino de SG. Se corrigió con la publicación final (PMID 40923797).
+- ALK:
+  - rama nueva de adyuvancia con alectinib (ALINA, SLE HR 0,24; SG inmadura);
+  - lorlatinib (CROWN) y brigatinib (ALTA-1L) como alternativas de 1.ª línea, con nivel B porque no hay SG madura.
+- Perioperatorio: se agregan CheckMate 77T y AEGEAN (sobrevida libre de eventos, análisis interinos).
+- PACIFIC: se suma la publicación de SG.
+
+**Mama**
+
+- Niveles corregidos según `SCHEMA.md`:
+
+  | Ítem | Cambio | Motivo |
+  |---|---|---|
+  | abemaciclib adyuvante (monarchE) | B → A | Beneficio en SLEi en contexto curativo |
+  | olaparib en avanzado (OlympiAD) | A → B | SG final negativa |
+  | carboplatino en BRCA (TNT) | B → C | Beneficio solo en subgrupo |
+  | eribulina (EMBRACE) | B → A | Beneficio en SG |
+
+- La capecitabina en esa línea queda aparte, con nivel C.
+- Se agregan las publicaciones de SG de MONALEESA-2, MONALEESA-3, CLEOPATRA y KEYNOTE-355, MONALEESA-7 para premenopáusicas y APHINITY a 6 años (sin diferencia en SG).
+
+**Ausentes, a evaluar por las revisoras** (no se agregaron: cambian el flujo de decisión)
+
+- Rama HER2-low con trastuzumab deruxtecan (DESTINY-Breast04, PMID 35665782).
+- Olaparib adyuvante en BRCA mutado con enfermedad residual (OlympiA, PMID 34081848). El pautado 2025 también lo menciona.
