@@ -263,7 +263,7 @@ function renderApp(){
   document.getElementById('bar').style.width=(a?d/a*100:0)+'%';
   document.getElementById('meter-txt').innerHTML='<b>'+d+'</b> de '+a+' obligatorios';
   document.getElementById('fu-list').innerHTML=t.fu.map(x=>`<li>${x}</li>`).join('');
-  document.getElementById('foot').textContent='Las marcas se guardan sólo en este dispositivo. Ayuda de lectura: ante duda, rige el texto vigente en fnr.gub.uy. Fuente de esta sección: '+t.src+'.';
+  document.getElementById('foot').textContent='Las fichas se guardan sólo en este dispositivo. '+(view==='fnr'?'Ayuda de lectura: ante duda, rige el texto vigente en fnr.gub.uy. Fuente de esta sección: '+t.src+'.':view==='tx'?'Guía propia en borrador: no reemplaza el juicio clínico ni el ateneo multidisciplinario.':'Descripciones resumidas de las tablas oficiales; ante duda, rige la tabla original.');
 }
 
 document.addEventListener('click',e=>{
