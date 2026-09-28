@@ -2,6 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F3F5F7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#13161B" media="(prefers-color-scheme: dark)">
@@ -588,7 +590,7 @@ let CURRENT=null;
 let armDelete=null;
 
 const allInds=[];TUMORS.forEach(t=>t.inds.forEach(i=>{i.tumor=t;allInds.push(i);}));
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 function P(){return STORE.patients[CURRENT];}
 function normId(v){return String(v||'').trim().replace(/[.\-\s]/g,'');}
@@ -758,6 +760,10 @@ renderGate();
 })();
 </script>
 
-<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js");}</script>
+<script>
+if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js");}
+/* pide al navegador que no borre las fichas guardadas por falta de espacio o inactividad */
+if(navigator.storage&&navigator.storage.persist){navigator.storage.persist().catch(()=>{});}
+</script>
 </body>
 </html>

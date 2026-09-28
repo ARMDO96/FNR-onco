@@ -1,4 +1,4 @@
-Checklist FNR Oncología: app instalable (PWA), versión 3
+Checklist FNR Oncología: app instalable (PWA), versión 4
 ========================================================
 Incluye: mama, colorrecto, próstata, pulmón y cuello uterino.
 Novedades: ficha por paciente (cédula sin puntos ni guiones), lista de
@@ -20,8 +20,10 @@ En el celular:
   La segunda vez ya aparece la versión nueva.
 - Dirección, si necesitás reinstalar: https://armdo96.github.io/FNR-onco/
 
-Nota: la carpeta fonts/ trae tipografías nuevas. Las viejas (ibm-plex-sans...)
-quedan en GitHub sin usarse; no molestan, pero podés borrarlas si querés.
+Versión 4: se borraron las tipografías viejas que no se usaban
+(ibm-plex-sans...); la página ahora se busca primero en internet, así que la
+versión nueva aparece al primer arranque con conexión (sin conexión sigue
+abriendo la copia guardada).
 
-Para la próxima actualización: en sw.js se cambia "fnr-onco-v3" por
-"fnr-onco-v4". Si te lo armo yo, ya viene cambiado.
+Para la próxima actualización: en sw.js se cambia "fnr-onco-v4" por
+"fnr-onco-v5". Si te lo armo yo, ya viene cambiado.
