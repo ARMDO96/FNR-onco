@@ -1,4 +1,4 @@
-const CACHE='fnr-onco-0d796ebabd';
+const CACHE='fnr-onco-34c2b7cfad';
 const FILES=["./",
 "index.html",
 "manifest.webmanifest",

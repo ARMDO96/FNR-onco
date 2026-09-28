@@ -121,12 +121,19 @@ for (const src of SOURCES) {
 const ph = R.sources && R.sources.pautasHC;
 if (ph && ph.citada !== ph.vigente) lines.push('', `- El contenido cita las Pautas ${ph.citada} y la edición vigente es ${ph.vigente}: \`node tools/revision-anual.mjs\` lista las citas a actualizar.`);
 
+// Vencimientos: cada ítem se reporta una vez por versión (huella) y estado; la instantánea guarda lo ya reportado.
 const limit = new Date(Date.now() + 30 * 86400000).toISOString().slice(0, 10);
+const reported = new Set(snap.due || []);
 const due = [];
+next.due = [];
 for (const [tid, pw] of Object.entries(R.pathways)) {
   const tr = R.engine.tumorReview(tid, pw, R.regimens, R.reviews[tid]);
   tr.items.filter(s => (s.state === 'revisado' && s.expires <= limit) || s.state === 'caducado' && (R.reviews[tid] || []).some(d => d.item === s.ri.key))
-    .forEach(s => due.push(`- ${s.ri.key} — ${s.ri.item.label} (${s.state === 'caducado' ? 'caducado' : 'vence ' + s.expires})`));
+    .forEach(s => {
+      const k = `${s.ri.key}|${s.ri.hash}|${s.state}`;
+      next.due.push(k);
+      if (!reported.has(k)) due.push(`- ${s.ri.key} — ${s.ri.item.label} (${s.state === 'caducado' ? 'caducado: el contenido cambió después de revisarlo' : 'vence ' + s.expires})`);
+    });
 }
 if (due.length) { attention = true; lines.push('', '### Ítems revisados que vencen o caducaron', ...due); }
 

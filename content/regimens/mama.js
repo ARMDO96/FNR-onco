@@ -155,7 +155,7 @@
       { name: 'Letrozol', dose: { type: 'flat', value: 2.5, unit: 'mg/día' }, day: 'continuo' }
     ],
     notes: ['Solo en mujeres postmenopáusicas (o con supresión ovárica); anastrozol 1 mg/día y exemestano 25 mg/día son alternativas equivalentes'],
-    refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }]
+    refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2025, cáncer de mama localizado', url: 'https://oncologiamedica.hc.edu.uy/publicaciones/pautas-de-oncologia-medica-para-el-diagnostico-tratamiento-sistemico-y-seguimiento/' }]
   };
 
   R.regimens['mama-ofs-ai'] = {
@@ -229,7 +229,7 @@
       { name: 'Paclitaxel', dose: { type: 'm2', value: 90, unit: 'mg' }, day: 'D1, D8, D15 c/28d' }
     ],
     notes: ['Quimioterapia estándar cuando no corresponde inmunoterapia (PD-L1 CPS < 10)'],
-    refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }]
+    refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2025, cáncer de mama metastásico', url: 'https://oncologiamedica.hc.edu.uy/publicaciones/pautas-de-oncologia-medica-para-el-diagnostico-tratamiento-sistemico-y-seguimiento/' }]
   };
 
   R.regimens['mama-eribulina'] = {

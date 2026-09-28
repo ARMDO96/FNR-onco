@@ -21,7 +21,8 @@ let added = 0; const stale = [], invalid = [];
 for (const d of x.decisions || []) {
   if (!DEC.includes(d.decision)) { invalid.push(`${d.item}: decisión "${d.decision}"`); continue; }
   if (d.decision !== 'aprobar' && !String(d.comment || '').trim()) { invalid.push(`${d.item}: falta comentario`); continue; }
-  if (d.decision === 'aprobar' && !(d.checks && d.checks.ref && d.checks.lvl && d.checks.cov)) { invalid.push(`${d.item}: aprobación sin controles completos`); continue; }
+  // "aprobar con cambio menor" también cuenta como aprobación (engine.itemStatus): exige los mismos controles
+  if ((d.decision === 'aprobar' || d.decision === 'aprobar-menor') && !(d.checks && d.checks.ref && d.checks.lvl && d.checks.cov)) { invalid.push(`${d.item}: aprobación sin controles completos`); continue; }
   if (current.get(d.item) !== d.hash) { stale.push(d.item); continue; }
   const e = { item: d.item, hash: d.hash, role: x.role, name: x.name || '', date: d.date || x.exportedAt.slice(0, 10), decision: d.decision,
     checks: d.checks || {}, comment: String(d.comment || '').trim(), coi: !!d.coi };

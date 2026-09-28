@@ -67,7 +67,7 @@
             label: 'Vigilancia, sin quimioterapia adyuvante',
             detail: 'El beneficio de la quimioterapia adyuvante no está demostrado en estadio I.',
             level: 'C',
-            refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR (resumen propio)', url: 'https://www.esmo.org' }],
+            refs: [{ name: 'ESMO 2020, cáncer de colon localizado (Argilés et al.)', pmid: '32702383' }],
             cov: { t: 'NA' }
           }
         ],
@@ -140,9 +140,10 @@
         items: [
           {
             label: 'CAPOX (capecitabina + oxaliplatino) por 3–6 meses',
+            detail: '3 meses de CAPOX es una opción si el tumor no es T4 ni perforado y la resección ganglionar fue suficiente. En estadio II de alto riesgo, la no inferioridad de 3 meses no se demostró en la población global de IDEA; el resultado favorable a 3 meses con CAPOX sale del análisis por esquema, que no fue aleatorizado.',
             regimen: 'ccr-capox',
             level: 'C',
-            refs: [{ name: 'MOSAIC / IDEA, extrapolación a estadio II de alto riesgo', pmid: '29590544' }],
+            refs: [{ name: 'IDEA, estadio II de alto riesgo (Iveson et al.)', pmid: '33439695' }, { name: 'ACHIEVE-2', pmid: '33121997' }],
             cov: { t: 'FTM' }
           },
           {
@@ -233,15 +234,15 @@
             cov: { t: 'NA' }
           },
           {
-            label: 'TC de tórax, abdomen y pelvis anual por 3–5 años (estadio II–III)',
+            label: 'TC de tórax, abdomen y pelvis anual los primeros 3 años (estadio II–III); después, opcional',
             level: 'C',
-            refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR (resumen propio)', url: 'https://www.esmo.org' }],
+            refs: [{ name: 'ESMO 2020, cáncer de colon localizado (Argilés et al.)', pmid: '32702383' }],
             cov: { t: 'NA' }
           },
           {
-            label: 'Colonoscopía al año de la cirugía y luego según hallazgos',
+            label: 'Colonoscopía al año de la cirugía; luego cada 3–5 años, o antes según hallazgos o síntomas',
             level: 'C',
-            refs: [{ name: 'Consenso ESMO / Pautas HC-UdelaR (resumen propio)', url: 'https://www.esmo.org' }],
+            refs: [{ name: 'ESMO 2020, cáncer de colon localizado (Argilés et al.)', pmid: '32702383' }],
             cov: { t: 'NA' }
           }
         ]

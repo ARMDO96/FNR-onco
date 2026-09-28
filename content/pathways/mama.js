@@ -131,7 +131,7 @@
             label: 'Tamoxifeno 20 mg/día × 5–10 años',
             regimen: 'mama-tamoxifeno',
             level: 'A',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }],
+            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2025, cáncer de mama localizado', url: 'https://oncologiamedica.hc.edu.uy/publicaciones/pautas-de-oncologia-medica-para-el-diagnostico-tratamiento-sistemico-y-seguimiento/' }],
             cov: { t: 'FTM' }
           },
           {
@@ -155,14 +155,14 @@
             label: 'Inhibidor de aromatasa (letrozol/anastrozol/exemestano) × 5 años',
             regimen: 'mama-ai',
             level: 'A',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }],
+            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2025, cáncer de mama localizado', url: 'https://oncologiamedica.hc.edu.uy/publicaciones/pautas-de-oncologia-medica-para-el-diagnostico-tratamiento-sistemico-y-seguimiento/' }],
             cov: { t: 'FTM' }
           },
           {
             label: 'Tamoxifeno 20 mg/día si intolerancia a inhibidor de aromatasa',
             regimen: 'mama-tamoxifeno',
             level: 'A',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }],
+            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2025, cáncer de mama localizado', url: 'https://oncologiamedica.hc.edu.uy/publicaciones/pautas-de-oncologia-medica-para-el-diagnostico-tratamiento-sistemico-y-seguimiento/' }],
             cov: { t: 'FTM' }
           }
         ],
@@ -179,7 +179,7 @@
             detail: 'Menor tasa de respuesta patológica completa que en HER2+ o triple negativo; valorar cirugía primaria si es operable',
             regimen: 'mama-ac',
             level: 'B',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }],
+            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2025, cáncer de mama localizado', url: 'https://oncologiamedica.hc.edu.uy/publicaciones/pautas-de-oncologia-medica-para-el-diagnostico-tratamiento-sistemico-y-seguimiento/' }],
             cov: { t: 'FTM' }
           }
         ],
@@ -228,7 +228,7 @@
             label: 'Fulvestrant en monoterapia tras progresión a un CDK4/6',
             regimen: 'mama-fulvestrant',
             level: 'B',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }],
+            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2025, cáncer de mama metastásico', url: 'https://oncologiamedica.hc.edu.uy/publicaciones/pautas-de-oncologia-medica-para-el-diagnostico-tratamiento-sistemico-y-seguimiento/' }],
             cov: { t: 'FNR', ind: 'm-fulv' }
           },
           {
@@ -251,14 +251,14 @@
             label: 'Quimioterapia secuencial: capecitabina',
             regimen: 'mama-capecitabina',
             level: 'B',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }],
+            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2025, cáncer de mama metastásico', url: 'https://oncologiamedica.hc.edu.uy/publicaciones/pautas-de-oncologia-medica-para-el-diagnostico-tratamiento-sistemico-y-seguimiento/' }],
             cov: { t: 'FTM' }
           },
           {
             label: 'Paclitaxel u otro taxano en monoterapia',
             regimen: 'mama-paclitaxel-av',
             level: 'B',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }],
+            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2025, cáncer de mama metastásico', url: 'https://oncologiamedica.hc.edu.uy/publicaciones/pautas-de-oncologia-medica-para-el-diagnostico-tratamiento-sistemico-y-seguimiento/' }],
             cov: { t: 'FTM' }
           },
           {
@@ -522,7 +522,7 @@
             label: 'Sin quimioterapia adicional; continuar seguimiento estrecho',
             detail: 'Si recibió pembrolizumab neoadyuvante, completar ciclos adyuvantes del mismo esquema (no evaluado aquí por cobertura)',
             level: 'B',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }],
+            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2025, cáncer de mama localizado', url: 'https://oncologiamedica.hc.edu.uy/publicaciones/pautas-de-oncologia-medica-para-el-diagnostico-tratamiento-sistemico-y-seguimiento/' }],
             cov: { t: 'NA' }
           }
         ],
@@ -614,7 +614,7 @@
             label: 'Quimioterapia en monoterapia (paclitaxel u otro taxano)',
             regimen: 'mama-paclitaxel-av',
             level: 'B',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }],
+            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2025, cáncer de mama metastásico', url: 'https://oncologiamedica.hc.edu.uy/publicaciones/pautas-de-oncologia-medica-para-el-diagnostico-tratamiento-sistemico-y-seguimiento/' }],
             cov: { t: 'FTM' }
           }
         ],
@@ -666,7 +666,7 @@
             label: 'No solicitar de rutina marcadores tumorales ni imágenes de estadificación asintomáticas',
             detail: 'Sin beneficio demostrado en sobrevida en pacientes asintomáticas',
             level: 'B',
-            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2023', url: 'https://oncologiamedica.hc.edu.uy/wp-content/uploads/2024/09/R-PAUTAS-DE-ONCOLOGIA-MEDICA-2023-final.pdf' }],
+            refs: [{ name: 'Pautas de Oncología Médica HC/UdelaR 2025, cáncer de mama localizado', url: 'https://oncologiamedica.hc.edu.uy/publicaciones/pautas-de-oncologia-medica-para-el-diagnostico-tratamiento-sistemico-y-seguimiento/' }],
             cov: { t: 'NA' }
           }
         ]

@@ -65,14 +65,20 @@ if (!ph || !/^\d{4}$/.test(ph.citada || '') || !/^\d{4}$/.test(ph.vigente || '')
 else {
   const { pautas, generic } = citations(R);
   const warn = [];
+  // Durante la actualización (citada ≠ vigente) conviven citas a las dos ediciones: las que ya se verificaron
+  // contra la vigente y las que todavía no. Cualquier otra edición es un error.
+  const lenient = ph.estricto ? err : (w, m) => warn.push(`${w}: ${m}`);
+  let pendientes = 0;
   for (const r of pautas) {
-    if (r.edicion && r.edicion !== ph.citada) err(r.where, `cita las Pautas ${r.edicion} y content/sources.js dice citada: ${ph.citada}`);
-    else if (!r.edicion) (ph.estricto ? err : (w, m) => warn.push(`${w}: ${m}`))(r.where, 'cita al pautado sin edición');
+    if (!r.edicion) lenient(r.where, 'cita al pautado sin edición');
+    else if (r.edicion === ph.vigente) continue;
+    else if (r.edicion === ph.citada) { pendientes++; if (ph.estricto) err(r.where, `cita las Pautas ${r.edicion} y la vigente es ${ph.vigente}`); }
+    else err(r.where, `cita las Pautas ${r.edicion}: content/sources.js dice citada ${ph.citada} y vigente ${ph.vigente}`);
   }
   for (const r of generic) (ph.estricto ? err : (w, m) => warn.push(`${w}: ${m}`))(r.where, `cita a una portada genérica (${r.url})`);
   if (ph.citada !== ph.vigente) {
     if (ph.estricto) err('content/sources.js', `el contenido cita las Pautas ${ph.citada} y la vigente es ${ph.vigente}`);
-    else warn.unshift(`${pautas.length} citas al pautado corresponden a la edición ${ph.citada}; la vigente es ${ph.vigente}`);
+    else warn.unshift(`${pendientes} citas al pautado corresponden a la edición ${ph.citada}; la vigente es ${ph.vigente}`);
   }
   if (warn.length) console.log(`⚠ citas a actualizar (${warn.length}):\n` + warn.map(w => '  · ' + w).join('\n'));
 }
