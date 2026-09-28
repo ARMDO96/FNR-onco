@@ -34,6 +34,12 @@ function check(pw,ctx){
   const e=[],N=pw.nodes||{},ids=Object.keys(N);
   ctx=ctx||{};
   if(!N[pw.start])e.push(`start "${pw.start}" no existe`);
+  /* coherencia entre tumores: el tratamiento arranca clasificando (pregunta), nunca con una lista de estudios;
+     la evaluación inicial va aparte (workup) y la app la muestra en la pestaña de estadificación */
+  else if(N[pw.start].type!=='q')e.push(`start "${pw.start}": la vía debe empezar con una pregunta que clasifique (la evaluación inicial va en workup)`);
+  if(pw.workup){const w=N[pw.workup];
+    if(!w)e.push(`workup "${pw.workup}" no existe`);
+    else if(w.type!=='rec'||(w.next||[]).length)e.push(`workup "${pw.workup}": debe ser una recomendación sin continuación`);}
   for(const id of ids){
     const n=N[id];
     if(n.type!=='q'&&n.type!=='rec'){e.push(`${id}: type inválido`);continue;}
@@ -69,6 +75,7 @@ function check(pw,ctx){
     color[id]=2;
   };
   visit(pw.start,'start');
+  if(pw.workup)visit(pw.workup,'workup');
   ids.filter(id=>!color[id]).forEach(id=>e.push(`${id}: nodo inalcanzable`));
   return e;
 }

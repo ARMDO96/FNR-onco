@@ -98,6 +98,27 @@ La usuaria ya habilitó `oncologiamedica.hc.edu.uy`.
 ### PR hacia `main` (preguntar primero)
 Las tareas programadas de GitHub (`vigencia.yml`, `revision-anual.yml`) **solo corren desde `main`**. Hay que preguntarle a la usuaria si abre el PR. Después de fusionar, que dispare a mano "Vigilancia de vigencia" desde Actions.
 
+**Avance de E al 2026-09-28** (la usuaria decidió **no migrar a Supabase** hasta que avancen las revisiones y la app esté completa; mientras tanto, la app funciona como la real, con datos ficticios en el dispositivo):
+- **E1 hecha:**
+  - nombre "App para el Cáncer" (`id` fijo en el manifest);
+  - pantalla inicial "Soy doctor/a / Soy paciente" y banda DEMO (`app/config.js`, falla cerrado; `validate.mjs` controla el entorno).
+- **Demo funcional sin servidor:**
+  - `app/demo.js` es el **único punto a reemplazar al migrar**;
+  - lado paciente (`app/patient.js`): ingreso con cédula (`app/ci.js`) + código, plan, fecha coordinada, confirmación, síntomas, alarma de fiebre (ventana día 5–14 en `app/ciclo.js`) y `.ics`;
+  - bandeja médica (`app/doctor.js`).
+- **Pedido de Agus aplicado:**
+  - pulmón elige CPNCP/CPCP antes del TNM;
+  - toda vía arranca clasificando (regla en `engine.check`);
+  - la evaluación inicial va en `workup` y se ve en Estadio.
+- **Revisores independientes de UX:** informes en el scratchpad de la sesión; las mejoras aceptadas están aplicadas. Se descartó ocultar la etiqueta "pendiente de revisión" a pacientes.
+- **Pendiente de las revisoras:** `content/reviews/textos-paciente.md`.
+- **Limitación conocida:** el campo de fecha usa la zona del dispositivo; en un celular en Uruguay coincide con la hora mostrada.
+- **Próximo:**
+  - asignar estudios y tratamientos desde la ficha;
+  - varios pacientes en la bandeja;
+  - esquema de Supabase escrito sin migrar;
+  - demo con un ciclo ya realizado para mostrar la ventana de fiebre.
+
 ### E. Servidor de prueba y app de pacientes (fases)
 Necesita que la usuaria cree el proyecto gratis `app-cancer-demo` en Frankfurt y pase la URL y la clave `anon`. **La clave de servicio no va al repo.** Mientras tanto se puede avanzar con Supabase local en la CI.
 

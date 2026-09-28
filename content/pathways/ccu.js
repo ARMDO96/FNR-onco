@@ -7,12 +7,13 @@
     status: 'borrador',
     updated: '2026-09-28',
     authors: ['Borrador asistido por IA'],
-    start: 'inicio',
+    start: 'q-estadio',
+    workup: 'inicio',   // se muestra en la pestaña Estadio, no en el tratamiento
     nodes: {
 
       'inicio': {
         type: 'rec',
-        title: 'Evaluación inicial',
+        title: 'Evaluación inicial y estudios de estadificación',
         phase: 'evaluación',
         items: [
           {
@@ -42,8 +43,7 @@
             refs: [{ name: 'KEYNOTE-826', pmid: '34534429' }],
             cov: { t: 'NA' }
           }
-        ],
-        next: [ { label: 'Continuar a estadificación', next: 'q-estadio' } ]
+        ]
       },
 
       'q-estadio': {

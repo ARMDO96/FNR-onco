@@ -7,21 +7,49 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F3F5F7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#13161B" media="(prefers-color-scheme: dark)">
-<meta name="description" content="Checklist de requisitos de las normativas FNR para cobertura de tratamiento sistémico en mama, colorrecto, próstata, pulmón y cuello uterino.">
+<meta name="description" content="App para el Cáncer: para el equipo médico, estadificación, tratamiento según guía y requisitos del FNR; para cada paciente, su plan, fechas, preparación y avisos.">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Checklist FNR">
-<title>FNR-onco</title>
+<meta name="apple-mobile-web-app-title" content="Para el Cáncer">
+<title>App para el Cáncer</title>
 <link rel="stylesheet" href="app/app.css">
 </head>
 <body>
 
-<section class="gate" id="gate">
+<div class="demo-band" id="demo-band" role="status">DEMO: no cargar datos reales</div>
+
+<section class="entry" id="entry" hidden>
+  <header class="brand">
+    <div class="mark" aria-hidden="true"><i data-c="mama"></i><i data-c="ccr"></i><i data-c="pros"></i><i data-c="pulm"></i><i data-c="ccu"></i></div>
+    <h1 class="wordmark">App para el Cáncer</h1>
+    <p>Acompañamiento del tratamiento oncológico: para el equipo médico y para cada paciente.</p>
+  </header>
+  <div class="roles">
+    <button type="button" class="role card" data-role="doctor">
+      <span class="role-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3v6a4 4 0 0 0 8 0V3M6 3H4.5M14 3h1.5M10 13v2a5 5 0 0 0 10 0v-2"/><circle cx="20" cy="11" r="2"/></svg></span>
+      <span class="role-txt"><span class="role-t">Soy doctor/a</span>
+      <span class="role-d">Fichas de pacientes, estadificación, tratamiento según guía, requisitos del FNR y revisión clínica.</span></span>
+      <span class="role-go" aria-hidden="true">→</span>
+    </button>
+    <button type="button" class="role card" data-role="paciente">
+      <span class="role-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="3.5"/><path d="M5 20.5a7 7 0 0 1 14 0"/></svg></span>
+      <span class="role-txt"><span class="role-t">Soy paciente</span>
+      <span class="role-d">Tu plan de estudios y tratamientos, las fechas que coordinaste, la preparación y los avisos.</span></span>
+      <span class="role-go" aria-hidden="true">→</span>
+    </button>
+  </div>
+  <p class="sos" role="note"><b>No es un servicio de emergencia.</b> Ante una urgencia llamá al <a href="tel:911">911</a> o a tu emergencia móvil.</p>
+</section>
+
+<section class="pt" id="patient" hidden></section>
+
+<section class="gate" id="gate" hidden>
   <header class="top">
     <div class="mark" aria-hidden="true"><i data-c="mama"></i><i data-c="ccr"></i><i data-c="pros"></i><i data-c="pulm"></i><i data-c="ccu"></i></div>
-    <h1>FNR-onco</h1>
+    <div class="area-row"><span class="area">Área médica</span><button type="button" class="linkbtn" data-role-reset>Cambiar de perfil</button></div>
+    <h1>App para el Cáncer</h1>
     <p>Estadificación, tratamiento según guía y requisitos del Fondo Nacional de Recursos. Ingresá un identificador del paciente para abrir su ficha, o retomá una que ya empezaste.</p>
   </header>
   <div class="gate-card card">
@@ -33,10 +61,11 @@
     <p class="gate-hint">Sin puntos ni guiones; si los escribís se quitan solos. Las fichas se guardan sólo en este dispositivo.</p>
   </div>
   <div class="plist" id="plist"></div>
+  <div class="dash" id="dash"></div>
   <details class="card about" id="about">
     <summary>Acerca de, fuentes y avisos</summary>
     <div class="about-b">
-      <p><b>Qué es.</b> Una ayuda de consulta para oncólogos en Uruguay: estadificación, tratamiento según guía propia y requisitos de cobertura del Fondo Nacional de Recursos. No reemplaza el juicio clínico, el ateneo multidisciplinario ni el texto oficial de cada normativa.</p>
+      <p><b>Qué es.</b> App para el Cáncer, área médica: una ayuda de consulta para oncólogos en Uruguay: estadificación, tratamiento según guía propia y requisitos de cobertura del Fondo Nacional de Recursos. No reemplaza el juicio clínico, el ateneo multidisciplinario ni el texto oficial de cada normativa.</p>
       <p><b>Fuentes.</b> Normativas publicadas en fnr.gub.uy y el Formulario Terapéutico de Medicamentos del MSP; tablas AJCC, IASLC y FIGO resumidas con palabras propias; recomendaciones redactadas a partir de ensayos clínicos (con su referencia en cada opción), aprobaciones regulatorias y guías de acceso abierto. Cada sección indica su fecha y si fue revisada por un oncólogo o si todavía es un borrador.</p>
       <p><b>Privacidad.</b> Las fichas se guardan sólo en este dispositivo y no se envían a ningún servidor. Los datos de salud son datos sensibles (Ley 18.331): preferí un identificador interno o iniciales en lugar de la cédula completa, y protegé el celular con bloqueo.</p>
       <p><b>Revisión clínica.</b> Cada opción de tratamiento necesita dos aprobaciones independientes de oncólogos para dejar de ser borrador. Proceso y reglas en <a href="https://github.com/ARMDO96/FNR-onco/blob/main/GOBERNANZA.md" target="_blank" rel="noopener">GOBERNANZA.md</a>.</p>
@@ -53,7 +82,7 @@
   <div class="pbar card" id="pbar"></div>
   <header class="top">
     <div class="mark" aria-hidden="true"><i data-c="mama"></i><i data-c="ccr"></i><i data-c="pros"></i><i data-c="pulm"></i><i data-c="ccu"></i></div>
-    <h1>FNR-onco</h1>
+    <h1>App para el Cáncer</h1>
     <p>1 · Estadio → 2 · Tratamiento según guía → 3 · Requisitos FNR</p>
   </header>
   <nav class="tumors" id="tumors" aria-label="Tumor"></nav>
@@ -66,6 +95,7 @@
   <div class="tnm" id="v-tnm" role="tabpanel" aria-labelledby="tab-tnm" hidden></div>
   <div class="tx" id="v-tx" role="tabpanel" aria-labelledby="tab-tx" hidden></div>
   <div id="v-fnr" role="tabpanel" aria-labelledby="tab-fnr" style="display:contents">
+  <div id="fnr-sync" aria-live="polite" hidden></div>
   <nav class="picker" id="picker" aria-label="Indicación"></nav>
   <div class="ihead card">
     <div class="ihead-top">
@@ -106,10 +136,17 @@
 <script src="content/reviews/pros.js"></script>
 <script src="content/reviews/pulm.js"></script>
 <!-- /contenido -->
+<script src="app/config.js"></script>
 <script src="app/calc.js"></script>
+<script src="app/ci.js"></script>
+<script src="app/ciclo.js"></script>
+<script src="app/demo.js"></script>
 <script src="app/engine.js"></script>
 <script src="app/app.js"></script>
 <script src="app/review.js"></script>
+<script src="app/patient.js"></script>
+<script src="app/doctor.js"></script>
+<script src="app/shell.js"></script>
 
 </body>
 </html>

@@ -10,6 +10,12 @@ let toastT=null;
 function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>{el.hidden=true;},3200);}
 let CURRENT=null;
 let armDelete=null;
+/* banner "Borrador sin revisión clínica completa": una vez leído ("Entendido"), se recuerda por el resto de
+   la sesión (una pestaña) y se muestra colapsado; si sessionStorage falla (modo privado, cuota) sigue
+   funcionando en memoria para esta misma sesión de la página, sólo que no sobrevive a un recargado. */
+const WARN_KEY='fnr-onco-draftwarn-v1';
+let warnDismissed=false;
+try{warnDismissed=sessionStorage.getItem(WARN_KEY)==='1';}catch(e){}
 
 const allInds=[];TUMORS.forEach(t=>t.inds.forEach(i=>{i.tumor=t;allInds.push(i);}));
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -121,23 +127,37 @@ const curInd=()=>{const t=tumorObj();const id=P().sel[t.id];return t.inds.find(i
 /* ---------- estadificación TNM ---------- */
 const TNM=window.TNM_DATA||{};
 function tnmStage(tid,sel){const d=TNM[tid];if(!d)return {stage:null,note:'Sin tabla TNM para este tumor.'};try{return d.stage(sel||{});}catch(e){return {stage:null,note:'No se pudo calcular.'};}}
-function tnmCode(d,sel){return d.axes.filter(a=>sel[a.key]).map(a=>a.key==='PSA'?'PSA '+a.options.find(o=>o.v===sel.PSA).d.replace(/^PSA\s*/,''):a.key==='GG'?'Grupo de grado '+sel.GG.replace('GG',''):a.key==='FIGO'?'FIGO '+sel.FIGO:a.key==='N'&&d.id==='ccu'?'Ganglios: '+(sel.N==='N0'?'negativos':sel.N):sel[a.key]).join(' · ');}
+function tnmCode(d,sel){
+  const parts=d.axes.filter(a=>sel[a.key]).map(a=>a.key==='PSA'?'PSA '+a.options.find(o=>o.v===sel.PSA).d.replace(/^PSA\s*/,''):a.key==='GG'?'Grupo de grado '+sel.GG.replace('GG',''):a.key==='FIGO'?'FIGO '+sel.FIGO:a.key==='N'&&d.id==='ccu'?'Ganglios: '+(sel.N==='N0'?'negativos':sel.N):sel[a.key]);
+  if(d.pre&&sel[d.pre.key])parts.unshift(sel[d.pre.key]);
+  return parts.join(' · ');
+}
 function tnmSel(){const p=P();p.tnm=p.tnm||{};return p.tnm[p.tumor]=p.tnm[p.tumor]||{};}
 function renderTnm(t){
   const d=TNM[t.id],box=document.getElementById('v-tnm');
   if(!d){box.innerHTML='<p class="gate-empty">No hay tabla de estadificación para este tumor.</p>';return;}
   const sel=tnmSel(),r=tnmStage(t.id,sel),code=tnmCode(d,sel);
-  box.innerHTML=`<aside class="stage card" aria-live="polite">
+  const preVal=d.pre&&sel[d.pre.key];
+  const preHtml=d.pre?`<fieldset class="axis card"><legend>${esc(d.pre.label)}${preVal?`<span class="count">${esc(preVal)}</span>`:''}</legend>
+    <div class="opts">${d.pre.options.map(o=>`<button type="button" class="opt" data-ax="${esc(d.pre.key)}" data-v="${esc(o.v)}" aria-pressed="${sel[d.pre.key]===o.v}"><code>${esc(o.v)}</code><span>${esc(o.d)}</span></button>`).join('')}</div></fieldset>`:'';
+  const stageHtml=`<aside class="stage card" aria-live="polite">
     <span class="st-lbl">Estadio</span>
     <div class="st-val ${r.stage?'':'none'}">${r.stage?esc(r.stage):esc(r.note||'Elegí las categorías')}</div>
     ${code?`<div class="st-code">${esc(code)}</div>`:''}
     <div class="st-ed">${esc(d.edition)}</div>
     ${r.stage&&r.note?`<div class="st-note">${esc(r.note)}</div>`:''}
     <div class="st-act"><button type="button" class="btn primary" id="tnm-copy" ${r.stage?'':'disabled'}>Copiar resumen</button><button type="button" class="btn" id="tnm-clear">Limpiar</button></div>
-  </aside>
-  <div class="axes">${d.axes.map(a=>`<fieldset class="axis card"><legend>${esc(a.label)}${sel[a.key]?`<span class="count">${esc(sel[a.key]==='N0'&&d.id==='ccu'?'N0':(a.options.find(o=>o.v===sel[a.key])||{v:''}).v.replace(/^GG/,'GG ').replace(/^lt10$/,'< 10').replace(/^10a20$/,'10–20').replace(/^ge20$/,'≥ 20'))}</span>`:''}</legend>
+  </aside>`;
+  if(d.pre&&!preVal){
+    /* falta el tipo histológico: todavía no tiene sentido mostrar los ejes TNM */
+    box.innerHTML=stageHtml+`<div class="axes">${preHtml}</div>`;
+    return;
+  }
+  box.innerHTML=stageHtml+
+  `<div class="axes">${preHtml}${d.axes.map(a=>`<fieldset class="axis card"><legend>${esc(a.label)}${sel[a.key]?`<span class="count">${esc(sel[a.key]==='N0'&&d.id==='ccu'?'N0':(a.options.find(o=>o.v===sel[a.key])||{v:''}).v.replace(/^GG/,'GG ').replace(/^lt10$/,'< 10').replace(/^10a20$/,'10–20').replace(/^ge20$/,'≥ 20'))}</span>`:''}</legend>
     <div class="opts">${a.options.map(o=>`<button type="button" class="opt" data-ax="${esc(a.key)}" data-v="${esc(o.v)}" aria-pressed="${sel[a.key]===o.v}"><code>${esc(o.v.replace(/^GG/,'GG ').replace(/^lt10$/,'< 10').replace(/^10a20$/,'10–20').replace(/^ge20$/,'≥ 20'))}</code><span>${esc(o.d)}</span></button>`).join('')}</div></fieldset>`).join('')}
     <section class="tnm-notes card"><h4>Para tener en cuenta</h4><ul>${d.notes.map(n=>`<li>${esc(n)}</li>`).join('')}<li>Fuente: ${esc(d.source)}. Descripciones resumidas; ante duda, rige la tabla oficial.</li></ul></section>
+    ${renderWorkup(t)}
   </div>`;
 }
 /* ---------- tratamiento: vía terapéutica según estadio ---------- */
@@ -193,6 +213,24 @@ function renderRec(id,node,ps){
     </article>`;}).join('');
   return `<section class="card rec"><div class="rec-h"><span class="phase">${esc(node.phase||'Recomendación')}</span><h4>${esc(node.title)}</h4></div>${items}${(node.notes||[]).length?`<ul class="rec-notes">${node.notes.map(n=>`<li>${esc(n)}</li>`).join('')}</ul>`:''}</section>`;
 }
+/* ítem de evaluación inicial (workup): mismo estilo que renderRec, sin botones de acción */
+function renderWorkupItem(tid,nodeId,i,it){
+  if(hiddenItem(tid,nodeId,i,it))return '';
+  const rv=rvState(tid,nodeId,i,it);
+  return `<article class="rx">
+    <div class="rx-top"><h5>${esc(it.label)}</h5>${covBadge(it.cov)}</div>
+    ${rv.state==='revisado'?`<span class="rv-badge">Revisado por dos oncólogos · ${esc(rv.date.slice(5,7)+'/'+rv.date.slice(0,4))}</span>`:rv.state==='discusion'?'<span class="rv-badge disc">En discusión entre revisores</span>':''}
+    ${it.detail?`<p class="rx-d">${esc(it.detail)}</p>`:''}
+    <div class="rx-meta">${it.level?`<span class="lv" title="${esc(LVL[it.level]||'')}">Evidencia ${esc(it.level)}</span>`:''}${(it.refs||[]).length?`<span class="refs">${it.refs.map(refLink).join(' · ')}</span>`:''}</div>
+  </article>`;
+}
+/* tarjeta plegable de evaluación inicial (pw.workup), mostrada en Estadio y no en el recorrido de tratamiento */
+function renderWorkup(t){
+  const pw=PW()[t.id];if(!pw||!pw.workup)return '';
+  const node=pw.nodes[pw.workup];if(!node)return '';
+  const items=node.items.map((it,i)=>renderWorkupItem(t.id,pw.workup,i,it)).join('');
+  return `<details class="card workup"><summary>${esc(node.title)}</summary><div class="rec">${items}${(node.notes||[]).length?`<ul class="rec-notes">${node.notes.map(n=>`<li>${esc(n)}</li>`).join('')}</ul>`:''}</div></details>`;
+}
 function planText(){
   const t=tumorObj(),ps=pathSt(),d=TNM[t.id],sel=(P().tnm||{})[t.id]||{},r=tnmStage(t.id,sel);
   const pl=ps.plan;if(!pl)return '';
@@ -201,26 +239,41 @@ function planText(){
 function renderTx(t){
   const box=document.getElementById('v-tx'),pw=PW()[t.id];
   if(!pw){box.innerHTML='<section class="card empty"><h4>Todavía no hay vía terapéutica para este tumor</h4><p>Se va a sumar en próximas versiones. Mientras tanto están disponibles la estadificación y los requisitos FNR.</p></section>';return;}
-  const ps=pathSt(),st=tnmStage(t.id,(P().tnm||{})[t.id]).stage;
+  const tnmSelT=(P().tnm||{})[t.id]||{};
+  if(t.id==='pulm'&&tnmSelT.HIST==='CPCP'){
+    box.innerHTML=`<section class="card empty"><h4>Todavía no hay vía de tratamiento para cáncer de pulmón de células pequeñas</h4><p>Esta guía está redactada para cáncer de pulmón de células no pequeñas (no microcítico); el de células pequeñas está en la lista de tumores a agregar.</p></section>`;
+    return;
+  }
+  const ps=pathSt(),st=tnmStage(t.id,tnmSelT).stage;
   const res=ENG.walk(pw,ps.a,st);
   let h='';
+  if(t.id==='pulm'&&!tnmSelT.HIST)h+=`<div class="warn"><b>Elegí el tipo histológico en Estadio:</b> esta guía es para células no pequeñas.</div>`;
   const tr=ENG.tumorReview(t.id,pw,RG(),(window.FNRO.reviews||{})[t.id]);
-  if(pw.status!=='revisado'||!tr.complete)h+=`<div class="warn"><b>Borrador sin revisión clínica completa.</b> ${tr.count.revisado||0} de ${tr.total} opciones tienen doble aprobación de oncólogos; las demás son preliminares: verificá cada recomendación antes de usarla. Actualizado ${esc(pw.updated)}.</div>`;
+  if(pw.status!=='revisado'||!tr.complete){
+    h+=warnDismissed
+      ?`<div class="warn compact"><span>Borrador: ${tr.count.revisado||0} de ${tr.total} opciones con doble aprobación</span><button type="button" class="lnk" id="warn-expand">ver detalle</button></div>`
+      :`<div class="warn"><b>Borrador sin revisión clínica completa.</b> ${tr.count.revisado||0} de ${tr.total} opciones tienen doble aprobación de oncólogos; las demás son preliminares: verificá cada recomendación antes de usarla. Actualizado ${esc(pw.updated)}. <button type="button" class="btn" id="warn-ok">Entendido</button></div>`;
+  }
   h+=`<div class="card txbar"><div><span class="lbl">Estadio</span> ${st?`<b class="txst">${esc(st)}</b>`:'<span class="muted">sin estadificar: completá la pestaña 1 para que la guía sugiera el camino</span>'}</div>
     <div class="txbar-act">${ps.plan?`<button type="button" class="btn primary" id="plan-copy">Copiar plan</button>`:''}<button type="button" class="btn" id="tx-reset">Reiniciar</button></div></div>`;
   if(ps.plan)h+=`<div class="card plan"><span class="lbl">Plan elegido</span><div><b>${esc(ps.plan.label)}</b> ${covBadge({t:ps.plan.cov})}</div>${ps.plan.phase?`<small>${esc(ps.plan.phase)}</small>`:''}</div>`;
   h+='<ol class="steps">';
+  /* "Paso N": numera cada punto de decisión ya respondido (pregunta u "continuar" tras una recomendación)
+     y, al final, el que está respondiéndose ahora; sin total porque no hay forma cierta de calcularlo de
+     antemano (el árbol se ramifica según cada respuesta). */
+  let stepN=0;
   res.steps.forEach(s=>{
-    if(s.node.type==='q')h+=`<li class="step done"><span class="q">${esc(s.node.text)}</span><span class="a">${esc(s.node.options[s.chosen].label)}</span><button type="button" class="lnk" data-undo="${esc(s.id)}">Cambiar</button></li>`;
+    if(s.node.type==='q'){stepN++;h+=`<li class="step done"><span class="stepn">Paso ${stepN}</span><span class="q">${esc(s.node.text)}</span><span class="a">${esc(s.node.options[s.chosen].label)}</span><button type="button" class="lnk" data-undo="${esc(s.id)}">Cambiar</button></li>`;}
     else{h+=`<li class="step">${renderRec(s.id,s.node,ps)}</li>`;
-      if(s.chosen!=null&&s.node.next)h+=`<li class="step done"><span class="q">Continuar</span><span class="a">${esc(s.node.next[s.chosen].label)}</span><button type="button" class="lnk" data-undo="${esc(s.id)}">Cambiar</button></li>`;}
+      if(s.chosen!=null&&s.node.next){stepN++;h+=`<li class="step done"><span class="stepn">Paso ${stepN}</span><span class="q">Continuar</span><span class="a">${esc(s.node.next[s.chosen].label)}</span><button type="button" class="lnk" data-undo="${esc(s.id)}">Cambiar</button></li>`;}}
   });
   const c=res.current;
   if(c){
-    if(c.node.type==='q')h+=`<li class="step cur"><section class="card qn"><h4>${esc(c.node.text)}</h4>${c.node.help?`<p class="muted">${esc(c.node.help)}</p>`:''}
+    stepN++;
+    if(c.node.type==='q')h+=`<li class="step cur"><section class="card qn"><h4><span class="stepn cur">Paso ${stepN}</span>${esc(c.node.text)}</h4>${c.node.help?`<p class="muted">${esc(c.node.help)}</p>`:''}
       <div class="qopts">${c.node.options.map((o,i)=>`<button type="button" class="qopt ${i===c.suggested?'sug':''}" data-ans="${esc(c.id)}" data-i="${i}">${esc(o.label)}${i===c.suggested?`<small>Sugerida por el estadio ${esc(st)}</small>`:''}</button>`).join('')}</div></section></li>`;
     else{h+=`<li class="step">${renderRec(c.id,c.node,ps)}</li>`;
-      h+=`<li class="step cur"><section class="card qn"><h4>¿Cómo sigue?</h4><div class="qopts">${c.node.next.map((o,i)=>`<button type="button" class="qopt" data-ans="${esc(c.id)}" data-i="${i}">${esc(o.label)}</button>`).join('')}</div></section></li>`;}
+      h+=`<li class="step cur"><section class="card qn"><h4><span class="stepn cur">Paso ${stepN}</span>¿Cómo sigue?</h4><div class="qopts">${c.node.next.map((o,i)=>`<button type="button" class="qopt" data-ans="${esc(c.id)}" data-i="${i}">${esc(o.label)}</button>`).join('')}</div></section></li>`;}
   }
   h+='</ol>';
   h+=`<details class="card legend"><summary>Cómo leer esta guía</summary><ul>
@@ -242,15 +295,29 @@ function renderApp(){
   if(view==='tnm')renderTnm(t);
   if(view==='tx')renderTx(t);
   document.getElementById('app').dataset.tumor=t.id;
-  document.getElementById('pbar').innerHTML=`<span class="plabel">Paciente</span><b>${esc(CURRENT)}</b><button type="button" id="pbar-switch">Cambiar paciente</button>`;
+  document.getElementById('pbar').innerHTML=`<span class="plabel">Paciente</span><b>${esc(CURRENT)}</b><button type="button" id="pbar-switch">Volver al inicio</button>`;
   document.getElementById('tumors').innerHTML=TUMORS.map(x=>{
-    const n=x.inds.filter(i=>{const[d,a]=prog(i);return d===a;}).length;
-    return `<button type="button" class="tt" data-t="${x.id}" data-c="${x.id}" aria-pressed="${x.id===t.id}"><span class="dot"></span><b>${esc(x.name)}</b><small>${n?`${n}/${x.inds.length} ✓`:x.inds.length}</small></button>`;}).join('');
+    /* el número siempre significa lo mismo: obligatorios marcados/total de la indicación elegida en este
+       tumor (o de la primera, todavía por defecto, si no se eligió ninguna); el title/aria-label lo aclara */
+    const selId=P().sel[x.id],chosen=selId&&x.inds.find(i=>i.id===selId),xInd=chosen||x.inds[0],[d,a]=prog(xInd);
+    const tip=`Requisitos FNR marcados de ${xInd.chip}${chosen?'':' (indicación por defecto: todavía no se eligió ninguna en este tumor)'}: ${d} de ${a}`;
+    return `<button type="button" class="tt" data-t="${x.id}" data-c="${x.id}" aria-pressed="${x.id===t.id}"><span class="dot"></span><b>${esc(x.name)}</b><small title="${esc(tip)}" aria-label="${esc(tip)}">${d}/${a}</small></button>`;}).join('');
   document.getElementById('band').innerHTML=`<h2>${esc(t.name)}</h2><span>${esc(t.drugs)} · <b>${esc(t.src)}</b></span>`;
   document.getElementById('picker').innerHTML=t.groups.map(([g,l])=>{
     const cs=t.inds.filter(i=>i.g===g).map(i=>{const[d,a]=prog(i);
       return `<button type="button" class="chip" data-id="${i.id}" aria-pressed="${i.id===ind.id}"><span>${esc(i.chip)}${d===a?`<span class="done" title="Completo">${CHECK}</span>`:''}</span><small>${esc(i.sub)}</small></button>`;}).join('');
     return `<div class="grp-label" id="grp-${esc(t.id)}-${esc(g)}">${esc(l)}</div><div class="chips" role="group" aria-labelledby="grp-${esc(t.id)}-${esc(g)}">${cs}</div>`;}).join('');
+  /* aviso: la pestaña Requisitos FNR corresponde por defecto a la indicación elegida en el picker (`ind`,
+     arriba), no siempre a `pathSt().plan` (el fármaco recién elegido en Tratamiento). Si difieren, no se
+     cambia en silencio: se avisa y se ofrece saltar a la del plan. */
+  const syncEl=document.getElementById('fnr-sync');
+  if(syncEl){
+    const plan=pathSt().plan,planInd=plan&&plan.ind&&t.inds.find(i=>i.id===plan.ind);
+    if(planInd&&planInd.id!==ind.id){
+      syncEl.hidden=false;
+      syncEl.innerHTML=`<div class="warn sync">Estás viendo los requisitos de <b>${esc(ind.title)}</b>; tu plan elegido es <b>${esc(plan.label)}</b>. <button type="button" class="btn" id="fnr-goplan">Ver requisitos del plan</button></div>`;
+    }else{syncEl.hidden=true;syncEl.innerHTML='';}
+  }
   document.getElementById('i-title').textContent=ind.title;
   document.getElementById('i-setting').textContent=ind.setting;
   document.getElementById('i-proto').innerHTML=ind.proto.map(([k,v])=>`<div><span class="k">${esc(k)} ·</span> ${esc(v)}</div>`).join('');
@@ -310,9 +377,19 @@ document.addEventListener('click',e=>{
   const pk=e.target.closest('[data-pick]');
   if(pk){const ps=pathSt(),k=pk.dataset.pick,[nid,i]=[k.slice(0,k.lastIndexOf(':')),+k.slice(k.lastIndexOf(':')+1)];
     const node=PW()[P().tumor].nodes[nid],it=node&&node.items[i];
-    if(it){ps.plan=ps.plan&&ps.plan.k===k?null:{k,label:it.label,cov:(it.cov||{}).t,ind:(it.cov||{}).ind,phase:node.phase||node.title};P().updatedAt=Date.now();saveStore();const y=window.scrollY;renderApp();window.scrollTo(0,y);}return;}
+    if(it){const cov=it.cov||{};
+      ps.plan=ps.plan&&ps.plan.k===k?null:{k,label:it.label,cov:cov.t,ind:cov.ind,phase:node.phase||node.title};
+      /* mantener sincronizada la pestaña Requisitos FNR con el plan recién elegido */
+      if(ps.plan&&cov.t==='FNR'){const t=tumorObj();if(t.inds.some(i2=>i2.id===cov.ind))P().sel[t.id]=cov.ind;}
+      P().updatedAt=Date.now();saveStore();const y=window.scrollY;renderApp();window.scrollTo(0,y);}return;}
   const fb=e.target.closest('[data-fnr]');
   if(fb){const t=tumorObj();if(t.inds.some(i=>i.id===fb.dataset.fnr))P().sel[t.id]=fb.dataset.fnr;P().view='fnr';saveStore();renderApp();window.scrollTo(0,0);return;}
+  const gp=e.target.closest('#fnr-goplan');
+  if(gp){const t=tumorObj(),plan=pathSt().plan;if(plan&&plan.ind&&t.inds.some(i=>i.id===plan.ind))P().sel[t.id]=plan.ind;saveStore();renderApp();window.scrollTo(0,0);return;}
+  const wok=e.target.closest('#warn-ok');
+  if(wok){warnDismissed=true;try{sessionStorage.setItem(WARN_KEY,'1');}catch(err){}const y=window.scrollY;renderApp();window.scrollTo(0,y);return;}
+  const wex=e.target.closest('#warn-expand');
+  if(wex){warnDismissed=false;try{sessionStorage.removeItem(WARN_KEY);}catch(err){}const y=window.scrollY;renderApp();window.scrollTo(0,y);return;}
   if(e.target.closest('#tx-reset')){P().path[P().tumor]={a:{},open:{}};saveStore();renderApp();return;}
   if(e.target.closest('#plan-copy')){const txt=planText();try{navigator.clipboard.writeText(txt).then(()=>toast('Plan copiado'),()=>toast(txt));}catch(err){toast(txt);}return;}
   const b=e.target.closest('.chip');

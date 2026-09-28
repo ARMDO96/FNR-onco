@@ -23,13 +23,13 @@ export async function readPdf(src) {
   }
   // Índice del PDF (marcadores), aplanado con la página de cada entrada.
   const outline = [];
-  const walk = async items => {
+  const walk = async (items, depth = 0) => {
     for (const it of items || []) {
       try {
         const dest = typeof it.dest === 'string' ? await pdf.getDestination(it.dest) : it.dest;
-        if (dest && dest[0]) outline.push({ title: it.title, page: await pdf.getPageIndex(dest[0]) });
+        if (dest && dest[0]) outline.push({ title: it.title, page: await pdf.getPageIndex(dest[0]), depth });
       } catch { /* entrada sin destino válido */ }
-      await walk(it.items);
+      await walk(it.items, depth + 1);
     }
   };
   await walk(await pdf.getOutline());
@@ -38,11 +38,12 @@ export async function readPdf(src) {
 
 export async function analyzePdf(src) {
   const { pages, outline, numPages } = await readPdf(src);
-  return { numPages, fromOutline: outline.length > 0, chapters: splitChapters(pages, outline) };
+  const chapters = splitChapters(pages, outline);
+  return { numPages, method: chapters.method, unmapped: chapters.unmapped, chapters: [...chapters] };
 }
 
 if (process.argv[1] && process.argv[1].endsWith('pautas.mjs') && process.argv[2]) {
   const r = await analyzePdf(process.argv[2]);
-  console.log(`${r.numPages} páginas · capítulos por ${r.fromOutline ? 'índice del PDF' : 'títulos de página'}: ${r.chapters.length}`);
+  console.log(`${r.numPages} páginas · capítulos por ${r.method === 'indice' ? 'índice del PDF' : 'títulos de página'}: ${r.chapters.length}${r.unmapped.length ? ` · sin tema en el mapa: ${r.unmapped.join(', ')}` : ''}`);
   for (const c of r.chapters) console.log(`- ${c.tema}${c.tumor ? ` [${c.tumor}]` : ''} · p. ${c.pages[0]}–${c.pages[1]} · ${c.drugs.length} fármacos · ${c.hash}`);
 }

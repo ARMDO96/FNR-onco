@@ -1,34 +1,206 @@
 {
- "nota": "Temas de las Pautas de Oncología Médica HC/UdelaR y el tumor de la app que les corresponde (null = la app no lo cubre). 'patron' es una expresión regular sobre el título en minúsculas y sin tildes. La primera coincidencia gana: lo específico va antes que lo general.",
+ "nota": "Temas de las Pautas de Oncología Médica HC/UdelaR y el tumor de la app que les corresponde (null = la app no lo cubre). 'patron' es una expresión regular sobre el título en minúsculas y sin tildes. La primera coincidencia gana: lo específico va antes que lo general. 'candidato': false marca temas que no son tumores (soporte, fertilidad): cortan capítulos pero no se proponen como tumor nuevo.",
  "capitulos": [
-  { "tema": "Mama asociado al embarazo", "tumor": null, "patron": "mama.{0,40}embarazo|embarazo.{0,40}mama" },
-  { "tema": "Mama", "tumor": "mama", "patron": "\\bmama\\b|mamario" },
-  { "tema": "Pulmón microcítico", "tumor": null, "patron": "(?<!no )microcitico|(?<!no )de celulas pequenas" },
-  { "tema": "Pulmón no microcítico", "tumor": "pulm", "patron": "pulmon|no microcitico" },
-  { "tema": "Mesotelioma", "tumor": null, "patron": "mesotelioma" },
-  { "tema": "Timoma y carcinoma tímico", "tumor": null, "patron": "timoma|timico" },
-  { "tema": "Canal anal", "tumor": null, "patron": "canal anal|\\bano\\b" },
-  { "tema": "Colon y recto", "tumor": "ccr", "patron": "colorrect|\\bcolon\\b|\\brecto\\b" },
-  { "tema": "Esófago y estómago", "tumor": null, "patron": "esofag|gastric|estomago|union esofagogastrica" },
-  { "tema": "Páncreas", "tumor": null, "patron": "pancrea" },
-  { "tema": "Vías biliares", "tumor": null, "patron": "biliar|colangio|vesicula" },
-  { "tema": "Hepatocarcinoma", "tumor": null, "patron": "hepatocarcinoma|hepatocelular|higado" },
-  { "tema": "GIST", "tumor": null, "patron": "\\bgist\\b|estromal gastrointestinal" },
-  { "tema": "Neuroendocrinos", "tumor": null, "patron": "neuroendocrin" },
-  { "tema": "Próstata", "tumor": "pros", "patron": "prostata" },
-  { "tema": "Riñón", "tumor": null, "patron": "renal|rinon" },
-  { "tema": "Vejiga y urotelio", "tumor": null, "patron": "vejiga|urotelial|vesical" },
-  { "tema": "Testículo", "tumor": null, "patron": "testicul|germinal" },
-  { "tema": "Pene", "tumor": null, "patron": "\\bpene\\b" },
-  { "tema": "Cuello uterino", "tumor": "ccu", "patron": "cuello uterino|cervix|cervical uterino" },
-  { "tema": "Endometrio", "tumor": null, "patron": "endometri|cuerpo uterino" },
-  { "tema": "Ovario", "tumor": null, "patron": "ovario" },
-  { "tema": "Vulva", "tumor": null, "patron": "vulva" },
-  { "tema": "Melanoma", "tumor": null, "patron": "melanoma" },
-  { "tema": "Piel no melanoma", "tumor": null, "patron": "piel|merkel|carcinoma espinocelular cutaneo|basocelular" },
-  { "tema": "Cabeza y cuello", "tumor": null, "patron": "cabeza y cuello|orofaringe|laringe|nasofaringe|cavidad oral" },
-  { "tema": "Tiroides", "tumor": null, "patron": "tiroide" },
-  { "tema": "Sistema nervioso central", "tumor": null, "patron": "sistema nervioso|glioma|glioblastoma|cerebral" },
-  { "tema": "Sarcomas", "tumor": null, "patron": "sarcoma" }
+  {
+   "tema": "Mama asociado al embarazo",
+   "tumor": null,
+   "patron": "mama.{0,40}embarazo|embarazo.{0,40}mama"
+  },
+  {
+   "tema": "Mama",
+   "tumor": "mama",
+   "patron": "\\bmama\\b|mamario"
+  },
+  {
+   "tema": "Pulmón microcítico",
+   "tumor": null,
+   "patron": "(?<!no )microcitico|(?<!no )(?<!no de )(?<!no a )(?:de |a )?celulas pequenas"
+  },
+  {
+   "tema": "Pulmón no microcítico",
+   "tumor": "pulm",
+   "patron": "pulmon|no microcitico"
+  },
+  {
+   "tema": "Mesotelioma",
+   "tumor": null,
+   "patron": "mesotelioma"
+  },
+  {
+   "tema": "Timoma y carcinoma tímico",
+   "tumor": null,
+   "patron": "timoma|timico"
+  },
+  {
+   "tema": "Canal anal",
+   "tumor": null,
+   "patron": "canal anal|region anal|\\bano\\b"
+  },
+  {
+   "tema": "Colon y recto",
+   "tumor": "ccr",
+   "patron": "colorrect|\\bcolon\\b|\\brecto\\b"
+  },
+  {
+   "tema": "Esófago y estómago",
+   "tumor": null,
+   "patron": "esofag|gastric|estomago|union esofagogastrica"
+  },
+  {
+   "tema": "Páncreas",
+   "tumor": null,
+   "patron": "pancrea"
+  },
+  {
+   "tema": "Vías biliares",
+   "tumor": null,
+   "patron": "biliar|colangio|vesicula"
+  },
+  {
+   "tema": "Hepatocarcinoma",
+   "tumor": null,
+   "patron": "hepatocarcinoma|hepatocelular|higado"
+  },
+  {
+   "tema": "GIST",
+   "tumor": null,
+   "patron": "\\bgist\\b|estromal gastrointestinal"
+  },
+  {
+   "tema": "Neuroendocrinos",
+   "tumor": null,
+   "patron": "neuroendocrin"
+  },
+  {
+   "tema": "Próstata",
+   "tumor": "pros",
+   "patron": "prostata"
+  },
+  {
+   "tema": "Riñón",
+   "tumor": null,
+   "patron": "renal|rinon"
+  },
+  {
+   "tema": "Vejiga y urotelio",
+   "tumor": null,
+   "patron": "vejiga|urotelial|vesical"
+  },
+  {
+   "tema": "Testículo",
+   "tumor": null,
+   "patron": "testicul|germinal"
+  },
+  {
+   "tema": "Pene",
+   "tumor": null,
+   "patron": "\\bpene\\b"
+  },
+  {
+   "tema": "Cuello uterino",
+   "tumor": "ccu",
+   "patron": "cuello (?:de(?:l)? )?utero|cuello uterino|cervix|cervical uterino"
+  },
+  {
+   "tema": "Endometrio",
+   "tumor": null,
+   "patron": "endometri|cuerpo uterino"
+  },
+  {
+   "tema": "Ovario",
+   "tumor": null,
+   "patron": "ovario"
+  },
+  {
+   "tema": "Vulva",
+   "tumor": null,
+   "patron": "vulva"
+  },
+  {
+   "tema": "Piel no melanoma",
+   "tumor": null,
+   "patron": "piel no melanoma|no melanoma|merkel|carcinoma espinocelular cutaneo|basocelular"
+  },
+  {
+   "tema": "Melanoma",
+   "tumor": null,
+   "patron": "melanoma"
+  },
+  {
+   "tema": "Cabeza y cuello",
+   "tumor": null,
+   "patron": "cabeza y cuello|orofaringe|laringe|nasofaringe|cavidad oral|glandulas salivales"
+  },
+  {
+   "tema": "Tiroides",
+   "tumor": null,
+   "patron": "tiroide"
+  },
+  {
+   "tema": "Sistema nervioso central",
+   "tumor": null,
+   "patron": "sistema nervioso|\\bsnc\\b|glioma|glioblastoma|cerebral"
+  },
+  {
+   "tema": "Sarcomas",
+   "tumor": null,
+   "patron": "sarcoma"
+  },
+  {
+   "tema": "Enfermedad trofoblástica",
+   "tumor": null,
+   "patron": "trofoblast"
+  },
+  {
+   "tema": "Carcinomatosis peritoneal",
+   "tumor": null,
+   "patron": "carcinomatosis"
+  },
+  {
+   "tema": "Primitivo oculto",
+   "tumor": null,
+   "patron": "primitivo oculto|origen desconocido"
+  },
+  {
+   "tema": "Tumores asociados al VIH",
+   "tumor": null,
+   "patron": "\\bvih\\b"
+  },
+  {
+   "tema": "Tratamientos de soporte",
+   "tumor": null,
+   "candidato": false,
+   "patron": "tratamientos? de soporte"
+  },
+  {
+   "tema": "Tromboprofilaxis y anticoagulación",
+   "tumor": null,
+   "candidato": false,
+   "patron": "tromboprofilaxis|anticoagulacion"
+  },
+  {
+   "tema": "Cuidados paliativos",
+   "tumor": null,
+   "candidato": false,
+   "patron": "cuidados paliativos"
+  },
+  {
+   "tema": "Fertilidad",
+   "tumor": null,
+   "candidato": false,
+   "patron": "fertilidad"
+  },
+  {
+   "tema": "Cáncer y embarazo",
+   "tumor": null,
+   "candidato": false,
+   "patron": "cancer y embarazo"
+  },
+  {
+   "tema": "Introducción",
+   "tumor": null,
+   "candidato": false,
+   "patron": "^\\W*introduccion\\b"
+  }
  ]
 }
