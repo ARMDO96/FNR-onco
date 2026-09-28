@@ -1,4 +1,4 @@
-Checklist FNR Oncología: app instalable (PWA), versión 3
+Checklist FNR Oncología: app instalable (PWA), versión 6
 ========================================================
 Incluye: mama, colorrecto, próstata, pulmón y cuello uterino.
 Novedades: ficha por paciente (cédula sin puntos ni guiones), lista de
@@ -16,12 +16,23 @@ Cómo actualizar el repositorio que ya tenés (FNR-onco):
 6. Esperá 1 o 2 minutos (pestaña "Actions": tilde verde = listo).
 
 En el celular:
-- Abrí la app con internet, cerrala del todo y volvé a abrirla.
-  La segunda vez ya aparece la versión nueva.
+- Abrí la app con internet: la versión nueva aparece al abrirla.
 - Dirección, si necesitás reinstalar: https://armdo96.github.io/FNR-onco/
 
-Nota: la carpeta fonts/ trae tipografías nuevas. Las viejas (ibm-plex-sans...)
-quedan en GitHub sin usarse; no molestan, pero podés borrarlas si querés.
+Versión 6: pestañas Estadio → Tratamiento → Requisitos FNR, guía de
+tratamiento propia en borrador para los 5 tumores con cobertura FNR/FTM y
+dosis calculadas, y modo revisión clínica (ver GOBERNANZA.md).
 
-Para la próxima actualización: en sw.js se cambia "fnr-onco-v3" por
-"fnr-onco-v4". Si te lo armo yo, ya viene cambiado.
+Versión 5: nueva pestaña "Estadificación TNM" por paciente (mama AJCC 8ª
+anatómico, colorrecto AJCC 8ª, próstata AJCC 8ª con PSA y grupo de grado,
+pulmón TNM 9ª, cuello uterino FIGO 2018), con botón para copiar el resumen.
+Subí también el archivo nuevo data-tnm.js.
+
+Versión 4: se borraron las tipografías viejas que no se usaban
+(ibm-plex-sans...); la página ahora se busca primero en internet, así que la
+versión nueva aparece al primer arranque con conexión (sin conexión sigue
+abriendo la copia guardada).
+
+Desde la versión 6 el nombre de la caché de sw.js se calcula solo
+(node tools/gen.mjs) a partir del contenido de los archivos: no hay que
+cambiarlo a mano.

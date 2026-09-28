@@ -1,0 +1,16 @@
+{
+  "name": "fnr-onco",
+  "private": true,
+  "type": "module",
+  "description": "FNR-onco: estadificación, tratamiento según guía y requisitos FNR (PWA estática)",
+  "scripts": {
+    "gen": "node tools/gen.mjs",
+    "validate": "node tools/validate.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "e2e": "node tests/e2e.mjs",
+    "check": "node tools/gen.mjs && node tools/validate.mjs && node --test tests/*.test.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.49.1"
+  }
+}

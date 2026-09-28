@@ -1,0 +1,33 @@
+name: Vigilancia de vigencia
+
+on:
+  schedule:
+    - cron: '17 11 * * 1'   # lunes 08:17 hora de Uruguay
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  vigencia:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verificar que todas las citas existan
+        id: citas
+        run: node tools/check-refs.mjs > citas.txt 2>&1 || echo "falla=1" >> "$GITHUB_OUTPUT"; cat citas.txt
+      - name: Normativas, FTM y vencimientos
+        id: vig
+        run: node tools/vigencia.mjs > informe.md || echo "atencion=1" >> "$GITHUB_OUTPUT"; cat informe.md
+      - name: Abrir issue si hay algo que revisar
+        if: steps.citas.outputs.falla == '1' || steps.vig.outputs.atencion == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          { cat informe.md; echo; echo '### Citas'; echo '```'; cat citas.txt; echo '```';
+            echo; echo '<details><summary>Instantánea nueva (tools/vigencia-snapshot.json)</summary>'; echo; echo '```json'; cat tools/vigencia-snapshot.json; echo '```'; echo '</details>'; } > cuerpo.md
+          gh issue create --title "Vigilancia de vigencia $(date +%F)" --body-file cuerpo.md

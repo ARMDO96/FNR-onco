@@ -1,0 +1,27 @@
+name: Pruebas
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Instalar Playwright
+        run: npm install --no-audit --no-fund && npx playwright install --with-deps chromium
+      - name: index.html y sw.js al día con content/
+        run: node tools/gen.mjs && git diff --exit-code -- index.html sw.js
+      - name: Validar contenido clínico
+        run: node tools/validate.mjs
+      - name: Verificar que todas las citas existan (PubMed / ClinicalTrials.gov)
+        run: node tools/check-refs.mjs
+      - name: Pruebas unitarias
+        run: node --test tests/*.test.mjs
+      - name: Prueba de punta a punta
+        run: node tests/e2e.mjs
