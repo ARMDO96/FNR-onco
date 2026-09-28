@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "Checklist FNR Oncología",
-  "short_name": "FNR Onco",
-  "description": "Requisitos de las normativas FNR para cobertura de tratamiento sistémico: mama, colorrecto, próstata, pulmón y cuello uterino.",
+  "name": "App para el Cáncer",
+  "short_name": "Para el Cáncer",
+  "description": "Acompañamiento del tratamiento oncológico: para el equipo médico, estadificación, tratamiento según guía y requisitos del FNR; para cada paciente, su plan, fechas, preparación y avisos.",
   "lang": "es-UY",
   "start_url": "./",
   "scope": "./",

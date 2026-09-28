@@ -14,9 +14,9 @@ export function contentFiles() {
 }
 
 export function load() {
-  const ctx = { window: {}, console };
+  const ctx = { window: {}, console, URL };
   vm.createContext(ctx);
-  for (const f of [...contentFiles(), 'app/calc.js', 'app/engine.js']) {
+  for (const f of [...contentFiles(), 'app/config.js', 'app/calc.js', 'app/engine.js', 'app/ci.js']) {
     vm.runInContext(fs.readFileSync(path.join(ROOT, f), 'utf8'), ctx, { filename: f });
   }
   return ctx.window.FNRO;

@@ -33,6 +33,14 @@ const step = async (name, fn) => { try { await fn(); console.log('✓', name); }
 
 try {
   await page.goto(URL0);
+  await step('pantalla inicial: nombre, banda DEMO y aviso de emergencia', async () => {
+    assert.equal(await page.title(), 'App para el Cáncer');
+    assert.ok(await page.isVisible('#entry'));
+    assert.match(await page.textContent('#demo-band'), /DEMO/);
+    assert.match(await page.textContent('#entry .sos'), /911/);
+    await page.click('[data-role="doctor"]');
+    assert.ok(await page.isVisible('#gate'));
+  });
   await step('abrir ficha', async () => {
     await page.fill('#pid-input', '1.234.567-8'); await page.click('#pid-go');
     assert.equal(await page.textContent('#pbar b'), '12345678');
@@ -88,6 +96,31 @@ try {
       localStorage.setItem(k, JSON.stringify(s)); });
     await page.reload(); await page.fill('#pid-input', '99'); await page.click('#pid-go');
     assert.ok((await page.textContent('#band h2')).length > 0);
+  });
+  await step('paciente: ingreso, fecha, confirmación y alarma de fiebre', async () => {
+    await page.goto(URL0);
+    await page.click('#gate [data-role-reset]');
+    await page.click('[data-role="paciente"]');
+    await page.fill('#pt-ci', '1.234.567-3'); await page.click('[data-pt="pedir"]');
+    assert.match(await page.textContent('#pt-err'), /verificador/, 'rechaza cédula con dígito incorrecto');
+    await page.fill('#pt-ci', '1.234.567-2'); await page.click('[data-pt="pedir"]');
+    await page.fill('#pt-cod', '000000'); await page.click('[data-pt="verificar"]');
+    assert.match(await page.textContent('#pt-err'), /no es válido/);
+    await page.fill('#pt-cod', '123456'); await page.click('[data-pt="verificar"]');
+    assert.match(await page.textContent('.pt-top h1'), /Hola/);
+    assert.ok(await page.isVisible('.alarm'), 'aviso fijo de fiebre en quimioterapia');
+    await page.click('.todo');
+    await page.fill('input[type="datetime-local"]', '2026-10-05T08:30'); await page.click('[data-pt-fecha]');
+    assert.match(await page.textContent('#patient'), /Coordinado/);
+    await page.click('[data-pt-view="sintomas"]'); await page.click('[data-pt-sym="fiebre"]');
+    assert.match(await page.textContent('.alarm.big'), /emergencia/);
+  });
+  await step('doctor: la bandeja muestra la alarma y la fecha con hora', async () => {
+    await page.click('#patient [data-role-reset]'); await page.click('[data-role="doctor"]');
+    assert.match(await page.textContent('.dash-alarm'), /1 alarma/);
+    assert.match(await page.textContent('.inbox'), /Coordinó/);
+    await page.click('[data-dash-visto]');
+    assert.equal(await page.locator('.inbox li').count(), 1, 'queda sólo lo no visto');
   });
   await step('modo revisión: aprobar, exportar e incorporar al registro', async () => {
     await page.goto(URL0);

@@ -83,6 +83,18 @@ else {
   if (warn.length) console.log(`⚠ citas a actualizar (${warn.length}):\n` + warn.map(w => '  · ' + w).join('\n'));
 }
 
+// Entorno (app/config.js): falla cerrado. 'produccion' exige un proyecto Supabase habilitado y la URL de ese
+// proyecto; un proyecto habilitado para datos reales no puede usarse en 'demo' (se cargarían datos de prueba en él).
+const cfg = R.config || {};
+if (!['demo', 'produccion'].includes(cfg.ENTORNO)) err('app/config.js', `ENTORNO debe ser 'demo' o 'produccion' (es ${cfg.ENTORNO})`);
+else {
+  let host = null;
+  if (cfg.SUPABASE_URL) { try { host = new URL(cfg.SUPABASE_URL).host; } catch { err('app/config.js', 'SUPABASE_URL no es una URL válida'); } }
+  const habilitado = host && (cfg.PROYECTOS_PRODUCCION || []).some(r => host === `${r}.supabase.co`);
+  if (cfg.ENTORNO === 'produccion' && !habilitado) err('app/config.js', "ENTORNO 'produccion' sin un proyecto de PROYECTOS_PRODUCCION en SUPABASE_URL");
+  if (cfg.ENTORNO === 'demo' && habilitado) err('app/config.js', "ENTORNO 'demo' apuntando a un proyecto habilitado para datos reales");
+}
+
 const nP = Object.keys(R.pathways || {}).length, nR = Object.keys(R.regimens || {}).length;
 if (errors.length) { console.error(errors.map(e => '✗ ' + e).join('\n')); console.error(`\n${errors.length} error(es)`); process.exit(1); }
 console.log(`✓ contenido válido: ${nP} vías, ${nR} regímenes, ${fnrInds.length} indicaciones FNR`);
