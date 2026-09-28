@@ -323,7 +323,16 @@
   // ============================================================
   var pulm = {
     id: 'pulm',
-    name: 'Pulmón (CPNM)',
+    name: 'Pulmón',
+    // Primero el tipo histológico: define la vía de tratamiento. El TNM se elige después y se aplica a ambos.
+    pre: {
+      key: 'HIST',
+      label: 'Tipo histológico',
+      options: [
+        { v: 'CPNCP', d: 'Cáncer de pulmón de células no pequeñas (no microcítico)' },
+        { v: 'CPCP', d: 'Cáncer de pulmón de células pequeñas (microcítico)' }
+      ]
+    },
     edition: 'TNM 9ª ed. IASLC/UICC/AJCC (vigente desde 2025)',
     source: 'IASLC Staging Project, propuestas de 9ª ed. (J Thorac Oncol 2024-2025)',
     axes: [
@@ -415,8 +424,21 @@
     notes: [
       'Novedad de la 9ª ed. (vigente desde 2025): N2 se divide en N2a (1 estación) y N2b (múltiples estaciones); M1c se divide en M1c1 y M1c2 (ambas en estadio IVB).',
       'Esta división de N2 y M1c reordena varias combinaciones de estadio II y III respecto de la 8ª ed.; use siempre la tabla 9ª ed. para casos nuevos desde 2025.',
-      'Aplica a carcinoma pulmonar no microcítico (CPNM/NSCLC); el carcinoma microcítico suele estadificarse también con TNM pero se maneja clínicamente distinto (limitado/extendido).'
+      'El TNM se aplica a los dos tipos histológicos. En células pequeñas se usa además la clasificación en enfermedad limitada o extendida, que orienta el tratamiento.'
     ]
+  };
+  // El estadio exige el tipo histológico; en células pequeñas se agrega limitada/extendida (orientativa).
+  var pulmTnm = pulm.stage;
+  pulm.stage = function (sel) {
+    if (!sel.HIST) return { stage: null, note: 'Elegí primero el tipo histológico' };
+    var r = pulmTnm(sel);
+    if (sel.HIST === 'CPCP' && r.stage) {
+      var ext = /^M1/.test(sel.M || '');
+      r.note = (r.note ? r.note + ' ' : '') + (ext
+        ? 'Células pequeñas: enfermedad extendida.'
+        : 'Células pequeñas: enfermedad limitada si toda la enfermedad puede incluirse en un campo de radioterapia; si no, extendida.');
+    }
+    return r;
   };
 
   // ============================================================

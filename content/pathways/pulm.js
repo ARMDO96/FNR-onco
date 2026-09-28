@@ -15,13 +15,14 @@ R.pathways.pulm = {
   status: 'borrador',
   updated: '2026-09-28',
   authors: ['Borrador asistido por IA'],
-  start: 'eval-inicial',
+  start: 'q-estadio',
+  workup: 'eval-inicial',   // se muestra en la pestaña Estadio, no en el tratamiento
   nodes: {
 
     /* ================= EVALUACIÓN INICIAL ================= */
     'eval-inicial': {
       type: 'rec',
-      title: 'Evaluación inicial',
+      title: 'Evaluación inicial y estudios de estadificación',
       phase: 'evaluación',
       items: [
         { label: 'Anatomía patológica: histología (adenocarcinoma, escamoso, etc.) y subtipo', cov: { t: 'NA' } },
@@ -30,8 +31,7 @@ R.pathways.pulm = {
         { label: 'Estadificación: TC de tórax/abdomen, PET-TC si disponible, RNM/TC de cráneo si síntomas', cov: { t: 'NA' } },
         { label: 'Estadificación mediastínica invasiva (EBUS/mediastinoscopia) si hay sospecha N2/N3 o previo a cirugía en estadios II–III', cov: { t: 'NA' } },
         { label: 'Evaluación funcional respiratoria y cardiovascular si se considera cirugía o RT torácica', cov: { t: 'NA' } }
-      ],
-      next: [ { label: 'Continuar', next: 'q-estadio' } ]
+      ]
     },
 
     'q-estadio': {
