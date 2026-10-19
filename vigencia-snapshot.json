@@ -1,6 +1,6 @@
 {
  "version": 2,
- "checked": "2026-10-12",
+ "checked": "2026-10-19",
  "sources": {
   "fnr": {
    "url": "https://www.fnr.gub.uy/normativas-2/",
@@ -101,6 +101,7 @@
   "fda": {
    "url": "https://www.fda.gov/drugs/resources-information-approved-drugs/oncology-cancer-hematologic-malignancies-approval-notifications",
    "items": [
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-expanded-indication-nogapendekin-alfa-inbakicept-pmln-bcg-unresponsive-non-muscle",
     "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-atezolizumab-combination-chemotherapy-stage-iii-mismatch-repair-deficient-colon-cancer",
     "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-tucatinib-trastuzumab-and-pertuzumab-maintenance-treatment-her2-positive-breast-cancer",
     "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-pirtobrutinib-previously-untreated-chronic-lymphocytic-leukemia-or-small-lymphocytic",
@@ -213,7 +214,7 @@
     "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-isatuximab-irfc-bortezomib-lenalidomide-and-dexamethasone-newly-diagnosed-multiple",
     "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-amivantamab-vmjw-carboplatin-and-pemetrexed-non-small-cell-lung-cancer-egfr-exon-19",
     "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-pembrolizumab-chemotherapy-unresectable-advanced-or-metastatic-malignant-pleural",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-ribociclib-aromatase-inhibitor-and-ribociclib-and-letrozole-co-pack-early-high-risk",
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-kisqali-aromatase-inhibitor-and-kisqali-femara-co-pack-early-high-risk-breast-cancer",
     "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-atezolizumab-and-hyaluronidase-tqjs-subcutaneous-injection",
     "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-lazertinib-amivantamab-vmjw-non-small-lung-cancer",
     "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-neoadjuvantadjuvant-durvalumab-resectable-non-small-cell-lung-cancer",
