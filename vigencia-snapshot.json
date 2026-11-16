@@ -1,6 +1,6 @@
 {
  "version": 2,
- "checked": "2026-11-09",
+ "checked": "2026-11-16",
  "sources": {
   "fnr": {
    "url": "https://www.fnr.gub.uy/normativas-2/",
@@ -101,72 +101,13 @@
   "fda": {
    "url": "https://www.fda.gov/drugs/resources-information-approved-drugs/oncology-cancer-hematologic-malignancies-approval-notifications",
    "items": [
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-nivolumab-and-hyaluronidase-nvhy-subcutaneous-injection",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-encorafenib-cetuximab-and-mfolfox6-metastatic-colorectal-cancer-braf",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-remestemcel-l-rknd-steroid-refractory-acute-graft-versus-host-disease-pediatric",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-zanidatamab-hrii-previously-treated-unresectable-or-metastatic-her2",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-updated-drug-labeling-fludarabine-phosphate-under-project-renewal",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-revumenib-relapsed-or-refractory-acute-leukemia-kmt2a-translocation",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-obecabtagene-autoleucel-adults-relapsed-or-refractory-b-cell-precursor-acute",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-asciminib-newly-diagnosed-chronic-myeloid-leukemia",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-zolbetuximab-clzb-chemotherapy-gastric-or-gastroesophageal-junction-adenocarcinoma",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-neoadjuvantadjuvant-nivolumab-resectable-non-small-cell-lung-cancer",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-selpercatinib-medullary-thyroid-cancer-ret-mutation",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-osimertinib-locally-advanced-unresectable-stage-iii-non-small-cell-lung-cancer",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-pembrolizumab-chemotherapy-unresectable-advanced-or-metastatic-malignant-pleural",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-ribociclib-aromatase-inhibitor-and-ribociclib-and-letrozole-co-pack-early-high-risk",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-neoadjuvantadjuvant-durvalumab-resectable-non-small-cell-lung-cancer",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-vorasidenib-grade-2-astrocytoma-or-oligodendroglioma-susceptible-idh1-or-idh2-mutation",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-afamitresgene-autoleucel-unresectable-or-metastatic-synovial-sarcoma",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-expands-endometrial-cancer-indication-dostarlimab-gxly-chemotherapy",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-epcoritamab-bysp-relapsed-or-refractory-follicular-lymphoma",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-adagrasib-cetuximab-kras-g12c-mutated-colorectal-cancer",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-repotrectinib-adult-and-pediatric-patients-ntrk-gene-fusion-positive",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-selpercatinib-ret-fusion-positive-thyroid-cancer",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-tarlatamab-dlle-extensive-stage-small-cell-lung-cancer",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-lisocabtagene-maraleucel-follicular-lymphoma",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-tisotumab-vedotin-tftv-recurrent-or-metastatic-cervical-cancer",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-tovorafenib-patients-relapsed-or-refractory-braf-altered-pediatric",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-nogapendekin-alfa-inbakicept-pmln-bcg-unresponsive-non-muscle-invasive-bladder-cancer",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-fam-trastuzumab-deruxtecan-nxki-unresectable-or-metastatic-her2",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-safety-labeling-changes-regarding-dpd-deficiency-fluorouracil-injection-products",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-ponatinib-chemotherapy-newly-diagnosed-philadelphia-chromosome",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-zanubrutinib-relapsed-or-refractory-follicular-lymphoma",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-nivolumab-combination-cisplatin-and-gemcitabine-unresectable-or-metastatic-urothelial",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-osimertinib-chemotherapy-egfr-mutated-non-small-cell-lung-cancer",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-lifileucel-unresectable-or-metastatic-melanoma",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-tepotinib-metastatic-non-small-cell-lung-cancer",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-pembrolizumab-chemoradiotherapy-figo-2014-stage-iii-iva-cervical-cancer",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-enfortumab-vedotin-ejfv-pembrolizumab-locally-advanced-or-metastatic-urothelial-cancer",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-belzutifan-advanced-renal-cell-carcinoma",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-pirtobrutinib-chronic-lymphocytic-leukemia-and-small-lymphocytic",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-pembrolizumab-chemotherapy-her2-negative-gastric-or-gastroesophageal-junction",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-repotrectinib-ros1-positive-non-small-cell-lung-cancer",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-toripalimab-tpzi-nasopharyngeal-carcinoma",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-expands-pediatric-indication-entrectinib-and-approves-new-pellet-formulation",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-neoadjuvant-adjuvant-pembrolizumab-resectable-non-small-cell-lung-cancer",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-nivolumab-adjuvant-treatment-stage-iibc-melanoma",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-encorafenib-binimetinib-metastatic-non-small-cell-lung-cancer-braf-v600e-mutation",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-new-and-updated-indications-temozolomide-under-project-renewal",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-melphalan-liver-directed-treatment-uveal-melanoma",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-elranatamab-bcmm-multiple-myeloma",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-talquetamab-tgvs-relapsed-or-refractory-multiple-myeloma",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-polatuzumab-vedotin-piiq-previously-untreated-diffuse-large-b-cell-lymphoma-not",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-enfortumab-vedotin-ejfv-pembrolizumab-locally-advanced-or-metastatic",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-retifanlimab-dlwr-metastatic-or-recurrent-locally-advanced-merkel",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-dabrafenib-trametinib-pediatric-patients-low-grade-glioma-braf-v600e-mutation",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-expands-early-breast-cancer-indication-abemaciclib-endocrine-therapy",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-sacituzumab-govitecan-hziy-hr-positive-breast-cancer",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-pirtobrutinib-relapsed-or-refractory-mantle-cell-lymphoma",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-pembrolizumab-adjuvant-treatment-non-small-cell-lung-cancer",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-zanubrutinib-chronic-lymphocytic-leukemia-or-small-lymphocytic-lymphoma",
-    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-tucatinib-trastuzumab-colorectal-cancer"
+    "https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-zolbetuximab-clzb-chemotherapy-gastric-or-gastroesophageal-junction-adenocarcinoma"
    ]
   },
   "ema": {
    "url": "https://www.ema.europa.eu/en/news-events/whats-new",
    "items": [
-    "https://www.ema.europa.eu/en/news/meeting-highlights-committee-medicinal-products-human-use-chmp-14-17-september-2026"
+    "https://www.ema.europa.eu/en/news/meeting-highlights-committee-medicinal-products-human-use-chmp-9-12-november-2026"
    ]
   },
   "esmo": {
